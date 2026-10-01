@@ -1,52 +1,56 @@
 const assert=require('node:assert/strict');
-const fs=require('node:fs');
-const vm=require('node:vm');
-const core=require('../assets/core.js');
-let active;
-class Element {
- constructor(tag='div',id=''){this.tagName=tag;this.id=id;this.children=[];this.dataset={};this.attrs={};this.events={};this.hidden=false;this.value='';this.textContent='';this.parent=null;}
- append(...children){children.forEach(c=>{c.parent=this;this.children.push(c);});}
- replaceChildren(...children){this.children=[];this.append(...children);}
- setAttribute(k,v){this.attrs[k]=v;}getAttribute(k){return this.attrs[k];}
- addEventListener(k,f){(this.events[k]??=[]).push(f);}
- dispatch(k,event={}){const e={target:this,preventDefault(){},...event};for(const f of this.events[k]||[])f(e);}
- focus(){active=this;}
- closest(selector){return selector==='[data-save]'&&this.dataset.save?this:this.parent?.closest(selector)||null;}
- reset(){for(const id of ['source-filter','skill-filter','level-filter','price-filter','access-filter'])nodes[id].value='all';nodes.search.value='';nodes['recommendation-filter'].value='recommended';}
-}
+const fs=require('node:fs'),vm=require('node:vm');
+const core=require('../assets/core.js'),data=require('../data/catalog.json');
 const html=fs.readFileSync(require.resolve('../index.html'),'utf8');
-const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);const nodes=Object.fromEntries(ids.map(id=>[id,new Element('div',id)]));
-for(const id of ['source-filter','skill-filter','level-filter','price-filter','access-filter'])nodes[id].value='all';
-nodes['recommendation-filter'].value='recommended';
-nodes.baseline.value='unknown';nodes.target.value='7';
-for(const name of ['start','library','path','exams'])nodes['tab-'+name].dataset.tab=name;
-const intents=['listening','reading','writing','speaking','experience'].map(value=>{const n=new Element('button');n.dataset.intent=value;return n;});
-function descendants(node){return node.children.flatMap(c=>[c,...descendants(c)]);}
-const doc={baseURI:'https://example.test/IELTSOrbit/',getElementById:id=>nodes[id],createElement:tag=>new Element(tag),createDocumentFragment:()=>new Element('fragment'),querySelectorAll:selector=>selector==='[data-tab]'?['start','library','path','exams'].map(id=>nodes['tab-'+id]):selector==='[data-go]'?[]:selector==='[data-intent]'?intents:selector==='[data-save]'?descendants(nodes['resource-grid']).filter(n=>n.dataset.save):[]};
-const data={meta:{checkedAt:'2026-10-01'},resources:[{id:'a',title:'Official writing',provider:'Official',url:'https://example.test/a',sourceType:'official',skills:['writing'],levels:['foundation'],price:'free',access:'open'},{id:'b',title:'Teacher speaking',url:'https://example.test/b',sourceType:'teacher',skills:['speaking'],levels:['advanced'],price:'mixed',access:'varies'}],policies:[],centers:[],calendars:[]};
-data.resources.push({id:'c',title:'Comparison',url:'https://example.test/c',sourceType:'experience',skills:['writing'],levels:['foundation'],price:'free',access:'open',recommendedByDefault:false,evidenceScope:'Public text read',authorContext:{baseline:'unknown',outcome:'self-report'},actionableMethods:['Compare drafts'],commentsReview:{status:'not_reviewed',detail:'Comments not read'}});
-const saved=new Map();const windowEvents={};const context={window:{IELTSCore:core,addEventListener:(k,f)=>windowEvents[k]=f},document:doc,location:{hash:''},localStorage:{getItem:k=>saved.get(k),setItem:(k,v)=>saved.set(k,v),removeItem:k=>saved.delete(k)},fetch:async url=>{assert.equal(String(url),'https://example.test/IELTSOrbit/data/catalog.json');return{ok:true,json:async()=>data};},URL,console};
-vm.runInNewContext(fs.readFileSync(require.resolve('../assets/app.js'),'utf8'),context);
+function harness({rawState,hash='',offline=false,storageBlocked=false}={}){
+ let active,fetches=0;
+ const nodes={},saved=new Map(rawState?[['ieltsorbit.local.v1',rawState]]:[]),events={};
+ const descendants=n=>n.children.flatMap(c=>[c,...descendants(c)]);
+ const match=(node,selector)=>selector.startsWith('#')?node.id===selector.slice(1):selector.startsWith('.')?String(node.className||'').split(' ').includes(selector.slice(1)):selector.startsWith('[data-')?(()=>{const [raw,value]=selector.slice(1,-1).split('=');const key=raw.slice(5).replace(/-([a-z])/g,(_,v)=>v.toUpperCase());return value?node.dataset[key]===value.replace(/"/g,''):Object.hasOwn(node.dataset,key);})():node.tagName===selector;
+ class Element{
+  constructor(tag='div',id=''){this.tagName=tag;this.id=id;this.children=[];this.dataset={};this.attrs={};this.events={};this.hidden=false;this.value='';this.textContent='';this.parent=null;this.open=false;this.ownerDocument=doc;}
+  append(...children){children.forEach(c=>{c.parent=this;this.children.push(c);});}
+  replaceChildren(...children){this.children=[];this.append(...children);}
+  setAttribute(k,v){this.attrs[k]=v;}getAttribute(k){return this.attrs[k];}
+  addEventListener(k,f){(this.events[k]??=[]).push(f);}
+  dispatch(k,event={}){if(this.disabled)return;const e={target:this,preventDefault(){},...event};for(const f of this.events[k]||[])f(e);}
+  focus(){active=this;}scrollIntoView(){}
+  closest(selector){return match(this,selector)?this:this.parent?.closest(selector)||null;}
+  querySelectorAll(selector){return descendants(this).filter(n=>match(n,selector));}querySelector(selector){return this.querySelectorAll(selector)[0]||null;}
+  reset(){for(const id of ['source-filter','level-filter','price-filter','access-filter'])nodes[id].value='all';nodes['skill-filter'].value='listening';nodes.search.value='';nodes['recommendation-filter'].value='recommended';}
+ }
+ const doc={baseURI:'https://example.test/IELTSOrbit/',getElementById:id=>nodes[id]||Object.values(nodes).flatMap(descendants).find(n=>n.id===id)||null,createElement:tag=>new Element(tag),createDocumentFragment:()=>new Element('fragment'),querySelectorAll:selector=>selector==='[data-intent]'?intents:Object.values(nodes).flatMap(n=>[n,...descendants(n)]).filter(n=>match(n,selector))};
+ [...html.matchAll(/\bid="([^"]+)"/g)].forEach(m=>nodes[m[1]]=new Element('div',m[1]));
+ for(const id of ['source-filter','level-filter','price-filter','access-filter'])nodes[id].value='all';nodes['skill-filter'].value='listening';nodes['recommendation-filter'].value='recommended';
+ for(const tab of ['start','library','experience','path','exams'])nodes['tab-'+tab].dataset.tab=tab;
+ const intents=['listening','reading','writing','speaking','experience'].map(value=>{const n=new Element('button');n.dataset.intent=value;return n;});
+ const context={window:{IELTSCore:core,addEventListener:(k,f)=>events[k]=f},document:doc,location:{hash},localStorage:{getItem:k=>{if(storageBlocked)throw new Error('blocked');return saved.get(k);},setItem:(k,v)=>{if(storageBlocked)throw new Error('blocked');saved.set(k,v);},removeItem:k=>{if(storageBlocked)throw new Error('blocked');saved.delete(k);}},fetch:async url=>{fetches++;assert.equal(String(url),'https://example.test/IELTSOrbit/data/catalog.json');if(offline)throw new Error('offline');return{ok:true,json:async()=>data};},URL,console};
+ vm.runInNewContext(fs.readFileSync(require.resolve('../assets/experience.js'),'utf8'),context);
+ vm.runInNewContext(fs.readFileSync(require.resolve('../assets/app.js'),'utf8'),context);
+ return{nodes,doc,intents,saved,context,events,descendants,get active(){return active;},get fetches(){return fetches;},text:n=>[n,...descendants(n)].map(n=>n.textContent).join(' '),hash:value=>{context.location.hash=value;events.hashchange();},flush:()=>new Promise(setImmediate)};
+}
 (async()=>{
- await new Promise(setImmediate);
- assert.equal(nodes['panel-start'].hidden,false,'first arrival shows start');assert.equal(nodes['panel-library'].hidden,true,'library is not the first arrival');assert.equal(nodes['resource-grid'].children.length,2,'initial recommended resources');
- intents.find(n=>n.dataset.intent==='writing').dispatch('click');assert.equal(nodes['skill-filter'].value,'writing');assert.equal(nodes['panel-library'].hidden,false);assert.equal(nodes['resource-grid'].children.length,1);intents.find(n=>n.dataset.intent==='experience').dispatch('click');assert.equal(nodes['source-filter'].value,'experience');assert.equal(nodes['recommendation-filter'].value,'all');assert.equal(nodes['resource-grid'].children[0].dataset.resourceId,'c');nodes['reset-filters'].dispatch('click');nodes['tab-start'].dispatch('keydown',{key:'ArrowLeft'});assert.equal(active,nodes['tab-exams'],'keyboard wraps to last');nodes['tab-exams'].dispatch('keydown',{key:'ArrowRight'});assert.equal(active,nodes['tab-start'],'keyboard wraps to start');
- nodes['recommendation-filter'].value='all';nodes['filter-form'].dispatch('change');assert.equal(nodes['resource-grid'].children.length,3,'all resources include comparisons');
- nodes['recommendation-filter'].value='reference';nodes['filter-form'].dispatch('change');assert.equal(nodes['resource-grid'].children.length,1,'reference only');assert.equal(nodes['resource-grid'].children[0].dataset.resourceId,'c');
- assert.ok(descendants(nodes['resource-grid']).some(n=>n.textContent.includes('非默认推荐')),'case badge');
- assert.ok(descendants(nodes['resource-grid']).some(n=>n.textContent.includes('self-report')),'context visible in details');
- nodes['reset-filters'].dispatch('click');assert.equal(nodes['recommendation-filter'].value,'recommended');assert.equal(nodes['resource-grid'].children.length,2,'reset returns default');
- nodes['source-filter'].value='teacher';nodes['filter-form'].dispatch('change');assert.equal(nodes['resource-grid'].children.length,1,'source filter');
- nodes.search.value='nothing matches';nodes['filter-form'].dispatch('input');assert.equal(nodes['empty-state'].hidden,false,'empty state');
- nodes['empty-reset'].dispatch('click');assert.equal(nodes['resource-grid'].children.length,2,'empty-state reset');
- let saveButton=doc.querySelectorAll('[data-save]')[0];nodes['resource-grid'].dispatch('click',{target:saveButton});assert.ok(saved.get('ieltsorbit.local.v1').includes('a'),'bookmark saved locally');
- nodes['saved-filter'].dispatch('click');assert.equal(nodes['resource-grid'].children.length,1,'saved filter');
- saveButton=doc.querySelectorAll('[data-save]')[0];nodes['resource-grid'].dispatch('click',{target:saveButton});assert.equal(nodes['resource-grid'].children.length,0,'remove last saved');assert.equal(active,nodes['saved-filter'],'focus retained when card disappears');
- nodes['tab-path'].dispatch('click');assert.equal(nodes['panel-path'].hidden,false);assert.equal(nodes['panel-library'].hidden,true);
- nodes['tab-path'].dispatch('keydown',{key:'ArrowRight'});assert.equal(active,nodes['tab-exams'],'keyboard tab movement');assert.equal(nodes['panel-exams'].hidden,false);
- context.location.hash='#library';windowEvents.hashchange();assert.equal(nodes['panel-library'].hidden,false,'hash navigation/back');
- nodes.baseline.value='6.5';nodes.target.value='7.5';nodes['save-path'].dispatch('click');assert.equal(JSON.parse(saved.get('ieltsorbit.local.v1')).path.target,'7.5','path persistence');
- nodes['clear-local'].dispatch('click');assert.equal(saved.has('ieltsorbit.local.v1'),false,'clear local');assert.equal(nodes.baseline.value,'unknown');
- context.fetch=async()=>{throw new Error('test offline');};nodes['retry-load'].dispatch('click');await new Promise(setImmediate);assert.equal(nodes['load-error'].hidden,false,'load error visible');assert.equal(nodes['empty-state'].hidden,true,'error distinct from no matches');
- console.log('PASS: DOM simulation for filter/reset/empty state/bookmark/remove focus/tab keyboard/hash history/path save/clear/offline error; nested Pages path verified. This is not a rendered browser test.');
+ const h=harness(),{nodes:n,doc}=h;await h.flush();
+ assert.equal(n['panel-start'].hidden,false);assert.equal(n['site-intro'].hidden,false);assert.equal(n['resource-grid'].children.length,core.filterResources(core.normalizeCatalog(data).resources,{skill:'listening',recommendation:'recommended'},[]).length);
+ assert.equal(n['advanced-filters'].open,false,'advanced filters collapsed');assert.ok(h.text(n['learning-guide']).includes('优先排查的错因'));
+ h.intents.find(b=>b.dataset.intent==='writing').dispatch('click');assert.equal(n['skill-filter'].value,'writing');assert.equal(n['panel-library'].hidden,false);assert.equal(n['site-intro'].hidden,true);assert.match(h.context.location.hash,/library\/writing/);
+ h.intents.find(b=>b.dataset.intent==='experience').dispatch('click');assert.equal(n['panel-experience'].hidden,false);assert.equal(doc.querySelectorAll('.experience-card').length,5,'five recommended experiences');assert.ok(h.text(n['experience-root']).includes('起点'));assert.ok(h.text(n['experience-root']).includes('评论'));
+ const scope=doc.getElementById('experience-scope');scope.value='reference';scope.dispatch('change');assert.equal(doc.querySelectorAll('.experience-card').length,7);scope.value='all';scope.dispatch('change');assert.equal(doc.querySelectorAll('.experience-card').length,12);
+ const question=doc.getElementById('experience-topic');question.value='timing';question.dispatch('change');assert.equal(doc.querySelectorAll('.experience-card').length,5);
+ n['tab-start'].dispatch('keydown',{key:'ArrowLeft'});assert.equal(h.active,n['tab-exams']);n['tab-exams'].dispatch('keydown',{key:'ArrowRight'});assert.equal(h.active,n['tab-start']);
+ h.hash('#library');n['skill-navigation'].dispatch('click',{target:n['skill-navigation'].children.find(b=>b.dataset.skill==='all')});assert.equal(n['resource-grid'].children.length,20);n['recommendation-filter'].value='all';n['filter-form'].dispatch('change');assert.equal(n['resource-grid'].children.length,28);n['recommendation-filter'].value='reference';n['filter-form'].dispatch('change');assert.equal(n['resource-grid'].children.length,8);
+ n.search.value='nothing matches';n['filter-form'].dispatch('input');assert.equal(n['empty-state'].hidden,false);n['empty-reset'].dispatch('click');assert.equal(n['skill-filter'].value,'listening');assert.equal(n['recommendation-filter'].value,'recommended');
+ let save=doc.querySelectorAll('[data-save]')[0];const id=save.dataset.save;const detail=doc.getElementById('detail-'+id);detail.open=true;n['resource-grid'].dispatch('click',{target:save});assert.ok(JSON.parse(h.saved.get('ieltsorbit.local.v1')).saved.includes(id));assert.equal(doc.getElementById('detail-'+id).open,true,'bookmark preserves open detail');n['saved-filter'].dispatch('click');assert.equal(n['resource-grid'].children.length,1);save=doc.querySelectorAll('[data-save]')[0];n['resource-grid'].dispatch('click',{target:save});assert.equal(n['resource-grid'].children.length,0);assert.equal(h.active,n['saved-filter']);
+ h.hash('#path');assert.equal(n['plan-step-1'].hidden,false);assert.equal(n['path-result'].hidden,true);n['exam-history'].value='no';n['plan-next'].dispatch('click');assert.equal(n['plan-step-2'].hidden,false);assert.equal(h.active,n['plan-step-2']);n.target.value='7';n['plan-next'].dispatch('click');n['daily-time'].value='60';n['plan-next'].dispatch('click');n['weak-skill'].value='writing';
+ h.hash('#path/step/3');assert.equal(n['plan-step-3'].hidden,false);assert.equal(n['daily-time'].value,'60','back retains draft');h.hash('#path/step/4');n['plan-next'].dispatch('click');assert.equal(n['path-result'].hidden,false);assert.equal(n['plan-wizard'].hidden,true);assert.equal(doc.querySelectorAll('.today-task').length,3);assert.equal(doc.querySelectorAll('.week-day').length,7);assert.ok(h.text(n['path-result']).includes('每天约 60 分钟'));assert.equal(JSON.parse(h.saved.get('ieltsorbit.local.v1')).path.completed,true);
+ n['plan-next'].dispatch('click');assert.equal(doc.querySelectorAll('.today-task').length,3,'repeat generate never duplicates');h.hash('#library/writing/resource/writing-rubric');assert.equal(doc.getElementById('detail-writing-rubric').open,true);assert.equal(n['panel-library'].hidden,false);h.hash('#path/result');assert.equal(n['path-result'].hidden,false);assert.equal(n['weak-skill'].value,'writing');
+ n['edit-plan'].dispatch('click');assert.equal(n['plan-step-1'].hidden,false);n['plan-back'].dispatch('click');assert.equal(n['plan-step-1'].hidden,false,'back at first bounded');
+ h.hash('#exams');assert.equal(doc.querySelectorAll('.center-card').length,4);assert.equal(doc.querySelectorAll('.policy-card').length,3);assert.ok(h.text(n['exam-overview']).includes('尚无逐日核验'));assert.ok(h.text(n['center-list']).includes('尚未取得该地点'));
+ n['clear-local'].dispatch('click');assert.equal(h.saved.has('ieltsorbit.local.v1'),false);assert.equal(n['weak-skill'].value,'unknown');assert.equal(n.target.value,'unknown');
+ h.context.fetch=async()=>{throw new Error('offline');};n['retry-load'].dispatch('click');n['retry-load'].dispatch('click');await h.flush();assert.equal(n['load-error'].hidden,false);assert.equal(n['empty-state'].hidden,true);assert.equal(n['retry-load'].disabled,false);
+ let recoverFetches=0,resolve;h.context.fetch=()=>{recoverFetches++;return new Promise(r=>resolve=r);};n['retry-load'].dispatch('click');n['retry-load'].dispatch('click');assert.equal(recoverFetches,1,'in-flight reload is deduplicated');resolve({ok:true,json:async()=>data});await h.flush();assert.equal(n['load-error'].hidden,true);assert.equal(doc.querySelectorAll('.experience-card').length,5,'retry renders once');
+ const old=harness({rawState:JSON.stringify({saved:['writing-rubric'],path:{baseline:'6.5',target:'7.5'}}),hash:'#path'});await old.flush();assert.equal(old.nodes.baseline.value,'6.5');assert.equal(old.nodes.target.value,'7.5');assert.equal(old.nodes['plan-step-1'].hidden,false,'legacy state enters new guide');
+ const blocked=harness({storageBlocked:true,offline:true,hash:'#path'});await blocked.flush();for(let i=0;i<4;i++)blocked.nodes['plan-next'].dispatch('click');assert.equal(blocked.nodes['path-result'].hidden,false,'offline plan usable');assert.ok(blocked.text(blocked.nodes['path-save-status']).includes('暂存'));assert.ok(blocked.text(blocked.nodes['path-result']).includes('不表示判断听力'));assert.ok(blocked.text(blocked.nodes['path-result']).includes('不改变本周练习内容'));assert.ok(blocked.text(blocked.nodes['experience-root']).includes('未加载成功'));
+ const short=harness({hash:'#path'});await short.flush();short.nodes['daily-time'].value='15';short.nodes['weak-skill'].value='reading';for(let i=0;i<4;i++)short.nodes['plan-next'].dispatch('click');assert.ok(short.text(short.nodes['path-result']).includes('不安排完整阅读卷或15分钟的整组原创练习'));assert.equal(short.descendants(short.nodes['path-result']).filter(n=>n.href==='./practice-preview/').length,0,'15 minute day does not link a 15 minute quiz plus additional tasks');
+ console.log('PASS: DOM simulation covers all five tabs; skill summaries and hidden filters; 5/7/12 experience scopes and topics; 4-step plan back/repeat/generate/local-save/legacy restore; 3 today tasks, 7 days, source detail and back; bookmarks/detail focus; 4 centers/3 policies/no invented dates; fetch failure, deduplicated retry/recovery, unavailable local storage. Not a rendered browser test.');
 })();

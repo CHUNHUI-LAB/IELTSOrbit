@@ -8,7 +8,7 @@
   <title>IELTSOrbit · 雅思学习导航</title>
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./assets/styles.css">
-  <script defer src="./assets/core.js"></script><script defer src="./assets/app.js"></script>
+  <script defer src="./assets/core.js"></script><script defer src="./assets/experience.js"></script><script defer src="./assets/app.js"></script>
 </head>
 <body>
 <a class="skip-link" href="#main">跳到主要内容</a>
@@ -17,8 +17,8 @@
   <div class="header-links"><a href="https://github.com/CHUNHUI-LAB/GradCompass" target="_blank" rel="noopener noreferrer">GradCompass<span class="desktop-only"> 申请导航</span></a><a class="quiet-link" href="https://github.com/CHUNHUI-LAB/IELTSOrbit" target="_blank" rel="noopener noreferrer">GitHub</a></div></div>
 </header>
 <main id="main" class="page-shell">
-  <section class="intro" aria-labelledby="page-title"><div><p class="eyebrow">雅思学习导航</p><h1 id="page-title">把备考，学得更有方向。</h1><p class="intro-copy">找到可靠资料，选择适合的练习路径，再核对考试安排。<span class="scope-copy">学习资料默认以 Academic 为主，考试类别须按用途另行确认。</span></p></div><div class="edition"><span class="edition-label">公开资源 · 独立整理</span><span id="checked-date">首版资料校核中</span></div></section>
-  <nav class="section-nav" role="tablist" aria-label="浏览内容"><button id="tab-start" role="tab" aria-controls="panel-start" aria-selected="true" data-tab="start">从这里开始</button><button id="tab-library" role="tab" aria-controls="panel-library" aria-selected="false" tabindex="-1" data-tab="library">学习资料</button><button id="tab-path" role="tab" aria-controls="panel-path" aria-selected="false" tabindex="-1" data-tab="path">制定学习计划</button><button id="tab-exams" role="tab" aria-controls="panel-exams" aria-selected="false" tabindex="-1" data-tab="exams">考试报名</button></nav>
+  <section id="site-intro" class="intro" aria-labelledby="page-title"><div><p class="eyebrow">雅思学习导航</p><h1 id="page-title">把备考，学得更有方向。</h1><p class="intro-copy">找到可靠资料，选择适合的练习路径，再核对考试安排。<span class="scope-copy">学习资料默认以 Academic 为主，考试类别须按用途另行确认。</span></p></div><div class="edition"><span class="edition-label">公开资源 · 独立整理</span><span id="checked-date">首版资料校核中</span></div></section>
+  <nav class="section-nav" role="tablist" aria-label="浏览内容"><button id="tab-start" role="tab" aria-controls="panel-start" aria-selected="true" data-tab="start">从这里开始</button><button id="tab-library" role="tab" aria-controls="panel-library" aria-selected="false" tabindex="-1" data-tab="library">学习资料</button><button id="tab-experience" role="tab" aria-controls="panel-experience" aria-selected="false" tabindex="-1" data-tab="experience">备考经验</button><button id="tab-path" role="tab" aria-controls="panel-path" aria-selected="false" tabindex="-1" data-tab="path">制定学习计划</button><button id="tab-exams" role="tab" aria-controls="panel-exams" aria-selected="false" tabindex="-1" data-tab="exams">考试报名</button></nav>
 
   <section id="panel-start" class="panel" role="tabpanel" aria-labelledby="tab-start">
     <div class="section-heading"><div><p class="eyebrow">先选你现在想做的事</p><h2>备考，从一个明确的下一步开始。</h2><p>第一次准备雅思？先看学习计划。已经开始学习，可以直接找单科资料或做练习。</p></div></div>
@@ -31,15 +31,20 @@
     </div>
   </section>
   <section id="panel-library" class="panel" role="tabpanel" aria-labelledby="tab-library" hidden>
-    <div class="section-heading"><div><h2>找你现在需要的学习资料</h2><p>先选听、读、写、说，或搜索关键词。每张卡片先给摘要，阅读原文会打开来源网站。</p></div></div>
-    <form id="filter-form" class="filter-bar" role="search" aria-label="筛选学习资料">
-      <label><span>资料范围</span><select id="recommendation-filter"><option value="recommended" selected>默认推荐</option><option value="all">全部资料（含比较案例）</option><option value="reference">仅参考案例（非推荐）</option></select></label>
-      <label class="search-control"><span>搜索资料</span><input id="search" type="search" placeholder="搜索主题、技能或来源" autocomplete="off"></label>
-      <label><span>来源</span><select id="source-filter"><option value="all">全部来源</option><option value="official">官方</option><option value="teacher">教师 / 教学平台</option><option value="experience">考生经验</option></select></label>
-      <label><span>练习科目</span><select id="skill-filter"><option value="all">全部科目</option><option value="listening">听力</option><option value="reading">阅读</option><option value="writing">写作</option><option value="speaking">口语</option><option value="general">综合 / 考试信息</option><option value="vocabulary">词汇</option></select></label>
-      <label><span>学习阶段</span><select id="level-filter"><option value="all">不限阶段</option><option value="foundation">打基础</option><option value="developing">进阶练习</option><option value="advanced">精细提升</option></select></label>
-      <label><span>费用</span><select id="price-filter"><option value="all">不限费用</option><option value="free">免费</option><option value="mixed">免费与付费</option><option value="paid">付费</option></select></label>
-      <label><span>访问</span><select id="access-filter"><option value="all">不限访问方式</option><option value="open">可直接访问</option><option value="account">需要账户</option><option value="varies">以来源页为准</option></select></label>
+    <div class="section-heading"><div><p class="eyebrow">先看重点，再动手练</p><h2>这科应该怎么学？</h2><p>选一科，先看方法与常见问题，再挑一份资料开始。原文放在站内详情的最后。</p></div></div>
+    <div id="skill-navigation" class="skill-navigation" aria-label="选择学习科目"></div>
+    <div id="learning-guide" class="learning-guide"></div>
+    <div class="subsection-heading resource-heading"><div><h3 id="resource-heading">配套资料</h3><p>卡片先读摘要；展开详情后，再决定要不要去原文。</p></div></div>
+    <form id="filter-form" class="guided-filter" role="search" aria-label="筛选学习资料">
+      <label class="search-control"><span>搜索当前资料</span><input id="search" type="search" placeholder="例如：定位、录音、写作反馈" autocomplete="off"></label>
+      <details id="advanced-filters" class="advanced-filters"><summary>更多筛选：来源、阶段、费用和访问</summary><div class="filter-bar">
+        <label><span>资料范围</span><select id="recommendation-filter"><option value="recommended" selected>默认推荐</option><option value="all">全部资料（含比较案例）</option><option value="reference">仅参考案例（非推荐）</option></select></label>
+        <label><span>来源</span><select id="source-filter"><option value="all">全部来源</option><option value="official">官方</option><option value="teacher">教师 / 教学平台</option><option value="experience">考生经验</option></select></label>
+        <label><span>练习科目</span><select id="skill-filter"><option value="all">全部科目</option><option value="listening" selected>听力</option><option value="reading">阅读</option><option value="writing">写作</option><option value="speaking">口语</option><option value="general">综合 / 考试信息</option><option value="vocabulary">词汇</option></select></label>
+        <label><span>学习阶段</span><select id="level-filter"><option value="all">不限阶段</option><option value="foundation">打基础</option><option value="developing">进阶练习</option><option value="advanced">精细提升</option></select></label>
+        <label><span>费用</span><select id="price-filter"><option value="all">不限费用</option><option value="free">免费</option><option value="mixed">免费与付费</option><option value="paid">付费</option></select></label>
+        <label><span>访问</span><select id="access-filter"><option value="all">不限访问方式</option><option value="open">可直接访问</option><option value="account">需要账户</option><option value="varies">以来源页为准</option></select></label>
+      </div></details>
     </form>
     <div class="results-toolbar"><p id="result-count" role="status" aria-live="polite">正在读取资料…</p><div class="result-actions"><button id="saved-filter" class="text-button" type="button" aria-pressed="false">仅看已收藏 <span id="saved-count">0</span></button><button id="reset-filters" class="text-button" type="button">清除筛选</button></div></div>
     <div id="load-error" class="notice" hidden><h3>资料暂时没有加载成功</h3><p>请刷新重试。备考路径仍可使用；不要把加载失败当作没有资源。</p><button id="retry-load" class="secondary-button" type="button">重新加载资料</button></div>
@@ -47,17 +52,33 @@
     <div id="empty-state" class="empty-state" hidden><span aria-hidden="true">⌕</span><h3>暂时没有匹配的资料</h3><p>试试减少筛选条件，或搜索更宽泛的关键词。</p><button id="empty-reset" class="secondary-button" type="button">恢复默认筛选</button></div>
     <aside class="source-guide" aria-labelledby="source-guide-title"><h3 id="source-guide-title">同样是资料，证据的分量不同</h3><div class="source-guide-grid"><p><strong>官方资料</strong>用于核对考试形式、评分标准和报名政策。</p><p><strong>教师讲解</strong>提供训练方法，效果仍需用自己的练习检验。</p><p><strong>考生经验</strong>适合借鉴过程，个人成绩不代表可复制的结果。</p></div><details class="coverage-details"><summary>本轮核验范围与覆盖缺口</summary><div id="coverage-list"></div></details><details class="coverage-details"><summary>经验怎么用：方法、分歧与证据边界</summary><div id="evidence-review"></div></details></aside>
   </section>
+  <section id="panel-experience" class="panel" role="tabpanel" aria-labelledby="tab-experience" hidden><div class="section-heading"><div><p class="eyebrow">看清别人做了什么，再判断是否适合自己</p><h2>雅思备考经验</h2><p>先读跨案例总结，再按你的问题看过程。自报成绩与备考时长不能直接变成你的提分计划。</p></div></div><div id="experience-root"></div></section>
   <section id="panel-path" class="panel" role="tabpanel" aria-labelledby="tab-path" hidden>
-    <div class="section-heading"><div><p class="eyebrow">从下一步开始</p><h2>制定学习计划</h2><p>分数只是自评参照。这是一份编辑整理的通用练习顺序，不预测成绩或提分周期。</p></div></div>
-    <div class="path-layout"><div class="path-controls"><label><span>当前参考水平</span><select id="baseline"><option value="unknown">还没有完整测评</option><option value="5.5">约 5.5</option><option value="6">约 6.0</option><option value="6.5">约 6.5</option></select></label><label><span>目标参考</span><select id="target"><option value="6.5">6.5</option><option value="7" selected>7.0</option><option value="7.5">7.5 及以上</option></select></label><button id="save-path" class="primary-button" type="button">保存这组选择</button><p class="micro-copy">仅保存在本浏览器，不上传、不登录，也不会跨设备同步。</p><p id="path-save-status" class="save-status" role="status" aria-live="polite"></p></div><div id="path-result" class="path-result" aria-live="polite"></div></div>
+    <div class="section-heading"><div><p class="eyebrow">四个小选择，换成今天能做的事</p><h2>制定学习计划</h2><p>不用先估分，也不用现在决定首考日期。按你的回答给出可调整的练习建议。</p></div></div>
+    <div class="plan-shell">
+      <div id="plan-wizard" class="plan-wizard">
+        <ol id="plan-progress" class="plan-progress" aria-label="计划制定进度"></ol>
+        <form id="plan-form">
+          <fieldset id="plan-step-1" class="plan-step" tabindex="-1"><legend>1. 你考过雅思吗？</legend><p>只用于决定是否先熟悉题型，不据此推算能力。</p><label><span>考试经历</span><select id="exam-history"><option value="unknown">暂不填写 / 不确定</option><option value="no">还没考过</option><option value="yes">考过</option></select></label><label><span>已有的分数参照（可跳过）</span><select id="baseline"><option value="unknown">没有可靠参照 / 暂不填写</option><option value="5.5">约 5.5</option><option value="6">约 6.0</option><option value="6.5">约 6.5</option></select></label></fieldset>
+          <fieldset id="plan-step-2" class="plan-step" tabindex="-1" hidden><legend>2. 你希望达到什么要求？</legend><p>目标用于提醒核对总分与单项门槛，不代表能在一周内达到。</p><label><span>目标总分参考</span><select id="target"><option value="unknown" selected>还不确定 / 先开始学习</option><option value="6.5">6.5</option><option value="7">7.0</option><option value="7.5">7.5 及以上</option></select></label></fieldset>
+          <fieldset id="plan-step-3" class="plan-step" tabindex="-1" hidden><legend>3. 每天能留出多少时间？</legend><p>把任务拆到这段时间里，没完成可以移到下一天。</p><label><span>每天可用时间</span><select id="daily-time"><option value="15">约 15 分钟</option><option value="30" selected>约 30 分钟</option><option value="60">约 60 分钟</option><option value="90">约 90 分钟</option></select></label></fieldset>
+          <fieldset id="plan-step-4" class="plan-step" tabindex="-1" hidden><legend>4. 哪一科最需要帮助？</legend><p>不知道也可以。我们会先安排轮流观察四科，之后你再调整。</p><label><span>本周优先项</span><select id="weak-skill"><option value="unknown">还不知道，先观察</option><option value="listening">听力</option><option value="reading">阅读</option><option value="writing">写作</option><option value="speaking">口语</option></select></label></fieldset>
+          <div class="wizard-actions"><button id="plan-back" class="secondary-button" type="button">上一步</button><button id="plan-next" class="primary-button" type="button">下一步</button></div>
+        </form>
+      </div>
+      <div id="path-result" class="path-result" aria-live="polite" hidden></div>
+      <div id="plan-result-actions" class="plan-result-actions" hidden><button id="edit-plan" class="secondary-button" type="button">调整这份计划</button><button id="save-path" class="text-button" type="button">保存这组选择</button></div>
+      <p class="micro-copy">仅保存在本浏览器，不上传、不登录，也不会跨设备同步。清除浏览器数据会丢失选择。</p><p id="path-save-status" class="save-status" role="status" aria-live="polite"></p>
+    </div>
     <div class="practice-note"><h3>用可观察的变化衡量练习</h3><p>以下为编辑建议，不是成绩或周期承诺。</p><ul id="methodology-list" class="methodology-list"></ul><div id="methodology-sources" class="methodology-sources"></div><button class="text-button" type="button" data-go="library">回到资料库挑选练习</button></div>
   </section>
   <section id="panel-exams" class="panel" role="tabpanel" aria-labelledby="tab-exams" hidden>
     <div class="section-heading"><div><p class="eyebrow">先核对，再安排</p><h2>考试报名与考点查询</h2><p>从杭州开始整理公开信息。城市与考点介绍不等于实时可报名场次。</p></div><span class="location-chip">杭州 · 首批覆盖</span></div>
-    <div class="exam-warning"><strong>这里不显示实时考位</strong><p>公开考期表只说明计划日期。最终考试地点、日期、余位与费用，以官方报名系统的当前显示为准。</p><a class="primary-button" id="booking-link" href="https://ielts.neea.cn/" target="_blank" rel="noopener noreferrer">前往官方报名平台</a></div>
-    <div id="policy-grid" class="policy-grid"></div>
-    <div class="subsection-heading"><h3>公开考点信息</h3><p>请在报名时再次核对考点名称、地址和考试类型。</p></div><div id="center-list" class="center-list"></div>
-    <div class="subsection-heading"><h3>考期与报名信息源</h3><p>不把静态日历标为可预约库存。</p></div><div id="calendar-list" class="calendar-list"></div>
+    <div id="exam-overview" class="exam-overview"></div>
+    <div class="subsection-heading"><h3>在哪里考？</h3><p>先比较地点，展开看地址与核验范围。公开名录不代表当期开放。</p></div><div id="center-list" class="center-list"></div>
+    <div class="subsection-heading"><h3>什么时候考？</h3><p>公开计划日期与杭州可报名场次、余位是不同信息。</p></div><div id="calendar-list" class="calendar-list"></div>
+    <div class="subsection-heading"><h3>报名前需要知道</h3><p>先读摘要，展开后再核对官方原文。</p></div><div id="policy-grid" class="policy-grid"></div>
+    <div class="exam-warning"><strong>准备报名时，再核对当期安排</strong><p>最终考试地点、日期、余位与费用，以官方报名系统当前显示为准。是否报名和选择哪一天由你决定。</p><a class="primary-button" id="booking-link" href="https://ielts.neea.cn/" target="_blank" rel="noopener noreferrer">前往官方报名平台 ↗</a></div>
     <div id="exam-data-empty" class="empty-state" hidden><h3>公开信息正在校核</h3><p>请先使用官方报名平台查看当期安排。</p></div>
   </section>
   <aside class="local-note"><p><strong>你的收藏，留在你的浏览器。</strong>仅保存资源编号与路径选项。共享设备上的其他使用者可能看到这些选择。</p><button id="clear-local" class="text-button" type="button">清除本地保存</button><p id="local-status" role="status" aria-live="polite"></p></aside>
