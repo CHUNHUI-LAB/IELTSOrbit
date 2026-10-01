@@ -954,6 +954,58 @@
         "scope": "完整可提取图文正文已读；成绩单/表格/软件配图未视觉审读，不能声称整帖所有图片已读；未读，Exa未返回；没有观看所推荐视频"
       },
       "caution": "个人成绩未独立核验；仅提炼错因记录；原文“只考技巧”等判断不采纳。成绩与表格图片、评论未核读；不推荐未核实软件题源。官方理解与定位说明：https://ielts.org/news-and-insights/how-to-avoid-distractors-in-the-ielts-reading-test"
+    },
+    {
+      "id": "v2ex-first-attempt-reflection-2023",
+      "title": "首考复盘：核对口试日程，别把做完题等同于读懂",
+      "provider": "V2EX / AsyncX",
+      "url": "https://www.v2ex.com/t/972704",
+      "sourceType": "experience",
+      "skills": [
+        "综合 / 考试信息",
+        "阅读",
+        "口语"
+      ],
+      "levels": [
+        "入门",
+        "提升"
+      ],
+      "price": "免费公开内容",
+      "access": "正文与回复可读",
+      "summary": "原帖记录未仔细核对口试日程而匆忙赶考，以及阅读先跳过难题、后来仍未充分读懂的经历。适合用来建立日程检查与题型诊断清单，不能当作高分学习方法的效果证据。",
+      "checkedAt": "2026-10-01",
+      "publishedAt": "2023-09-11",
+      "status": "curated_with_caveats",
+      "commercial": null,
+      "commercialDisclosure": "所读正文及8条回复未见课程销售；没有检查账号其他内容",
+      "evidenceScope": "完整可提取正文与8条回复均已核读；未核验成绩单",
+      "authorContext": {
+        "baseline": "首次参加雅思机考；具体语言基础、投入时数未说明",
+        "preparationDuration": "未说明",
+        "outcome": "作者于2023-10-17第7条回复自报总分5.5，后转考PTE；正文发布时没有给成绩"
+      },
+      "actionableMethods": [
+        "提前核对准考证、口笔试时间及地点，并留意官方通知",
+        "模考后区分题型不熟、句子理解与时间分配问题",
+        "评价经验时同时看作者后续回复与实际结果"
+      ],
+      "excludeFromGeneralGuidance": [
+        "不采纳考官打断就意味着怀疑背稿的评论推断",
+        "不把高中成绩换算雅思分数",
+        "不将高级表达、固定做题顺序或PTE更简单作为结论"
+      ],
+      "recommendedByDefault": false,
+      "collection": "经验比较与争议",
+      "selectionReason": "首考失误与日程核对案例，仅供主动选择；不作为高分学习方法的效果证据。",
+      "commentsReview": {
+        "status": "reviewed",
+        "detail": "核读8条公开回复；第7条为作者2023-10-17自报总分5.5，未核验成绩单"
+      },
+      "provenance": {
+        "reviewedAt": "2026-10-01",
+        "scope": "完整可提取正文与8条回复均已核读；未核验成绩单"
+      },
+      "caution": "仅借鉴日程检查与错因复盘。作者成绩为后续回复自报，不能从评论猜测考官评分原因。官方日程核对说明：https://www.chinaielts.org/book-ielts/test-day/process-ielts"
     }
   ],
   "policies": [
