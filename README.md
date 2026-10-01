@@ -26,3 +26,7 @@
 卡片的展开区展示原文核读范围、发表与核读日期、作者起点、投入时长、自报结果、商业关系、评论核读边界，以及可用和不可推广的方法。资料库下方另有来源可追溯的方法比较；原有练习路径与考试信息保持不变。
 
 检查：`node tests/core.test.js`、`node tests/interactions.test.js`、`python tests/validate.py`。可选渲染检查 `node tests/browser.test.js` 需要 Playwright 与 Chromium；此候选构建环境因 Chromium socket 权限错误未能运行，不能当作浏览器验证通过。
+
+## 使用入口
+
+首次打开默认展示「从这里开始」。听读写说入口会重置旧筛选并选中对应科目；学习经验入口显示全部考生经验（含明确标注的非推荐参考案例）。原有 #library、#path、#exams 地址保持可用。在线练习入口通向现有10道原创练习，不代表真题或完整模考。

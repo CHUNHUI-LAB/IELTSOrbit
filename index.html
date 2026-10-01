@@ -13,19 +13,30 @@
 <body>
 <a class="skip-link" href="#main">跳到主要内容</a>
 <header class="site-header">
-  <div class="header-inner"><a class="brand" href="#library" aria-label="IELTSOrbit 首页"><span class="brand-mark" aria-hidden="true">◌</span><span>IELTSOrbit</span></a>
+  <div class="header-inner"><a class="brand" href="#start" aria-label="IELTSOrbit 首页"><span class="brand-mark" aria-hidden="true">◌</span><span>IELTSOrbit</span></a>
   <div class="header-links"><a href="https://github.com/CHUNHUI-LAB/GradCompass" target="_blank" rel="noopener noreferrer">GradCompass<span class="desktop-only"> 申请导航</span></a><a class="quiet-link" href="https://github.com/CHUNHUI-LAB/IELTSOrbit" target="_blank" rel="noopener noreferrer">GitHub</a></div></div>
 </header>
 <main id="main" class="page-shell">
   <section class="intro" aria-labelledby="page-title"><div><p class="eyebrow">雅思学习导航</p><h1 id="page-title">把备考，学得更有方向。</h1><p class="intro-copy">找到可靠资料，选择适合的练习路径，再核对考试安排。<span class="scope-copy">学习资料默认以 Academic 为主，考试类别须按用途另行确认。</span></p></div><div class="edition"><span class="edition-label">公开资源 · 独立整理</span><span id="checked-date">首版资料校核中</span></div></section>
-  <nav class="section-nav" role="tablist" aria-label="浏览内容"><button id="tab-library" role="tab" aria-controls="panel-library" aria-selected="true" data-tab="library">学习资料</button><button id="tab-path" role="tab" aria-controls="panel-path" aria-selected="false" tabindex="-1" data-tab="path">备考路径</button><button id="tab-exams" role="tab" aria-controls="panel-exams" aria-selected="false" tabindex="-1" data-tab="exams">考点与考期</button></nav>
-  <section id="panel-library" class="panel" role="tabpanel" aria-labelledby="tab-library">
-    <div class="section-heading"><div><h2>让资料为你的下一步服务</h2><p>默认推荐与比较案例分开展示；核读原文不等于验证提分效果。</p></div></div>
+  <nav class="section-nav" role="tablist" aria-label="浏览内容"><button id="tab-start" role="tab" aria-controls="panel-start" aria-selected="true" data-tab="start">从这里开始</button><button id="tab-library" role="tab" aria-controls="panel-library" aria-selected="false" tabindex="-1" data-tab="library">学习资料</button><button id="tab-path" role="tab" aria-controls="panel-path" aria-selected="false" tabindex="-1" data-tab="path">制定学习计划</button><button id="tab-exams" role="tab" aria-controls="panel-exams" aria-selected="false" tabindex="-1" data-tab="exams">考试报名</button></nav>
+
+  <section id="panel-start" class="panel" role="tabpanel" aria-labelledby="tab-start">
+    <div class="section-heading"><div><p class="eyebrow">先选你现在想做的事</p><h2>备考，从一个明确的下一步开始。</h2><p>第一次准备雅思？先看学习计划。已经开始学习，可以直接找单科资料或做练习。</p></div></div>
+    <div class="intent-grid">
+      <article class="intent-card intent-primary"><span class="intent-kicker">第一次来</span><h3>我不知道从哪里开始</h3><p>了解如何建立当前水平的参照，再按目标安排练习顺序。这里不会通过几道题预测雅思分数。</p><button class="primary-button" type="button" data-go="path">开始制定学习计划 →</button></article>
+      <article class="intent-card"><span class="intent-kicker">听 · 读 · 写 · 说</span><h3>我想提高某一科</h3><p>直接进入对应资料，先看方法摘要，再决定是否阅读来源。</p><div class="intent-actions"><button type="button" data-intent="listening">听力</button><button type="button" data-intent="reading">阅读</button><button type="button" data-intent="writing">写作</button><button type="button" data-intent="speaking">口语</button></div></article>
+      <article class="intent-card"><span class="intent-kicker">在线练习</span><h3>我现在就想练一练</h3><p>10道原创阅读练习，建议15分钟。完成后查看答案与解析；不是历年真题，也不是完整雅思模考。</p><a class="secondary-button" href="./practice-preview/">查看练习说明 →</a></article>
+      <article class="intent-card"><span class="intent-kicker">报名与安排</span><h3>我想了解在哪里、什么时候考</h3><p>查看杭州公开考点与报名说明，实际日期和余位需到官方系统确认。</p><button class="secondary-button" type="button" data-go="exams">查看考试报名信息 →</button></article>
+      <article class="intent-card"><span class="intent-kicker">他人的备考过程</span><h3>我想看看别人怎么学</h3><p>先看经验摘要、作者背景与可借鉴做法。个别案例只适合反思方法，不代表有效的提分方案。</p><button class="secondary-button" type="button" data-intent="experience">浏览学习经验 →</button></article>
+    </div>
+  </section>
+  <section id="panel-library" class="panel" role="tabpanel" aria-labelledby="tab-library" hidden>
+    <div class="section-heading"><div><h2>找你现在需要的学习资料</h2><p>先选听、读、写、说，或搜索关键词。每张卡片先给摘要，阅读原文会打开来源网站。</p></div></div>
     <form id="filter-form" class="filter-bar" role="search" aria-label="筛选学习资料">
-      <label><span>资料范围</span><select id="recommendation-filter"><option value="recommended" selected>默认推荐</option><option value="all">全部资料（含比较案例）</option><option value="reference">仅比较与批判案例</option></select></label>
+      <label><span>资料范围</span><select id="recommendation-filter"><option value="recommended" selected>默认推荐</option><option value="all">全部资料（含比较案例）</option><option value="reference">仅参考案例（非推荐）</option></select></label>
       <label class="search-control"><span>搜索资料</span><input id="search" type="search" placeholder="搜索主题、技能或来源" autocomplete="off"></label>
       <label><span>来源</span><select id="source-filter"><option value="all">全部来源</option><option value="official">官方</option><option value="teacher">教师 / 教学平台</option><option value="experience">考生经验</option></select></label>
-      <label><span>技能</span><select id="skill-filter"><option value="all">全部技能</option><option value="listening">听力</option><option value="reading">阅读</option><option value="writing">写作</option><option value="speaking">口语</option><option value="general">综合 / 考试信息</option><option value="vocabulary">词汇</option></select></label>
+      <label><span>练习科目</span><select id="skill-filter"><option value="all">全部科目</option><option value="listening">听力</option><option value="reading">阅读</option><option value="writing">写作</option><option value="speaking">口语</option><option value="general">综合 / 考试信息</option><option value="vocabulary">词汇</option></select></label>
       <label><span>学习阶段</span><select id="level-filter"><option value="all">不限阶段</option><option value="foundation">打基础</option><option value="developing">进阶练习</option><option value="advanced">精细提升</option></select></label>
       <label><span>费用</span><select id="price-filter"><option value="all">不限费用</option><option value="free">免费</option><option value="mixed">免费与付费</option><option value="paid">付费</option></select></label>
       <label><span>访问</span><select id="access-filter"><option value="all">不限访问方式</option><option value="open">可直接访问</option><option value="account">需要账户</option><option value="varies">以来源页为准</option></select></label>
@@ -37,12 +48,12 @@
     <aside class="source-guide" aria-labelledby="source-guide-title"><h3 id="source-guide-title">同样是资料，证据的分量不同</h3><div class="source-guide-grid"><p><strong>官方资料</strong>用于核对考试形式、评分标准和报名政策。</p><p><strong>教师讲解</strong>提供训练方法，效果仍需用自己的练习检验。</p><p><strong>考生经验</strong>适合借鉴过程，个人成绩不代表可复制的结果。</p></div><details class="coverage-details"><summary>本轮核验范围与覆盖缺口</summary><div id="coverage-list"></div></details><details class="coverage-details"><summary>经验怎么用：方法、分歧与证据边界</summary><div id="evidence-review"></div></details></aside>
   </section>
   <section id="panel-path" class="panel" role="tabpanel" aria-labelledby="tab-path" hidden>
-    <div class="section-heading"><div><p class="eyebrow">从下一步开始</p><h2>选一条练习路径</h2><p>分数只是自评参照。这是一份编辑整理的通用练习顺序，不预测成绩或提分周期。</p></div></div>
+    <div class="section-heading"><div><p class="eyebrow">从下一步开始</p><h2>制定学习计划</h2><p>分数只是自评参照。这是一份编辑整理的通用练习顺序，不预测成绩或提分周期。</p></div></div>
     <div class="path-layout"><div class="path-controls"><label><span>当前参考水平</span><select id="baseline"><option value="unknown">还没有完整测评</option><option value="5.5">约 5.5</option><option value="6">约 6.0</option><option value="6.5">约 6.5</option></select></label><label><span>目标参考</span><select id="target"><option value="6.5">6.5</option><option value="7" selected>7.0</option><option value="7.5">7.5 及以上</option></select></label><button id="save-path" class="primary-button" type="button">保存这组选择</button><p class="micro-copy">仅保存在本浏览器，不上传、不登录，也不会跨设备同步。</p><p id="path-save-status" class="save-status" role="status" aria-live="polite"></p></div><div id="path-result" class="path-result" aria-live="polite"></div></div>
     <div class="practice-note"><h3>用可观察的变化衡量练习</h3><p>以下为编辑建议，不是成绩或周期承诺。</p><ul id="methodology-list" class="methodology-list"></ul><div id="methodology-sources" class="methodology-sources"></div><button class="text-button" type="button" data-go="library">回到资料库挑选练习</button></div>
   </section>
   <section id="panel-exams" class="panel" role="tabpanel" aria-labelledby="tab-exams" hidden>
-    <div class="section-heading"><div><p class="eyebrow">先核对，再安排</p><h2>考点与考期</h2><p>从杭州开始整理公开信息。城市与考点介绍不等于实时可报名场次。</p></div><span class="location-chip">杭州 · 首批覆盖</span></div>
+    <div class="section-heading"><div><p class="eyebrow">先核对，再安排</p><h2>考试报名与考点查询</h2><p>从杭州开始整理公开信息。城市与考点介绍不等于实时可报名场次。</p></div><span class="location-chip">杭州 · 首批覆盖</span></div>
     <div class="exam-warning"><strong>这里不显示实时考位</strong><p>公开考期表只说明计划日期。最终考试地点、日期、余位与费用，以官方报名系统的当前显示为准。</p><a class="primary-button" id="booking-link" href="https://ielts.neea.cn/" target="_blank" rel="noopener noreferrer">前往官方报名平台</a></div>
     <div id="policy-grid" class="policy-grid"></div>
     <div class="subsection-heading"><h3>公开考点信息</h3><p>请在报名时再次核对考点名称、地址和考试类型。</p></div><div id="center-list" class="center-list"></div>
