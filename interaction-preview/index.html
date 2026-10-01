@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'">
+  <title>IELTSOrbit · 资源浏览交互样板</title>
+  <link rel="stylesheet" href="./assets/preview.css">
+  <script defer src="./assets/core.js"></script>
+  <script defer src="./assets/preview.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#resource-list">跳到资料列表</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="./" aria-label="IELTSOrbit 交互样板首页"><span class="brand-mark" aria-hidden="true"></span>IELTSOrbit</a>
+      <span class="preview-label">交互样板 <span aria-hidden="true">/</span> 资源浏览</span>
+    </div>
+  </header>
+  <main class="page-shell">
+    <section class="module-intro" aria-labelledby="page-title">
+      <div><p class="eyebrow">学习资料</p><h1 id="page-title">选一份资料，看看怎样用。</h1></div>
+      <p class="intro-note">保留选择的上下文<br>先看用途，再核对来源</p>
+    </section>
+    <form id="filters" class="filter-bar" role="search" aria-label="筛选资料">
+      <label class="search-field"><span class="sr-only">搜索资料</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m15.5 15.5 5 5"></path></svg><input id="search" type="search" placeholder="搜索主题、技能或来源" autocomplete="off"></label>
+      <label class="select-field"><span>来源</span><select id="source-filter"><option value="all">全部来源</option><option value="official">官方</option><option value="teacher">教师 / 教学平台</option><option value="experience">考生经验</option></select></label>
+      <label class="select-field"><span>技能</span><select id="skill-filter"><option value="all">全部技能</option><option value="listening">听力</option><option value="reading">阅读</option><option value="writing">写作</option><option value="speaking">口语</option><option value="vocabulary">词汇</option><option value="general">综合</option></select></label>
+      <button id="reset-filters" class="reset-button" type="button">重置</button>
+    </form>
+    <div class="workspace-heading"><p id="result-count" role="status" aria-live="polite">正在读取资料…</p><span>Academic 为主 · 公开资料</span></div>
+    <section id="workspace" class="workspace" aria-label="资料浏览">
+      <div class="master">
+        <div id="resource-list" class="resource-list" tabindex="-1" aria-label="可选资料"></div>
+        <div id="list-empty" class="list-empty" hidden><h2>还没有匹配的资料</h2><p>减少一个条件，或试试更宽泛的关键词。</p><button class="quiet-button" id="empty-reset" type="button">清除筛选</button></div>
+        <div id="load-error" class="list-empty" hidden><h2>资料暂时无法读取</h2><p>读取失败不代表没有资料。</p><button class="quiet-button" id="retry" type="button">重新读取</button></div>
+      </div>
+      <section id="detail-frame" class="detail-frame" aria-labelledby="detail-heading" tabindex="-1">
+        <div class="detail-toolbar"><span id="detail-position">资料预览</span><button id="return-button" class="return-button" type="button" disabled><span aria-hidden="true">←</span> 返回列表</button></div>
+        <div id="detail-stage" class="detail-stage"></div>
+      </section>
+    </section>
+    <p class="footer-note">仅浏览公开资料。本样板不保存你的选择，也不上传搜索内容。</p>
+    <p id="selection-status" class="sr-only" role="status" aria-live="polite"></p>
+  </main>
+  <noscript><p>交互样板需要 JavaScript。可直接阅读 <a href="./data/catalog.json">公开资料数据</a>。</p></noscript>
+</body>
+</html>

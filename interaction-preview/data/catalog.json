@@ -1,0 +1,576 @@
+{
+  "schemaVersion": 1,
+  "metadata": {
+    "title": "IELTSOrbit",
+    "checkedAt": "2026-10-01",
+    "refresh": "initial_manual_review",
+    "dailyUpdatesEnabled": true,
+    "scope": "通用雅思学习资料与备考方法；初版考点覆盖杭州。Academic 为默认学习方向，其他类别需按用途核对。",
+    "privacy": "选择仅在浏览器本地使用；不收集成绩、申请资料、账号或报名记录。",
+    "disclaimer": "非 IELTS 官方网站；不保证提分速度，不代表报名成功或实时考位。",
+    "firstScheduledRunVerified": false
+  },
+  "resources": [
+    {
+      "id": "official-samples",
+      "title": "IELTS Academic 官方样题",
+      "provider": "IELTS.org",
+      "url": "https://www.ielts.org/take-a-test/preparation-resources/sample-test-questions/academic-test",
+      "sourceType": "official",
+      "skills": [
+        "听力",
+        "阅读",
+        "写作",
+        "口语"
+      ],
+      "levels": [
+        "入门",
+        "提升",
+        "冲刺"
+      ],
+      "price": "免费",
+      "access": "无需购买",
+      "summary": "认识题型并完成一次限时诊断。样题用于熟悉考试，不能单凭一次练习预测正式分数。",
+      "checkedAt": "2026-10-01",
+      "status": "curated",
+      "commercial": false,
+      "evidenceScope": "公开来源页面已读；不代表完整课程体验"
+    },
+    {
+      "id": "bc-mocks",
+      "title": "British Council 四项练习",
+      "provider": "British Council",
+      "url": "https://takeielts.britishcouncil.org/prepare/ielts-free-practice-mock-tests/academic",
+      "sourceType": "official",
+      "skills": [
+        "听力",
+        "阅读",
+        "写作",
+        "口语"
+      ],
+      "levels": [
+        "入门",
+        "提升",
+        "冲刺"
+      ],
+      "price": "免费",
+      "access": "部分平台功能需注册",
+      "summary": "按单项练习并核对答案；写作口语需另看评分依据，不能只算客观题正确率。",
+      "checkedAt": "2026-10-01",
+      "status": "curated",
+      "commercial": false,
+      "evidenceScope": "公开来源页面已读；不代表完整课程体验"
+    },
+    {
+      "id": "writing-rubric",
+      "title": "写作评分标准与示例",
+      "provider": "IELTS.org",
+      "url": "https://ielts.org/take-a-test/preparation-resources/writing-test-resources",
+      "sourceType": "official",
+      "skills": [
+        "写作"
+      ],
+      "levels": [
+        "入门",
+        "提升",
+        "冲刺"
+      ],
+      "price": "免费",
+      "access": "公开页面",
+      "summary": "按任务回应、组织衔接、词汇、语法四方面复盘。Task 1 的概览与 Task 2 的立场和展开比套用高级词更值得先检查。",
+      "checkedAt": "2026-10-01",
+      "status": "curated",
+      "commercial": false,
+      "evidenceScope": "公开来源页面已读；不代表完整课程体验"
+    },
+    {
+      "id": "all-rubrics",
+      "title": "写作与口语评分描述",
+      "provider": "IELTS.org",
+      "url": "https://ielts.org/organisations/ielts-for-organisations/understanding-ielts-scoring/resources-for-setting-your-ielts-scores",
+      "sourceType": "official",
+      "skills": [
+        "写作",
+        "口语"
+      ],
+      "levels": [
+        "入门",
+        "提升",
+        "冲刺"
+      ],
+      "price": "免费",
+      "access": "公开评分资料",
+      "summary": "查看不同分数档的描述和示例，用于定位差距；自评或 AI 估分不等于考官正式评分。",
+      "checkedAt": "2026-10-01",
+      "status": "curated",
+      "commercial": false,
+      "evidenceScope": "公开来源页面已读；不代表完整课程体验"
+    },
+    {
+      "id": "score",
+      "title": "总分计算与单项分数",
+      "provider": "IELTS.org",
+      "url": "https://www.ielts.org/take-a-test/your-results/ielts-scoring-in-detail",
+      "sourceType": "official",
+      "skills": [
+        "入门"
+      ],
+      "levels": [
+        "入门",
+        "提升",
+        "冲刺"
+      ],
+      "price": "免费",
+      "access": "公开页面",
+      "summary": "四项平均后取最近的半分；平均值尾数 .25 向上取半分、.75 向上取整数。院校仍可能另设单项门槛。",
+      "checkedAt": "2026-10-01",
+      "status": "curated",
+      "commercial": false,
+      "evidenceScope": "公开来源页面已读；不代表完整课程体验"
+    },
+    {
+      "id": "cambridge",
+      "title": "Cambridge 官方备考书与 IELTS 21",
+      "provider": "Cambridge English",
+      "url": "https://www.cambridgeenglish.org/exams-and-tests/ielts/preparation/",
+      "sourceType": "official",
+      "skills": [
+        "听力",
+        "阅读",
+        "写作",
+        "口语"
+      ],
+      "levels": [
+        "入门",
+        "提升",
+        "冲刺"
+      ],
+      "price": "免费样题／付费图书",
+      "access": "按出版社渠道获取",
+      "summary": "官方目录已列 IELTS 21 Academic 与 General Training。保留未做过的题用于阶段检测，不把反复记住的答案当成能力提升。",
+      "checkedAt": "2026-10-01",
+      "status": "curated",
+      "commercial": false,
+      "evidenceScope": "公开来源页面已读；不代表完整课程体验"
+    },
+    {
+      "id": "ready-cn",
+      "title": "IELTS Ready 中国考生入口说明",
+      "provider": "BC 雅思中文官网",
+      "url": "https://www.chinaielts.org/why-choose-ielts/humanized-services",
+      "sourceType": "official",
+      "skills": [
+        "听力",
+        "阅读",
+        "写作",
+        "口语"
+      ],
+      "levels": [
+        "入门",
+        "提升",
+        "冲刺"
+      ],
+      "price": "免费基础／报名权益",
+      "access": "注册及报名权益有条件",
+      "summary": "本地官方说明提供基础资源与报名后 Premium 权益。具体权益以当前账号和官方规则为准，不套用其他国家的促销。",
+      "checkedAt": "2026-10-01",
+      "status": "curated",
+      "commercial": false,
+      "evidenceScope": "公开来源页面已读；不代表完整课程体验"
+    },
+    {
+      "id": "computer",
+      "title": "官方机考熟悉练习入口",
+      "provider": "BC 雅思中文官网",
+      "url": "https://www.chinaielts.org/about-ielts/which-test-do-i-take/academic",
+      "sourceType": "official",
+      "skills": [
+        "入门",
+        "听力",
+        "阅读",
+        "写作"
+      ],
+      "levels": [
+        "入门",
+        "提升",
+        "冲刺"
+      ],
+      "price": "免费信息",
+      "access": "练习入口见官方页面",
+      "summary": "大陆考生应熟悉键盘输入、屏幕阅读和机考流程；练习模式与正式考位信息分别核实。",
+      "checkedAt": "2026-10-01",
+      "status": "curated",
+      "commercial": false,
+      "evidenceScope": "公开来源页面已读；不代表完整课程体验"
+    },
+    {
+      "id": "liz",
+      "title": "IELTS Liz 免费分项课程",
+      "provider": "IELTS Liz",
+      "url": "https://ieltsliz.com/free-ielts-preparation-blog/",
+      "sourceType": "teacher",
+      "skills": [
+        "听力",
+        "阅读",
+        "写作",
+        "口语",
+        "词汇"
+      ],
+      "levels": [
+        "入门",
+        "提升",
+        "冲刺"
+      ],
+      "price": "免费内容／另有付费产品",
+      "access": "公开页面",
+      "summary": "按具体弱项选一课，再用练习检验，不连续囤看技巧视频。网站同时推广课程与电子书，教师建议仍需对照官方评分标准。",
+      "checkedAt": "2026-10-01",
+      "status": "curated",
+      "commercial": true,
+      "evidenceScope": "公开来源页面已读；不代表完整课程体验"
+    },
+    {
+      "id": "simon",
+      "title": "IELTS Simon 课程索引",
+      "provider": "IELTS Simon",
+      "url": "https://ielts-simon.study/video-courses/",
+      "sourceType": "teacher",
+      "skills": [
+        "阅读",
+        "写作",
+        "口语"
+      ],
+      "levels": [
+        "入门",
+        "提升",
+        "冲刺"
+      ],
+      "price": "会员／付费为主",
+      "access": "公开索引，课程访问按会员规则",
+      "summary": "索引按题型和写作步骤组织。旧博客已于 2025 年结束托管，不能沿用旧经验帖把全套内容标为免费。",
+      "checkedAt": "2026-10-01",
+      "status": "curated",
+      "commercial": true,
+      "evidenceScope": "公开来源页面已读；不代表完整课程体验"
+    },
+    {
+      "id": "advantage",
+      "title": "IELTS Advantage 备考方法",
+      "provider": "IELTS Advantage",
+      "url": "https://www.ieltsadvantage.com/category/study-tips/",
+      "sourceType": "teacher",
+      "skills": [
+        "听力",
+        "阅读",
+        "写作",
+        "口语"
+      ],
+      "levels": [
+        "入门",
+        "提升",
+        "冲刺"
+      ],
+      "price": "免费文章／另有付费课程",
+      "access": "公开文章",
+      "summary": "可参考错因诊断、定向练习和反馈循环。提供商业课程，成功案例与保分宣传不是独立效果证明。",
+      "checkedAt": "2026-10-01",
+      "status": "curated",
+      "commercial": true,
+      "evidenceScope": "公开来源页面已读；不代表完整课程体验"
+    },
+    {
+      "id": "idp-writing",
+      "title": "IDP 写作 7 分要点视频",
+      "provider": "IELTS by IDP",
+      "url": "https://www.youtube.com/watch?v=KVv9FUmm56Q",
+      "sourceType": "official",
+      "skills": [
+        "写作"
+      ],
+      "levels": [
+        "入门",
+        "提升",
+        "冲刺"
+      ],
+      "price": "免费",
+      "access": "YouTube 访问视网络条件",
+      "summary": "官方视频按回应题目、明确立场、组织、词汇与语法准确性、检查等步骤说明写作。已核对公开简介与章节信息，未逐帧审看视频。",
+      "checkedAt": "2026-10-01",
+      "status": "curated",
+      "commercial": false,
+      "evidenceScope": "公开简介与章节信息；未完整观看视频"
+    },
+    {
+      "id": "experience-c2",
+      "title": "8.5 分考生复盘：四周备考的前提",
+      "provider": "Reddit r/IELTS",
+      "url": "https://www.reddit.com/r/IELTS/comments/1obq91i/my_results_just_came_in_85_this_is_how_i_prepared/",
+      "sourceType": "experience",
+      "skills": [
+        "听力",
+        "阅读",
+        "写作",
+        "口语"
+      ],
+      "levels": [
+        "入门",
+        "提升",
+        "冲刺"
+      ],
+      "price": "免费",
+      "access": "公开原帖",
+      "summary": "作者自报 8.5，已有 C2 与长期英语使用背景。可参考限时练习、段落概括和修改作文；四周周期不能照搬为普通起点的承诺。",
+      "checkedAt": "2026-10-01",
+      "status": "curated",
+      "commercial": false,
+      "evidenceScope": "原帖正文已读；成绩为作者自报，未独立验证"
+    },
+    {
+      "id": "experience-85",
+      "title": "8.5 分考生复盘：分项策略与起点",
+      "provider": "Reddit r/IELTS",
+      "url": "https://www.reddit.com/r/IELTS/comments/1wj42br/i_scored_an_overall_85_in_ielts/",
+      "sourceType": "experience",
+      "skills": [
+        "听力",
+        "阅读",
+        "写作",
+        "口语"
+      ],
+      "levels": [
+        "入门",
+        "提升",
+        "冲刺"
+      ],
+      "price": "免费",
+      "access": "公开原帖",
+      "summary": "作者自报 L9/R8.5/W7.5/S8.5，长期参与演讲辩论，备考约一周半。分段听力训练可试验；排斥官方资源、追求超长作文等个体意见不作为统一建议。",
+      "checkedAt": "2026-10-01",
+      "status": "curated",
+      "commercial": false,
+      "evidenceScope": "原帖正文已读；成绩为作者自报，未独立验证"
+    },
+    {
+      "id": "zhihu-case",
+      "title": "知乎：听读强、输出弱的 8 分案例",
+      "provider": "知乎／核桃英语学员案例",
+      "url": "https://www.zhihu.com/tardis/bd/art/548836789",
+      "sourceType": "experience",
+      "skills": [
+        "听力",
+        "阅读",
+        "写作",
+        "口语"
+      ],
+      "levels": [
+        "入门",
+        "提升",
+        "冲刺"
+      ],
+      "price": "免费文章／含课程推广",
+      "access": "公开正文已读",
+      "summary": "2023 年编辑的自述案例，课程学习横跨约一年，集中复习约一月。提炼错因反馈与题型训练；成绩未独立验证，文末有课程导流，固定词汇量门槛不采信。",
+      "checkedAt": "2026-10-01",
+      "status": "curated",
+      "commercial": true,
+      "evidenceScope": "原帖正文已读；成绩为作者自报，未独立验证"
+    }
+  ],
+  "policies": [
+    {
+      "id": "computer-2026",
+      "title": "中国大陆已进入全机考阶段",
+      "text": "官方公告：2026 年 9 月 1 日起，IELTS 与 IELTS for UKVI 采用机考，成绩一般于考后 1–5 天发布并提供电子成绩单。",
+      "url": "https://www.chinaielts.org/press-office/ielts-eTRF",
+      "effectiveFrom": "2026-09-01",
+      "checkedAt": "2026-10-01"
+    },
+    {
+      "id": "fees-2026",
+      "title": "2026 年官方费用",
+      "text": "中国大陆标准 IELTS 与 IELTS for UKVI 考试费用为人民币 1990 元；转考或退考手续费为 380 元。具体可操作条件及支付金额以报名系统为准。",
+      "url": "https://www.chinaielts.org/press-office/IELTS-Chinese-Mainland-Exam-Registration-Fee-Update-2026",
+      "effectiveFrom": "2026-01-01",
+      "checkedAt": "2026-10-01"
+    },
+    {
+      "id": "osr",
+      "title": "单科重考须核对接收院校",
+      "text": "是否接受单科重考由成绩接收机构决定，不能默认所有申请项目接受。资格、期限和开考城市以官方当期说明为准。",
+      "url": "https://www.chinaielts.org/book-ielts/one-skill-retake",
+      "checkedAt": "2026-10-01"
+    }
+  ],
+  "centers": [
+    {
+      "id": "zj-exam",
+      "name": "浙江省教育考试院",
+      "city": "杭州",
+      "district": "西湖区",
+      "address": "杭州市西湖区学院路35号浙江教育综合大楼",
+      "phone": "0571-96399",
+      "sourceUrl": "https://www.zjzs.net/col/col282/index.html",
+      "checkedAt": "2026-10-01",
+      "status": "official_directory_listing",
+      "caveat": "地址来自浙江省教育考试院公开名录；该名录仍含旧纸笔描述，考试模式按较新的官方公告。当前开放场次、具体楼宇与入场要求需以报名系统及准考证核实。",
+      "seatsAvailable": null
+    },
+    {
+      "id": "zju-huajiachi",
+      "name": "浙江大学",
+      "city": "杭州",
+      "district": "上城区",
+      "address": "杭州市上城区凯旋路268号浙江大学华家池校区",
+      "phone": "0571-86971698",
+      "sourceUrl": "https://www.zjzs.net/col/col282/index.html",
+      "checkedAt": "2026-10-01",
+      "status": "official_directory_listing",
+      "caveat": "地址来自浙江省教育考试院公开名录；该名录仍含旧纸笔描述，考试模式按较新的官方公告。当前开放场次、具体楼宇与入场要求需以报名系统及准考证核实。",
+      "seatsAvailable": null
+    },
+    {
+      "id": "hdu-xiasha",
+      "name": "杭州电子科技大学",
+      "city": "杭州",
+      "district": "钱塘区",
+      "address": "杭州市钱塘区白杨街道2号大街1号杭州电子科技大学下沙校区",
+      "phone": "0571-86915087",
+      "sourceUrl": "https://www.zjzs.net/col/col282/index.html",
+      "checkedAt": "2026-10-01",
+      "status": "official_directory_listing",
+      "caveat": "地址来自浙江省教育考试院公开名录；该名录仍含旧纸笔描述，考试模式按较新的官方公告。当前开放场次、具体楼宇与入场要求需以报名系统及准考证核实。",
+      "seatsAvailable": null
+    },
+    {
+      "id": "zust",
+      "name": "浙江科技大学",
+      "city": "杭州",
+      "district": "西湖区",
+      "address": "浙江省杭州市西湖区留和路359号",
+      "phone": "0571-85070745",
+      "sourceUrl": "https://www.zjzs.net/col/col282/index.html",
+      "checkedAt": "2026-10-01",
+      "status": "official_directory_listing",
+      "caveat": "地址来自浙江省教育考试院公开名录；该名录仍含旧纸笔描述，考试模式按较新的官方公告。当前开放场次、具体楼宇与入场要求需以报名系统及准考证核实。",
+      "seatsAvailable": null
+    }
+  ],
+  "calendar": {
+    "title": "2026 年 10–12 月官方考期",
+    "periodStart": "2026-10-01",
+    "periodEnd": "2026-12-31",
+    "announcementUrl": "https://www.chinaielts.org/press-office/ielts-eTRF",
+    "bookingUrl": "https://ielts.neea.cn/",
+    "checkedAt": "2026-10-01",
+    "status": "announcement_verified_dates_not_transcribed",
+    "dates": [],
+    "note": "官方已公布第四季度安排，但本库尚未逐日转录图片日历，未取得杭州实时可报名场次或余位。请在官方报名系统选择城市和日期。自选计划日期不是已确认的考期。"
+  },
+  "methodology": {
+    "title": "少囤资料，形成可复查的练习循环",
+    "type": "editorial_recommendation",
+    "principles": [
+      "先按考试条件做四项诊断；听读核对答案，写说参照评分标准并寻求有依据的反馈。",
+      "每次只修复一个具体问题：定位错、同义改写没识别、拼写错误、论点未展开或口语停顿等。",
+      "完成练习后记录错因、修改方法和下一次验证任务；隔一段时间用未做过的题检验。",
+      "口语用录音回听，写作用初稿—反馈—重写；AI 可辅助发现问题，但估分不等于正式考官分数。",
+      "计时整套练习用于检验节奏，不以刷题数量或看课时长代替掌握。",
+      "达到目标所需时间取决于起点和单项短板，不从四六级或其他英语考试直接换算雅思。"
+    ],
+    "sources": [
+      "https://ielts.org/take-a-test/preparation-resources/writing-test-resources",
+      "https://www.ieltsadvantage.com/wp-content/uploads/2020/06/IELTS-Advantage-VIP-Study-Plan.pdf",
+      "https://takeielts.britishcouncil.org/prepare/ielts-free-practice-mock-tests/academic"
+    ]
+  },
+  "paths": [
+    {
+      "id": "diagnose",
+      "label": "还没有雅思诊断",
+      "focus": "先建立四项基线",
+      "steps": [
+        "确认 Academic 或其他考试类别与目标机构要求",
+        "熟悉题型后完成一次限时听读写，记录口语回答",
+        "把需要补语言基础的问题与考试流程问题分开"
+      ],
+      "exit": "形成四项短板记录，再选择训练重点"
+    },
+    {
+      "id": "foundation",
+      "label": "基础仍不稳定",
+      "focus": "理解与表达准确性优先",
+      "steps": [
+        "从短文本、短音频逐步过渡到整篇",
+        "在语境中复习词汇、发音和句法",
+        "写短段落、录短回答并修正重复错误"
+      ],
+      "exit": "能解释错因并在新材料中减少同类错误"
+    },
+    {
+      "id": "develop",
+      "label": "已有基础，冲击 6.5–7",
+      "focus": "针对最弱单项建立反馈循环",
+      "steps": [
+        "听读按题型分类错因并限时复测",
+        "写作检查任务回应和展开，完成有反馈的重写",
+        "口语练 Part 2/3 的组织与自然展开，回听录音"
+      ],
+      "exit": "多次独立练习达到目标范围，并检查单项门槛"
+    },
+    {
+      "id": "polish",
+      "label": "接近目标，追求稳定",
+      "focus": "减少波动与考场失误",
+      "steps": [
+        "使用未做过的可靠材料完成限时模拟",
+        "保留难题处理和检查时间",
+        "复核报名类型、证件、路线及考试安排"
+      ],
+      "exit": "稳定表现而非一次最高分；是否报名由考生决定"
+    }
+  ],
+  "coverage": [
+    {
+      "platform": "官方 IELTS／BC／Cambridge",
+      "status": "已核查公开页面",
+      "scope": "评分、样题、资源目录、最新大陆政策"
+    },
+    {
+      "platform": "Reddit",
+      "status": "已读部分原帖",
+      "scope": "仅保留可说明起点与局限的自述；未核验成绩单真伪"
+    },
+    {
+      "platform": "知乎",
+      "status": "部分原文可读",
+      "scope": "区分商业案例与个人经验；旧年份不作为当前政策"
+    },
+    {
+      "platform": "B站",
+      "status": "部分简介及文章可读",
+      "scope": "未完整观看视频；资料导流、低细节文章不列为已验证学习方法"
+    },
+    {
+      "platform": "小红书",
+      "status": "覆盖缺口",
+      "scope": "已做公开检索，本轮未取得足够可完整核验的原始经验帖"
+    },
+    {
+      "platform": "贴吧",
+      "status": "覆盖缺口",
+      "scope": "已做公开检索，本轮未取得足够可完整核验的原始经验帖"
+    },
+    {
+      "platform": "YouTube",
+      "status": "部分官方简介已核查",
+      "scope": "无完整视频观看或课程效果验证"
+    }
+  ],
+  "watchSources": [
+    "https://www.chinaielts.org/press-office/ielts-eTRF",
+    "https://www.chinaielts.org/press-office/IELTS-Chinese-Mainland-Exam-Registration-Fee-Update-2026",
+    "https://www.zjzs.net/col/col282/index.html",
+    "https://ielts.org/take-a-test/preparation-resources",
+    "https://www.cambridgeenglish.org/exams-and-tests/ielts/preparation/"
+  ]
+}
