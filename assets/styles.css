@@ -3,3 +3,20 @@
 .scope-copy{display:block;font-size:14px;margin-top:5px}.coverage-details{margin-top:26px;border-top:1px solid var(--line);padding-top:12px}.coverage-details summary,.evidence-detail summary{min-height:44px;cursor:pointer;display:list-item;padding:10px 0;color:var(--muted);font-size:14px}.coverage-details summary:focus-visible,.evidence-detail summary:focus-visible{outline:3px solid #3778bb;outline-offset:4px}.coverage-row{display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;border-top:1px solid #edf0ee;padding:17px 0}.coverage-row h4{font-size:14px;font-weight:550;margin:0}.coverage-row p{font-size:14px;color:var(--muted)}.evidence-detail{font-size:12px;color:var(--muted);margin:-9px 0 14px}.evidence-detail summary{font-size:12px}.evidence-detail p{font-size:13px;margin-bottom:10px}.methodology-list{padding-left:23px;color:var(--muted);font-size:15px}.methodology-list li{margin:12px 0}.methodology-sources{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:13px}.methodology-sources a{min-height:44px;display:inline-flex;align-items:center}.calendar-links{display:flex;flex-direction:column;flex-shrink:0}@media(max-width:720px){.coverage-row{grid-template-columns:1fr;gap:5px}.scope-copy{font-size:13px}}
 
 .reference-label{font-size:13px;font-weight:650;color:#755d27;margin:0 0 18px}.evidence-detail ul{padding-left:20px}.evidence-detail li{margin:8px 0}#evidence-review{font-size:14px;color:var(--muted)}#evidence-review h4{color:var(--ink);margin:22px 0 8px}#evidence-review p{margin:10px 0}.evidence-conflict{border-top:1px solid var(--line);margin-top:20px}
+
+/* Reading-size refinement: keep secondary evidence legible without competing with titles. */
+label>span{font-size:15px}
+input,select{font-size:16px}
+.card-summary{font-size:17px;line-height:1.8}
+.provider,.source-tag,.tag-list li,.checked{font-size:14px}
+.card-caution,.evidence-detail,.evidence-detail summary,.evidence-detail p,.reference-label{font-size:15px;line-height:1.75}
+.evidence-detail li{line-height:1.75;overflow-wrap:anywhere}
+.coverage-row h4,.coverage-row p,.source-guide-grid p,#evidence-review{font-size:16px;line-height:1.75}
+.resource-card h3{overflow-wrap:anywhere}
+@media(max-width:720px){
+  .filter-bar label>span{font-size:14px}
+  input,select{font-size:16px}
+  .card-summary{font-size:17px}
+  .card-bottom{flex-wrap:wrap}
+  .section-nav{gap:20px;overflow-x:auto}
+}
