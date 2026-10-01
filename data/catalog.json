@@ -801,6 +801,159 @@
         "reviewedAt": "2026-10-01",
         "scope": "公开资料核读；不代表独立验证个人成绩或课程效果"
       }
+    },
+    {
+      "id": "ielts-esther-timing-2025",
+      "title": "强英语基础仍写不完：写作限时反例",
+      "provider": "LinkedIn／Esther Famuyide",
+      "url": "https://www.linkedin.com/posts/estherfamuyide_i-was-quite-disappointed-when-i-wrote-my-activity-7304838078228004865-4n7I",
+      "sourceType": "experience",
+      "skills": [
+        "写作"
+      ],
+      "levels": [
+        "提升",
+        "冲刺"
+      ],
+      "price": "免费公开内容",
+      "access": "公开正文已读",
+      "summary": "作者自述先写Task2并反复修改，Task1未完成便到时。可作为必须整套限时写作和设置停止修改时间的反例，不能宣传三天8.5。",
+      "checkedAt": "2026-10-01",
+      "publishedAt": "2025-03-10",
+      "status": "curated_with_caveats",
+      "commercial": null,
+      "commercialDisclosure": "作者自述从事教学，存在专业服务身份；所读帖未见价格或购买链接，服务质量未核验",
+      "evidenceScope": "原帖完整可提取正文；返回的2条评论中仅1条可见且只是祝贺，没有有效方法或结果补充；成绩图片未独立核读",
+      "authorContext": {
+        "baseline": "自称有英语资质、编辑和教学经验；并非普通英语起点",
+        "preparationDuration": "仅为作者自述，精确有效学习时数未知",
+        "outcome": "自报总分8.5、写作7.5；考前约3天才认真练习，未建立精确投入时数"
+      },
+      "actionableMethods": [
+        "两篇连续计时练习，记录各阶段用时和未完成内容",
+        "为修改设停止时间，防止一篇侵占另一篇"
+      ],
+      "excludeFromGeneralGuidance": [
+        "Task2先写是人人适用的最优顺序",
+        "三天足以达到8.5",
+        "再考必能更高分",
+        "英语不够好就不应参加考试的价值判断"
+      ],
+      "recommendedByDefault": false,
+      "collection": "经验比较与争议",
+      "selectionReason": "仅作主动选择的历史经验对照；不纳入默认推荐或自动学习路径。",
+      "commentsReview": {
+        "status": "partially_reviewed",
+        "detail": "原帖完整可提取正文；返回的2条评论中仅1条可见且只是祝贺，没有有效方法或结果补充；成绩图片未独立核读"
+      },
+      "provenance": {
+        "reviewedAt": "2026-10-01",
+        "scope": "原帖完整可提取正文；返回的2条评论中仅1条可见且只是祝贺，没有有效方法或结果补充；成绩图片未独立核读"
+      },
+      "caution": "个人成绩未独立核验；作者是教师和编辑，不能宣传三天8.5。官方要求两篇均完成，全文连续限时练习；先写哪篇不是官方统一规则。 https://ielts.org/take-a-test/test-types/ielts-academic-test/ielts-academic-format-writing"
+    },
+    {
+      "id": "ielts-ramadhanight-2025",
+      "title": "在职首考复盘：主观感觉与真实分项的落差",
+      "provider": "Ecency / Hive blog／ramadhanight",
+      "url": "https://ecency.com/@ramadhanight/my-first-ielts-test-experience-",
+      "sourceType": "experience",
+      "skills": [
+        "口语",
+        "入门"
+      ],
+      "levels": [
+        "提升",
+        "冲刺"
+      ],
+      "price": "免费公开内容",
+      "access": "公开正文已读",
+      "summary": "作者考前仅短暂集中准备，考后对听说很担心、对写作较有信心，实际结果与感觉不完全一致。能支持做真实输出和等官方成绩，不能由考场感受估分。",
+      "checkedAt": "2026-10-01",
+      "publishedAt": "2025-08-15",
+      "status": "curated_with_caveats",
+      "commercial": true,
+      "commercialDisclosure": "帖尾含游戏/区块链推广及推荐链接；仅收录雅思反思，不推荐或转录其推广链接",
+      "evidenceScope": "完整原帖正文已读；无评论内容返回；成绩图未独立核读",
+      "authorContext": {
+        "baseline": "在职，之前参加3周英语课程，之后口语练习中断两个月左右；日常有英文阅读/写作，不能称零基础",
+        "preparationDuration": "仅为作者自述，精确有效学习时数未知",
+        "outcome": "自述总分6.5、阅读7.5、口语6；精确学习时长未知，写作完整分数未可靠转录"
+      },
+      "actionableMethods": [
+        "把看视频与实际开口练习分别记时",
+        "临考前核对考点路线和到场安排",
+        "用分项表现安排后续训练，不用考试当下自信程度代替成绩"
+      ],
+      "excludeFromGeneralGuidance": [
+        "练一天就够6.5",
+        "纸笔一定没有耳机等考点个例泛化",
+        "靠固定套句救陌生口语题",
+        "平台日常阅读必然造成某分数提升"
+      ],
+      "recommendedByDefault": false,
+      "collection": "经验比较与争议",
+      "selectionReason": "仅作主动选择的历史经验对照；不纳入默认推荐或自动学习路径。",
+      "commentsReview": {
+        "status": "not_reviewed",
+        "detail": "完整原帖正文已读；无评论内容返回；成绩图未独立核读"
+      },
+      "provenance": {
+        "reviewedAt": "2026-10-01",
+        "scope": "完整原帖正文已读；无评论内容返回；成绩图未独立核读"
+      },
+      "caution": "个人成绩未独立核验；正文含无关游戏和区块链推荐链接；不推荐其中服务。旧考点/纸笔经验不用于当前报名或考试流程。"
+    },
+    {
+      "id": "bili-reading-error-log-pang-2023",
+      "title": "阅读错题复盘：区分定位错误与理解错误",
+      "provider": "Bilibili／胖到模糊",
+      "url": "https://www.bilibili.com/opus/840872356555522066",
+      "sourceType": "experience",
+      "skills": [
+        "阅读"
+      ],
+      "levels": [
+        "提升",
+        "冲刺"
+      ],
+      "price": "免费公开内容",
+      "access": "公开正文已读",
+      "summary": "作者保留做题时标记的证据位置，复盘先检查定位是否正确，再区分题目/原文理解问题，并在后续练习前回看错因。工具只是承载记录，重点在能说明自己为什么选错。",
+      "checkedAt": "2026-10-01",
+      "publishedAt": "2023-09-14",
+      "status": "curated_with_caveats",
+      "commercial": null,
+      "commercialDisclosure": "提及第三方工具，承认部分功能收费；所读正文未见购买或私信导流，未验证合作关系",
+      "evidenceScope": "完整可提取图文正文已读；成绩单/表格/软件配图未视觉审读，不能声称整帖所有图片已读；未读，Exa未返回；没有观看所推荐视频",
+      "authorContext": {
+        "baseline": "小语种本科毕业后4年，自报已有四六级基础；复习两个多月、未报班，非零基础",
+        "preparationDuration": "仅为作者自述，精确有效学习时数未知",
+        "outcome": "标题自报首考阅读满分，成绩图片未独立核读，不能当核验成绩"
+      },
+      "actionableMethods": [
+        "保留当时定位句和选择理由",
+        "复盘区分找错位置、读错题和读错原文",
+        "将新词放回语境复习，再用新题检验迁移"
+      ],
+      "excludeFromGeneralGuidance": [
+        "雅思阅读只考技巧",
+        "两个多月可复制满分",
+        "所有第三方软件题源合法且免费",
+        "Quizlet当前价格/功能沿用2023"
+      ],
+      "recommendedByDefault": false,
+      "collection": "经验比较与争议",
+      "selectionReason": "仅作主动选择的历史经验对照；不纳入默认推荐或自动学习路径。",
+      "commentsReview": {
+        "status": "not_reviewed",
+        "detail": "完整可提取图文正文已读；成绩单/表格/软件配图未视觉审读，不能声称整帖所有图片已读；未读，Exa未返回；没有观看所推荐视频"
+      },
+      "provenance": {
+        "reviewedAt": "2026-10-01",
+        "scope": "完整可提取图文正文已读；成绩单/表格/软件配图未视觉审读，不能声称整帖所有图片已读；未读，Exa未返回；没有观看所推荐视频"
+      },
+      "caution": "个人成绩未独立核验；仅提炼错因记录；原文“只考技巧”等判断不采纳。成绩与表格图片、评论未核读；不推荐未核实软件题源。官方理解与定位说明：https://ielts.org/news-and-insights/how-to-avoid-distractors-in-the-ielts-reading-test"
     }
   ],
   "policies": [
