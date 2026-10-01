@@ -1,0 +1,18 @@
+// Rendered QA in an isolated cloud Chromium; no external pages are opened.
+const {chromium}=require('playwright');
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const path=require('node:path');
+const http=require('node:http');
+const root=path.resolve(__dirname,'..');
+const server=http.createServer((req,res)=>{const pathname=new URL(req.url,'http://localhost').pathname;const file=path.join(root,pathname==='/'?'index.html':pathname);if(!file.startsWith(root+path.sep)){res.writeHead(403).end();return;}try{const content=fs.readFileSync(file);res.setHeader('Content-Type',file.endsWith('.js')?'text/javascript':file.endsWith('.css')?'text/css':file.endsWith('.json')?'application/json':'text/html');res.end(content);}catch{res.writeHead(404).end();}});
+(async()=>{await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));const browser=await chromium.launch({executablePath:'/usr/bin/chromium',headless:true,args:['--no-sandbox']});
+try{const page=await browser.newPage({viewport:{width:1440,height:1000}});const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('http://127.0.0.1:'+server.address().port);await page.waitForFunction(()=>document.querySelectorAll('.resource-card').length===20);
+assert.equal(await page.locator('#recommendation-filter').inputValue(),'recommended');
+await page.selectOption('#recommendation-filter','reference');assert.equal(await page.locator('.resource-card').count(),4);assert.equal(await page.locator('.reference-label').count(),4);
+const reddit=page.locator('[data-resource-id="reddit-writing-feedback-compare-2026"]');await reddit.locator('summary').click();assert.ok((await reddit.innerText()).includes('与原帖发帖人不同'));await reddit.locator('[data-save]').click();await page.locator('#saved-filter').click();assert.equal(await page.locator('.resource-card').count(),1);await reddit.locator('[data-save]').click();assert.equal(await page.locator('.resource-card').count(),0);assert.equal(await page.locator('#saved-filter').evaluate(n=>n===document.activeElement),true);
+await page.locator('#empty-reset').click();assert.equal(await page.locator('.resource-card').count(),20);await page.selectOption('#recommendation-filter','all');assert.equal(await page.locator('.resource-card').count(),24);
+await page.getByText('经验怎么用：方法、分歧与证据边界',{exact:true}).click();assert.equal(await page.locator('.evidence-conflict').count(),5);assert.ok(await page.locator('#evidence-review').isVisible());
+await page.locator('#tab-path').click();assert.equal(await page.locator('.path-step').count(),3);await page.locator('#tab-exams').click();assert.equal(await page.locator('.policy-card').count(),3);assert.equal(await page.locator('.center-row').count(),4);assert.match(await page.locator('#update-status').innerText(),/首轮待验证/);
+await page.locator('#tab-library').click();await page.locator('#reset-filters').click();await page.setViewportSize({width:390,height:844});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth),true,'mobile no horizontal overflow');await page.screenshot({path:path.join(root,'review/resource-update-mobile.png'),fullPage:true});await page.setViewportSize({width:1440,height:1000});await page.screenshot({path:path.join(root,'review/resource-update-desktop.png'),fullPage:true});assert.deepEqual(errors,[]);console.log('PASS rendered Chromium: default/all/reference scopes, caveat details, bookmark/remove focus/reset, 5 method conflicts, unchanged path/exams, first-run pending, mobile overflow, no JS errors');
+}finally{await browser.close();server.close();}})().catch(e=>{console.error(e);server.close();process.exitCode=1;});

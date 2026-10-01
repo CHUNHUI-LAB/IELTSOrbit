@@ -20,8 +20,9 @@
   <section class="intro" aria-labelledby="page-title"><div><p class="eyebrow">雅思学习导航</p><h1 id="page-title">把备考，学得更有方向。</h1><p class="intro-copy">找到可靠资料，选择适合的练习路径，再核对考试安排。<span class="scope-copy">学习资料默认以 Academic 为主，考试类别须按用途另行确认。</span></p></div><div class="edition"><span class="edition-label">公开资源 · 独立整理</span><span id="checked-date">首版资料校核中</span></div></section>
   <nav class="section-nav" role="tablist" aria-label="浏览内容"><button id="tab-library" role="tab" aria-controls="panel-library" aria-selected="true" data-tab="library">学习资料</button><button id="tab-path" role="tab" aria-controls="panel-path" aria-selected="false" tabindex="-1" data-tab="path">备考路径</button><button id="tab-exams" role="tab" aria-controls="panel-exams" aria-selected="false" tabindex="-1" data-tab="exams">考点与考期</button></nav>
   <section id="panel-library" class="panel" role="tabpanel" aria-labelledby="tab-library">
-    <div class="section-heading"><div><h2>让资料为你的下一步服务</h2><p>官方标准、教师讲解与考生经验，分清来源再选择。</p></div></div>
+    <div class="section-heading"><div><h2>让资料为你的下一步服务</h2><p>默认推荐与比较案例分开展示；核读原文不等于验证提分效果。</p></div></div>
     <form id="filter-form" class="filter-bar" role="search" aria-label="筛选学习资料">
+      <label><span>资料范围</span><select id="recommendation-filter"><option value="recommended" selected>默认推荐</option><option value="all">全部资料（含比较案例）</option><option value="reference">仅比较与批判案例</option></select></label>
       <label class="search-control"><span>搜索资料</span><input id="search" type="search" placeholder="搜索主题、技能或来源" autocomplete="off"></label>
       <label><span>来源</span><select id="source-filter"><option value="all">全部来源</option><option value="official">官方</option><option value="teacher">教师 / 教学平台</option><option value="experience">考生经验</option></select></label>
       <label><span>技能</span><select id="skill-filter"><option value="all">全部技能</option><option value="listening">听力</option><option value="reading">阅读</option><option value="writing">写作</option><option value="speaking">口语</option><option value="general">综合 / 考试信息</option><option value="vocabulary">词汇</option></select></label>
@@ -32,8 +33,8 @@
     <div class="results-toolbar"><p id="result-count" role="status" aria-live="polite">正在读取资料…</p><div class="result-actions"><button id="saved-filter" class="text-button" type="button" aria-pressed="false">仅看已收藏 <span id="saved-count">0</span></button><button id="reset-filters" class="text-button" type="button">清除筛选</button></div></div>
     <div id="load-error" class="notice" hidden><h3>资料暂时没有加载成功</h3><p>请刷新重试。备考路径仍可使用；不要把加载失败当作没有资源。</p><button id="retry-load" class="secondary-button" type="button">重新加载资料</button></div>
     <div id="resource-grid" class="resource-grid"></div>
-    <div id="empty-state" class="empty-state" hidden><span aria-hidden="true">⌕</span><h3>暂时没有匹配的资料</h3><p>试试减少筛选条件，或搜索更宽泛的关键词。</p><button id="empty-reset" class="secondary-button" type="button">查看全部资料</button></div>
-    <aside class="source-guide" aria-labelledby="source-guide-title"><h3 id="source-guide-title">同样是资料，证据的分量不同</h3><div class="source-guide-grid"><p><strong>官方资料</strong>用于核对考试形式、评分标准和报名政策。</p><p><strong>教师讲解</strong>提供训练方法，效果仍需用自己的练习检验。</p><p><strong>考生经验</strong>适合借鉴过程，个人成绩不代表可复制的结果。</p></div><details class="coverage-details"><summary>本轮核验范围与覆盖缺口</summary><div id="coverage-list"></div></details></aside>
+    <div id="empty-state" class="empty-state" hidden><span aria-hidden="true">⌕</span><h3>暂时没有匹配的资料</h3><p>试试减少筛选条件，或搜索更宽泛的关键词。</p><button id="empty-reset" class="secondary-button" type="button">恢复默认筛选</button></div>
+    <aside class="source-guide" aria-labelledby="source-guide-title"><h3 id="source-guide-title">同样是资料，证据的分量不同</h3><div class="source-guide-grid"><p><strong>官方资料</strong>用于核对考试形式、评分标准和报名政策。</p><p><strong>教师讲解</strong>提供训练方法，效果仍需用自己的练习检验。</p><p><strong>考生经验</strong>适合借鉴过程，个人成绩不代表可复制的结果。</p></div><details class="coverage-details"><summary>本轮核验范围与覆盖缺口</summary><div id="coverage-list"></div></details><details class="coverage-details"><summary>经验怎么用：方法、分歧与证据边界</summary><div id="evidence-review"></div></details></aside>
   </section>
   <section id="panel-path" class="panel" role="tabpanel" aria-labelledby="tab-path" hidden>
     <div class="section-heading"><div><p class="eyebrow">从下一步开始</p><h2>选一条练习路径</h2><p>分数只是自评参照。这是一份编辑整理的通用练习顺序，不预测成绩或提分周期。</p></div></div>

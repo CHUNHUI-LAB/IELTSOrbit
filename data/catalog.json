@@ -374,6 +374,433 @@
       "status": "curated",
       "commercial": true,
       "evidenceScope": "原帖正文已读；成绩为作者自报，未独立验证"
+    },
+    {
+      "id": "bili-experience-nonzero-2023",
+      "title": "个人复盘：两个月半备考中的练习顺序与取舍",
+      "originalTitle": "雅思复习经验",
+      "provider": "B站／非等量弱者",
+      "url": "https://www.bilibili.com/opus/829981122631827495?from=search",
+      "sourceType": "experience",
+      "skills": [
+        "听力",
+        "阅读",
+        "写作",
+        "口语"
+      ],
+      "levels": [
+        "提升",
+        "冲刺"
+      ],
+      "price": "免费文章",
+      "access": "登录态完整正文已读",
+      "summary": "作者有高考、六级与考研英语经历，自报备考约两个月半、总分 7。可借鉴：听力漏题后及时继续、阅读从单篇过渡到限时整套、口语录音回听。不是零英语基础，也不是可复制的提分周期。",
+      "caution": "原文含私信领资料引导，收费情况未知。不要照搬选项分布猜题、背 AI 生成口语稿、先完全搁置写说等做法；旧考试流程须重新查官方。",
+      "checkedAt": "2026-10-01",
+      "publishedAt": "2023-08-15",
+      "status": "curated_with_caveats",
+      "commercial": null,
+      "commercialDisclosure": "正文邀请私信获取资料；未私信、未领取，是否收费不明。",
+      "evidenceScope": "B站专栏完整公开正文已读；未观看相关视频，未核验作者成绩或站外资料。",
+      "authorContext": {
+        "baseline": "已有多种国内英语考试经历；作者自称零基础不能按字面理解",
+        "preparationDuration": "自报约两个月半",
+        "outcome": "自报总分7、听力6.5、阅读8.5、写作6、口语6.5；未独立验证"
+      },
+      "actionableMethods": [
+        "将听得懂但反应慢与单词不认识区分，复习实际听错的词。",
+        "熟悉题型后用整套限时练习检验节奏；不要只看不限时正确率。",
+        "口语先用自己的经历作答并录音，再检查是否答全、表达是否清楚。"
+      ],
+      "excludeFromGeneralGuidance": [
+        "固定章节或一遍练习保证某分数",
+        "用选项或TFNG数量分布代替原文证据",
+        "背诵AI生成答案",
+        "将两个月半当作通用目标周期"
+      ],
+      "recommendedByDefault": false,
+      "selectionReason": "有实操细节但夹杂多项无依据策略；默认推荐不靠大量警告抵消问题。",
+      "collection": "经验比较与争议",
+      "commentsReview": {
+        "status": "not_reviewed",
+        "detail": "完整图文正文已读；评论与后续答疑未完成核读。"
+      },
+      "provenance": {
+        "reviewedAt": "2026-10-01",
+        "scope": "公开资料核读；不代表独立验证个人成绩或课程效果"
+      }
+    },
+    {
+      "id": "bili-experience-math-2025",
+      "title": "首考复盘：不限时练习与机考写作准备的落差",
+      "originalTitle": "一个数专生的雅思首考7分复盘",
+      "provider": "B站／GY-Seminar",
+      "url": "https://www.bilibili.com/opus/1142199359312494595?from=search",
+      "sourceType": "experience",
+      "skills": [
+        "听力",
+        "阅读",
+        "写作",
+        "口语"
+      ],
+      "levels": [
+        "提升",
+        "冲刺"
+      ],
+      "price": "免费文章",
+      "access": "完整公开正文可读",
+      "summary": "数学专业在读者、已有 Cambridge 暑校经历，自报首考 7。9–10 月零散练习，11 月才开始完整模拟。文章具体反思反复暂停听力造成的虚高正确率，以及考前才发现无补全键盘写作难以按时完成。",
+      "caution": "总分为作者自报，未核验成绩单；没有精确投入时数。可借鉴分开做精练与模拟，不能把作者的阅读做题顺序或心态观点当成普适规则。",
+      "checkedAt": "2026-10-01",
+      "publishedAt": "2025-12-03",
+      "status": "curated_with_caveats",
+      "commercial": false,
+      "commercialDisclosure": "所读正文未见收费课程或资料导流；未核查账号其他内容。",
+      "evidenceScope": "B站专栏完整公开正文已读；未把标题成绩视为独立验证，也未观看视频。",
+      "authorContext": {
+        "baseline": "数学专业在读，参加过 Cambridge 暑校；并非英语零基础",
+        "preparationDuration": "9月至11月底跨度，前两月零散；有效学习时数未知",
+        "outcome": "标题自报首考总分7；正文称未达原定目标，分项未可靠转录"
+      },
+      "actionableMethods": [
+        "把可暂停、可重听的精听，与不暂停的整套模拟分别记录，避免混淆正确率。",
+        "提前练习无输入补全环境下的英文键盘写作，把构思与输入一起计时。",
+        "录下自己的口语回答并回听，而不只在脑中设想能说出来。"
+      ],
+      "excludeFromGeneralGuidance": [
+        "心态控制比听力能力更重要的泛化判断",
+        "固定的先填空后其他题顺序",
+        "将日历跨度当成有效学习时长"
+      ],
+      "recommendedByDefault": true,
+      "selectionReason": "保留具体限时模拟与键盘写作教训；分数仍标自报，评论未读。",
+      "commentsReview": {
+        "status": "not_reviewed",
+        "detail": "完整图文正文已读；评论与后续答疑未完成核读。"
+      },
+      "provenance": {
+        "reviewedAt": "2026-10-01",
+        "scope": "公开资料核读；不代表独立验证个人成绩或课程效果"
+      }
+    },
+    {
+      "id": "bili-reading-error-log-2023",
+      "title": "阅读错因记录示例：从时间、题型到证据句",
+      "originalTitle": "剑桥雅思17 Test4 Reading部分复盘",
+      "provider": "B站／栎舂雪_chunlei",
+      "url": "https://www.bilibili.com/opus/755000790659104790?from=search",
+      "sourceType": "experience",
+      "skills": [
+        "阅读"
+      ],
+      "levels": [
+        "提升",
+        "冲刺"
+      ],
+      "price": "免费文章",
+      "access": "完整公开正文可读",
+      "summary": "一份具体练习日志：记录三篇耗时和错题，再区分读错实体、漏看题目说明、词义理解及答案范围等原因。适合借鉴复盘格式；作者标注的是练习估分，不是正式考试成绩。",
+      "caution": "涉及剑17 Test4 题目剧透，建议自行完成后再看。只借鉴记录方法；文内有答案字母表述不一致和概率猜测，不作为权威答案解析，不在本站复制题干、原文或答案。",
+      "checkedAt": "2026-10-01",
+      "publishedAt": "2023-01-25",
+      "status": "curated_method_example",
+      "commercial": false,
+      "commercialDisclosure": "所读正文未见课程销售引导；不代表验证了全账号。",
+      "evidenceScope": "该篇完整正文已读；仅提炼复盘结构，不转录受版权保护的试题内容。",
+      "authorContext": {
+        "baseline": "未披露完整能力起点",
+        "preparationDuration": "累计备考时长未披露；本次三篇用时自报52分钟",
+        "outcome": "自报本套阅读错7题并估分7.5；这是练习记录，不是考场出分"
+      },
+      "actionableMethods": [
+        "保留每篇耗时、错误题型和当时判断。",
+        "将错误拆为原文证据、自己的误读、下次检查动作，少写笼统的粗心。",
+        "对照正版题目及官方答案验证解释，不把网友解析当答案标准。"
+      ],
+      "excludeFromGeneralGuidance": [
+        "根据其他题所在段落猜测本题答案概率",
+        "作者未复核的答案字母",
+        "据单次练习认定实际考试水平"
+      ],
+      "recommendedByDefault": false,
+      "selectionReason": "只参考错因记录格式，不作为答案解析或推荐教程。",
+      "collection": "复盘格式示例",
+      "commentsReview": {
+        "status": "not_reviewed",
+        "detail": "完整图文正文已读；评论与后续答疑未完成核读。"
+      },
+      "provenance": {
+        "reviewedAt": "2026-10-01",
+        "scope": "公开资料核读；不代表独立验证个人成绩或课程效果"
+      }
+    },
+    {
+      "id": "bili-writing-revision-nana-2026",
+      "title": "写作修改示例：句子边界与论据如何回应题目",
+      "originalTitle": "雅思大作文遇到“The best way”怎么破？复盘一场6.5到7.5分的高能改写现场！",
+      "provider": "B站／娜娜老师可约课",
+      "url": "https://www.bilibili.com/opus/1214023736643026953?from=search",
+      "sourceType": "teacher",
+      "skills": [
+        "写作"
+      ],
+      "levels": [
+        "提升",
+        "冲刺"
+      ],
+      "price": "免费文章／作者提供约课服务",
+      "access": "完整公开正文可读",
+      "summary": "用修改前后段落演示两个具体检查点：避免逗号直接拼接独立句，把论据明确扣回题目中的核心判断。可作重写练习的分析材料，不把文中标注的分数当成真实考官评分。",
+      "caution": "作者提供约课服务，未购买或核查课程效果。原文的“稳拿7+”“一个分号决定跨分”及必须部分同意等表述不能作为评分规则；评分要求以官方写作标准为准。",
+      "checkedAt": "2026-10-01",
+      "publishedAt": "2026-06-15",
+      "status": "curated_with_caveats",
+      "commercial": true,
+      "commercialDisclosure": "账号名称明确提供约课服务；文章可读，付费服务与资质未核验。",
+      "evidenceScope": "完整图文正文已读，包括修改前后示例和解释；未观看视频或验证声称的分数提升。",
+      "authorContext": {
+        "baseline": "示例学习者起点与独立评分记录未披露",
+        "preparationDuration": "未提供学习时长，不能据单次改写推断提分周期",
+        "outcome": "6.5至7.5为文章内教学标签；没有可独立核验的考场前后成绩"
+      },
+      "actionableMethods": [
+        "先检查句子是否完整以及独立句之间如何连接。",
+        "每段写完后，补查论据为何支持当前题目的立场，而不只列举相关现象。",
+        "重写后按官方评分维度复核，不把高级标点或某一种立场当作加分捷径。"
+      ],
+      "excludeFromGeneralGuidance": [
+        "固定句式、标点与分数的保证关系",
+        "绝对化题目只能用部分同意",
+        "把教师自标分数当作考官正式评分"
+      ],
+      "recommendedByDefault": false,
+      "selectionReason": "分数保证与固定策略失实风险高，不进入默认学习推荐。",
+      "collection": "批判性方法案例",
+      "commentsReview": {
+        "status": "not_reviewed",
+        "detail": "完整图文正文已读；评论与后续答疑未完成核读。"
+      },
+      "provenance": {
+        "reviewedAt": "2026-10-01",
+        "scope": "公开资料核读；不代表独立验证个人成绩或课程效果"
+      }
+    },
+    {
+      "checkedAt": "2026-10-01",
+      "levels": [
+        "入门",
+        "提升",
+        "冲刺"
+      ],
+      "status": "curated",
+      "price": "免费公开内容",
+      "access": "公开正文已读",
+      "id": "bc-speaking-record-review",
+      "title": "British Council 口语模拟与录音复盘",
+      "provider": "British Council",
+      "url": "https://takeielts.britishcouncil.org/take-ielts/prepare/free-ielts-english-practice-tests/speaking",
+      "sourceType": "official",
+      "skills": [
+        "口语"
+      ],
+      "summary": "与搭档连续完成三部分模拟，录音后检查表达是否流畅、自然、清楚，并确定下一轮改进点。页面明确不应预背答案；录音样例用于理解形式，不是让考生模仿的标准答案。",
+      "caution": "这是官方练习建议，不提供个体估分或提分周期。听过说明不等于已经完成音频练习。",
+      "commercial": false,
+      "commercialDisclosure": "官方免费练习页；本轮未注册、购买或提交录音。",
+      "evidenceScope": "已读取完整公开文字说明；未播放页面音频。",
+      "commentsReview": {
+        "status": "not_applicable",
+        "detail": "正文页未提供用于本次核读的评论讨论。"
+      },
+      "recommendedByDefault": true,
+      "actionableMethods": [
+        "让搭档按三部分连续提问，避免预先排练具体答案。",
+        "保存录音，回听清晰度、流畅度和自然表达。",
+        "只选一两个明确问题用于下一轮练习，并比较前后录音。"
+      ],
+      "quality": "官方一手训练说明，操作具体；没有检验个体学习效果。",
+      "provenance": {
+        "reviewedAt": "2026-10-01",
+        "scope": "公开资料核读；不代表独立验证个人成绩或课程效果"
+      }
+    },
+    {
+      "checkedAt": "2026-10-01",
+      "levels": [
+        "入门",
+        "提升",
+        "冲刺"
+      ],
+      "status": "curated",
+      "price": "免费公开内容",
+      "access": "公开正文已读",
+      "id": "idp-speaking-plan-timing",
+      "title": "IDP 口语组织与计时练习",
+      "provider": "IDP IELTS／Lyla Hage",
+      "url": "https://ielts.idp.com/prepare/article-more-tips-organzing-speaking",
+      "sourceType": "official",
+      "skills": [
+        "口语"
+      ],
+      "summary": "把 Part 2 的准备时间用于组织想法与写短提示，练习时录音并计时。用连接表达帮助听者跟随思路，检查是否回应题卡；短暂停顿后继续，不把一次卡顿扩展成整段放弃。",
+      "caution": "官方练习建议，不等于固定话术或保分技巧。旧文中的通用建议不代替当前考场安排。",
+      "publishedAt": "2023-05-10",
+      "commercial": false,
+      "commercialDisclosure": "官方公开备考文章；未购买课程。",
+      "evidenceScope": "完整公开文字正文已读。",
+      "commentsReview": {
+        "status": "not_applicable",
+        "detail": "本页未呈现可核读的评论区。"
+      },
+      "recommendedByDefault": true,
+      "actionableMethods": [
+        "用一分钟准备提纲，再完成计时回答。",
+        "回听自己是否真正展开了题目，而不只是堆连接词。",
+        "忘记思路时短暂整理后继续；在练习中检验恢复能力。"
+      ],
+      "quality": "官方一手方法说明，适用于练习组织；没有个体效果数据。",
+      "provenance": {
+        "reviewedAt": "2026-10-01",
+        "scope": "公开资料核读；不代表独立验证个人成绩或课程效果"
+      }
+    },
+    {
+      "checkedAt": "2026-10-01",
+      "levels": [
+        "入门",
+        "提升",
+        "冲刺"
+      ],
+      "status": "curated",
+      "price": "免费公开内容",
+      "access": "公开正文已读",
+      "id": "levinson-error-diaries-2006",
+      "title": "纠错之后如何练习：三步错误日志",
+      "provider": "Kenneth Levinson／MEXTESOL Journal",
+      "url": "https://www.mextesol.net/journal/public/files/045eeca337fc17c1d8d9ba7f002d3fe4.pdf",
+      "sourceType": "teacher",
+      "skills": [
+        "写作"
+      ],
+      "summary": "大学 ESL 教师的教学文章：选出反复出现的错误并保留语境，写出正确版本，再用同一结构造新句。关键是把反馈转为新的表达练习，而不是只抄一遍正确答案。",
+      "caution": "2006 年教学经验文章，研究场景不是 IELTS；作者明确不能保证提高高风险考试通过率。可借鉴流程，不能宣传已证明能提某个分数。",
+      "publishedAt": "2006",
+      "commercial": false,
+      "commercialDisclosure": "期刊公开文章；不是雅思课程销售页。",
+      "evidenceScope": "已核读方法部分、实例与结论限制；仅链接期刊公开 PDF，不复制或重新托管全文。",
+      "commentsReview": {
+        "status": "not_applicable",
+        "detail": "期刊文章，不属于可见评论式经验帖。"
+      },
+      "recommendedByDefault": true,
+      "actionableMethods": [
+        "挑反复出错、已经学过但用不稳的结构。",
+        "保留原句语境并解释修改理由。",
+        "自己再写新句，定期请可靠反馈者检查是否产生新错误。"
+      ],
+      "quality": "作者为课堂实践者，方法和失败点详细；是教学反思，不是IELTS随机试验或提分证据。",
+      "provenance": {
+        "reviewedAt": "2026-10-01",
+        "scope": "公开资料核读；不代表独立验证个人成绩或课程效果"
+      }
+    },
+    {
+      "checkedAt": "2026-10-01",
+      "levels": [
+        "入门",
+        "提升",
+        "冲刺"
+      ],
+      "status": "curated",
+      "price": "免费公开内容",
+      "access": "公开正文已读",
+      "id": "tahsin-high-baseline-2022",
+      "title": "8.5 分自述背后的起点与写作教训",
+      "provider": "Tahsin Rahman／Medium",
+      "url": "https://medium.com/@tahsin.rabab/how-i-got-8-5-in-ielts-c6e9d0316adc",
+      "sourceType": "experience",
+      "skills": [
+        "入门",
+        "写作",
+        "口语"
+      ],
+      "summary": "作者自报最终 8.5，但已多年接受英语授课；所谓约20天指考前准备窗口，不是从零建立能力。他承认未练写作使时间管理失控。文章适合提醒强听读者也要单独验证限时写作。",
+      "caution": "成绩与复议结果为作者自报，未独立核验。作者主页自称 IELTS Instructor；本文不构成课程效果证明。2022年海外考试流程不用于当前大陆报名指导。",
+      "publishedAt": "2022-12-31",
+      "commercial": null,
+      "commercialDisclosure": "页面作者简介为IELTS Instructor及Writer；正文未见直接购买入口，潜在教学业务未核查。",
+      "evidenceScope": "完整公开正文已读；未查看或验证原始成绩文件。",
+      "authorContext": {
+        "baseline": "小学及中学部分阶段为英语授课，多年英语使用积累",
+        "preparationDuration": "考前约20天，另有此前课程及长期能力积累",
+        "outcome": "自报听读9、写作7，口语复议从7.5到8、总分从8到8.5；未独立验证"
+      },
+      "commentsReview": {
+        "status": "none_visible",
+        "detail": "所读页面显示 No responses yet，没有可核实后续答疑。"
+      },
+      "recommendedByDefault": true,
+      "actionableMethods": [
+        "区分长期语言积累与短期熟悉考试。",
+        "即使听读基础好，也提前完成限时写作。",
+        "把他人短期经验用于发现遗漏，不作为自己的倒计时模板。"
+      ],
+      "quality": "具体第一人称复盘，坦承写作准备缺口；强基线与后续教师身份限制其代表性。",
+      "provenance": {
+        "reviewedAt": "2026-10-01",
+        "scope": "公开资料核读；不代表独立验证个人成绩或课程效果"
+      }
+    },
+    {
+      "checkedAt": "2026-10-01",
+      "levels": [
+        "入门",
+        "提升",
+        "冲刺"
+      ],
+      "status": "curated",
+      "price": "免费公开内容",
+      "access": "公开正文已读",
+      "id": "reddit-writing-feedback-compare-2026",
+      "title": "讨论案例：逐行比较修改与 AI 估分分歧",
+      "provider": "Reddit r/IELTS／Straight-Loss-9791 等",
+      "url": "https://www.reddit.com/r/IELTS/comments/1qjs1z4/i_dont_know_what_happened_in_writing_im_confused/",
+      "sourceType": "experience",
+      "skills": [
+        "写作"
+      ],
+      "summary": "评论者自报写作6.5到7.5，用了2–3个月：比较原稿与修改稿，再尝试自行改掉标出的错误。同串原作者却指出AI估分与实际结果不符。可借鉴逐行分析，不能据此给AI分数加固定偏移。",
+      "caution": "这是评论区亲历自述，不是原帖作者的提分记录；缺乏可核验前后作品和成绩。带提纲练习与无辅助模拟必须分开记录。",
+      "publishedAt": "2026-01-24",
+      "commercial": null,
+      "commercialDisclosure": "该评论提及Grammarly付费版，但未发现可见购买链接；其他回复身份及业务未知。",
+      "evidenceScope": "已读原帖可见讨论及目标评论；不声称所有折叠回复都已展开。原帖图片中的完整分数未转录。",
+      "authorContext": {
+        "baseline": "目标评论者自报写作6.5，完整英语背景未披露",
+        "preparationDuration": "目标评论者自报2–3个月",
+        "outcome": "目标评论者自报写作7.5；与原帖发帖人不同，未独立验证"
+      },
+      "commentsReview": {
+        "status": "visible_thread_read",
+        "originalPoster": "Express-Perspective9：表示AI曾估6.5，实际写作出分令其困惑；未建立校准规律。",
+        "firstHandComment": "Straight-Loss-9791：自报前后分数与逐行比较、自行修改过程。",
+        "adviceComment": "EvolveEnglish：建议先取得具体反馈；回复不视为正式测评。",
+        "disputedClaim": "评论者称AI通常严0.5分；同串和其他讨论存在不同经历，无法建立固定换算。",
+        "aftercare": "未见目标评论者上传可核验的前后作品或进一步有效投入记录。",
+        "votes": "点赞未用于判断真实性。"
+      },
+      "recommendedByDefault": false,
+      "collection": "经验比较与争议",
+      "actionableMethods": [
+        "在修改前后文本中逐行解释为什么更好。",
+        "先自己修正被标出的错误，再核对建议。",
+        "用新题、无提纲、无自动纠错的任务检验迁移。"
+      ],
+      "quality": "提供具体学习动作及反例讨论；身份、成绩与因果关系都未核验，仅作比较案例。",
+      "provenance": {
+        "reviewedAt": "2026-10-01",
+        "scope": "公开资料核读；不代表独立验证个人成绩或课程效果"
+      }
     }
   ],
   "policies": [
@@ -537,8 +964,8 @@
     },
     {
       "platform": "Reddit",
-      "status": "已读部分原帖",
-      "scope": "仅保留可说明起点与局限的自述；未核验成绩单真伪"
+      "status": "已读部分原帖及可见评论",
+      "scope": "Reddit已读可见评论；Medium显示无回复；官方说明及期刊无适用评论。 不声称读完折叠回复；自报成绩未核验。"
     },
     {
       "platform": "知乎",
@@ -547,8 +974,8 @@
     },
     {
       "platform": "B站",
-      "status": "部分简介及文章可读",
-      "scope": "未完整观看视频；资料导流、低细节文章不列为已验证学习方法"
+      "status": "本轮新增4篇完整图文正文核读",
+      "scope": "2篇个人复盘、1份阅读错因日志、1篇教师改写示例；没有宣称看完任何视频"
     },
     {
       "platform": "小红书",
@@ -558,7 +985,7 @@
     {
       "platform": "贴吧",
       "status": "覆盖缺口",
-      "scope": "已做公开检索，本轮未取得足够可完整核验的原始经验帖"
+      "scope": "新研究页导航遇到浏览器协议超时；本轮未读到合格雅思原帖，不能称为平台封禁"
     },
     {
       "platform": "YouTube",
@@ -572,5 +999,94 @@
     "https://www.zjzs.net/col/col282/index.html",
     "https://ielts.org/take-a-test/preparation-resources",
     "https://www.cambridgeenglish.org/exams-and-tests/ielts/preparation/"
-  ]
+  ],
+  "evidenceReview": {
+    "checkedAt": "2026-10-01",
+    "selectionNote": "默认展示原有资料与本轮推荐；比较案例需主动切换查看。新增B站文章仅 GY-Seminar 进入默认推荐。",
+    "conflicts": [
+      {
+        "topic": "短期高分是不是通用路径",
+        "evidence": [
+          "tahsin-high-baseline-2022",
+          "bili-experience-math-2025"
+        ],
+        "decision": "分别记录长期起点、日历跨度和有效练习；不把20天或数月映射到目标分。"
+      },
+      {
+        "topic": "看懂改写是否等于会写",
+        "evidence": [
+          "levinson-error-diaries-2006",
+          "reddit-writing-feedback-compare-2026",
+          "bili-writing-revision-nana-2026"
+        ],
+        "decision": "先解释修改，再独立产出新句和新题；不将一个标点或高级词绑定到分数。"
+      },
+      {
+        "topic": "背整篇口语稿是否有效",
+        "evidence": [
+          "bc-speaking-record-review",
+          "idp-speaking-plan-timing",
+          "bili-experience-nonzero-2023"
+        ],
+        "decision": "以官方自然表达与连续模拟建议为准，准备话题和语言资源，不背AI完整答案。"
+      },
+      {
+        "topic": "精练和模考的正确率能否混用",
+        "evidence": [
+          "bili-experience-math-2025",
+          "reddit-writing-feedback-compare-2026"
+        ],
+        "decision": "暂停重听、看提纲、自动纠错属于训练辅助；检验能力时单独记录无辅助限时表现。"
+      },
+      {
+        "topic": "AI估分能否直接决定报名",
+        "evidence": [
+          "reddit-writing-feedback-compare-2026"
+        ],
+        "decision": "AI只作可检查的反馈候选；不同自述不能建立固定偏移或正式分数预测。"
+      }
+    ],
+    "methodSynthesis": {
+      "type": "editorial_recommendation_not_score_prediction",
+      "writingLoop": [
+        "完成一份初稿，明确是练习还是无辅助限时模拟。",
+        "按官方评分维度定位问题，要求反馈指出具体句段与理由。",
+        "优先选择反复出现的1–2类问题，独立重写。",
+        "用同一结构造新句，再在新题中检验；留下原稿和改稿对照。"
+      ],
+      "speakingLoop": [
+        "与搭档连续完成三部分并录音。",
+        "回听清晰度、自然度和是否真正回应问题。",
+        "只选1–2个问题调整，再用不同题目检验；不背整篇答案。"
+      ],
+      "levels": {
+        "基础尚不稳定": "从短句短段开始，需要可靠反馈确认改法；不要从高分故事推定自己的备考周期。",
+        "已有基础": "把写作与口语的反馈转成重写和录音复盘，同时保留完整模拟。",
+        "接近目标": "用未练过的材料检查稳定性与限时表现，避免熟题熟稿掩盖问题。"
+      }
+    },
+    "commentCoverage": {
+      "bilibili": "前轮4篇仅完整正文已读，评论未完成读取；本轮未打开浏览器，不冒充看过答疑或后续。",
+      "overseas": "Reddit已读可见评论；Medium显示无回复；官方说明及期刊无适用评论。"
+    },
+    "notRecommendedSources": [
+      {
+        "url": "https://www.ieltspodcast.com/audio-tutorials/band-6-5-to-7-5-in-8-weeks-deepti/",
+        "reason": "课程服务方编写的成功案例，可作营销样本，不作为独立提分证据。"
+      },
+      {
+        "url": "https://www.ieltsadvantage.com/wp-content/uploads/2022/03/Welcome-to-the-Writing-Academy-110222-3.pdf",
+        "reason": "已读服务清单部分，其提交频率和字数上限为商业服务规则，不能移作官方考试标准；未下载或重新托管试题。"
+      }
+    ],
+    "reviewedButNotSelected": [
+      {
+        "title": "雅思心得",
+        "provider": "B站／variiy",
+        "url": "https://www.bilibili.com/opus/1133933578793517074?from=search",
+        "readScope": "完整正文已读",
+        "reason": "含旧费用、旧纸笔选择及未经核验的考场规则，另有保证性分数判断；可用练习建议与已收录资料重复，暂不增加为推荐卡片。"
+      }
+    ]
+  }
 }

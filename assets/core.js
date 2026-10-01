@@ -21,16 +21,18 @@
     });
     const meta=data.metadata||data.meta||{};
     const calendar=data.calendar;
-    return {meta:{...meta,bookingUrl:calendar?.bookingUrl||meta.bookingUrl},resources,policies:(data.policies||[]).map(p=>({...p,summary:p.text||p.summary||p.body})),centers:(data.centers||[]).map(c=>({...c,url:c.sourceUrl||c.url,notes:c.caveat||c.notes})),calendars:calendar?[{title:calendar.title,summary:calendar.note,url:calendar.bookingUrl,checkedAt:calendar.checkedAt,linkLabel:'查询官方当期安排',announcementUrl:calendar.announcementUrl}]:data.calendars||[],coverage:data.coverage||[],methodology:data.methodology||{}};
+    return {meta:{...meta,bookingUrl:calendar?.bookingUrl||meta.bookingUrl},resources,policies:(data.policies||[]).map(p=>({...p,summary:p.text||p.summary||p.body})),centers:(data.centers||[]).map(c=>({...c,url:c.sourceUrl||c.url,notes:c.caveat||c.notes})),calendars:calendar?[{title:calendar.title,summary:calendar.note,url:calendar.bookingUrl,checkedAt:calendar.checkedAt,linkLabel:'查询官方当期安排',announcementUrl:calendar.announcementUrl}]:data.calendars||[],coverage:data.coverage||[],methodology:data.methodology||{},evidenceReview:data.evidenceReview||{}};
   }
   function filterResources(resources, filters, saved) {
     const query = String(filters.query||'').trim().toLocaleLowerCase();
     return resources.filter(resource => {
+      if (filters.recommendation==='recommended' && resource.recommendedByDefault===false) return false;
+      if (filters.recommendation==='reference' && resource.recommendedByDefault!==false) return false;
       if (filters.savedOnly && !saved.includes(resource.id)) return false;
       for (const key of ['sourceType','price','access']) {if (filters[key] && filters[key]!=='all' && resource[key]!==filters[key]) return false;}
       if (filters.skill && filters.skill!=='all' && !resource.skills.includes(filters.skill)) return false;
       if (filters.level && filters.level!=='all' && !resource.levels.includes(filters.level)) return false;
-      const text = [resource.title,resource.provider,resource.summary,labels.sourceType[resource.sourceType],...resource.skills.map(s=>labels.skills[s]||s),...(resource.tags||[])].join(' ').toLocaleLowerCase();
+      const text = [resource.title,resource.provider,resource.summary,resource.collection,resource.caution,...(resource.actionableMethods||[]),labels.sourceType[resource.sourceType],...resource.skills.map(s=>labels.skills[s]||s),...(resource.tags||[])].join(' ').toLocaleLowerCase();
       return !query || text.includes(query);
     });
   }
