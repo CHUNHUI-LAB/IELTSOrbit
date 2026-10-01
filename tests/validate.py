@@ -39,8 +39,8 @@ def local_asset_exists(reference):
 
 assert all(local_asset_exists(x) for x in p.assets), 'missing, external or invalid local assets'
 # Version query strings affect caching, not local filesystem lookup.
-assert local_asset_exists('./assets/experience.js?v=23b573e60b1a')
-assert not local_asset_exists('./assets/__missing_test_asset__.js?v=23b573e60b1a')
+assert local_asset_exists('./assets/experience.js?v=a28d6ee8c71b')
+assert not local_asset_exists('./assets/__missing_test_asset__.js?v=a28d6ee8c71b')
 for invalid in ['https://example.org/asset.js','//example.org/asset.js','/assets/core.js','./../index.html','./%2e%2e/index.html','./assets/../../index.html','./assets/\\core.js']:
  assert not local_asset_exists(invalid), invalid
 versioned=[x for x in p.assets if urlsplit(x).path=='./assets/experience.js']
