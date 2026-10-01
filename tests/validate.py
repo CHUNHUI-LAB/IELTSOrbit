@@ -1,5 +1,7 @@
 from html.parser import HTMLParser
 from pathlib import Path
+from urllib.parse import urlsplit,unquote,parse_qs
+import hashlib
 import json,re
 ROOT=Path(__file__).resolve().parents[1]
 class Check(HTMLParser):
@@ -12,11 +14,38 @@ class Check(HTMLParser):
   if tag=='label':self.labels+=1
   if tag in ('script','link'):
    v=a.get('src',a.get('href',''))
-   if v.startswith('./'):self.assets.append(v)
+   if v:self.assets.append(v)
 p=Check();p.feed((ROOT/'index.html').read_text())
 assert len(p.ids)==len(set(p.ids)), 'duplicate ids'
 assert all(x in p.ids for x in p.refs), 'broken aria references'
-assert all((ROOT/x).is_file() for x in p.assets), 'missing local assets'
+def local_asset_path(reference):
+ try:
+  parsed=urlsplit(reference)
+  decoded=unquote(parsed.path)
+  if parsed.scheme or parsed.netloc or not decoded.startswith('./') or '\\' in decoded or '\x00' in decoded:
+   return None
+  if '..' in Path(decoded).parts:
+   return None
+  candidate=(ROOT/decoded).resolve()
+  if not candidate.is_relative_to(ROOT.resolve()):
+   return None
+  return candidate
+ except (ValueError,OSError):
+  return None
+
+def local_asset_exists(reference):
+ candidate=local_asset_path(reference)
+ return bool(candidate and candidate.is_file())
+
+assert all(local_asset_exists(x) for x in p.assets), 'missing, external or invalid local assets'
+# Version query strings affect caching, not local filesystem lookup.
+assert local_asset_exists('./assets/experience.js?v=23b573e60b1a')
+assert not local_asset_exists('./assets/__missing_test_asset__.js?v=23b573e60b1a')
+for invalid in ['https://example.org/asset.js','//example.org/asset.js','/assets/core.js','./../index.html','./%2e%2e/index.html','./assets/../../index.html','./assets/\\core.js']:
+ assert not local_asset_exists(invalid), invalid
+versioned=[x for x in p.assets if urlsplit(x).path=='./assets/experience.js']
+assert len(versioned)==1
+assert parse_qs(urlsplit(versioned[0]).query).get('v')==[hashlib.sha256((ROOT/'assets/experience.js').read_bytes()).hexdigest()[:12]], 'experience script content version mismatch' 
 assert p.labels>=8
 css=(ROOT/'assets/styles.css').read_text()
 assert 'prefers-reduced-motion:reduce' in css
