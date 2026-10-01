@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="IELTSOrbit：面向不同基础的雅思学习资源、备考路径，以及公开考点与考期信息。">
+  <meta name="color-scheme" content="light">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'">
+  <title>IELTSOrbit · 雅思学习导航</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/styles.css">
+  <script defer src="./assets/core.js"></script><script defer src="./assets/app.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="header-inner"><a class="brand" href="#library" aria-label="IELTSOrbit 首页"><span class="brand-mark" aria-hidden="true">◌</span><span>IELTSOrbit</span></a>
+  <div class="header-links"><a href="https://github.com/CHUNHUI-LAB/GradCompass" target="_blank" rel="noopener noreferrer">GradCompass<span class="desktop-only"> 申请导航</span></a><a class="quiet-link" href="https://github.com/CHUNHUI-LAB/IELTSOrbit" target="_blank" rel="noopener noreferrer">GitHub</a></div></div>
+</header>
+<main id="main" class="page-shell">
+  <section class="intro" aria-labelledby="page-title"><div><p class="eyebrow">雅思学习导航</p><h1 id="page-title">把备考，学得更有方向。</h1><p class="intro-copy">找到可靠资料，选择适合的练习路径，再核对考试安排。<span class="scope-copy">学习资料默认以 Academic 为主，考试类别须按用途另行确认。</span></p></div><div class="edition"><span class="edition-label">公开资源 · 独立整理</span><span id="checked-date">首版资料校核中</span></div></section>
+  <nav class="section-nav" role="tablist" aria-label="浏览内容"><button id="tab-library" role="tab" aria-controls="panel-library" aria-selected="true" data-tab="library">学习资料</button><button id="tab-path" role="tab" aria-controls="panel-path" aria-selected="false" tabindex="-1" data-tab="path">备考路径</button><button id="tab-exams" role="tab" aria-controls="panel-exams" aria-selected="false" tabindex="-1" data-tab="exams">考点与考期</button></nav>
+  <section id="panel-library" class="panel" role="tabpanel" aria-labelledby="tab-library">
+    <div class="section-heading"><div><h2>让资料为你的下一步服务</h2><p>官方标准、教师讲解与考生经验，分清来源再选择。</p></div></div>
+    <form id="filter-form" class="filter-bar" role="search" aria-label="筛选学习资料">
+      <label class="search-control"><span>搜索资料</span><input id="search" type="search" placeholder="搜索主题、技能或来源" autocomplete="off"></label>
+      <label><span>来源</span><select id="source-filter"><option value="all">全部来源</option><option value="official">官方</option><option value="teacher">教师 / 教学平台</option><option value="experience">考生经验</option></select></label>
+      <label><span>技能</span><select id="skill-filter"><option value="all">全部技能</option><option value="listening">听力</option><option value="reading">阅读</option><option value="writing">写作</option><option value="speaking">口语</option><option value="general">综合 / 考试信息</option><option value="vocabulary">词汇</option></select></label>
+      <label><span>学习阶段</span><select id="level-filter"><option value="all">不限阶段</option><option value="foundation">打基础</option><option value="developing">进阶练习</option><option value="advanced">精细提升</option></select></label>
+      <label><span>费用</span><select id="price-filter"><option value="all">不限费用</option><option value="free">免费</option><option value="mixed">免费与付费</option><option value="paid">付费</option></select></label>
+      <label><span>访问</span><select id="access-filter"><option value="all">不限访问方式</option><option value="open">可直接访问</option><option value="account">需要账户</option><option value="varies">以来源页为准</option></select></label>
+    </form>
+    <div class="results-toolbar"><p id="result-count" role="status" aria-live="polite">正在读取资料…</p><div class="result-actions"><button id="saved-filter" class="text-button" type="button" aria-pressed="false">仅看已收藏 <span id="saved-count">0</span></button><button id="reset-filters" class="text-button" type="button">清除筛选</button></div></div>
+    <div id="load-error" class="notice" hidden><h3>资料暂时没有加载成功</h3><p>请刷新重试。备考路径仍可使用；不要把加载失败当作没有资源。</p><button id="retry-load" class="secondary-button" type="button">重新加载资料</button></div>
+    <div id="resource-grid" class="resource-grid"></div>
+    <div id="empty-state" class="empty-state" hidden><span aria-hidden="true">⌕</span><h3>暂时没有匹配的资料</h3><p>试试减少筛选条件，或搜索更宽泛的关键词。</p><button id="empty-reset" class="secondary-button" type="button">查看全部资料</button></div>
+    <aside class="source-guide" aria-labelledby="source-guide-title"><h3 id="source-guide-title">同样是资料，证据的分量不同</h3><div class="source-guide-grid"><p><strong>官方资料</strong>用于核对考试形式、评分标准和报名政策。</p><p><strong>教师讲解</strong>提供训练方法，效果仍需用自己的练习检验。</p><p><strong>考生经验</strong>适合借鉴过程，个人成绩不代表可复制的结果。</p></div><details class="coverage-details"><summary>本轮核验范围与覆盖缺口</summary><div id="coverage-list"></div></details></aside>
+  </section>
+  <section id="panel-path" class="panel" role="tabpanel" aria-labelledby="tab-path" hidden>
+    <div class="section-heading"><div><p class="eyebrow">从下一步开始</p><h2>选一条练习路径</h2><p>分数只是自评参照。这是一份编辑整理的通用练习顺序，不预测成绩或提分周期。</p></div></div>
+    <div class="path-layout"><div class="path-controls"><label><span>当前参考水平</span><select id="baseline"><option value="unknown">还没有完整测评</option><option value="5.5">约 5.5</option><option value="6">约 6.0</option><option value="6.5">约 6.5</option></select></label><label><span>目标参考</span><select id="target"><option value="6.5">6.5</option><option value="7" selected>7.0</option><option value="7.5">7.5 及以上</option></select></label><button id="save-path" class="primary-button" type="button">保存这组选择</button><p class="micro-copy">仅保存在本浏览器，不上传、不登录，也不会跨设备同步。</p><p id="path-save-status" class="save-status" role="status" aria-live="polite"></p></div><div id="path-result" class="path-result" aria-live="polite"></div></div>
+    <div class="practice-note"><h3>用可观察的变化衡量练习</h3><p>以下为编辑建议，不是成绩或周期承诺。</p><ul id="methodology-list" class="methodology-list"></ul><div id="methodology-sources" class="methodology-sources"></div><button class="text-button" type="button" data-go="library">回到资料库挑选练习</button></div>
+  </section>
+  <section id="panel-exams" class="panel" role="tabpanel" aria-labelledby="tab-exams" hidden>
+    <div class="section-heading"><div><p class="eyebrow">先核对，再安排</p><h2>考点与考期</h2><p>从杭州开始整理公开信息。城市与考点介绍不等于实时可报名场次。</p></div><span class="location-chip">杭州 · 首批覆盖</span></div>
+    <div class="exam-warning"><strong>这里不显示实时考位</strong><p>公开考期表只说明计划日期。最终考试地点、日期、余位与费用，以官方报名系统的当前显示为准。</p><a class="primary-button" id="booking-link" href="https://ielts.neea.cn/" target="_blank" rel="noopener noreferrer">前往官方报名平台</a></div>
+    <div id="policy-grid" class="policy-grid"></div>
+    <div class="subsection-heading"><h3>公开考点信息</h3><p>请在报名时再次核对考点名称、地址和考试类型。</p></div><div id="center-list" class="center-list"></div>
+    <div class="subsection-heading"><h3>考期与报名信息源</h3><p>不把静态日历标为可预约库存。</p></div><div id="calendar-list" class="calendar-list"></div>
+    <div id="exam-data-empty" class="empty-state" hidden><h3>公开信息正在校核</h3><p>请先使用官方报名平台查看当期安排。</p></div>
+  </section>
+  <aside class="local-note"><p><strong>你的收藏，留在你的浏览器。</strong>仅保存资源编号与路径选项。共享设备上的其他使用者可能看到这些选择。</p><button id="clear-local" class="text-button" type="button">清除本地保存</button><p id="local-status" role="status" aria-live="polite"></p></aside>
+</main>
+<footer class="site-footer"><div><a class="brand footer-brand" href="#library">IELTSOrbit</a><p>独立开源导航，与 IELTS 考试主办方无隶属关系。</p><p>资料原文属于各自作者；这里只提供链接和简短整理。</p></div><div class="footer-links"><a href="https://github.com/CHUNHUI-LAB/IELTSOrbit" target="_blank" rel="noopener noreferrer">项目与勘误</a><a href="https://github.com/CHUNHUI-LAB/GradCompass" target="_blank" rel="noopener noreferrer">GradCompass 申请导航项目</a><span id="update-status">首版人工核验 · 自动更新尚未启用</span></div></footer>
+<noscript><p class="noscript">此页筛选需要 JavaScript。考试安排可直接前往 <a href="https://ielts.neea.cn/">官方报名平台</a>核对。</p></noscript>
+</body></html>
