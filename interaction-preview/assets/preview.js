@@ -14,6 +14,17 @@
   let loaded = false;
   const rows = new Map();
 
+  function fitWorkspaceToViewport() {
+    if (smallScreen.matches) return;
+    // Document position is stable when the user scrolls. Never resize the
+    // work area merely because its viewport-relative top has moved.
+    const workspace = $('workspace');
+    const documentTop = workspace.getBoundingClientRect().top + window.scrollY;
+    const available = window.innerHeight - documentTop - 24;
+    const height = Math.max(300, Math.min(640, Math.floor(available)));
+    workspace.style.setProperty('--workspace-height', height + 'px');
+  }
+
   function el(tag, className, text) {
     const node = document.createElement(tag);
     if (className) node.className = className;
@@ -249,7 +260,17 @@
     }
   });
   reducedMotion.addEventListener('change', () => { if (reducedMotion.matches) cancelTransitions(); });
-  smallScreen.addEventListener('change', () => { if (!smallScreen.matches) $('workspace').classList.remove('mobile-detail-active'); });
+  smallScreen.addEventListener('change', () => {
+    if (!smallScreen.matches) $('workspace').classList.remove('mobile-detail-active');
+    fitWorkspaceToViewport();
+  });
+  window.addEventListener('resize', fitWorkspaceToViewport);
+  if (typeof ResizeObserver === 'function') {
+    const layoutObserver = new ResizeObserver(fitWorkspaceToViewport);
+    ['header-shell', 'module-intro', 'filters', 'results-toolbar'].forEach(id => layoutObserver.observe($(id)));
+  }
+  if (document.fonts?.ready) document.fonts.ready.then(fitWorkspaceToViewport);
+  fitWorkspaceToViewport();
   swapDetail(placeholder('正在准备资料。'), false);
   load();
 })();

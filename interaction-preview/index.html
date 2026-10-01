@@ -13,14 +13,14 @@
 </head>
 <body>
   <a class="skip-link" href="#resource-list">跳到资料列表</a>
-  <header class="site-header">
+  <header id="header-shell" class="site-header">
     <div class="header-inner">
       <a class="brand" href="./" aria-label="IELTSOrbit 交互样板首页"><span class="brand-mark" aria-hidden="true"></span>IELTSOrbit</a>
       <span class="preview-label">交互样板 <span aria-hidden="true">/</span> 资源浏览</span>
     </div>
   </header>
   <main class="page-shell">
-    <section class="module-intro" aria-labelledby="page-title">
+    <section id="module-intro" class="module-intro" aria-labelledby="page-title">
       <div><p class="eyebrow">学习资料</p><h1 id="page-title">选一份资料，看看怎样用。</h1></div>
       <p class="intro-note">保留选择的上下文<br>先看用途，再核对来源</p>
     </section>
@@ -30,7 +30,7 @@
       <label class="select-field"><span>技能</span><select id="skill-filter"><option value="all">全部技能</option><option value="listening">听力</option><option value="reading">阅读</option><option value="writing">写作</option><option value="speaking">口语</option><option value="vocabulary">词汇</option><option value="general">综合</option></select></label>
       <button id="reset-filters" class="reset-button" type="button">重置</button>
     </form>
-    <div class="workspace-heading"><p id="result-count" role="status" aria-live="polite">正在读取资料…</p><span>Academic 为主 · 公开资料</span></div>
+    <div id="results-toolbar" class="workspace-heading"><p id="result-count" role="status" aria-live="polite">正在读取资料…</p><span>Academic 为主 · 公开资料</span></div>
     <section id="workspace" class="workspace" aria-label="资料浏览">
       <div class="master">
         <div id="resource-list" class="resource-list" tabindex="-1" aria-label="可选资料"></div>
