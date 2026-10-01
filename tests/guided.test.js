@@ -8,3 +8,9 @@ const migrated=core.readState(JSON.stringify({saved:['a'],path:{target:'7',examH
 assert.equal(experience.selectCases(catalog.resources).length,5);assert.equal(experience.selectCases(catalog.resources,'all','reference').length,7);assert.equal(experience.selectCases(catalog.resources,'all','all').length,12);for(const topic of Object.keys(experience.topics))assert.ok(experience.selectCases(catalog.resources,topic).length>0);assert.equal(experience.selectCases(catalog.resources,'timing','all').length,5);
 for(const r of catalog.resources.filter(r=>r.sourceType==='experience')){const c=experience.caseContent(r);assert.ok(c.baseline&&c.training.length&&c.outcome&&c.limit&&c.comments.length);}
 console.log('PASS: 240 bounded plans, time sums, 4-skill coverage, all guidance links use recommended resources; new/legacy hashes and state; 12 experience records with 5 recommended/7 references and valid topic/content boundaries.');
+
+const coverage=[...new Set([...experience.overview.themes,...experience.overview.disagreements].flatMap(section=>section.sourceIds))].sort();
+assert.deepEqual(coverage,catalog.resources.filter(r=>r.sourceType==='experience').map(r=>r.id).sort(),'synthesis cites all twelve existing experience cases');
+assert.equal(experience.overview.themes.length,4);assert.equal(experience.overview.disagreements.length,3);assert.equal(experience.overview.suggestedSequence.length,5);
+assert.ok(experience.overview.scope.includes('5篇推荐')&&experience.overview.scope.includes('7篇'));assert.ok(experience.overview.scope.includes('本轮没有重新核验'));assert.ok(experience.overview.sequenceLabel.includes('不是'));
+console.log('PASS: 12/12 experience synthesis coverage, 4 themes, 3 disagreements, 5 adjustable actions; scope preserves recommended/reference and unverified outcomes/comments.');
