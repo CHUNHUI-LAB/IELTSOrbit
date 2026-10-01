@@ -5,12 +5,39 @@ for(const history of ['yes','no','unknown'])for(const target of ['unknown','6.5'
 for(const [skill,guide] of Object.entries(core.learningGuides)){assert.equal(guide.steps.length,3);assert.ok(guide.resources.every(id=>catalog.resources.some(r=>r.id===id&&r.recommendedByDefault!==false)));assert.ok(guide.basis.includes('建议')||guide.basis.includes('编辑'));assert.equal(core.parseRoute('#library/'+skill).skill,skill);}
 assert.equal(core.parseRoute('#library/writing/resource/writing-rubric').resource,'writing-rubric');assert.equal(core.parseRoute('#path/step/5').planStep,null);assert.equal(core.parseRoute('#path/step/2').planStep,2);assert.equal(core.parseRoute('#path/result').planResult,true);for(const tab of ['library','path','exams','experience'])assert.equal(core.parseRoute('#'+tab).tab,tab);
 const migrated=core.readState(JSON.stringify({saved:['a'],path:{target:'7',examHistory:'yes',dailyMinutes:'60',weakSkill:'speaking',completed:true}}));assert.equal(migrated.path.dailyMinutes,'60');assert.equal(migrated.path.weakSkill,'speaking');assert.equal(migrated.path.baseline,'unknown');assert.deepEqual(core.readState('{"saved":["a"],"path":"bad"}').saved,['a']);
-assert.equal(experience.selectCases(catalog.resources).length,5);assert.equal(experience.selectCases(catalog.resources,'all','reference').length,7);assert.equal(experience.selectCases(catalog.resources,'all','all').length,12);for(const topic of Object.keys(experience.topics))assert.ok(experience.selectCases(catalog.resources,topic).length>0);assert.equal(experience.selectCases(catalog.resources,'timing','all').length,5);
+assert.equal(experience.selectCases(catalog.resources).length,6);assert.equal(experience.selectCases(catalog.resources,'all','reference').length,11);assert.equal(experience.selectCases(catalog.resources,'all','all').length,17);for(const topic of Object.keys(experience.topics))assert.ok(experience.selectCases(catalog.resources,topic).length>0);assert.equal(experience.selectCases(catalog.resources,'timing','all').length,9);
 for(const r of catalog.resources.filter(r=>r.sourceType==='experience')){const c=experience.caseContent(r);assert.ok(c.baseline&&c.training.length&&c.outcome&&c.limit&&c.comments.length);}
-console.log('PASS: 240 bounded plans, time sums, 4-skill coverage, all guidance links use recommended resources; new/legacy hashes and state; 12 experience records with 5 recommended/7 references and valid topic/content boundaries.');
+console.log('PASS: 240 bounded plans, time sums, 4-skill coverage, all guidance links use recommended resources; new/legacy hashes and state; 17 experience records with 6 recommended/11 references and valid topic/content boundaries.');
 
 const coverage=[...new Set([...experience.overview.themes,...experience.overview.disagreements].flatMap(section=>section.sourceIds))].sort();
-assert.deepEqual(coverage,catalog.resources.filter(r=>r.sourceType==='experience').map(r=>r.id).sort(),'synthesis cites all twelve existing experience cases');
-assert.equal(experience.overview.themes.length,4);assert.equal(experience.overview.disagreements.length,3);assert.equal(experience.overview.suggestedSequence.length,5);
-assert.ok(experience.overview.scope.includes('5篇推荐')&&experience.overview.scope.includes('7篇'));assert.ok(experience.overview.scope.includes('本轮没有重新核验'));assert.ok(experience.overview.sequenceLabel.includes('不是'));
-console.log('PASS: 12/12 experience synthesis coverage, 4 themes, 3 disagreements, 5 adjustable actions; scope preserves recommended/reference and unverified outcomes/comments.');
+assert.deepEqual(coverage,catalog.resources.filter(r=>r.sourceType==='experience').map(r=>r.id).sort(),'synthesis cites all seventeen experience cases');
+assert.equal(experience.overview.themes.length,6);assert.equal(experience.overview.disagreements.length,4);assert.equal(experience.overview.suggestedSequence.length,5);
+assert.ok(experience.overview.scope.includes('6篇推荐')&&experience.overview.scope.includes('11篇'));assert.ok(experience.overview.scope.includes('本轮没有重新核验'));assert.ok(experience.overview.sequenceLabel.includes('不是'));
+console.log('PASS: 17/17 experience synthesis coverage, 6 themes, 4 disagreements, 5 adjustable actions; scope preserves recommended/reference and unverified outcomes/comments.');
+
+const cases=catalog.resources.filter(r=>r.sourceType==='experience'),caseIds=new Set(cases.map(r=>r.id));
+assert.deepEqual([...new Set(Object.values(experience.topicIds).flat())].sort(),[...caseIds].sort(),'every experience has a question topic');
+for(const [topic,ids] of Object.entries(experience.topicIds)){
+ assert.equal(new Set(ids).size,ids.length,'no duplicate topic memberships');
+ assert.ok(ids.every(id=>caseIds.has(id)),'topic IDs resolve to experience records');
+ for(const scope of ['recommended','reference','all']){
+  const selected=experience.selectCases(catalog.resources,topic,scope);
+  assert.deepEqual(selected.map(r=>r.id),cases.filter(r=>ids.includes(r.id)&&(scope==='all'||(scope==='reference'?r.recommendedByDefault===false:r.recommendedByDefault!==false))).map(r=>r.id));
+ }
+}
+for(const section of [...experience.overview.themes,...experience.overview.disagreements]){
+ assert.ok(section.title&&section.synthesis&&section.sourceIds.length);
+ assert.equal(new Set(section.sourceIds).size,section.sourceIds.length);
+ assert.ok(section.sourceIds.every(id=>caseIds.has(id)));
+}
+for(const r of cases){assert.ok(r.summary?.length>20,'each experience has its own summary');assert.ok(!r.summary.startsWith('建议动作'),'summary is not replaced by editorial action list');}
+assert.equal(cases.slice(-5).filter(r=>r.recommendedByDefault).length,1);
+assert.equal(cases.find(r=>r.id==='candice-working-rewrite-case').publishedAt,'2023-03-07');
+assert.ok(cases.find(r=>r.id==='candice-working-rewrite-case').caution.includes('考试年份未可靠确认'));
+assert.equal(cases.find(r=>r.id==='dcard-working-dictation-review').commentsReview.status,'partially_reviewed');
+assert.ok(cases.slice(-5).every(r=>r.provenance.scope===r.evidenceScope&&r.commercialDisclosure&&r.excludeFromGeneralGuidance.length));
+assert.ok(cases.slice(-5).every(r=>r.access==='open'&&r.accessLabel.includes('公开')&&r.priceLabel.includes('免费')),'new raw schema produces readable labels and correct filter enums');
+console.log('PASS: every case has a summary and question membership; all topic/scope combinations, source links, dates, commercial disclosures, comment limits and normalized price/access labels.');
+
+const xhs=cases.find(r=>r.id==='xiaohongshu-self-study-single-skill-gap-2025');assert.equal(xhs.recommendedByDefault,false);assert.equal(xhs.publishedAt,'2025-06-27');assert.ok(xhs.authorContext.outcome.includes('口语5.5'));assert.ok(xhs.evidenceScope.includes('20条')&&xhs.evidenceScope.includes('53条')&&xhs.evidenceScope.includes('其余未读'));assert.ok(experience.overview.themes.some(t=>t.sourceIds.includes(xhs.id)&&t.title.includes('单项')));
+console.log('PASS: Xiaohongshu case remains a reference with 20/53 comment boundary and total-versus-component distinction.');

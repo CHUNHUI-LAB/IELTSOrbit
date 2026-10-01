@@ -1006,6 +1006,262 @@
         "scope": "完整可提取正文与8条回复均已核读；未核验成绩单"
       },
       "caution": "仅借鉴日程检查与错因复盘。作者成绩为后续回复自报，不能从评论猜测考官评分原因。官方日程核对说明：https://www.chinaielts.org/book-ielts/test-day/process-ielts"
+    },
+    {
+      "id": "linuxdo-work-gap-study-2026",
+      "title": "工作后备考复盘：日历跨度与实际投入不是一回事",
+      "url": "https://linux.do/t/topic/1712103",
+      "provider": "LINUX DO / fatmo",
+      "publishedAt": "2026-03-09",
+      "summary": "作者自述半年低频自学后接受约三个月辅导，首考总分7；同时反思阅读时间分配遗漏、口语正式结果低于教师预估。案例提示日历跨度不等于有效投入；本站不采用其背模板、背口语回答及AI分数偏移推断。",
+      "sourceType": "experience",
+      "skills": [
+        "general",
+        "listening",
+        "reading",
+        "speaking",
+        "writing"
+      ],
+      "levels": [
+        "foundation",
+        "developing"
+      ],
+      "price": "免费公开经验文",
+      "access": "公开正文与可见回复",
+      "checkedAt": "2026-10-01",
+      "recommendedByDefault": false,
+      "collection": "过程与失败点对照",
+      "commercial": false,
+      "commercialDisclosure": "作者自述购买课程；所读正文未见具体培训机构销售入口，未审计账号其他内容。",
+      "authorContext": {
+        "baseline": "作者自报四级464、六级未过；毕业工作三年多，有借助翻译阅读论文的经历，各科基础不均",
+        "preparationDuration": "自报前半年每周学习可能不足2小时，之后辅导约三个月；不等于九个月全职",
+        "outcome": "自报总分7、阅读7、写作和口语各6；成绩图未独立核验"
+      },
+      "actionableMethods": [
+        "按阶段记录实际学习时间和完成任务",
+        "把阅读各篇用时与口语具体困难单独记下来",
+        "区分教师或AI估分与正式结果"
+      ],
+      "excludeFromGeneralGuidance": [
+        "不采用背模板或背口语答案作为通用方法",
+        "不据个案认定AI固定偏低或某题型容易得分",
+        "不沿用旧考场流程或口语题库周期说法"
+      ],
+      "caution": "仅作有边界的过程复盘，不推荐原帖全部策略、软件或课程。",
+      "evidenceScope": "完整可提取正文及其16条可见回复已读；成绩和课程截图未视觉核验。",
+      "commentsReview": {
+        "status": "reviewed",
+        "detail": "回复中作者澄清目标为MPhil而非PhD；个案学费、财务和录取情况不用于现行申请规则。"
+      },
+      "status": "curated_with_caveats",
+      "provenance": {
+        "reviewedAt": "2026-10-01",
+        "scope": "完整可提取正文及其16条可见回复已读；成绩和课程截图未视觉核验。"
+      },
+      "selectionReason": "仅作有边界的过程复盘，不推荐原帖全部策略、软件或课程。"
+    },
+    {
+      "id": "dcard-working-dictation-review",
+      "title": "在职备考复盘：先记录听到什么，再核对文本",
+      "url": "https://www.dcard.tw/f/language/p/253895798",
+      "provider": "Dcard / 匿名在职考生",
+      "publishedAt": null,
+      "summary": "在职考生自述三个月备考：边听短音频边记要点，结束后复述；做题订正先不看文本重听，再对照文本，并由熟悉题型过渡到整套计时。教师估分恰与自报结果一致仅属个案，纸笔誊写策略不沿用为通用方法。",
+      "sourceType": "experience",
+      "skills": [
+        "listening",
+        "reading",
+        "writing",
+        "speaking"
+      ],
+      "levels": [
+        "developing"
+      ],
+      "price": "免费公开经验文",
+      "access": "公开正文；部分回复未展开",
+      "checkedAt": "2026-10-01",
+      "recommendedByDefault": true,
+      "commercial": true,
+      "commercialDisclosure": "原文多次推荐付费教师；是否存在赞助或返佣未核实，本站不推荐该服务。",
+      "authorContext": {
+        "baseline": "在职，完整初始能力记录不足",
+        "preparationDuration": "自报约三个月",
+        "outcome": "自报2023-10-12听力8、阅读7.5、写作口语各6.5、总分7；成绩图未核验"
+      },
+      "actionableMethods": [
+        "短音频结束后复述要点，再用文本核对遗漏",
+        "把熟悉题型练习与整套计时分开记录",
+        "先练主题句与提纲，再检查完整文章是否回应题目"
+      ],
+      "excludeFromGeneralGuidance": [
+        "纸笔听力誊写时间策略不用于当前大陆机考",
+        "不采用背通用答案、固定阅读顺序或押题成功率",
+        "教师估分及课程效果属于个案主张"
+      ],
+      "caution": "推荐阅读具体练习过程，不为课程、题库或方法效果背书。",
+      "evidenceScope": "完整可提取正文已读；5条可见顶层评论已读，2条删除占位无内容，嵌套回复未展开；未读成绩图或外链视频。",
+      "commentsReview": {
+        "status": "partially_reviewed",
+        "detail": "可见评论主要询问教师、费用与在职时间安排；未取得可核实的后续成绩或训练记录。"
+      },
+      "status": "curated_with_caveats",
+      "provenance": {
+        "reviewedAt": "2026-10-01",
+        "scope": "完整可提取正文已读；5条可见顶层评论已读，2条删除占位无内容，嵌套回复未展开；未读成绩图或外链视频。"
+      },
+      "selectionReason": "推荐阅读具体练习组织；不推荐付费教师、背稿、固定顺序或历史纸笔策略。"
+    },
+    {
+      "id": "candice-working-rewrite-case",
+      "title": "机构发布的在职复盘：写作反馈后重写与精简",
+      "url": "https://candiceclass.com/zh-cn/zh-ielts-overall-7-working/",
+      "provider": "Candice教学机构 / 学员叙述",
+      "publishedAt": "2023-03-07",
+      "summary": "机构刊载的学员叙述：在职考生练习列提纲，按反馈重写跑题文章、精简过长句子，二考自报写作6到6.5、总分6.5到7，口语持平。可用来理解反馈如何落实到修改，不能推断购课效果或一个月提分概率。",
+      "sourceType": "experience",
+      "skills": [
+        "writing",
+        "general"
+      ],
+      "levels": [
+        "developing"
+      ],
+      "price": "免费经验文；含付费课程推广",
+      "access": "公开正文",
+      "checkedAt": "2026-10-01",
+      "recommendedByDefault": false,
+      "collection": "商业来源案例对照",
+      "commercial": true,
+      "commercialDisclosure": "案例由培训机构发布且含课程推广，存在选择性呈现；未独立访谈学员或验证效果。",
+      "authorContext": {
+        "baseline": "设计背景、在职；作者称学校阶段已有英语积累，完整语言起点未知",
+        "preparationDuration": "叙述一阶段约一个月的反馈练习；不代表全部英语积累",
+        "outcome": "文中自报写作6到6.5、总分6.5到7、口语持平；未核验成绩"
+      },
+      "actionableMethods": [
+        "把反馈转成一次具体重写",
+        "写前列提纲，写后检查多余句子和用时"
+      ],
+      "excludeFromGeneralGuidance": [
+        "不推荐文中课程或背句子保分说法",
+        "不把个案变化归因为购课",
+        "不推断考试年份或当前费用"
+      ],
+      "caution": "发表日期取页面标注的2023-03-07，考试年份未可靠确认；约一个月只指叙述中的集中练习阶段，不是全部备考。机构成功案例不是独立效果研究。",
+      "evidenceScope": "完整可提取正文已读；成绩图片未核验，未返回该文可读评论。",
+      "commentsReview": {
+        "status": "not_reviewed",
+        "detail": "没有取得可读评论，不声称存在后续验证。"
+      },
+      "status": "curated_with_caveats",
+      "provenance": {
+        "reviewedAt": "2026-10-01",
+        "scope": "完整可提取正文已读；成绩图片未核验，未返回该文可读评论。"
+      },
+      "selectionReason": "机构发布的历史案例，仅作反馈落实过程对照；不为课程或提分概率背书。"
+    },
+    {
+      "id": "ptt-repeated-writing-attempts-2018",
+      "title": "多次考试复盘：堆学习时长不等于解决写作问题",
+      "url": "https://www.ptt.cc/bbs/IELTS/M.1525691138.A.1A8.html",
+      "provider": "PTT IELTS / ccalvin97",
+      "publishedAt": "2018-05-07",
+      "summary": "作者列出全职阶段约五次考试：写作前四次均为6，末次自报6.5；听读分数也有波动，并推荐多位教师。长时间投入与反复报名不等于短板已解决，本站据此建议记录具体错误和修改，而非增加考试次数。",
+      "sourceType": "experience",
+      "skills": [
+        "writing",
+        "general"
+      ],
+      "levels": [
+        "developing"
+      ],
+      "price": "免费公开经验文",
+      "access": "公开正文与可见回复",
+      "checkedAt": "2026-10-01",
+      "recommendedByDefault": false,
+      "collection": "历史过程对照",
+      "commercial": true,
+      "commercialDisclosure": "作者称非广告，但推荐多位付费教师；商业关系未独立核验。",
+      "authorContext": {
+        "baseline": "已有雅思约6.5参照，完整背景未披露",
+        "preparationDuration": "自报在职半年多、后全职约三个月；不同阶段不能简单比较",
+        "outcome": "列出全职阶段约五次考试，自报最终写作6.5、总分7；未独立核验"
+      },
+      "actionableMethods": [
+        "把每次写作的问题、反馈与修改分别记录",
+        "检查改动能否在新任务中独立完成"
+      ],
+      "excludeFromGeneralGuidance": [
+        "不由考官追问推断分数",
+        "不推广模板、考试次数或教师效果",
+        "不沿用2018考场、教材排名和收费信息"
+      ],
+      "caution": "只参考长期停滞与复盘问题，非当前规则或提分保证。",
+      "evidenceScope": "完整可提取正文、2条可见回复及作者一条回应已读；外链旧帖未读，未核验成绩文件。",
+      "commentsReview": {
+        "status": "reviewed",
+        "detail": "可见回复为鼓励与卡关感受，没有新增有效训练或成绩验证。"
+      },
+      "status": "curated_with_caveats",
+      "provenance": {
+        "reviewedAt": "2026-10-01",
+        "scope": "完整可提取正文、2条可见回复及作者一条回应已读；外链旧帖未读，未核验成绩文件。"
+      },
+      "selectionReason": "只参考长期停滞与复盘问题，非当前规则或提分保证。"
+    },
+    {
+      "id": "xiaohongshu-self-study-single-skill-gap-2025",
+      "originalTitle": "一百天极限自学雅思+DIY申港Mphil攻略",
+      "title": "百日自学复盘：总分达7，口语仍为5.5",
+      "provider": "小红书 / 西嘎",
+      "url": "https://www.xiaohongshu.com/explore/685ec9e0000000002400907f",
+      "sourceType": "experience",
+      "skills": [
+        "general",
+        "listening",
+        "reading",
+        "writing",
+        "speaking"
+      ],
+      "levels": [
+        "developing"
+      ],
+      "price": "免费公开经验文",
+      "access": "公开正文；仅已加载评论",
+      "summary": "作者自述从2月中旬准备至4月底，先学课程再练题，听读从精练转向整套，口语用AI对话、写作用AI批改并积累语料；自报总分7，但写作6、口语5.5。可提醒分开看各科短板，不能把总分或AI使用当成方法有效的证明。",
+      "checkedAt": "2026-10-01",
+      "publishedAt": "2025-06-27",
+      "status": "curated_with_caveats",
+      "recommendedByDefault": false,
+      "collection": "单项差距与自学过程对照",
+      "commercial": null,
+      "commercialDisclosure": "完整所读正文未见销售入口；未审计账号其他内容，不据此判断账号整体商业关系。",
+      "authorContext": {
+        "baseline": "自学备考，完整英语起点未可靠披露；不能从标题推断零基础",
+        "preparationDuration": "自述2025年2月中旬开始、4月底机考；词汇与复习每天约2小时仅是其一项投入，不等于每日全部训练时长",
+        "outcome": "自报总分7、阅读8.5、听力7.5、写作6、口语5.5；未核验成绩单"
+      },
+      "actionableMethods": [
+        "同时记录四科表现和任务要求，避免只看总分而忽略单项差距",
+        "练习后安排核对与修改，保留原答和改动，再检查自己能否独立完成"
+      ],
+      "excludeFromGeneralGuidance": [
+        "不将每天80词或百天备考作为通用定额或提分承诺",
+        "不将AI批改或估分等同官方成绩，也不推断AI造成作者总分7",
+        "不将原帖的零成本说法推广为完整备考成本结论"
+      ],
+      "caution": "仅参考备考过程与单项差距；标题中的百日不等于已核实的有效训练时长。正文日期为2025-06-27，未采用搜索显示日期或自动生成的搜索摘要。总分达标是否足够，仍须核对自己用途对应的单项要求。",
+      "selectionReason": "总分与口写表现差距的自述案例，作为参考层；成绩和AI效果未经独立验证。",
+      "evidenceScope": "完整正文已核读；封面已视觉检查，仅有标题日期等信息，不是成绩证明；当前加载20条评论/回复已读，页面标示共53条，其余未读；无视频，未核验成绩单。",
+      "commentsReview": {
+        "status": "partially_reviewed",
+        "detail": "仅核读当前加载的20条评论/回复；页面共53条，不声称全部读完，也未取得独立成绩验证。"
+      },
+      "provenance": {
+        "reviewedAt": "2026-10-01",
+        "scope": "完整正文已核读；封面已视觉检查，仅有标题日期等信息，不是成绩证明；当前加载20条评论/回复已读，页面标示共53条，其余未读；无视频，未核验成绩单。"
+      }
     }
   ],
   "policies": [
@@ -1184,8 +1440,8 @@
     },
     {
       "platform": "小红书",
-      "status": "覆盖缺口",
-      "scope": "已做公开检索，本轮未取得足够可完整核验的原始经验帖"
+      "status": "新增1篇完整正文，评论部分核读",
+      "scope": "完整核读西嘎自学复盘正文，封面已视觉检查；当前加载20条评论/回复已读，页面共53条，其余未读。未核验成绩单，不采用自动搜索摘要。"
     },
     {
       "platform": "贴吧",
@@ -1196,6 +1452,26 @@
       "platform": "YouTube",
       "status": "部分官方简介已核查",
       "scope": "无完整视频观看或课程效果验证"
+    },
+    {
+      "platform": "LINUX DO",
+      "status": "新增1篇过程复盘",
+      "scope": "完整可提取正文与16条可见回复已读；成绩和课程截图未核验。不采用背模板、题库周期或AI固定估分偏移。"
+    },
+    {
+      "platform": "Dcard",
+      "status": "新增1篇在职练习过程",
+      "scope": "完整可提取正文与5条可见顶层评论已读；2条删除占位无内容，嵌套回复未展开；未读成绩图或外链视频。含付费教师推荐。"
+    },
+    {
+      "platform": "Candice机构案例",
+      "status": "新增1篇商业来源对照",
+      "scope": "完整可提取正文已读；未取得可读评论、未核验成绩图片或考试年份；页面日期不当作考试日期。"
+    },
+    {
+      "platform": "PTT IELTS",
+      "status": "新增1篇历史过程对照",
+      "scope": "完整可提取正文、2条可见回复与作者回应已读；未读外链旧帖，成绩未经独立验证；不采用历史费用与考场规则。"
     }
   ],
   "watchSources": [
@@ -1207,7 +1483,7 @@
   ],
   "evidenceReview": {
     "checkedAt": "2026-10-01",
-    "selectionNote": "默认展示原有资料与本轮推荐；比较案例需主动切换查看。新增B站文章仅 GY-Seminar 进入默认推荐。",
+    "selectionNote": "当前33项资源默认21项、参考12项；其中17篇经验默认6篇、参考11篇。新增5篇中，在职听写复盘仅推荐具体练习过程，其余4篇需主动选择。商业关系与方法限制逐篇披露，推荐阅读不等于推荐文中课程。B站文章中仍只有 GY-Seminar 默认推荐。",
     "conflicts": [
       {
         "topic": "短期高分是不是通用路径",
@@ -1272,7 +1548,12 @@
     },
     "commentCoverage": {
       "bilibili": "前轮4篇仅完整正文已读，评论未完成读取；本轮未打开浏览器，不冒充看过答疑或后续。",
-      "overseas": "Reddit已读可见评论；Medium显示无回复；官方说明及期刊无适用评论。"
+      "overseas": "Reddit已读可见评论；Medium显示无回复；官方说明及期刊无适用评论。",
+      "linuxdo": "完整正文与16条可见回复；未视觉核验成绩或课程截图。",
+      "dcard": "完整正文、5条可见顶层评论；2条删除占位无内容，嵌套回复未展开，成绩图与外链视频未读。",
+      "candice": "完整正文；无可读评论返回，成绩图片未核验。",
+      "ptt": "完整正文、2条可见回复和作者回应；外链旧帖未读，成绩未核验。",
+      "xiaohongshu": "完整正文、封面及当前加载20条评论/回复；页面共53条，其余未读，未核验成绩单。"
     },
     "notRecommendedSources": [
       {

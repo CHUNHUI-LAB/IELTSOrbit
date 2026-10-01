@@ -24,13 +24,13 @@ console.log('PASS: 12 learning-path combinations, source/skill/level/price/acces
 
 const source=require('../data/catalog.json');
 const catalog=core.normalizeCatalog(source);
-assert.equal(catalog.resources.length,28);
+assert.equal(catalog.resources.length,33);
 assert.equal(catalog.policies.length,3);
 assert.equal(catalog.centers.length,4);
 assert.equal(catalog.calendars.length,1);
 assert.equal(catalog.meta.checkedAt,'2026-10-01');
 assert.equal(core.filterResources(catalog.resources,{sourceType:'teacher'},[]).length,5);
-assert.equal(core.filterResources(catalog.resources,{sourceType:'experience'},[]).length,12);
+assert.equal(core.filterResources(catalog.resources,{sourceType:'experience'},[]).length,17);
 assert.equal(core.filterResources(catalog.resources,{sourceType:'official'},[]).length,11);
 assert.ok(core.filterResources(catalog.resources,{skill:'speaking',price:'free'},[]).length>0);
 assert.equal(catalog.resources.find(r=>r.id==='simon').price,'paid');
@@ -38,10 +38,10 @@ assert.equal(catalog.resources.find(r=>r.id==='liz').price,'mixed');
 assert.equal(catalog.resources.find(r=>r.id==='simon').access,'account');
 assert.ok(catalog.policies.every(p=>p.summary&&p.url));
 assert.ok(catalog.centers.every(c=>c.notes.includes('旧纸笔')&&c.url));
-assert.ok(catalog.coverage.some(c=>c.platform==='小红书'&&c.status==='覆盖缺口'));
+assert.ok(catalog.coverage.some(c=>c.platform==='小红书'&&c.status.includes('评论部分核读')));
 assert.ok(catalog.coverage.some(c=>c.platform==='贴吧'&&c.status==='覆盖缺口'));
 assert.equal(source.calendar.dates.length,0);
-console.log('PASS: actual public catalog adapter, 28 resources, 3 policies, 4 centers, honest calendar/coverage, price/access classes');
+console.log('PASS: actual public catalog adapter, 33 resources, 3 policies, 4 centers, honest calendar/coverage, price/access classes');
 
 const crypto=require('node:crypto');
 const digest=value=>crypto.createHash('sha256').update(JSON.stringify(value)).digest('hex');
@@ -55,7 +55,7 @@ assert.equal(digest(source.methodology),'2a67fc58b539e8648e940dc9881ae3a021320c5
 assert.equal(digest(source.watchSources),'01cb9b073742d9c7262e5f75ed5b52724564200b423e5eb3beff727aa4c27513','watchSources preserved');
 const recommended=core.filterResources(catalog.resources,{recommendation:'recommended'},[]);
 const reference=core.filterResources(catalog.resources,{recommendation:'reference'},[]);
-assert.equal(recommended.length,20);assert.equal(reference.length,8);
+assert.equal(recommended.length,21);assert.equal(reference.length,12);
 assert.deepEqual(recommended.filter(r=>r.id.startsWith('bili-')).map(r=>r.id),['bili-experience-math-2025']);
 assert.ok(reference.some(r=>r.id==='reddit-writing-feedback-compare-2026'));
 assert.equal(core.filterResources(catalog.resources,{recommendation:'reference',query:'逐行'},[]).length,1);
@@ -63,4 +63,7 @@ assert.ok(source.resources.slice(15).every(r=>typeof r.recommendedByDefault==='b
 assert.ok(source.resources.filter(r=>r.authorContext).every(r=>r.authorContext.baseline&&r.authorContext.outcome));
 assert.equal(source.evidenceReview.conflicts.length,5);
 assert.equal(source.metadata.dailyUpdatesEnabled,true);assert.equal(source.metadata.firstScheduledRunVerified,false);
-console.log('PASS: 15 originals and formal data untouched; 20 default recommendations, 8 comparison cases, 13 additions with provenance; daily-update first run remains pending');
+console.log('PASS: 15 originals and formal data untouched; 21 default recommendations, 12 comparison cases, 18 additions with provenance; daily-update first run remains pending');
+
+assert.equal(digest(source.resources.slice(0,28)),'cb065c66a2ea2252bee32313b2bb58ac3cf56d56d00bf757b336f00919e10905','all 28 pre-expansion records preserved without edits');
+console.log('PASS: all 28 pre-expansion resource records preserved byte-equivalently after JSON parsing.');
