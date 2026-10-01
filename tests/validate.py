@@ -43,6 +43,7 @@ for section in ('policies','centers'):
   assert r.get('url',r.get('sourceUrl','')).startswith('https://'),(section,r)
   assert r.get('checkedAt'),(section,r)
 assert catalog.get('calendar',{}).get('dates') == [], 'No copied or live exam dates are available'
-assert catalog['metadata']['dailyUpdatesEnabled'] is False
+assert catalog['metadata']['dailyUpdatesEnabled'] is True
+assert catalog['metadata']['firstScheduledRunVerified'] is False
 assert len(catalog['coverage']) >= 6
 print(f'PASS: HTML IDs/ARIA references, labels, relative assets, reduced motion, safe DOM; {len(seen)} public resource records validated')

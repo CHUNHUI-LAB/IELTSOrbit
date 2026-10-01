@@ -4,10 +4,11 @@
     "title": "IELTSOrbit",
     "checkedAt": "2026-10-01",
     "refresh": "initial_manual_review",
-    "dailyUpdatesEnabled": false,
+    "dailyUpdatesEnabled": true,
     "scope": "通用雅思学习资料与备考方法；初版考点覆盖杭州。Academic 为默认学习方向，其他类别需按用途核对。",
     "privacy": "选择仅在浏览器本地使用；不收集成绩、申请资料、账号或报名记录。",
-    "disclaimer": "非 IELTS 官方网站；不保证提分速度，不代表报名成功或实时考位。"
+    "disclaimer": "非 IELTS 官方网站；不保证提分速度，不代表报名成功或实时考位。",
+    "firstScheduledRunVerified": false
   },
   "resources": [
     {
