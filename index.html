@@ -7,8 +7,8 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'">
   <title>IELTSOrbit · 雅思学习导航</title>
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./assets/styles.css">
-  <script defer src="./assets/core.js?v=bcbe695cf086"></script><script defer src="./assets/experience.js?v=ecced1749494"></script><script defer src="./assets/app.js?v=522595d698e5"></script>
+  <link rel="stylesheet" href="./assets/styles.css?v=10dc2b06e15f">
+  <script defer src="./assets/core.js?v=bcbe695cf086"></script><script defer src="./assets/experience.js?v=3e32e7af8935"></script><script defer src="./assets/app.js?v=2fee0cccc585"></script>
 </head>
 <body>
 <a class="skip-link" href="#main">跳到主要内容</a>
@@ -32,13 +32,16 @@
   </section>
   <section id="panel-library" class="panel" role="tabpanel" aria-labelledby="tab-library" hidden>
     <div class="section-heading"><div><p class="eyebrow">先看重点，再动手练</p><h2>这科应该怎么学？</h2><p>选一科，先看方法与常见问题，再挑一份资料开始。原文放在站内详情的最后。</p></div></div>
+    <ol class="journey-steps" aria-label="资料使用顺序"><li><strong>1 · 看本科学习重点</strong><span>先定位一个问题</span></li><li><strong>2 · 读一份资料摘要</strong><span>展开步骤，再看原文</span></li><li><strong>3 · 做小任务并复盘</strong><span>留下答案、初稿或录音</span></li></ol>
+    <div id="plan-return" class="journey-return" hidden><a href="#path/result">← 回到今天与本周计划</a><span>查看资料不会改动已保存的选择</span></div>
     <div id="skill-navigation" class="skill-navigation" aria-label="选择学习科目"></div>
     <div id="learning-guide" class="learning-guide"></div>
     <div class="subsection-heading resource-heading"><div><h3 id="resource-heading">配套资料</h3><p>卡片先读摘要；展开详情后，再决定要不要去原文。</p></div></div>
     <form id="filter-form" class="guided-filter" role="search" aria-label="筛选学习资料">
       <label class="search-control"><span>搜索当前资料</span><input id="search" type="search" placeholder="例如：定位、录音、写作反馈" autocomplete="off"></label>
+      <label class="scope-control"><span>资料范围</span><select id="recommendation-filter" aria-describedby="scope-help"><option value="recommended" selected>默认推荐</option><option value="all">全部资料（含比较案例）</option><option value="reference">仅参考案例（非推荐）</option></select></label>
+      <p id="scope-help" class="scope-help">科目与资料范围分别筛选；默认展示推荐资料。</p>
       <details id="advanced-filters" class="advanced-filters"><summary>更多筛选：来源、阶段、费用和访问</summary><div class="filter-bar">
-        <label><span>资料范围</span><select id="recommendation-filter"><option value="recommended" selected>默认推荐</option><option value="all">全部资料（含比较案例）</option><option value="reference">仅参考案例（非推荐）</option></select></label>
         <label><span>来源</span><select id="source-filter"><option value="all">全部来源</option><option value="official">官方</option><option value="teacher">教师 / 教学平台</option><option value="experience">考生经验</option></select></label>
         <label><span>练习科目</span><select id="skill-filter"><option value="all">全部科目</option><option value="listening" selected>听力</option><option value="reading">阅读</option><option value="writing">写作</option><option value="speaking">口语</option><option value="general">综合 / 考试信息</option><option value="vocabulary">词汇</option></select></label>
         <label><span>学习阶段</span><select id="level-filter"><option value="all">不限阶段</option><option value="foundation">打基础</option><option value="developing">进阶练习</option><option value="advanced">精细提升</option></select></label>
@@ -55,6 +58,7 @@
   <section id="panel-experience" class="panel" role="tabpanel" aria-labelledby="tab-experience" hidden><div class="section-heading"><div><p class="eyebrow">看清别人做了什么，再判断是否适合自己</p><h2>雅思备考经验</h2><p>先读跨案例总结，再按你的问题看过程。自报成绩与备考时长不能直接变成你的提分计划。</p></div></div><div id="experience-root"></div></section>
   <section id="panel-path" class="panel" role="tabpanel" aria-labelledby="tab-path" hidden>
     <div class="section-heading"><div><p class="eyebrow">四个小选择，换成今天能做的事</p><h2>制定学习计划</h2><p>不用先估分，也不用现在决定首考日期。按你的回答给出可调整的练习建议。</p></div></div>
+    <ol class="journey-steps" aria-label="计划使用顺序"><li><strong>1 · 填四项选择</strong><span>不确定的项目可以跳过</span></li><li><strong>2 · 看今天与7天安排</strong><span>每项任务都能打开方法和资料</span></li><li><strong>3 · 练完后再调整</strong><span>按自己的记录改优先项</span></li></ol>
     <div class="plan-shell">
       <div id="plan-wizard" class="plan-wizard">
         <ol id="plan-progress" class="plan-progress" aria-label="计划制定进度"></ol>
@@ -63,11 +67,12 @@
           <fieldset id="plan-step-2" class="plan-step" tabindex="-1" hidden><legend>2. 你希望达到什么要求？</legend><p>目标用于提醒核对总分与单项门槛，不代表能在一周内达到。</p><label><span>目标总分参考</span><select id="target"><option value="unknown" selected>还不确定 / 先开始学习</option><option value="6.5">6.5</option><option value="7">7.0</option><option value="7.5">7.5 及以上</option></select></label></fieldset>
           <fieldset id="plan-step-3" class="plan-step" tabindex="-1" hidden><legend>3. 每天能留出多少时间？</legend><p>把任务拆到这段时间里，没完成可以移到下一天。</p><label><span>每天可用时间</span><select id="daily-time"><option value="15">约 15 分钟</option><option value="30" selected>约 30 分钟</option><option value="60">约 60 分钟</option><option value="90">约 90 分钟</option></select></label></fieldset>
           <fieldset id="plan-step-4" class="plan-step" tabindex="-1" hidden><legend>4. 哪一科最需要帮助？</legend><p>不知道也可以。我们会先安排轮流观察四科，之后你再调整。</p><label><span>本周优先项</span><select id="weak-skill"><option value="unknown">还不知道，先观察</option><option value="listening">听力</option><option value="reading">阅读</option><option value="writing">写作</option><option value="speaking">口语</option></select></label></fieldset>
-          <div class="wizard-actions"><button id="plan-back" class="secondary-button" type="button">上一步</button><button id="plan-next" class="primary-button" type="button">下一步</button></div>
+          <div class="wizard-actions"><button id="cancel-plan-edit" class="text-button" type="button" hidden>取消调整，返回原计划</button><button id="plan-back" class="secondary-button" type="button">上一步</button><button id="plan-next" class="primary-button" type="button">下一步</button></div>
         </form>
       </div>
+      <p id="plan-draft-status" class="notice plan-draft-status" role="status" hidden></p>
       <div id="path-result" class="path-result" aria-live="polite" hidden></div>
-      <div id="plan-result-actions" class="plan-result-actions" hidden><button id="edit-plan" class="secondary-button" type="button">调整这份计划</button><button id="save-path" class="text-button" type="button">保存这组选择</button></div>
+      <div id="plan-result-actions" class="plan-result-actions" hidden><button id="edit-plan" class="secondary-button" type="button">调整这份计划</button><button id="save-path" class="text-button" type="button">保存这组选择</button><button id="discard-plan-draft" class="text-button" type="button" hidden>放弃调整，返回原计划</button></div>
       <p class="micro-copy">仅保存在本浏览器，不上传、不登录，也不会跨设备同步。清除浏览器数据会丢失选择。</p><p id="path-save-status" class="save-status" role="status" aria-live="polite"></p>
     </div>
     <div class="practice-note"><h3>用可观察的变化衡量练习</h3><p>以下为编辑建议，不是成绩或周期承诺。</p><ul id="methodology-list" class="methodology-list"></ul><div id="methodology-sources" class="methodology-sources"></div><button class="text-button" type="button" data-go="library">回到资料库挑选练习</button></div>
