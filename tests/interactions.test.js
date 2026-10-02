@@ -33,6 +33,20 @@ function harness({rawState,hash='',offline=false,storageBlocked=false}={}){
 }
 (async()=>{
  const h=harness(),{nodes:n,doc}=h;await h.flush();
+ // Compact filter feedback exposes collapsed choices and preserves the active subject.
+ const feedback=harness({hash:'#library/writing',rawState:JSON.stringify({saved:['writing-rubric'],path:null})});await feedback.flush();const fn=feedback.nodes;
+ assert.equal(fn['active-filters'].hidden,true);
+ fn.search.value='<img src=x onerror=alert(1)>';fn['source-filter'].value='official';fn['source-filter'].selectedOptions=[{textContent:'官方'}];fn['price-filter'].value='free';fn['price-filter'].selectedOptions=[{textContent:'免费'}];fn['filter-form'].dispatch('input');
+ assert.equal(fn['active-filters'].children.length,3);assert.match(fn['advanced-filter-summary'].textContent,/2 项/);assert.equal(fn['advanced-filters'].open,false);assert.equal(fn['empty-state'].hidden,false);
+ assert.ok(fn['active-filters'].children[0].textContent.includes('<img src=x onerror=alert(1)>'));assert.equal(fn['active-filters'].children[0].children.length,0,'search text never becomes markup');
+ const existingChip=fn['active-filters'].children[0];existingChip.focus();fn['filter-form'].dispatch('input');assert.equal(fn['active-filters'].children[0],existingChip,'unchanged feedback retains DOM identity');assert.equal(feedback.active,existingChip);
+ const localBefore=feedback.saved.get('ieltsorbit.local.v1');fn['active-filters'].children[0].dispatch('click');assert.equal(fn.search.value,'');assert.equal(fn['source-filter'].value,'official');assert.equal(feedback.active,fn['active-filters'].children[0]);
+ fn['active-filters'].children[1].dispatch('click');assert.equal(fn['price-filter'].value,'all');assert.equal(feedback.active,fn['active-filters'].children[0]);assert.equal(fn['skill-filter'].value,'writing');
+ fn['active-filters'].children[0].dispatch('click');assert.equal(fn['active-filters'].hidden,true);assert.equal(feedback.active,fn.search);assert.equal(fn['skill-filter'].value,'writing');assert.equal(feedback.saved.get('ieltsorbit.local.v1'),localBefore);
+ fn['saved-filter'].dispatch('click');assert.equal(fn['active-filters'].children[0].textContent,'仅看已收藏 ×');fn['active-filters'].children[0].dispatch('click');assert.equal(fn['saved-filter'].attrs['aria-pressed'],'false');assert.equal(feedback.saved.get('ieltsorbit.local.v1'),localBefore);
+ fn['recommendation-filter'].value='reference';fn['filter-form'].dispatch('input');fn['active-filters'].children[0].dispatch('click');assert.equal(fn['recommendation-filter'].value,'recommended');
+ fn.search.value='no matching resource';fn['filter-form'].dispatch('input');fn['empty-reset'].dispatch('click');assert.equal(feedback.active,fn.search);assert.equal(fn['skill-filter'].value,'writing');
+
  // Resource links and recovery preserve the reader's current subject and result scope.
  const nav=harness({hash:'#library/writing'});await nav.flush();const nn=nav.nodes;
  const writingCount=nn['resource-grid'].children.length;

@@ -7,8 +7,8 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'">
   <title>IELTSOrbit · 雅思学习导航</title>
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./assets/styles.css?v=10dc2b06e15f">
-  <script defer src="./assets/core.js?v=bcbe695cf086"></script><script defer src="./assets/experience.js?v=5378156006bb"></script><script defer src="./assets/app.js?v=a013219da389"></script>
+  <link rel="stylesheet" href="./assets/styles.css?v=bb7615ed9021">
+  <script defer src="./assets/core.js?v=bcbe695cf086"></script><script defer src="./assets/experience.js?v=5378156006bb"></script><script defer src="./assets/app.js?v=c87ce700d592"></script>
 </head>
 <body>
 <a class="skip-link" href="#main">跳到主要内容</a>
@@ -41,7 +41,7 @@
       <label class="search-control"><span>搜索当前资料</span><input id="search" type="search" placeholder="例如：定位、录音、写作反馈" autocomplete="off"></label>
       <label class="scope-control"><span>资料范围</span><select id="recommendation-filter" aria-describedby="scope-help"><option value="recommended" selected>默认推荐</option><option value="all">全部资料（含比较案例）</option><option value="reference">仅参考案例（非推荐）</option></select></label>
       <p id="scope-help" class="scope-help">科目与资料范围分别筛选；默认展示推荐资料。</p>
-      <details id="advanced-filters" class="advanced-filters"><summary>更多筛选：来源、阶段、费用和访问</summary><div class="filter-bar">
+      <details id="advanced-filters" class="advanced-filters"><summary id="advanced-filter-summary">更多筛选：来源、阶段、费用和访问</summary><div class="filter-bar">
         <label><span>来源</span><select id="source-filter"><option value="all">全部来源</option><option value="official">官方</option><option value="teacher">教师 / 教学平台</option><option value="experience">考生经验</option></select></label>
         <label><span>练习科目</span><select id="skill-filter"><option value="all">全部科目</option><option value="listening" selected>听力</option><option value="reading">阅读</option><option value="writing">写作</option><option value="speaking">口语</option><option value="general">综合 / 考试信息</option><option value="vocabulary">词汇</option></select></label>
         <label><span>学习阶段</span><select id="level-filter"><option value="all">不限阶段</option><option value="foundation">打基础</option><option value="developing">进阶练习</option><option value="advanced">精细提升</option></select></label>
@@ -51,6 +51,7 @@
     </form>
     <div class="results-toolbar"><p id="result-count" role="status" aria-live="polite">正在读取资料…</p><div class="result-actions"><button id="saved-filter" class="text-button" type="button" aria-pressed="false">仅看已收藏 <span id="saved-count">0</span></button><button id="reset-filters" class="text-button" type="button">清除筛选</button></div></div>
     <div id="load-error" class="notice" hidden><h3>资料暂时没有加载成功</h3><p>请刷新重试。备考路径仍可使用；不要把加载失败当作没有资源。</p><button id="retry-load" class="secondary-button" type="button">重新加载资料</button></div>
+    <div id="active-filters" class="active-filters" role="group" aria-label="当前资料筛选，可逐项移除" hidden></div>
     <div id="resource-grid" class="resource-grid"></div>
     <div id="empty-state" class="empty-state" hidden><span aria-hidden="true">⌕</span><h3>暂时没有匹配的资料</h3><p>试试减少筛选条件，或搜索更宽泛的关键词。</p><button id="empty-reset" class="secondary-button" type="button">恢复默认筛选</button></div>
     <aside class="source-guide" aria-labelledby="source-guide-title"><h3 id="source-guide-title">同样是资料，证据的分量不同</h3><div class="source-guide-grid"><p><strong>官方资料</strong>用于核对考试形式、评分标准和报名政策。</p><p><strong>教师讲解</strong>提供训练方法，效果仍需用自己的练习检验。</p><p><strong>考生经验</strong>适合借鉴过程，个人成绩不代表可复制的结果。</p></div><details class="coverage-details"><summary>本轮核验范围与覆盖缺口</summary><div id="coverage-list"></div></details><details class="coverage-details"><summary>经验怎么用：方法、分歧与证据边界</summary><div id="evidence-review"></div></details></aside>

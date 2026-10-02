@@ -36,3 +36,13 @@ input,select{font-size:16px}
 @media(max-width:720px){.journey-steps{grid-template-columns:1fr;gap:8px}.learning-overview-grid,.experience-takeaways ul{grid-template-columns:1fr}.guided-filter>.scope-control{margin-top:16px}.guided-filter>.scope-help{margin:12px 0}.experience-next>.text-button{display:block;margin:12px 0 0}.week-output{margin-left:0}}
 
 .plan-draft-status{margin:0 0 20px;font-size:15px;line-height:1.7}.plan-result-actions{flex-wrap:wrap;align-items:center}
+
+/* Show active choices outside the collapsed filters without moving the list. */
+.active-filters{display:flex;flex-wrap:wrap;gap:8px;padding:0 0 22px;align-items:center}
+.active-filters[hidden]{display:none}
+.filter-chip{font:inherit;font-size:14px;line-height:1.5;min-height:44px;max-width:100%;overflow-wrap:anywhere;text-align:left;padding:9px 13px;border:1px solid #c9d8d0;border-radius:999px;background:var(--accent-soft);color:var(--accent);cursor:pointer;transition:background-color 160ms ease,border-color 160ms ease,color 160ms ease}
+.filter-chip:hover{background:#deebe4;border-color:#77968a}
+.filter-chip:active{background:#d4e6dc}
+#advanced-filter-summary{transition:color 160ms ease;min-height:44px;align-content:center}
+@media(max-width:720px){.active-filters{padding-bottom:18px}.filter-chip{font-size:15px}}
+@media(prefers-reduced-motion:reduce){.filter-chip,#advanced-filter-summary{transition:none}}
