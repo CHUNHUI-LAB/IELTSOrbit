@@ -77,6 +77,7 @@ function harness({rawState,hash='',offline=false,storageBlocked=false}={}){
  assert.ok(overview.text(on['path-result']).includes('一眼看懂这份安排'));
  assert.ok(overview.text(on['path-result']).includes('今天 60 分钟：准备 5 → 练习 45 → 复盘 10 分钟'));
  assert.equal(overview.doc.querySelectorAll('.week-output').length,7,'all week items expose their expected output in the summary');
+ assert.ok(overview.doc.querySelectorAll('.week-output').every(n=>n.textContent.startsWith('成果：')&&!n.textContent.includes('留下：留下')),'day output labels avoid repeated verbs');
  on['edit-plan'].dispatch('click');assert.equal(on['cancel-plan-edit'].hidden,false);on['daily-time'].value='15';on['weak-skill'].value='reading';
  assert.equal(overview.saved.get('ieltsorbit.local.v1'),personal,'draft edits do not overwrite a saved plan');
  on['cancel-plan-edit'].dispatch('click');assert.equal(on['daily-time'].value,'60');assert.equal(on['weak-skill'].value,'writing');assert.equal(on['path-result'].hidden,false);assert.equal(overview.saved.get('ieltsorbit.local.v1'),personal,'cancel returns to original choices without a storage write');
