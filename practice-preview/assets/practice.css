@@ -7,3 +7,11 @@
 .question{min-width:0}
 .option input{flex-shrink:0}
 @media(max-width:800px){.toolbar>div{justify-content:flex-start}.badge{font-size:14px}}
+
+/* Topic choice stays available during reading and review, with native links. */
+#set-picker{max-width:1120px;margin:0 auto 42px;padding-bottom:24px;border-bottom:1px solid var(--line)}
+.set-picker-heading{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap}.set-picker-heading h2{font-size:24px;margin-top:0}
+.set-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.set-card{display:flex;flex-direction:column;gap:8px;min-width:0;padding:20px;border:1px solid var(--line);border-radius:12px;background:white;text-decoration:none;line-height:1.5;overflow-wrap:anywhere}
+.set-card strong{font-size:22px}.set-card.selected{border:2px solid var(--accent);background:var(--tint);padding:19px}.set-card:hover{border-color:var(--accent)}
+@media(max-width:650px){.set-choices{grid-template-columns:1fr}.set-card{padding:17px}.set-card.selected{padding:16px}#set-picker{margin-bottom:30px}}
