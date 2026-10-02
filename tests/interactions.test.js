@@ -32,6 +32,22 @@ function harness({rawState,hash='',offline=false,storageBlocked=false}={}){
 }
 (async()=>{
  const h=harness(),{nodes:n,doc}=h;await h.flush();
+ // Resource links and recovery preserve the reader's current subject and result scope.
+ const nav=harness({hash:'#library/writing'});await nav.flush();const nn=nav.nodes;
+ const writingCount=nn['resource-grid'].children.length;
+ assert.equal(writingCount,19);nav.doc.querySelectorAll('.method-detail')[0].open=true;nav.hash('#library/writing/resource/writing-rubric');
+ assert.equal(nn['recommendation-filter'].value,'recommended');assert.equal(nn['resource-grid'].children.length,writingCount);
+ nav.hash('#library/writing/resource/writing-rubric');nav.hash('#library/writing');
+ assert.equal(nn['recommendation-filter'].value,'recommended');assert.equal(nav.doc.getElementById('detail-writing-rubric').open,false,'Back restores prior disclosure state');assert.equal(nav.doc.querySelectorAll('.method-detail')[0].open,true,'Back retains expanded guide steps containing the source link');
+ nn.search.value='no match';nn['filter-form'].dispatch('input');assert.equal(nn['empty-state'].hidden,false);nn['empty-reset'].dispatch('click');
+ assert.equal(nn['skill-filter'].value,'writing');assert.equal(nn['resource-grid'].children.length,writingCount);
+ nn['recommendation-filter'].value='reference';nn.search.value='写作';nn['filter-form'].dispatch('change');const previousCount=nn['resource-grid'].children.length;
+ nav.hash('#library/writing/resource/writing-rubric');assert.equal(nn['recommendation-filter'].value,'recommended');
+ nav.hash('#library/writing');assert.equal(nn['recommendation-filter'].value,'reference');assert.equal(nn.search.value,'写作');assert.equal(nn['resource-grid'].children.length,previousCount);
+ nav.hash('#library/writing/resource/writing-rubric');nav.hash('#library/writing');assert.equal(nn.search.value,'写作','forward and back repeat restores the same subset');
+ assert.equal(nav.saved.size,0,'navigation and recovery never persist personal choices');
+ const cold=harness({hash:'#library/writing/resource/reddit-writing55-unresolved-thread-2026'});await cold.flush();assert.ok(cold.doc.getElementById('detail-reddit-writing55-unresolved-thread-2026').open);assert.equal(cold.nodes['recommendation-filter'].value,'reference');
+
  assert.equal(n['update-status'].textContent,'每日检查已启用','completed bounded refresh removes first-run pending label');
  assert.equal(n['panel-start'].hidden,false);assert.equal(n['site-intro'].hidden,false);assert.equal(n['resource-grid'].children.length,core.filterResources(core.normalizeCatalog(data).resources,{skill:'listening',recommendation:'recommended'},[]).length);
  assert.equal(n['advanced-filters'].open,false,'advanced filters collapsed');assert.ok(h.text(n['learning-guide']).includes('优先排查的错因'));
@@ -65,7 +81,7 @@ function harness({rawState,hash='',offline=false,storageBlocked=false}={}){
  assert.ok(readingProject.querySelectorAll('a').some(a=>a.href===data.resources.find(r=>r.id==='official-independent-reading-project').url),'source link points to reviewed official article');
  h.hash('#library');n['skill-navigation'].dispatch('click',{target:n['skill-navigation'].children.find(b=>b.dataset.skill==='all')});assert.equal(n['resource-grid'].children.length,22);n['recommendation-filter'].value='all';n['filter-form'].dispatch('change');assert.equal(n['resource-grid'].children.length,41);n['recommendation-filter'].value='reference';n['filter-form'].dispatch('change');assert.equal(n['resource-grid'].children.length,19);
  for(const r of data.resources.slice(33,40)){const card=n['resource-grid'].children.find(c=>c.dataset.resourceId===r.id);assert.ok(card);assert.ok(h.text(card).includes('原文自述与作者建议'));if(r.sourceDateCaveat)assert.ok(h.text(card).includes(r.sourceDateCaveat));if(r.discussionEvidence?.length)assert.ok(h.text(card).includes(r.discussionEvidence[0].attributionCaveat));}
- n.search.value='nothing matches';n['filter-form'].dispatch('input');assert.equal(n['empty-state'].hidden,false);n['empty-reset'].dispatch('click');assert.equal(n['skill-filter'].value,'listening');assert.equal(n['recommendation-filter'].value,'recommended');
+ n.search.value='nothing matches';n['filter-form'].dispatch('input');assert.equal(n['empty-state'].hidden,false);n['empty-reset'].dispatch('click');assert.equal(n['skill-filter'].value,'all');assert.equal(n['recommendation-filter'].value,'recommended');
  let save=doc.querySelectorAll('[data-save]')[0];const id=save.dataset.save;const detail=doc.getElementById('detail-'+id);detail.open=true;n['resource-grid'].dispatch('click',{target:save});assert.ok(JSON.parse(h.saved.get('ieltsorbit.local.v1')).saved.includes(id));assert.equal(doc.getElementById('detail-'+id).open,true,'bookmark preserves open detail');n['saved-filter'].dispatch('click');assert.equal(n['resource-grid'].children.length,1);save=doc.querySelectorAll('[data-save]')[0];n['resource-grid'].dispatch('click',{target:save});assert.equal(n['resource-grid'].children.length,0);assert.equal(h.active,n['saved-filter']);
  h.hash('#path');assert.equal(n['plan-step-1'].hidden,false);assert.equal(n['path-result'].hidden,true);n['exam-history'].value='no';n['plan-next'].dispatch('click');assert.equal(n['plan-step-2'].hidden,false);assert.equal(h.active,n['plan-step-2']);n.target.value='7';n['plan-next'].dispatch('click');n['daily-time'].value='60';n['plan-next'].dispatch('click');n['weak-skill'].value='writing';
  h.hash('#path/step/3');assert.equal(n['plan-step-3'].hidden,false);assert.equal(n['daily-time'].value,'60','back retains draft');h.hash('#path/step/4');n['plan-next'].dispatch('click');assert.equal(n['path-result'].hidden,false);assert.equal(n['plan-wizard'].hidden,true);assert.equal(doc.querySelectorAll('.today-task').length,3);assert.equal(doc.querySelectorAll('.week-day').length,7);assert.ok(h.text(n['path-result']).includes('每天约 60 分钟'));assert.equal(JSON.parse(h.saved.get('ieltsorbit.local.v1')).path.completed,true);
