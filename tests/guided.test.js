@@ -41,3 +41,12 @@ console.log('PASS: every case has a summary and question membership; all topic/s
 
 const xhs=cases.find(r=>r.id==='xiaohongshu-self-study-single-skill-gap-2025');assert.equal(xhs.recommendedByDefault,false);assert.equal(xhs.publishedAt,'2025-06-27');assert.ok(xhs.authorContext.outcome.includes('口语5.5'));assert.ok(xhs.evidenceScope.includes('20条')&&xhs.evidenceScope.includes('53条')&&xhs.evidenceScope.includes('其余未读'));assert.ok(experience.overview.themes.some(t=>t.sourceIds.includes(xhs.id)&&t.title.includes('单项')));
 console.log('PASS: Xiaohongshu case remains a reference with 20/53 comment boundary and total-versus-component distinction.');
+
+// Synthesis citations are real deep links, including on a fresh page load.
+for(const resource of catalog.resources.filter(r=>r.sourceType==='experience')){
+ const route=core.parseRoute('#experience-case-'+resource.id);
+ assert.equal(route.tab,'experience');assert.equal(route.experienceCase,resource.id);
+}
+assert.equal(core.parseRoute('#experience-case-').tab,'start');
+assert.equal(core.parseRoute('#experience').experienceCase,null);
+console.log('PASS: all 24 synthesis citation hashes route to the experience panel and exact case.');

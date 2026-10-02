@@ -25,6 +25,7 @@ function harness({rawState,hash='',offline=false,storageBlocked=false}={}){
  for(const tab of ['start','library','experience','path','exams'])nodes['tab-'+tab].dataset.tab=tab;
  const intents=['listening','reading','writing','speaking','experience'].map(value=>{const n=new Element('button');n.dataset.intent=value;return n;});
  const context={window:{IELTSCore:core,addEventListener:(k,f)=>events[k]=f},document:doc,location:{hash},localStorage:{getItem:k=>{if(storageBlocked)throw new Error('blocked');return saved.get(k);},setItem:(k,v)=>{if(storageBlocked)throw new Error('blocked');saved.set(k,v);},removeItem:k=>{if(storageBlocked)throw new Error('blocked');saved.delete(k);}},fetch:async url=>{fetches++;assert.equal(String(url),'https://example.test/IELTSOrbit/data/catalog.json');if(offline)throw new Error('offline');return{ok:true,json:async()=>data};},URL,console};
+ context.window.location=context.location;
  vm.runInNewContext(fs.readFileSync(require.resolve('../assets/experience.js'),'utf8'),context);
  vm.runInNewContext(fs.readFileSync(require.resolve('../assets/app.js'),'utf8'),context);
  return{nodes,doc,intents,saved,context,events,descendants,get active(){return active;},get fetches(){return fetches;},text:n=>[n,...descendants(n)].map(n=>n.textContent).join(' '),hash:value=>{context.location.hash=value;events.hashchange();},flush:()=>new Promise(setImmediate)};
@@ -71,5 +72,30 @@ function harness({rawState,hash='',offline=false,storageBlocked=false}={}){
  const old=harness({rawState:JSON.stringify({saved:['writing-rubric'],path:{baseline:'6.5',target:'7.5'}}),hash:'#path'});await old.flush();assert.equal(old.nodes.baseline.value,'6.5');assert.equal(old.nodes.target.value,'7.5');assert.equal(old.nodes['plan-step-1'].hidden,false,'legacy state enters new guide');
  const blocked=harness({storageBlocked:true,offline:true,hash:'#path'});await blocked.flush();for(let i=0;i<4;i++)blocked.nodes['plan-next'].dispatch('click');assert.equal(blocked.nodes['path-result'].hidden,false,'offline plan usable');assert.ok(blocked.text(blocked.nodes['path-save-status']).includes('暂存'));assert.ok(blocked.text(blocked.nodes['path-result']).includes('不表示判断听力'));assert.ok(blocked.text(blocked.nodes['path-result']).includes('不改变本周练习内容'));assert.ok(blocked.text(blocked.nodes['experience-root']).includes('未加载成功'));
  const short=harness({hash:'#path'});await short.flush();short.nodes['daily-time'].value='15';short.nodes['weak-skill'].value='reading';for(let i=0;i<4;i++)short.nodes['plan-next'].dispatch('click');assert.ok(short.text(short.nodes['path-result']).includes('不安排完整阅读卷或15分钟的整组原创练习'));assert.equal(short.descendants(short.nodes['path-result']).filter(n=>n.href==='./practice-preview/').length,0,'15 minute day does not link a 15 minute quiz plus additional tasks');
+ // Cold-loaded / shared synthesis citations resolve after catalog loading.
+ for(const resource of data.resources.filter(r=>r.sourceType==='experience')){
+  const hash='#experience-case-'+resource.id,deep=harness({hash});await deep.flush();
+  assert.equal(deep.nodes['panel-experience'].hidden,false,'deep link selects experience tab');
+  assert.equal(deep.nodes['panel-start'].hidden,true,'deep link does not silently show home');
+  const target=deep.doc.getElementById('experience-case-'+resource.id);
+  assert.ok(target?.querySelector('details').open,'exact cited case opens on fresh load');
+  assert.equal(deep.doc.getElementById('experience-scope').value,resource.recommendedByDefault===false?'reference':'recommended');
+  assert.equal(deep.saved.size,0,'citation navigation does not write personal state');
+  deep.hash('#library');deep.hash(hash);
+  assert.equal(deep.nodes['panel-experience'].hidden,false,'history replay returns to experience');
+  assert.ok(deep.doc.getElementById('experience-case-'+resource.id).querySelector('details').open);
+ }
+ const jump=harness({hash:'#experience'});await jump.flush();
+ const jumpLink=jump.doc.querySelectorAll('.experience-source-links').flatMap(n=>n.children).find(n=>n.href==='#experience-case-experience-c2');
+ let prevented=false;jumpLink.dispatch('click',{ctrlKey:true,preventDefault(){prevented=true;}});
+ assert.equal(prevented,false,'modified clicks keep native open-in-new-tab behavior');
+ assert.equal(jump.context.location.hash,'#experience','modified clicks leave current page unchanged');
+ jumpLink.dispatch('click');assert.equal(jump.context.location.hash,'#experience-case-experience-c2','ordinary citation click updates shareable URL');
+ jumpLink.dispatch('click');assert.ok(jump.doc.getElementById('experience-case-experience-c2').querySelector('details').open,'repeated click keeps case expanded');
+ const unknown=harness({hash:'#experience-case-not-a-real-case'});await unknown.flush();
+ assert.equal(unknown.nodes['panel-experience'].hidden,false);assert.equal(unknown.doc.querySelectorAll('.experience-card').length,24,'unknown ID retains usable experience index');
+ const wrongKind=harness({hash:'#experience-case-official-samples'});await wrongKind.flush();
+ assert.equal(wrongKind.doc.querySelectorAll('.experience-card').length,24,'only experience records become case targets');
+ console.log('PASS: all 24 fresh case routes, post-fetch rendering, history replay, native modifier clicks, repeated clicks, invalid IDs and zero persistence writes.');
  console.log('PASS: DOM simulation covers all five tabs; skill summaries and hidden filters; initial all-24 view, 6/18/24 experience scopes and topics; 4-step plan back/repeat/generate/local-save/legacy restore; 3 today tasks, 7 days, source detail and back; bookmarks/detail focus; 4 centers/3 policies/no invented dates; fetch failure, deduplicated retry/recovery, unavailable local storage. Not a rendered browser test.');
 })();

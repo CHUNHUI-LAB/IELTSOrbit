@@ -211,7 +211,7 @@ function render(catalog,host){
  let topic='all',scope='all';const doc=host.ownerDocument||document;
  const el=(tag,cls,text)=>{const n=doc.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n;};
  const items=(values,tag='ul')=>{const n=el(tag);values.forEach(v=>n.append(el('li','',v)));return n;};
- const sources=(ids)=>{const div=el('div','experience-source-links');ids.forEach(id=>{const r=catalog.resources.find(r=>r.id===id);if(r){const link=el('a','',r.title+(r.recommendedByDefault===false?' · 参考案例':' · 推荐阅读')+' · 看详情');link.href='#experience-case-'+id;link.addEventListener('click',event=>{event.preventDefault();topic='all';scope=r.recommendedByDefault===false?'reference':'recommended';update();const card=host.querySelector?.('[data-case-id="'+id+'"]');if(card){const details=card.querySelector?.('details');if(details)details.open=true;card.scrollIntoView?.({block:'start'});}});div.append(link);}});return div;};
+ const sources=(ids)=>{const div=el('div','experience-source-links');ids.forEach(id=>{const r=catalog.resources.find(r=>r.id===id);if(r){const link=el('a','',r.title+(r.recommendedByDefault===false?' · 参考案例':' · 推荐阅读')+' · 看详情');link.href='#experience-case-'+id;link.addEventListener('click',event=>{if(event.button>0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;event.preventDefault();openCase(id);if(root.location)root.location.hash='#experience-case-'+id;});div.append(link);}});return div;};
  const intro=el('section','experience-synthesis');intro.append(el('p','eyebrow',selectCases(catalog.resources,'all','all').length+'篇经验综合 · '+selectCases(catalog.resources).length+'篇推荐阅读 / '+selectCases(catalog.resources,'all','reference').length+'篇参考案例'),el('h3','',overview.headline),el('p','card-summary',overview.summary));
  const scopeDetail=el('details','coverage-details');scopeDetail.append(el('summary','','这份综合依据什么？查看范围与限制'));const scopeBody=el('div','detail-body');scopeBody.append(el('p','',overview.scope),items(overview.limitations));scopeDetail.append(scopeBody);intro.append(scopeDetail);
  const group=(title,records)=>{const detail=el('details','coverage-details');detail.append(el('summary','',title));const body=el('div','detail-body');records.forEach(record=>{const section=el('section','evidence-conflict');section.append(el('h4','',record.title),el('p','',record.synthesis),sources(record.sourceIds));body.append(section);});detail.append(body);return detail;};
@@ -227,8 +227,15 @@ function render(catalog,host){
  if(r.discussionEvidence?.length){body.append(el('h4','','楼内讨论：身份归属与结论边界'));r.discussionEvidence.forEach(record=>{body.append(el('p','',record.claim),el('p','',record.attributionCaveat));try{const url=new URL(record.url);if(url.protocol==='https:'){const link=el('a','resource-link','查看这条评论 ↗');link.href=url.href;link.target='_blank';link.rel='noopener noreferrer';body.append(link);}}catch{}});}
  try{const url=new URL(r.url);if(url.protocol==='https:'){const link=el('a','resource-link','最后，阅读原帖与回复 ↗');link.href=url.href;link.target='_blank';link.rel='noopener noreferrer';body.append(link);}}catch{}
  detail.append(body);article.append(detail);return article;}
+ function openCase(id){
+  const resource=catalog.resources.find(r=>r.id===id&&r.sourceType==='experience');if(!resource)return false;
+  topic='all';scope=resource.recommendedByDefault===false?'reference':'recommended';update();
+  const target=host.querySelector?.('[data-case-id="'+id+'"]');if(!target)return false;
+  const details=target.querySelector?.('details');if(details)details.open=true;
+  target.scrollIntoView?.({block:'start'});return true;
+ }
  function update(){topicSelect.value=topic;scopeSelect.value=scope;const chosen=selectCases(catalog.resources,topic,scope);count.textContent=chosen.length+'篇 · '+topics[topic]+' · '+(scope==='recommended'?'推荐阅读，不代表保证有效':scope==='reference'?'仅作比较和复盘参考':'含明确标注的参考案例');cards.replaceChildren(...chosen.map(card));if(!chosen.length)cards.append(el('p','notice','这个范围暂无合适案例。可换一个问题，或主动查看“参考案例”；参考不等于推荐。'));}
- topicSelect.addEventListener('change',()=>{topic=topicSelect.value;update();});scopeSelect.addEventListener('change',()=>{scope=scopeSelect.value;update();});host.replaceChildren(intro,controls,count,cards);update();
+ topicSelect.addEventListener('change',()=>{topic=topicSelect.value;update();});scopeSelect.addEventListener('change',()=>{scope=scopeSelect.value;update();});host.replaceChildren(intro,controls,count,cards);update();return{openCase};
 }
 const api={overview,topics,topicIds,selectCases,caseContent,render};if(typeof module!=='undefined'&&module.exports)module.exports=api;root.IELTSExperience=api;
 })(typeof window!=='undefined'?window:globalThis);
