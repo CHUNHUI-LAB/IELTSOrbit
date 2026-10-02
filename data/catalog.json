@@ -1262,6 +1262,425 @@
         "reviewedAt": "2026-10-01",
         "scope": "完整正文已核读；封面已视觉检查，仅有标题日期等信息，不是成绩证明；当前加载20条评论/回复已读，页面标示共53条，其余未读；无视频，未核验成绩单。"
       }
+    },
+    {
+      "id": "csdn-four-attempts-output-gap-2020",
+      "title": "三次5.5后的复盘：总分提高，写作仍缺独立输出",
+      "url": "https://blog.csdn.net/LOVEzhang666/article/details/109562499",
+      "provider": "CSDN个人博客",
+      "publishedAt": "2020-11-08",
+      "sourceType": "experience",
+      "skills": [
+        "listening",
+        "reading",
+        "writing",
+        "speaking"
+      ],
+      "levels": [
+        "foundation",
+        "developing"
+      ],
+      "selectionReason": "补充较低正式基线、上课/实习并行与未完整解决的输出短板",
+      "authorContext": {
+        "baseline": "自报前三次UKVI总分均5.5；语法基础不稳，部分阶段边实习备考",
+        "preparationDuration": "跨四次考试；末轮约20天只是最后一阶段",
+        "outcome": "第四次总分6.5；页首写7766但未明示顺序，不据此补造分项；未独立核验"
+      },
+      "reportedRoutine": [
+        "阅读由刷题转为区分陷阱、同义替换与词汇错误；猜对题也检查解析",
+        "末轮练机考界面、打字听写，把错词反复复习",
+        "写作分析范文结构，却承认从未独立完成一篇；口语末10天才练，没练Part 3"
+      ],
+      "curatorInterpretation": "值得采纳的是把完成量改为可解释的错因；这是总分进步但输出练习仍不完整的案例，不能包装成20天全面提分。",
+      "commercial": true,
+      "commercialDisclosure": "大量付费书课推荐；未见赞助说明，关系未核验",
+      "excludeFromGeneralGuidance": [
+        "不转荐文中来源不明的廉价网课或试题复制品",
+        "不采纳通过考官告别语预测口语分数、倍速听写保证分数等断言",
+        "2020年机考功能和出分时效不作为现行政策"
+      ],
+      "evidenceScope": "全文可提取正文已读；未核验图片、外链课程或视频",
+      "commentsReview": {
+        "status": "partial",
+        "detail": "页面标2条评论但登录后才能完整查看；只见一条无训练细节的侧栏留言"
+      },
+      "outcomeClass": "partial_improvement_remaining_gap",
+      "checkedAt": "2026-10-02",
+      "status": "curated_with_caveats",
+      "recommendedByDefault": false,
+      "summary": "作者自报前三次总分均5.5、第四次6.5，期间有上课和实习并行。阅读开始分类错因，末轮练习机考输入；但作者承认没有独立写过完整作文，口语也未练Part 3。末轮20天并非全部准备期，不能包装成全面提分捷径。",
+      "actionableMethods": [
+        "把阅读错题和猜对题分开记录，写明词汇、定位或理解上的原因",
+        "检查本周是否留下独立初稿与真实口语回答，别只累计范文阅读量"
+      ],
+      "price": "免费公开经验文",
+      "access": "公开正文；评论核读范围见详情",
+      "collection": "低起点、在职与写说瓶颈参考",
+      "caution": "值得采纳的是把完成量改为可解释的错因；这是总分进步但输出练习仍不完整的案例，不能包装成20天全面提分。 成绩为作者自报，未独立核验；不据此推荐文中付费服务。",
+      "provenance": {
+        "reviewedAt": "2026-10-02",
+        "scope": "全文可提取正文已读；未核验图片、外链课程或视频",
+        "sourceUrl": "https://blog.csdn.net/LOVEzhang666/article/details/109562499",
+        "reviewMethod": "重新核读可提取正文；仅摘要与来源链接，不托管原文、教材、试题或成绩图片"
+      }
+    },
+    {
+      "id": "ptt-working-four-tests-speaking-gap-2025",
+      "title": "在职四战：写作提高，口语门槛仍未通过",
+      "url": "https://www.ptt.cc/bbs/IELTS/M.1758798475.A.FDC.html",
+      "provider": "PTT IELTS代发经验帖",
+      "publishedAt": "2025-09-25",
+      "sourceType": "experience",
+      "skills": [
+        "writing",
+        "speaking",
+        "general"
+      ],
+      "levels": [
+        "developing"
+      ],
+      "selectionReason": "明确保留尚未达标状态，并有连续分项记录",
+      "authorContext": {
+        "baseline": "听读已较强；弹性工时的全职工作者，并非零英语基础",
+        "preparationDuration": "约2025年8月初开始，8/26至9/14四次考试",
+        "outcome": "写作6.5、6.5、7.5、7.5；口语6、5.5、5.5、6；作者说尚未结束备考；未独立核验"
+      },
+      "reportedRoutine": [
+        "每周两堂写作家教，练快速构思、论点一致性与结构组合",
+        "自述密集重考后需数日恢复，留给补弱的时间不足"
+      ],
+      "curatorInterpretation": "按单科分别记录结果；写作改善不能掩盖口语瓶颈，也不能把重考次数当作训练。",
+      "commercial": true,
+      "commercialDisclosure": "代发帖含指定家教宣传与联系网址；存在营销关联，赞助或报酬未知",
+      "excludeFromGeneralGuidance": [
+        "不将文中从零开始表述解释为低英语基础",
+        "不作家教效果因果证明",
+        "不复制密集重考安排"
+      ],
+      "evidenceScope": "重新核读全部可提取正文；未核验外链成绩图；本次页面未显示评论。",
+      "commentsReview": {
+        "status": "none_visible",
+        "detail": "本次提取页面未显示推文/评论，不能据此断言从来没有评论"
+      },
+      "outcomeClass": "goal_not_yet_met",
+      "checkedAt": "2026-10-02",
+      "status": "curated_with_caveats",
+      "recommendedByDefault": false,
+      "summary": "弹性工时的全职工作者在不足一个月内四考，自报写作6.5→6.5→7.5→7.5，口语6→5.5→5.5→6，仍未达到自己的要求。文中有每周两次写作反馈的过程，也有密集考试挤压补弱时间的反思；代发帖含家教推广，不能据此认定课程效果。",
+      "actionableMethods": [
+        "分项记录每次结果与期间真正完成的改动，不只记最高总分",
+        "重考前检查是否留出了反馈、独立复练与恢复的时间"
+      ],
+      "price": "免费公开经验文",
+      "access": "公开正文；评论核读范围见详情",
+      "collection": "低起点、在职与写说瓶颈参考",
+      "caution": "按单科分别记录结果；写作改善不能掩盖口语瓶颈，也不能把重考次数当作训练。 成绩为作者自报，未独立核验；不据此推荐文中付费服务。",
+      "provenance": {
+        "reviewedAt": "2026-10-02",
+        "scope": "重新核读全部可提取正文；未核验外链成绩图；本次页面未显示评论。",
+        "sourceUrl": "https://www.ptt.cc/bbs/IELTS/M.1758798475.A.FDC.html",
+        "reviewMethod": "重新核读可提取正文；仅摘要与来源链接，不托管原文、教材、试题或成绩图片"
+      }
+    },
+    {
+      "id": "siang-long-gap-writing-time-2024",
+      "title": "久未用英语后的写作瓶颈：把限时完成单独练",
+      "url": "https://www.careercoachserene.com/%e6%94%bb%e5%85%8b%e9%9b%85%e6%80%9dielts-%e5%be%9e4-5%e9%80%b2%e6%ad%a5%e5%88%b07%e7%9a%84%e8%a1%80%e6%b7%9a%e5%8f%b2%e8%b6%85%e5%bc%b1%e5%ba%95%e9%81%a9%e7%94%a8/",
+      "provider": "个人博客 Siang’Space",
+      "publishedAt": "2024-02-20",
+      "sourceDateCaveat": "页面另列2024-03-03；Exa元数据为2024-02-19。正文提到考试时剑15未出，发表日期不等于考试日期。",
+      "sourceType": "experience",
+      "skills": [
+        "writing",
+        "listening"
+      ],
+      "levels": [
+        "foundation",
+        "developing"
+      ],
+      "selectionReason": "补较长英语空档、反复写作5–5.5及时间瓶颈",
+      "authorContext": {
+        "baseline": "自述近十年少用英语；标题称4.5→7，正文未列完整逐次成绩",
+        "preparationDuration": "十次以上考试；有全职备考和延期一年，不能归为纯在职",
+        "outcome": "自报最终达到要求；最终写作分数未在可提取正文明确列出；未独立核验"
+      },
+      "reportedRoutine": [
+        "发现Task 1考场写不完后，每天练习并由家教批改，目标缩至约15分钟",
+        "把听懂却拼错的词单列复习，而非只记没听懂的词"
+      ],
+      "curatorInterpretation": "可借鉴诊断速度与准确度的不同障碍；15分钟是作者个人训练目标，不是统一配时规定。",
+      "commercial": true,
+      "commercialDisclosure": "个人职业教练域名；含家教和考点推荐。作者声明考点推荐非业配，其余关系未核验。",
+      "excludeFromGeneralGuidance": [
+        "不采纳多考必过或必比语言班划算",
+        "不采纳跳过一道题即可断定Not Given、题库命中率保证",
+        "不沿用历史考场设备与书籍新旧说法"
+      ],
+      "evidenceScope": "完整可提取正文重新核读；未核验成绩图片或外链试题，未获得可读评论。",
+      "commentsReview": {
+        "status": "not_available",
+        "detail": "本次提取内容未提供评论，不声明已核读评论或后续。"
+      },
+      "outcomeClass": "self_reported_goal_met_incomplete_score_chain",
+      "checkedAt": "2026-10-02",
+      "status": "curated_with_caveats",
+      "recommendedByDefault": false,
+      "summary": "作者自述多年少用英语、十次以上考试，写作多次停在5–5.5；标题称4.5到7，但正文缺完整成绩链。发现限时完成困难后，每天练Task 1并接受批改，另记听懂却拼错的词。包含全职准备，个人15分钟目标与旧考场技巧不能当成统一规则。",
+      "actionableMethods": [
+        "把写作完成度、用时和内容问题分别记录，在适合自己的限时条件下复练",
+        "听力复盘区分没听懂与听懂却拼错，后者单列复习"
+      ],
+      "price": "免费公开经验文",
+      "access": "公开正文；评论核读范围见详情",
+      "collection": "低起点、在职与写说瓶颈参考",
+      "caution": "可借鉴诊断速度与准确度的不同障碍；15分钟是作者个人训练目标，不是统一配时规定。 成绩为作者自报，未独立核验；不据此推荐文中付费服务。",
+      "provenance": {
+        "reviewedAt": "2026-10-02",
+        "scope": "完整可提取正文重新核读；未核验成绩图片或外链试题，未获得可读评论。",
+        "sourceUrl": "https://www.careercoachserene.com/%e6%94%bb%e5%85%8b%e9%9b%85%e6%80%9dielts-%e5%be%9e4-5%e9%80%b2%e6%ad%a5%e5%88%b07%e7%9a%84%e8%a1%80%e6%b7%9a%e5%8f%b2%e8%b6%85%e5%bc%b1%e5%ba%95%e9%81%a9%e7%94%a8/",
+        "reviewMethod": "重新核读可提取正文；仅摘要与来源链接，不托管原文、教材、试题或成绩图片"
+      }
+    },
+    {
+      "id": "mudlady-seven-attempts-writing-output-2023",
+      "title": "七次考试中的转折：停止避开写作，交出可改的初稿",
+      "url": "https://mud-lady.com/2023/09/28/ielts-test-study-abroad/",
+      "provider": "个人博客 黄哈在外面",
+      "publishedAt": "2023-09-28",
+      "sourceType": "experience",
+      "skills": [
+        "writing",
+        "speaking",
+        "general"
+      ],
+      "levels": [
+        "developing"
+      ],
+      "selectionReason": "兼有工作负荷、停考、改练习方式与明确写作结果",
+      "authorContext": {
+        "baseline": "原工作会用英语；无可核读初始雅思分项",
+        "preparationDuration": "2019至2020初五考；停考后2023再两考，后段已转全职",
+        "outcome": "2020自报达当时门槛；2023第七考写作6.5；未独立核验"
+      },
+      "reportedRoutine": [
+        "从阅读/抄范文而回避写作，转为给老师真实初稿与提纲",
+        "末两三周约每周两课，每次交两三篇大小作文，并查构思的逻辑",
+        "口语由机械答题转为实际讨论，但未给分数变化"
+      ],
+      "curatorInterpretation": "有价值的是把输入转为外部可诊断的输出；五年日历跨度不能等同于持续训练时长。",
+      "commercial": true,
+      "commercialDisclosure": "个人叙事中推荐收费教学平台/教师；未见赞助披露，关系未知",
+      "excludeFromGeneralGuidance": [
+        "不把离职、暂停或延长申请作为人人应采用的路径",
+        "不将后段全职练习归为在职方法效果",
+        "不由写作6.5推断总分或口语进步"
+      ],
+      "evidenceScope": "全文可提取正文已读；未核验截图及外部教师页面",
+      "commentsReview": {
+        "status": "none_visible",
+        "detail": "本次提取内容没有可读评论"
+      },
+      "outcomeClass": "self_reported_targeted_writing_improvement",
+      "checkedAt": "2026-10-02",
+      "status": "curated_with_caveats",
+      "recommendedByDefault": false,
+      "summary": "五年日历跨度中，作者先在工作期间五考，停考后于2023年再考两次，后段已转全职。写作从读抄范文转为提交真实初稿和提纲，请教师检查逻辑；第七考自报写作6.5。文章提供输出方式变化的过程，不能把五年视为连续训练或全程在职。",
+      "actionableMethods": [
+        "保留一份真实初稿与简短提纲，让反馈能定位到自己的表达",
+        "主动提出需要检查的逻辑问题，再用修改后的思路独立写作"
+      ],
+      "price": "免费公开经验文",
+      "access": "公开正文；评论核读范围见详情",
+      "collection": "低起点、在职与写说瓶颈参考",
+      "caution": "有价值的是把输入转为外部可诊断的输出；五年日历跨度不能等同于持续训练时长。 成绩为作者自报，未独立核验；不据此推荐文中付费服务。",
+      "provenance": {
+        "reviewedAt": "2026-10-02",
+        "scope": "全文可提取正文已读；未核验截图及外部教师页面",
+        "sourceUrl": "https://mud-lady.com/2023/09/28/ielts-test-study-abroad/",
+        "reviewMethod": "重新核读可提取正文；仅摘要与来源链接，不托管原文、教材、试题或成绩图片"
+      }
+    },
+    {
+      "id": "sunny-working-speaking-osr-2025",
+      "title": "在职口语6到6.5：录音查时态、重复词和停顿",
+      "url": "https://sunny-chen.medium.com/%E4%BA%94%E5%B9%B4%E5%BE%8C%E9%87%8D%E8%80%83%E9%9B%85%E6%80%9D-%E5%9C%A8%E8%81%B7%E5%8D%8A%E5%B9%B4%E5%82%99%E8%80%83%E7%84%A1%E8%A3%9C%E7%BF%92%E5%BF%83%E5%BE%97-16af19a09469",
+      "provider": "Medium个人文章",
+      "publishedAt": "2025-10-04",
+      "sourceType": "experience",
+      "skills": [
+        "speaking",
+        "general"
+      ],
+      "levels": [
+        "developing"
+      ],
+      "selectionReason": "提供有限而具体的口语改善，避免只选7.5以上成功样本",
+      "authorContext": {
+        "baseline": "2025全科L7.5/R7.5/W7/S6；不是全科低基础",
+        "preparationDuration": "4–6月主要周末，7月起加强；8月考前三天请假；8–9月约10堂付费口语课，每周2–3堂",
+        "outcome": "自报口语单科重考6.5，未独立核验"
+      },
+      "reportedRoutine": [
+        "教师模拟诊断时态、重复词和填充停顿",
+        "作者建议回听录音或查看转写来发现时态与停顿问题；另自述后续自主练习，但未给出完整逐次复练记录"
+      ],
+      "curatorInterpretation": "最可转用的是诊断到复练的链条；不能把标题无补习当作全程无付费指导。",
+      "commercial": true,
+      "commercialDisclosure": "正文有约10堂付费口语课及教师/工具推荐；无赞助信息，关系未知",
+      "excludeFromGeneralGuidance": [
+        "不推广固定每题秒数为官方规定",
+        "不推广先塞句型再找内容为通用策略",
+        "不由练过题库推断命中；OSR接受度另查目标机构",
+        "原文说要求大于6.5但结果为6.5，是否最终满足该要求不明确"
+      ],
+      "evidenceScope": "重新核读完整可提取正文；未查看分数截图、外链视频或教师页面。",
+      "commentsReview": {
+        "status": "none_visible",
+        "detail": "页面显示No responses yet"
+      },
+      "outcomeClass": "speaking_half_band_improvement_requirement_unclear",
+      "checkedAt": "2026-10-02",
+      "status": "curated_with_caveats",
+      "recommendedByDefault": false,
+      "summary": "作者在职准备，2025年全科自报L7.5/R7.5/W7/S6，后经口语单科重考到6.5。教师模拟指出时态、重复词与停顿，作者建议回听或看转写并自主练习。标题虽称无补习，正文明确写约10堂付费口语课；不能确认最终已满足其“>6.5”要求。",
+      "actionableMethods": [
+        "回听一段自己的回答，圈出一个可定位的时态、重复词或停顿问题",
+        "调整后重新独立回答，再换题检查，别把工具估分当成正式成绩"
+      ],
+      "price": "免费公开经验文",
+      "access": "公开正文；评论核读范围见详情",
+      "collection": "低起点、在职与写说瓶颈参考",
+      "caution": "最可转用的是诊断到复练的链条；不能把标题无补习当作全程无付费指导。 成绩为作者自报，未独立核验；不据此推荐文中付费服务。",
+      "provenance": {
+        "reviewedAt": "2026-10-02",
+        "scope": "重新核读完整可提取正文；未查看分数截图、外链视频或教师页面。",
+        "sourceUrl": "https://sunny-chen.medium.com/%E4%BA%94%E5%B9%B4%E5%BE%8C%E9%87%8D%E8%80%83%E9%9B%85%E6%80%9D-%E5%9C%A8%E8%81%B7%E5%8D%8A%E5%B9%B4%E5%82%99%E8%80%83%E7%84%A1%E8%A3%9C%E7%BF%92%E5%BF%83%E5%BE%97-16af19a09469",
+        "reviewMethod": "重新核读可提取正文；仅摘要与来源链接，不托管原文、教材、试题或成绩图片"
+      }
+    },
+    {
+      "id": "reddit-writing55-unresolved-thread-2026",
+      "title": "尚未突破的写作5.5：成绩与练习量不能直接画等号",
+      "url": "https://www.reddit.com/r/IELTS/comments/1t4htt8/frustated_about_my_band_scores_gave_two_times/",
+      "provider": "Reddit r/IELTS公开讨论",
+      "publishedAt": null,
+      "sourceType": "experience",
+      "skills": [
+        "writing"
+      ],
+      "levels": [
+        "foundation",
+        "developing"
+      ],
+      "selectionReason": "保留没有成功结局的低写作分数样本，不强造提分故事",
+      "authorContext": {
+        "baseline": "主帖自报两次总分6、写作均5.5，首次阅读5.5",
+        "preparationDuration": "未披露",
+        "outcome": "发帖时仍未突破；未见后续结果；未独立核验"
+      },
+      "reportedRoutine": [
+        "主帖没有提供具体训练过程，不能臆补"
+      ],
+      "discussionEvidence": [
+        {
+          "url": "https://www.reddit.com/r/IELTS/comments/1t4htt8/comment/ok2w285/",
+          "claim": "楼内一名已删除账号的回应称写过上百篇、用多款AI得到6–6.5，并练语法",
+          "attributionCaveat": "楼主与回帖均显示已删除，提取页没有可识别OP标记，未确认同一人；不能把回帖练习与主帖成绩合成个人轨迹"
+        }
+      ],
+      "curatorInterpretation": "这个讨论支持提出诊断问题，而非证明AI导致低分。建议保留尚无结局和身份关联不明两项限制。",
+      "commercial": false,
+      "commercialDisclosure": "主帖未见推广；可见建议者有教学品牌账号，不能将其建议视为中立实测",
+      "excludeFromGeneralGuidance": [
+        "不将评论者限期提分承诺或推定病因当事实",
+        "不复述评论中AI完全不能教等绝对判断",
+        "不补造后续成功或统一延期建议"
+      ],
+      "evidenceScope": "网页工具读到完整短主帖和本次展开的评论；Exa抓取不可用",
+      "commentsReview": {
+        "status": "partial",
+        "detail": "5条可见人类评论/回应及自动/管理提示已读；折叠More replies未展开，一条被移除内容不可读"
+      },
+      "outcomeClass": "unresolved",
+      "checkedAt": "2026-10-02",
+      "status": "curated_with_caveats",
+      "recommendedByDefault": false,
+      "summary": "主帖自报两次总分6、写作均5.5，发帖时仍未突破，未披露完整训练过程。楼内一条已删除账号回应谈到大量作文与AI估分，但本次页面无法确认其是否为楼主，不能拼成同一人的轨迹。这是待诊断案例，没有后续成功，也不证明AI导致低分。",
+      "actionableMethods": [
+        "先保留一份无辅助初稿，标清练习条件，确认目前能独立完成什么",
+        "把反馈与对应句段、后续修改逐一核对；这是本站建议，原帖未披露已实施"
+      ],
+      "price": "免费公开经验文",
+      "access": "公开正文；评论核读范围见详情",
+      "collection": "低起点、在职与写说瓶颈参考",
+      "caution": "这个讨论支持提出诊断问题，而非证明AI导致低分。建议保留尚无结局和身份关联不明两项限制。 成绩为作者自报，未独立核验；不据此推荐文中付费服务。",
+      "provenance": {
+        "reviewedAt": "2026-10-02",
+        "scope": "网页工具读到完整短主帖和本次展开的评论；Exa抓取不可用",
+        "sourceUrl": "https://www.reddit.com/r/IELTS/comments/1t4htt8/frustated_about_my_band_scores_gave_two_times/",
+        "reviewMethod": "重新核读可提取正文；仅摘要与来源链接，不托管原文、教材、试题或成绩图片"
+      },
+      "sourceDateCaveat": "本轮可读页面仅显示相对时间“4mo ago”；绝对发表日期未独立复核，不据相对时间补造具体日期。"
+    },
+    {
+      "id": "reddit-three-attempts-conditions-writing-flat-2026",
+      "title": "三次考试总分上升，写作仍回到原点",
+      "url": "https://www.reddit.com/r/IELTS/comments/1tm9weu/3_attempts_in_3_months_what_actually_helped_me/",
+      "provider": "Reddit r/IELTS个人复盘",
+      "publishedAt": null,
+      "sourceType": "experience",
+      "skills": [
+        "general",
+        "speaking",
+        "writing"
+      ],
+      "levels": [
+        "developing"
+      ],
+      "selectionReason": "体现单科不随总分同步，并将考前状态和语言练习分开",
+      "authorContext": {
+        "baseline": "首考总分6.5，L5.5/R6.5/W6.5/S6.5，工作事务挤压准备时间",
+        "preparationDuration": "标题称三个月三考；具体日练时长未披露",
+        "outcome": "二考L6.5/R7/W6/S6.5，总6.5；三考L7.5/R7/W6.5/S7，总7；未独立核验"
+      },
+      "reportedRoutine": [
+        "末次减少考前长途赶路，保证休息，按考试时段模拟",
+        "口语部分建议准备要点和个人例子、不背完整回答；未提供逐次口语训练日志",
+        "写作学了结构语法，作者仍称这是弱项"
+      ],
+      "curatorInterpretation": "考场执行条件值得单列，但不能推导休息必涨一分；写作6.5→6→6.5不是持续上升。",
+      "commercial": false,
+      "commercialDisclosure": "列多项免费/商业练习资源，未见直接销售或赞助披露",
+      "excludeFromGeneralGuidance": [
+        "不采纳98%阅读答案顺序等无依据比例",
+        "不把作者对AI依赖的猜想写成因果结论",
+        "不将睡眠/压力影响量化为固定分差"
+      ],
+      "evidenceScope": "完整主帖与本次可见评论已读；未核验成绩图片，未读外链试题",
+      "commentsReview": {
+        "status": "partial",
+        "detail": "10条可见人类评论/回应已读，折叠回复未展开；无新增可核验训练结果。不收录评论中的个人财务及身份细节。"
+      },
+      "outcomeClass": "overall_improvement_writing_plateau",
+      "checkedAt": "2026-10-02",
+      "status": "curated_with_caveats",
+      "recommendedByDefault": false,
+      "summary": "三考自报总分6.5→6.5→7，但写作6.5→6→6.5，没有净提升。作者末轮减少考前赶路、调整休息并按考试时段模拟，口语部分建议准备要点与例子。可把执行条件和语言练习分别记录，不能把成绩变化归因于某一调整，也不能将状态影响量化为固定分差。",
+      "actionableMethods": [
+        "单独记录路程、休息与模拟时段，不把这些调整等同语言能力提升",
+        "口语准备要点与个人例子后实际开口，写作另保留首稿以追踪仍未解决的问题"
+      ],
+      "price": "免费公开经验文",
+      "access": "公开正文；评论核读范围见详情",
+      "collection": "低起点、在职与写说瓶颈参考",
+      "caution": "考场执行条件值得单列，但不能推导休息必涨一分；写作6.5→6→6.5不是持续上升。 成绩为作者自报，未独立核验；不据此推荐文中付费服务。",
+      "provenance": {
+        "reviewedAt": "2026-10-02",
+        "scope": "完整主帖与本次可见评论已读；未核验成绩图片，未读外链试题",
+        "sourceUrl": "https://www.reddit.com/r/IELTS/comments/1tm9weu/3_attempts_in_3_months_what_actually_helped_me/",
+        "reviewMethod": "重新核读可提取正文；仅摘要与来源链接，不托管原文、教材、试题或成绩图片"
+      },
+      "sourceDateCaveat": "本轮可读页面仅显示相对时间“4mo ago”；绝对发表日期未独立复核，不据相对时间补造具体日期。"
     }
   ],
   "policies": [
@@ -1435,12 +1854,12 @@
     },
     {
       "platform": "B站",
-      "status": "本轮新增4篇完整图文正文核读",
+      "status": "既有4篇完整图文正文核读",
       "scope": "2篇个人复盘、1份阅读错因日志、1篇教师改写示例；没有宣称看完任何视频"
     },
     {
       "platform": "小红书",
-      "status": "新增1篇完整正文，评论部分核读",
+      "status": "既有1篇完整正文，评论部分核读",
       "scope": "完整核读西嘎自学复盘正文，封面已视觉检查；当前加载20条评论/回复已读，页面共53条，其余未读。未核验成绩单，不采用自动搜索摘要。"
     },
     {
@@ -1455,23 +1874,29 @@
     },
     {
       "platform": "LINUX DO",
-      "status": "新增1篇过程复盘",
+      "status": "既有1篇过程复盘",
       "scope": "完整可提取正文与16条可见回复已读；成绩和课程截图未核验。不采用背模板、题库周期或AI固定估分偏移。"
     },
     {
       "platform": "Dcard",
-      "status": "新增1篇在职练习过程",
+      "status": "既有1篇在职练习过程",
       "scope": "完整可提取正文与5条可见顶层评论已读；2条删除占位无内容，嵌套回复未展开；未读成绩图或外链视频。含付费教师推荐。"
     },
     {
       "platform": "Candice机构案例",
-      "status": "新增1篇商业来源对照",
+      "status": "既有1篇商业来源对照",
       "scope": "完整可提取正文已读；未取得可读评论、未核验成绩图片或考试年份；页面日期不当作考试日期。"
     },
     {
       "platform": "PTT IELTS",
-      "status": "新增1篇历史过程对照",
-      "scope": "完整可提取正文、2条可见回复与作者回应已读；未读外链旧帖，成绩未经独立验证；不采用历史费用与考场规则。"
+      "status": "既有1篇历史过程对照；本轮新增1篇在职四战",
+      "scope": "完整可提取正文、2条可见回复与作者回应已读；未读外链旧帖，成绩未经独立验证；不采用历史费用与考场规则。 2026-10-02另核读在职四战代发帖，含家教推广、口语未达标；无可见评论，未读成绩图。"
+    },
+    {
+      "platform": "CSDN、PTT、个人博客、Medium与Reddit（2026-10-02）",
+      "status": "新增7篇正文核读参考",
+      "scope": "CSDN 1篇、PTT 1篇、个人博客2篇、Medium 1篇、Reddit 2篇。付费指导、备考中断与未达单项要求分别说明；Reddit仅可见评论，不拼接已删除账号身份。",
+      "checkedAt": "2026-10-02"
     }
   ],
   "watchSources": [
@@ -1482,8 +1907,8 @@
     "https://www.cambridgeenglish.org/exams-and-tests/ielts/preparation/"
   ],
   "evidenceReview": {
-    "checkedAt": "2026-10-01",
-    "selectionNote": "当前33项资源默认21项、参考12项；其中17篇经验默认6篇、参考11篇。新增5篇中，在职听写复盘仅推荐具体练习过程，其余4篇需主动选择。商业关系与方法限制逐篇披露，推荐阅读不等于推荐文中课程。B站文章中仍只有 GY-Seminar 默认推荐。",
+    "checkedAt": "2026-10-02",
+    "selectionNote": "当前40项资源默认推荐21项、参考19项；其中24篇经验默认全部展示，6篇推荐阅读、18篇参考案例仍可筛选。本轮新增7篇均为参考：包含较低起点、在职、反复考试和未解决的写说瓶颈，不按高分与否评定质量。原33条资源记录保持不变；商业关系、评论和成绩核验边界逐篇披露。",
     "conflicts": [
       {
         "topic": "短期高分是不是通用路径",
@@ -1553,7 +1978,8 @@
       "dcard": "完整正文、5条可见顶层评论；2条删除占位无内容，嵌套回复未展开，成绩图与外链视频未读。",
       "candice": "完整正文；无可读评论返回，成绩图片未核验。",
       "ptt": "完整正文、2条可见回复和作者回应；外链旧帖未读，成绩未核验。",
-      "xiaohongshu": "完整正文、封面及当前加载20条评论/回复；页面共53条，其余未读，未核验成绩单。"
+      "xiaohongshu": "完整正文、封面及当前加载20条评论/回复；页面共53条，其余未读，未核验成绩单。",
+      "plateauBatch": "2026-10-02新增7篇的可提取正文重新核读。Reddit仅当前可见评论；CSDN评论受登录范围限制；Medium显示暂无回复；博客/PTT未取得额外可读评论。未验证成绩图、观看外链视频或体验课程。"
     },
     "notRecommendedSources": [
       {
@@ -1574,5 +2000,53 @@
         "reason": "含旧费用、旧纸笔选择及未经核验的考场规则，另有保证性分数判断；可用练习建议与已收录资料重复，暂不增加为推荐卡片。"
       }
     ]
+  },
+  "experienceBatchReview": {
+    "batchId": "ieltsorbit-plateau-working-2026-10-02",
+    "checkedAt": "2026-10-02",
+    "baseCommit": "f58b40ef0ef570b8fcd5913498597891cf725e4f",
+    "acceptedCount": 7,
+    "recommendedCount": 0,
+    "sourceIds": [
+      "csdn-four-attempts-output-gap-2020",
+      "ptt-working-four-tests-speaking-gap-2025",
+      "siang-long-gap-writing-time-2024",
+      "mudlady-seven-attempts-writing-output-2023",
+      "sunny-working-speaking-osr-2025",
+      "reddit-writing55-unresolved-thread-2026",
+      "reddit-three-attempts-conditions-writing-flat-2026"
+    ],
+    "decision": "7篇全部作为参考案例；质量依据是过程可辨认与限制透明，非分数高低。原33条资源对象不变。",
+    "limitations": [
+      "可靠的四科4–5分低基础长程日志仍不足：当前最弱起点4.5主要来自标题自述且缺完整分项链",
+      "夜班、照护责任、预算受限等在职条件尚无足够不带营销的细化时间记录",
+      "写说5–5.5持续失败后最终仍未达标的长期跟进不足；Reddit只显示发帖时状态",
+      "本批没新增合格B站图文、知乎独立原帖、小红书或贴吧正文；搜索到的视频/营销稿不计作覆盖",
+      "没有完整视频观看、课程体验、独立成绩核验或控制其他变量的对照证据",
+      "主要为中英公开自述，仍有发表者与幸存者偏差，不能估计成功率或平均提分周期"
+    ],
+    "rejectedOrHeld": [
+      {
+        "url": "https://zhuanlan.zhihu.com/p/2045533327084540463",
+        "decision": "不入选",
+        "reason": "标题与正文时长不一致，自学费用说法与辅导推荐关系不清；候选研究未形成可用的独立过程证据。"
+      },
+      {
+        "url": "https://www.yidianwenda.com/article/ff411625cbb60c12e4823705.html",
+        "decision": "暂缓",
+        "reason": "聚合转载页日期2026而经历始于2015，未定位原作者/原帖；不当作2026新案例"
+      },
+      {
+        "url": "https://www.ptt.cc/bbs/IELTS/M.1736086267.A.FD0.html",
+        "decision": "仅搜索候选未全文核读，不入本批",
+        "reason": "有低输出分数与在职信息，但同一教师推荐来源已选一篇，避免增加商业簇权重"
+      },
+      {
+        "url": "https://keithspeakingacademy.com/ielts-speaking-success-may-band-8/",
+        "decision": "仅搜索候选未全文核读，不入本批",
+        "reason": "轮班学习者可能有价值，但为机构成功故事；本批优先独立过程和未达标案例"
+      }
+    ],
+    "rejectedOrHeldReviewScope": "沿用候选研究记录；本轮未再次核读被排除来源，不计入7篇正文核读。"
   }
 }

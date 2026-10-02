@@ -19,13 +19,15 @@ function resourceCard(resource){
  if(resource.recommendedByDefault===false)card.append(create('p','reference-label',(resource.collection||'比较案例')+' · 非默认推荐'));
  const detail=create('details','resource-detail');detail.id='detail-'+resource.id;detail.append(create('summary','','展开站内详情与使用方法'));
  const inside=create('div','detail-body');inside.append(create('p','evidence-label',resource.sourceType==='official'?'官方资料：用于核对题型、标准或官方建议':resource.sourceType==='experience'?'个人经验：过程可借鉴，自报结果不能作为效果证明':'教学材料：方法供练习检验，不是官方考试规则'));
+ if(resource.reportedRoutine?.length)inside.append(create('h4','','原文自述与作者建议'),list(resource.reportedRoutine));
  inside.append(create('h4','','这份资料怎么用'));
  if(resource.actionableMethods?.length)inside.append(list(resource.actionableMethods,'ol'));else inside.append(create('p','',resource.sourceType==='official'?'先核对当前学习任务对应的样题、题型或评分维度，选一个小任务实践；不要只浏览目录。':'先选与你当前错因相符的一节，边看边做一个小任务；用自己的新材料练习检验理解。'));
  if(resource.caution)inside.append(create('p','card-caution',resource.caution));
  const line=(label,value)=>{if(value)inside.append(create('p','',label+'：'+value));};
  line('费用',resource.priceLabel||core.labels.price[resource.price]);line('访问方式',resource.accessLabel||core.labels.access[resource.access]);
- line('核读范围',resource.evidenceScope);line('原文标题',resource.originalTitle);line('发表日期',resource.publishedAt||'未标明');line('核读日期',resource.checkedAt);line('商业关系',resource.commercialDisclosure);line('选用边界',resource.selectionReason);line('证据质量',resource.quality);
+ line('核读范围',resource.evidenceScope);line('原文标题',resource.originalTitle);line('发表日期',resource.publishedAt||'未标明');line('日期说明',resource.sourceDateCaveat);line('核读日期',resource.checkedAt);line('商业关系',resource.commercialDisclosure);line('选用边界',resource.selectionReason);line('证据质量',resource.quality);
  if(resource.authorContext){line('作者起点',resource.authorContext.baseline);line('投入时长',resource.authorContext.preparationDuration);line('结果性质',resource.authorContext.outcome);}
+ if(resource.discussionEvidence?.length)resource.discussionEvidence.forEach(record=>{line('楼内评论（归属未确认）',record.claim);line('身份边界',record.attributionCaveat);if(core.safeUrl(record.url))inside.append(externalLink('查看这条评论 ↗',record.url));});
  if(resource.commentsReview)Object.entries(resource.commentsReview).filter(([k])=>k!=='status').forEach(([,v])=>line('评论核读',v));
  if(resource.excludeFromGeneralGuidance?.length){inside.append(create('h4','','不能推广成通用规则'),list(resource.excludeFromGeneralGuidance));}
  const bottom=create('div','card-bottom');bottom.append(externalLink('最后，阅读原文 ↗',resource.url,'resource-link'));inside.append(bottom);detail.append(inside);card.append(detail);return card;

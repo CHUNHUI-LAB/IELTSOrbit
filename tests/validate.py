@@ -46,6 +46,9 @@ for invalid in ['https://example.org/asset.js','//example.org/asset.js','/assets
 versioned=[x for x in p.assets if urlsplit(x).path=='./assets/experience.js']
 assert len(versioned)==1
 assert parse_qs(urlsplit(versioned[0]).query).get('v')==[hashlib.sha256((ROOT/'assets/experience.js').read_bytes()).hexdigest()[:12]], 'experience script content version mismatch' 
+app_versioned=[x for x in p.assets if urlsplit(x).path=='./assets/app.js']
+assert len(app_versioned)==1
+assert parse_qs(urlsplit(app_versioned[0]).query).get('v')==[hashlib.sha256((ROOT/'assets/app.js').read_bytes()).hexdigest()[:12]], 'app script content version mismatch'
 assert p.labels>=8
 css=(ROOT/'assets/styles.css').read_text()
 assert 'prefers-reduced-motion:reduce' in css
