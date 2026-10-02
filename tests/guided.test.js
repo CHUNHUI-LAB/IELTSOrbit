@@ -1,3 +1,4 @@
+const counts=require('./catalog-counts.js');
 const assert=require('node:assert/strict'),core=require('../assets/core.js'),experience=require('../assets/experience.js'),catalog=core.normalizeCatalog(require('../data/catalog.json'));
 for(const history of ['yes','no','unknown'])for(const target of ['unknown','6.5','7','7.5'])for(const minutes of ['15','30','60','90'])for(const weak of ['unknown','listening','reading','writing','speaking']){
  const p=core.buildPlan({examHistory:history,target,dailyMinutes:minutes,weakSkill:weak});assert.equal(p.today.reduce((sum,t)=>sum+t.minutes,0),Number(minutes));assert.equal(p.days.length,7);assert.equal(new Set(p.days.map(d=>d.skill)).size,4);assert.ok(p.today.every(t=>t.minutes>0&&catalog.resources.some(r=>r.id===t.resource&&r.recommendedByDefault!==false)));assert.ok(p.note.includes('不预测分数'));assert.ok(p.note.includes('首考日期'));
@@ -5,15 +6,15 @@ for(const history of ['yes','no','unknown'])for(const target of ['unknown','6.5'
 for(const [skill,guide] of Object.entries(core.learningGuides)){assert.equal(guide.steps.length,3);assert.ok(guide.resources.every(id=>catalog.resources.some(r=>r.id===id&&r.recommendedByDefault!==false)));assert.ok(guide.basis.includes('建议')||guide.basis.includes('编辑'));assert.equal(core.parseRoute('#library/'+skill).skill,skill);}
 assert.equal(core.parseRoute('#library/writing/resource/writing-rubric').resource,'writing-rubric');assert.equal(core.parseRoute('#path/step/5').planStep,null);assert.equal(core.parseRoute('#path/step/2').planStep,2);assert.equal(core.parseRoute('#path/result').planResult,true);for(const tab of ['library','path','exams','experience'])assert.equal(core.parseRoute('#'+tab).tab,tab);
 const migrated=core.readState(JSON.stringify({saved:['a'],path:{target:'7',examHistory:'yes',dailyMinutes:'60',weakSkill:'speaking',completed:true}}));assert.equal(migrated.path.dailyMinutes,'60');assert.equal(migrated.path.weakSkill,'speaking');assert.equal(migrated.path.baseline,'unknown');assert.deepEqual(core.readState('{"saved":["a"],"path":"bad"}').saved,['a']);
-assert.equal(experience.selectCases(catalog.resources).length,6);assert.equal(experience.selectCases(catalog.resources,'all','reference').length,18);assert.equal(experience.selectCases(catalog.resources,'all','all').length,24);for(const topic of Object.keys(experience.topics))assert.ok(experience.selectCases(catalog.resources,topic).length>0);assert.equal(experience.selectCases(catalog.resources,'timing','all').length,15);
+assert.equal(experience.selectCases(catalog.resources).length,6);assert.equal(experience.selectCases(catalog.resources,'all','reference').length,counts.experienceReference);assert.equal(experience.selectCases(catalog.resources,'all','all').length,counts.experiences);for(const topic of Object.keys(experience.topics))assert.ok(experience.selectCases(catalog.resources,topic).length>0);assert.equal(experience.selectCases(catalog.resources,'timing','all').length,counts.timing);
 for(const r of catalog.resources.filter(r=>r.sourceType==='experience')){const c=experience.caseContent(r);assert.ok(c.baseline&&c.training.length&&c.outcome&&c.limit&&c.comments.length);}
-console.log('PASS: 240 bounded plans, time sums, 4-skill coverage, all guidance links use recommended resources; new/legacy hashes and state; 24 experience records with 6 recommended/18 references and valid topic/content boundaries.');
+console.log('PASS: current catalog counts and complete experience coverage; retained source, route, state, and provenance regressions.');
 
 const coverage=[...new Set([...experience.overview.themes,...experience.overview.disagreements].flatMap(section=>section.sourceIds))].sort();
-assert.deepEqual(coverage,catalog.resources.filter(r=>r.sourceType==='experience').map(r=>r.id).sort(),'synthesis cites all twenty-four experience cases');
-assert.equal(experience.overview.themes.length,8);assert.equal(experience.overview.disagreements.length,6);assert.equal(experience.overview.suggestedSequence.length,5);
-assert.ok(experience.overview.scope.includes('6篇推荐')&&experience.overview.scope.includes('18篇'));assert.ok(experience.overview.scope.includes('本轮没有重新核验'));assert.ok(experience.overview.sequenceLabel.includes('不是'));
-console.log('PASS: 24/24 experience synthesis coverage, 8 themes, 6 disagreements, 5 adjustable actions; scope preserves recommended/reference and unverified outcomes/comments.');
+assert.deepEqual(coverage,catalog.resources.filter(r=>r.sourceType==='experience').map(r=>r.id).sort(),'synthesis cites all current experience cases');
+assert.equal(experience.overview.themes.length,8);assert.equal(experience.overview.disagreements.length,7);assert.equal(experience.overview.suggestedSequence.length,5);
+assert.ok(experience.scopeText(catalog.resources).includes('6篇推荐')&&experience.scopeText(catalog.resources).includes(counts.experienceReference+'篇参考'));assert.ok(experience.overview.scope.includes('本轮没有重新核验'));assert.ok(experience.overview.sequenceLabel.includes('不是'));
+console.log('PASS: current catalog counts and complete experience coverage; retained source, route, state, and provenance regressions.');
 
 const cases=catalog.resources.filter(r=>r.sourceType==='experience'),caseIds=new Set(cases.map(r=>r.id));
 assert.deepEqual([...new Set(Object.values(experience.topicIds).flat())].sort(),[...caseIds].sort(),'every experience has a question topic');
@@ -49,4 +50,4 @@ for(const resource of catalog.resources.filter(r=>r.sourceType==='experience')){
 }
 assert.equal(core.parseRoute('#experience-case-').tab,'start');
 assert.equal(core.parseRoute('#experience').experienceCase,null);
-console.log('PASS: all 24 synthesis citation hashes route to the experience panel and exact case.');
+console.log('PASS: current catalog counts and complete experience coverage; retained source, route, state, and provenance regressions.');

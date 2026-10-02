@@ -1727,6 +1727,201 @@
         "reviewedAt": "2026-10-02",
         "scope": "公开原文核读；仅保存原创摘要和来源链接，不转载原文、试题或教材。"
       }
+    },
+    {
+      "id": "reddit-feedback-not-understood-writing-2026",
+      "title": "用过五篇批改，仍说不清写作问题：一个未解决案例",
+      "originalTitle": "STRUGGLING TO GET 7.5 Writing",
+      "url": "https://www.reddit.com/r/IELTS/comments/1s598pz/struggling_to_get_75_writing/",
+      "provider": "Reddit r/IELTS／Equivalent_Error4612",
+      "publishedAt": "2026-03-27",
+      "sourceDateCaveat": "绝对日期来自网页搜索返回的原帖日期；正文页面仅显示相对时间。",
+      "skills": [
+        "writing"
+      ],
+      "levels": [
+        "foundation",
+        "developing",
+        "advanced"
+      ],
+      "authorContext": {
+        "baseline": "自报初次写作5.5；听力、口语通常7.5以上，不能视为四项低基础",
+        "preparationDuration": "跨两次全科考试及一次写作单科重考；总学习时长未披露",
+        "outcome": "自报写作5.5→6.5→6.0；发帖时仍未达7.5目标；成绩未独立核验"
+      },
+      "summary": "作者用过五篇作文批改，仍表示不知道问题在哪里；看过推荐视频也没有解决困惑。写作三次自报5.5→6.5→6.0。这个尚未解决的案例提醒：收到修改、理解错因、独立改对，是不同环节。",
+      "reportedRoutine": [
+        "首考未复习；后续用过五篇作文批改并观看教学视频。",
+        "评论追问中强调预算及考试期限限制；没有贴出原稿、批注或重写稿。"
+      ],
+      "actionableMethods": [
+        "收到批注后先用自己的话复述问题和修改理由，再安排一次不看答案的重写。",
+        "若说不清要改什么，先把反馈澄清，不以购买次数或再考一次代替诊断。"
+      ],
+      "curatorInterpretation": "以上练习建议是编辑提炼，不是作者已实施并成功验证的方案。",
+      "commercial": true,
+      "commercialDisclosure": "原帖提到商业批改与课程；金额未披露。评论有教师或服务推荐，不据此判断服务好坏。",
+      "price": "免费帖子；提及服务的费用未披露",
+      "evidenceScope": "主帖全文及当前可见评论已读；未展开全部折叠回复，未核验成绩、作文或付款。",
+      "commentsReview": {
+        "status": "visible_thread_read",
+        "detail": "仅将带作者用户名的回复归入其经历：仍称看过视频但有困惑，补充时间与预算限制。评论者的课程推荐、估计和承诺不算作者的训练或结果。"
+      },
+      "outcomeClass": "unresolved_feedback_comprehension_gap",
+      "selectionReason": "新增“已有批改却无法转为下一步行动”的失败环节，而不只是缺少反馈。",
+      "excludeFromGeneralGuidance": [
+        "不把听说7.5推导为写作必可轻松达7.5",
+        "不转述评论中的保分承诺",
+        "不把未展示的批注质量作负面定论"
+      ],
+      "caution": "成绩和经历为匿名作者自报；未见后续达标证据，不能据此评判任何具名老师或课程效果。 成绩与练习记录未独立核验。",
+      "sourceType": "experience",
+      "checkedAt": "2026-10-02",
+      "status": "curated_with_caveats",
+      "recommendedByDefault": false,
+      "access": "公开正文；核读范围见详情",
+      "collection": "反馈理解、迁移与未解决瓶颈参考",
+      "provenance": {
+        "reviewedAt": "2026-10-02",
+        "scope": "主帖全文及当前可见评论已读；未展开全部折叠回复，未核验成绩、作文或付款。",
+        "sourceUrl": "https://www.reddit.com/r/IELTS/comments/1s598pz/struggling_to_get_75_writing/",
+        "reviewMethod": "公开正文复核，结合明确注明的可见评论或自制图片；只保留短摘要与来源链接"
+      }
+    },
+    {
+      "id": "vocus-losa-writing-error-transfer-2026",
+      "title": "多年英语环境仍卡写作：错因分类、段落练习与键盘速度",
+      "originalTitle": "我的五週雅思備考計畫與工具",
+      "url": "https://vocus.cc/article/6a4b26b7fd89780001ebfc01",
+      "provider": "方格子／不是Lisa也不是Lose的Losa",
+      "publishedAt": "2026-01-08",
+      "updatedAt": "2026-07-25",
+      "skills": [
+        "writing",
+        "speaking",
+        "listening"
+      ],
+      "levels": [
+        "developing",
+        "advanced"
+      ],
+      "authorContext": {
+        "baseline": "已有澳洲英语学习及新西兰英语办公背景；作者自制表记2014年GT写作5、2016年GT写作6.5",
+        "preparationDuration": "2025年考前5周，自报每天7–9小时；写作再考另安排3周",
+        "outcome": "2025年Academic自报写作6.5；配套表格总分7.5、L8.5/R8/W6.5/S7.5（口语含复议）。写作单科重考最终成绩未从正文确认；成绩未独立核验"
+      },
+      "summary": "Losa 按拼写、语法、介词分类错因，做限时段落、旧题重写和整套检测，同时排查键盘慢与反复改句造成的超时。她已有多年英语环境，五周每天投入7–9小时，另用三周准备写作重考；写作仍是短板，不能按总分标题推算提分速度。",
+      "reportedRoutine": [
+        "记录每篇耗时、字数与AI反馈；把常见错误用于新句练习，再重写旧题及每两天做完整模拟。",
+        "自报打字由不足30词/分到45–50；配套反思承认AI反馈有时原地打转。这些过程记录不能证明因果效果。"
+      ],
+      "actionableMethods": [
+        "把内容构思、语言错误和键盘输入分别检查，别把写不完全归因于词汇。",
+        "单项小练习后回到无辅助限时全文；保留首稿，检查同类错误是否在新题再现。"
+      ],
+      "curatorInterpretation": "短句或旧题上的改善需要新题与完整模拟检验；没有证据把成绩变化归因于AI或打字练习。",
+      "commercial": false,
+      "commercialDisclosure": "正文未见作者售课；推荐若干商业工具及课程，称未体验部分付费课；页面有赞助入口。实际辅导总费用未披露。",
+      "price": "免费文章；历史考试及服务成本不作现价",
+      "evidenceScope": "两篇公开正文复核；方法文核对发表及更新日，配套反思文另核对作者、日期与自制成绩表。未核验官方成绩单、推荐视频或练习文档。",
+      "commentsReview": {
+        "status": "none_visible",
+        "detail": "配套反思文只见留言输入区，没有可供核读的读者留言；方法文评论未审。"
+      },
+      "relatedSources": [
+        {
+          "title": "39歲，第三次步入雅思考場",
+          "url": "https://vocus.cc/article/6a4b26b7fd89780001ebfbe9",
+          "publishedAt": "2026-01-20",
+          "updatedAt": "2026-07-26",
+          "role": "自制成绩表、长期起点、AI反馈局限"
+        }
+      ],
+      "outcomeClass": "long_term_background_writing_plateau_and_process_adjustment",
+      "selectionReason": "具体到“错误→新练习→重写→整套检测”，同时保留写作6.5与尚不明确的复考结局。",
+      "excludeFromGeneralGuidance": [
+        "不沿用文中海外费用、复议或单科重考流程作为当前规则",
+        "不把AI估分当正式诊断或给固定偏移",
+        "不照搬每天7–9小时或固定段落秒表",
+        "不采纳口音、情绪与考官给分的因果推测",
+        "不把GT与Academic跨年成绩当同条件提分实验"
+      ],
+      "caution": "五周是最后准备窗口，不是从低基础到7.5的周期；图片为作者自制表格。正文含若干不准确或地区性的考试说法，本文只提炼学习过程。 成绩与练习记录未独立核验。",
+      "sourceType": "experience",
+      "checkedAt": "2026-10-02",
+      "status": "curated_with_caveats",
+      "recommendedByDefault": false,
+      "access": "公开正文；核读范围见详情",
+      "collection": "反馈理解、迁移与未解决瓶颈参考",
+      "provenance": {
+        "reviewedAt": "2026-10-02",
+        "scope": "两篇公开正文复核；方法文核对发表及更新日，配套反思文另核对作者、日期与自制成绩表。未核验官方成绩单、推荐视频或练习文档。",
+        "sourceUrl": "https://vocus.cc/article/6a4b26b7fd89780001ebfc01",
+        "reviewMethod": "公开正文复核，结合明确注明的可见评论或自制图片；只保留短摘要与来源链接"
+      },
+      "sourceDateCaveat": "方法文2026-01-08发布、07-25更新；记述的是2025年备考，不能按页面日期计算提分周期。"
+    },
+    {
+      "id": "note-digiros-y-speaking-transfer-gap-2026",
+      "title": "短句练习错得更少，现场口语仍5.5：迁移尚未验证",
+      "originalTitle": "【IELTS General Training 体験談①】東大時代は5.5... 7年ぶりのIELTSリベンジで『7.0（C1）』を取る！",
+      "url": "https://note.com/digiros/n/nf3fe968f360d",
+      "provider": "note／DigiRoS 学习组采访成员Y",
+      "publishedAt": "2026-08-04",
+      "skills": [
+        "speaking",
+        "writing",
+        "general"
+      ],
+      "levels": [
+        "foundation",
+        "developing"
+      ],
+      "authorContext": {
+        "baseline": "自报大学时Academic总分5.5（L/R5.5，W/S5）；相隔7年后的考前GT阅读模考已接近满分，不能当连续低基础训练",
+        "preparationDuration": "本次集中约2周；7年间学习投入未披露",
+        "outcome": "2026年8月1日GT自报总分7，L7/R8.5/W6.5/S5.5；考前AI口语模考约5–5.5，未报告口语突破；成绩未独立核验"
+      },
+      "summary": "受访者先区分没有想法与无法准确表达，再依据口语转写中的错误，做即时书面短句翻译。重复三轮各100题，AI判有错题数自报40→31→22，现场口语仍5.5。书面局部练习改善不能直接当成口语提分。",
+      "reportedRoutine": [
+        "用不同话题准备自己的观点，再依据口语转写定位名词复数和介词问题。",
+        "做即时书面短句翻译，要求落笔后不回改；重复三轮100题由AI判错，不是三轮完整口语模拟。",
+        "自述现场听题、紧张和答非所问的困难；AI口语估分约5–5.5，不是考官评分。"
+      ],
+      "actionableMethods": [
+        "分别记录想法不足、语言组织和听题错误，避免所有停顿都归为词汇少。",
+        "转写要回听原音核对，再在新题和真人互动中验证；短句练习不能替代完整口语。"
+      ],
+      "curatorInterpretation": "AI判错题数是作者报告的局部书面练习指标；重复题熟悉效应未排除，不能单凭这组数确认现场口语进步。",
+      "commercial": null,
+      "commercialDisclosure": "DigiRoS 组织账号采访自家成员，提及官方备考权益；所读正文无直接收费课程入口，组织与工具利益关系未独立核查。",
+      "price": "免费文章；总费用及AI订阅费未披露",
+      "evidenceScope": "日文访谈正文复核；组织账号采访自家成员，叙述和数字均属自报。未核验成绩图片，未审评论；英文译文不另算案例。",
+      "commentsReview": {
+        "status": "not_reviewed",
+        "detail": "本轮读取访谈正文，未开展评论核读。"
+      },
+      "outcomeClass": "process_improvement_without_demonstrated_speaking_gain",
+      "selectionReason": "补充低口语分、具体错误计数和未实现现场迁移，不被总分7包装掩盖。",
+      "excludeFromGeneralGuidance": [
+        "不沿用总分/C1对照、OSR条件及权益作为官方规则",
+        "不把AI评分偏严或三轮错数下降当可靠校准",
+        "不把即时书面短句翻译当作完整口语模拟",
+        "不把七年前5.5到本次7写成两周提升1.5分"
+      ],
+      "caution": "Academic与GT、两次相隔7年的背景不可直接比较；这是采访自述与AI辅助记录，不能证明某工具有效。 成绩与练习记录未独立核验。",
+      "sourceType": "experience",
+      "checkedAt": "2026-10-02",
+      "status": "curated_with_caveats",
+      "recommendedByDefault": false,
+      "access": "公开正文；核读范围见详情",
+      "collection": "反馈理解、迁移与未解决瓶颈参考",
+      "provenance": {
+        "reviewedAt": "2026-10-02",
+        "scope": "日文访谈正文复核；组织账号采访自家成员，叙述和数字均属自报。未核验成绩图片，未审评论；英文译文不另算案例。",
+        "sourceUrl": "https://note.com/digiros/n/nf3fe968f360d",
+        "reviewMethod": "公开正文复核，结合明确注明的可见评论或自制图片；只保留短摘要与来源链接"
+      }
     }
   ],
   "policies": [
@@ -2025,6 +2220,12 @@
       "status": "新增7篇正文核读参考",
       "scope": "CSDN 1篇、PTT 1篇、个人博客2篇、Medium 1篇、Reddit 2篇。付费指导、备考中断与未达单项要求分别说明；Reddit仅可见评论，不拼接已删除账号身份。",
       "checkedAt": "2026-10-02"
+    },
+    {
+      "platform": "Reddit、方格子与note（反馈理解和迁移专题）",
+      "status": "新增3个参考案例，4篇来源正文",
+      "scope": "Reddit主帖及当前可见评论；方格子同作者两文合并为一个案例，复核自制成绩表；note日文访谈正文。未核验正式成绩，未观看视频，未将评论者结果归给原作者。",
+      "checkedAt": "2026-10-02"
     }
   ],
   "watchSources": [
@@ -2224,6 +2425,30 @@
       "没有观看完整视频、独立核验考生成绩或体验付费课程。",
       "同作者、商业推荐与转载不作为独立效果证据。",
       "只新增原创短摘要和来源链接；未复制题库、教材或评论个人资料。"
+    ]
+  },
+  "feedbackTransferReview": {
+    "checkedAt": "2026-10-02",
+    "acceptedCount": 3,
+    "recommendedCount": 0,
+    "sourceIds": [
+      "reddit-feedback-not-understood-writing-2026",
+      "vocus-losa-writing-error-transfer-2026",
+      "note-digiros-y-speaking-transfer-gap-2026"
+    ],
+    "scope": "本次复核4篇接收来源正文，合为3个学习者案例；既有资料保留各自核读边界。",
+    "decision": "补充已有批改但不理解、限时写作与输入问题、书面练习改善未证明口语迁移三个环节。全部为参考案例，不作服务推荐。",
+    "held": [
+      {
+        "url": "https://www.ieltsnetwork.com/viewtopic.php?t=4774",
+        "reason": "2015年高基础论坛案例，反馈一致性与限时失误已有相近覆盖；商业推荐强且考试次数不一致，本批不新增权重。"
+      }
+    ],
+    "limitations": [
+      "没有四科4–5分起点的可靠长期新日志，也没有原稿—批注—重写—新题全链作品供独立核验。",
+      "AI估分和判错数不等于官方成绩或独立测评，重复材料的熟悉效应未排除。",
+      "发表日期、经历日期与末轮准备窗口不同；没有成功率、平均提分周期或课程效果证据。",
+      "本轮没有新增合格的小红书、贴吧、知乎独立正文或完整视频案例；不以搜索结果当作正文覆盖。"
     ]
   }
 }

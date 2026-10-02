@@ -1,0 +1,40 @@
+const assert=require('node:assert/strict');
+const crypto=require('node:crypto');
+const raw=require('../data/catalog.json'),core=require('../assets/core.js'),experience=require('../assets/experience.js');
+const digest=x=>crypto.createHash('sha256').update(JSON.stringify(x)).digest('hex');
+assert.equal(digest(raw.resources.slice(0,41)),'0e355fed7be1e0ea7d71eb749eeba6493776c8775018dba16c79fd315d2d8b5c','all 41 previously published objects remain unchanged');
+const ids=['reddit-feedback-not-understood-writing-2026','vocus-losa-writing-error-transfer-2026','note-digiros-y-speaking-transfer-gap-2026'];
+assert.deepEqual(raw.resources.slice(41).map(r=>r.id),ids,'only the three reviewed additions');
+assert.equal(raw.resources.length,44);assert.equal(raw.resources.filter(r=>r.sourceType==='experience').length,27);
+assert.equal(raw.resources.filter(r=>r.recommendedByDefault!==false).length,22,'default recommendation set unchanged');
+assert.equal(raw.resources.filter(r=>r.sourceType==='experience'&&r.recommendedByDefault!==false).length,6);
+assert.deepEqual(raw.feedbackTransferReview.sourceIds,ids);assert.equal(raw.feedbackTransferReview.acceptedCount,ids.length);
+assert.equal(raw.feedbackTransferReview.held.length,1);assert.ok(!raw.resources.some(r=>r.id==='ieltsnetwork-lchu-feedback-consistency-2015'));
+for(const r of raw.resources.slice(41)){
+ assert.equal(r.recommendedByDefault,false);assert.equal(r.sourceType,'experience');
+ assert.ok(r.reportedRoutine.length&&r.actionableMethods.length&&r.curatorInterpretation);
+ assert.ok(r.authorContext.outcome.includes('未独立核验'));assert.ok(r.caution.includes('未独立核验'));
+ assert.ok(r.commercialDisclosure&&r.commentsReview.detail&&r.excludeFromGeneralGuidance.length);
+ assert.equal(r.provenance.scope,r.evidenceScope);assert.equal(r.provenance.sourceUrl,r.url);
+ assert.ok(experience.topicIds.output.includes(r.id));
+ assert.ok([...experience.overview.themes,...experience.overview.disagreements].some(x=>x.sourceIds.includes(r.id)));
+ const normalized=core.normalizeCatalog(raw).resources.find(x=>x.id===r.id);
+ assert.equal(normalized.access,'open');assert.equal(normalized.price,'free');
+ assert.ok(r.skills.every(x=>Object.hasOwn(core.labels.skills,x)));assert.ok(r.levels.every(x=>Object.hasOwn(core.labels.levels,x)));
+}
+const [r,l,y]=raw.resources.slice(41);
+assert.equal(r.publishedAt,'2026-03-27');assert.ok(r.authorContext.outcome.includes('5.5→6.5→6.0'));assert.ok(r.commentsReview.detail.includes('评论者'));
+assert.ok(!JSON.stringify(r).includes('PLAB'),'unnecessary personal employment/financial context omitted');
+assert.equal(l.publishedAt,'2026-01-08');assert.equal(l.updatedAt,'2026-07-25');assert.equal(l.relatedSources.length,1);
+assert.ok(l.authorContext.preparationDuration.includes('7–9小时')&&l.authorContext.preparationDuration.includes('3周'));assert.ok(l.authorContext.outcome.includes('未从正文确认'));
+assert.ok(l.sourceDateCaveat.includes('2025'));assert.ok(l.evidenceScope.includes('自制成绩表'));
+assert.equal(y.publishedAt,'2026-08-04');assert.ok(y.summary.includes('书面短句翻译')&&y.summary.includes('40→31→22'));
+assert.ok(y.summary.includes('现场口语仍5.5'));assert.ok(y.reportedRoutine.some(s=>s.includes('不是三轮完整口语模拟')));
+assert.ok(y.curatorInterpretation.includes('重复题熟悉效应'));assert.ok(y.authorContext.baseline.includes('7年'));assert.ok(y.price.includes('未披露'));
+// Coverage text must follow actual supplied resources, including empty and reduced catalogs.
+assert.ok(experience.scopeText(raw.resources).includes('27篇经验：6篇推荐阅读、21篇参考案例'));
+assert.ok(experience.scopeText([]).startsWith('基于本站0篇经验：0篇推荐阅读、0篇参考案例'));
+assert.ok(experience.scopeText([y]).startsWith('基于本站1篇经验：0篇推荐阅读、1篇参考案例'));
+const allSourceIds=[...experience.overview.themes,...experience.overview.disagreements].flatMap(x=>x.sourceIds);
+assert.deepEqual([...new Set(allSourceIds)].sort(),raw.resources.filter(r=>r.sourceType==='experience').map(r=>r.id).sort());
+console.log('PASS: 41 unchanged objects, exactly 3 reference additions, author/commenter separation, dated self-report limits, written-drill/AI distinctions, linked same-case evidence, dynamic counts');

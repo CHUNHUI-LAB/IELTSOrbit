@@ -25,9 +25,11 @@ function resourceCard(resource){
  if(resource.caution)inside.append(create('p','card-caution',resource.caution));
  const line=(label,value)=>{if(value)inside.append(create('p','',label+'：'+value));};
  line('费用',resource.priceLabel||core.labels.price[resource.price]);line('访问方式',resource.accessLabel||core.labels.access[resource.access]);
- line('核读范围',resource.evidenceScope);line('原文标题',resource.originalTitle);line('发表日期',resource.publishedAt||'未标明');line('日期说明',resource.sourceDateCaveat);line('核读日期',resource.checkedAt);line('商业关系',resource.commercialDisclosure);line('选用边界',resource.selectionReason);line('证据质量',resource.quality);
+ line('核读范围',resource.evidenceScope);line('原文标题',resource.originalTitle);line('发表日期',resource.publishedAt||'未标明');line('原文更新',resource.updatedAt);line('日期说明',resource.sourceDateCaveat);line('核读日期',resource.checkedAt);line('商业关系',resource.commercialDisclosure);line('选用边界',resource.selectionReason);line('证据质量',resource.quality);
  if(resource.authorContext){line('作者起点',resource.authorContext.baseline);line('投入时长',resource.authorContext.preparationDuration);line('结果性质',resource.authorContext.outcome);}
  if(resource.discussionEvidence?.length)resource.discussionEvidence.forEach(record=>{line('楼内评论（归属未确认）',record.claim);line('身份边界',record.attributionCaveat);if(core.safeUrl(record.url))inside.append(externalLink('查看这条评论 ↗',record.url));});
+ if(resource.curatorInterpretation)line('编辑判断',resource.curatorInterpretation);
+ if(resource.relatedSources?.length)resource.relatedSources.forEach(record=>{if(core.safeUrl(record.url))inside.append(externalLink('同一案例配套原文：'+record.title+' ↗',record.url));});
  if(resource.commentsReview)Object.entries(resource.commentsReview).filter(([k])=>k!=='status').forEach(([,v])=>line('评论核读',v));
  if(resource.excludeFromGeneralGuidance?.length){inside.append(create('h4','','不能推广成通用规则'),list(resource.excludeFromGeneralGuidance));}
  const bottom=create('div','card-bottom');bottom.append(externalLink('最后，阅读原文 ↗',resource.url,'resource-link'));inside.append(bottom);detail.append(inside);card.append(detail);return card;
