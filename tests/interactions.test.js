@@ -33,6 +33,24 @@ function harness({rawState,hash='',offline=false,storageBlocked=false}={}){
 }
 (async()=>{
  const h=harness(),{nodes:n,doc}=h;await h.flush();
+ // The library entry preserves real learning conclusions while exposing its first action earlier.
+ for(const [skill,guide] of Object.entries(core.learningGuides)){
+  const compact=harness({hash:'#library/'+skill,rawState:JSON.stringify({saved:['writing-rubric'],path:null})});await compact.flush();
+  const root=compact.nodes['learning-guide'],subject=root.children[0],lead=subject.querySelector('.guide-lead'),columns=subject.querySelector('.guide-columns');
+  assert(lead&&columns);assert(subject.children.indexOf(lead)<subject.children.indexOf(columns));
+  assert(compact.text(lead).includes(guide.focus));
+  const content=compact.text(columns);for(const text of [...guide.mistakes,...guide.order])assert(content.includes(text),skill+': '+text);
+  assert.equal(columns.querySelectorAll('li').length,6);
+  assert.equal(lead.closest('details'),null);assert.equal(columns.closest('details'),null,'subject conclusions remain visible without opening a disclosure');
+  const primary=lead.querySelector('.primary-button');assert(primary);assert.equal(primary.href,'#library/'+skill+'/resource/'+guide.resources[0]);
+  assert.equal(lead.querySelectorAll('.primary-button').length,1);assert.equal(subject.querySelector('.method-detail').open,false,'only the existing extended procedure stays folded');
+  assert.equal(compact.saved.get('ieltsorbit.local.v1'),JSON.stringify({saved:['writing-rubric'],path:null}));
+ }
+ const libraryMarkup=html.split('id="panel-library"')[1].split('id="panel-experience"')[0];
+ assert(!libraryMarkup.includes('class="journey-steps"'));assert(libraryMarkup.includes('答案、初稿或录音'));
+ const hierarchyCss=fs.readFileSync(require.resolve('../assets/styles.css'),'utf8').split('/* Library entry')[1];
+ assert(hierarchyCss.includes('#panel-library'));assert(!hierarchyCss.includes('display:none'));assert(!hierarchyCss.includes('animation:')&&!hierarchyCss.includes('transition:'));
+
  // Compact filter feedback exposes collapsed choices and preserves the active subject.
  const feedback=harness({hash:'#library/writing',rawState:JSON.stringify({saved:['writing-rubric'],path:null})});await feedback.flush();const fn=feedback.nodes;
  assert.equal(fn['active-filters'].hidden,true);

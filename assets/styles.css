@@ -46,3 +46,36 @@ input,select{font-size:16px}
 #advanced-filter-summary{transition:color 160ms ease;min-height:44px;align-content:center}
 @media(max-width:720px){.active-filters{padding-bottom:18px}.filter-chip{font-size:15px}}
 @media(prefers-reduced-motion:reduce){.filter-chip,#advanced-filter-summary{transition:none}}
+
+/* Library entry keeps every subject conclusion visible and makes the first reading action clear. */
+#panel-library{padding-top:28px}
+#panel-library .library-heading{margin-bottom:20px}
+#panel-library .library-heading h2{font-size:28px;line-height:1.4}
+#panel-library .library-heading p{font-size:15px;margin-top:10px;max-width:64ch}
+#panel-library .skill-navigation{gap:8px;margin-bottom:18px}
+#panel-library .guide-summary--subject{padding:24px;background:#f6f9f7;border-radius:14px}
+#panel-library .guide-lead{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,320px);align-items:start;gap:24px}
+#panel-library .guide-heading .eyebrow{margin-bottom:10px}
+#panel-library .guide-heading h3{font-size:22px;line-height:1.6;max-width:34ch}
+#panel-library .guide-next{margin:0;display:flex;flex-direction:column;align-items:stretch;gap:8px}
+#panel-library .guide-next .primary-button{min-height:48px;padding:11px 16px;font-size:15px;line-height:1.6;text-align:left;white-space:normal}
+#panel-library .guide-next .text-button{align-self:flex-start;min-height:44px;display:inline-flex;align-items:center;font-size:14px}
+#panel-library .guide-columns{margin-top:20px;gap:28px}
+#panel-library .guide-columns h4{font-size:16px;margin:0 0 6px}
+#panel-library .guide-columns ul,#panel-library .guide-columns ol{font-size:15px;line-height:1.75}
+#panel-library .guide-columns li{margin:4px 0}
+#panel-library .method-detail{margin-top:18px}
+#panel-library .resource-heading{margin-top:26px}
+@media(max-width:720px){
+ #panel-library{padding-top:24px}
+ #panel-library .library-heading h2{font-size:24px}
+ #panel-library .library-heading p{font-size:15px}
+ #panel-library .skill-button{font-size:15px;padding:9px 17px;min-height:44px}
+ #panel-library .guide-summary--subject{padding:20px}
+ #panel-library .guide-lead{grid-template-columns:minmax(0,1fr);gap:16px}
+ #panel-library .guide-heading h3{font-size:21px;line-height:1.6;max-width:none}
+ #panel-library .guide-next{align-items:flex-start;gap:4px}
+ #panel-library .guide-next .primary-button{max-width:100%}
+ #panel-library .guide-columns{grid-template-columns:minmax(0,1fr);gap:16px;margin-top:18px}
+ #panel-library .guide-columns ul,#panel-library .guide-columns ol{font-size:16px}
+}
