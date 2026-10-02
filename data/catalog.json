@@ -8,7 +8,9 @@
     "scope": "通用雅思学习资料与备考方法；初版考点覆盖杭州。Academic 为默认学习方向，其他类别需按用途核对。",
     "privacy": "选择仅在浏览器本地使用；不收集成绩、申请资料、账号或报名记录。",
     "disclaimer": "非 IELTS 官方网站；不保证提分速度，不代表报名成功或实时考位。",
-    "firstScheduledRunVerified": false
+    "firstScheduledRunVerified": true,
+    "lastScheduledCheckAt": "2026-10-02",
+    "lastScheduledCheckScope": "政策、杭州考点、公告状态及本轮来源筛选；未重读全部既有资源"
   },
   "resources": [
     {
@@ -1681,6 +1683,50 @@
         "reviewMethod": "重新核读可提取正文；仅摘要与来源链接，不托管原文、教材、试题或成绩图片"
       },
       "sourceDateCaveat": "本轮可读页面仅显示相对时间“4mo ago”；绝对发表日期未独立复核，不据相对时间补造具体日期。"
+    },
+    {
+      "id": "official-independent-reading-project",
+      "title": "把课外阅读变成摘要、改写与讨论练习",
+      "originalTitle": "How to incorporate an independent reading project into an IELTS prep course",
+      "provider": "IELTS.org／Daniella Di Mambro",
+      "url": "https://ielts.org/news-and-insights/how-to-incorporate-an-independent-reading-project-into-an-ielts-prep-course",
+      "sourceType": "official",
+      "skills": [
+        "阅读",
+        "写作",
+        "口语"
+      ],
+      "levels": [
+        "提升",
+        "冲刺"
+      ],
+      "price": "免费公开文章",
+      "access": "公开正文，可直接阅读",
+      "summary": "读一篇难度合适的英文文章，抓主旨、选少量词语，再用自己的话概括并讨论。原文把课外阅读接到摘要、改写及写说话题练习；这是官方教师文章中的学习活动，不是考试题库。",
+      "checkedAt": "2026-10-02",
+      "publishedAt": "2021-10-11",
+      "status": "curated",
+      "commercial": false,
+      "commercialDisclosure": "IELTS.org公开教师文章；未体验课程。外链文章的访问条件各异。",
+      "recommendedByDefault": true,
+      "evidenceScope": "完整公开文字正文及作者说明已核读；未把外链文章计作已读。",
+      "commentsReview": {
+        "status": "not_applicable",
+        "detail": "该正文页未呈现评论讨论。"
+      },
+      "actionableMethods": [
+        "选一篇能理解主旨的文章，先概括内容，只挑少量值得复用的词语。",
+        "参考原文的20分钟自学活动建议，完成选文、阅读和词语整理；这是活动预算，不是官方考试限时。",
+        "向搭档讲清文章要点并解释词语；也可写短摘要，检查是否真正理解和能否改写。",
+        "已有题型基础时，再围绕同一话题设计写作讨论或口语Part 3问题；自行设计的题目不是官方试题。"
+      ],
+      "caution": "原文主要面向教师，需按自己的理解能力调整。课外阅读补充题型训练；20分钟不是备考总时长，也不保证提分。",
+      "selectionReason": "补充从课外输入到摘要、改写和讨论的具体活动；与既有样题目录、阅读错题日志用途不同。",
+      "quality": "官方平台署名教学建议；没有提供个体提分效果的对照证据。",
+      "provenance": {
+        "reviewedAt": "2026-10-02",
+        "scope": "公开原文核读；仅保存原创摘要和来源链接，不转载原文、试题或教材。"
+      }
     }
   ],
   "policies": [
@@ -1812,10 +1858,10 @@
     "checkedAt": "2026-10-02",
     "status": "announcement_verified_dates_not_transcribed",
     "dates": [],
-    "note": "教育部教育考试院新闻索引已于2026-08-28列出第四季度机考安排。2026-10-02核查时，标准雅思详情页转至系统升级通知，BC公告的日历图片未能读取；本库尚未逐日转录日期，也未取得杭州当前可报名场次或余位。请在官方报名系统选择城市、考试类别和日期。自选计划日期不是已确认的考期。",
+    "note": "教育部教育考试院新闻索引已于2026-08-28列出第四季度机考安排。2026-10-02核查时，标准雅思及UKVI详情页均转至系统升级通知，BC公告的日历图片未能读取；本库尚未逐日转录日期，也未取得杭州当前可报名场次或余位。请在官方报名系统选择城市、考试类别和日期。自选计划日期不是已确认的考期。",
     "publishedAt": "2026-08-28",
     "sourcePublisher": "教育部教育考试院雅思报名网站",
-    "observedAtUtc": "2026-10-02T02:43:19Z",
+    "observedAtUtc": "2026-10-02T06:55:59Z",
     "centerSessions": [],
     "seatsAvailable": null,
     "evidenceSources": [
@@ -1824,7 +1870,7 @@
         "publisher": "教育部教育考试院雅思报名网站",
         "publishedAt": "2026-08-28",
         "checkedAt": "2026-10-02",
-        "observedAtUtc": "2026-10-02T02:43:19Z",
+        "observedAtUtc": "2026-10-02T06:53:50Z",
         "readScope": "索引中的标准雅思及UKVI第四季度机考标题、链接与发布日期已核读；未从索引推断逐日考期。"
       },
       {
@@ -1833,21 +1879,24 @@
         "checkedAt": "2026-10-02",
         "readScope": "详情页打开后转至教育部教育考试院系统升级通知，未取得逐日日期。",
         "retrievalStatus": "maintenance_redirect",
-        "redirectedUrl": "https://www.neea.edu.cn/html1/folder/19093/4844-1.htm"
+        "redirectedUrl": "https://www.neea.edu.cn/html1/folder/19093/4844-1.htm",
+        "observedAtUtc": "2026-10-02T06:54:27Z"
       },
       {
         "url": "https://news.neea.cn/IELTS/zh_CN/5A02050C74329D3CE063C546C80AB544.html",
         "examLabel": "用于英国签证及移民的雅思考试",
         "checkedAt": "2026-10-02",
-        "readScope": "仅核对新闻索引中的标题、链接及发布日期；未打开详情。",
-        "retrievalStatus": "index_only"
+        "readScope": "本轮打开详情后转至教育部教育考试院系统升级通知，未取得逐日日期。",
+        "retrievalStatus": "maintenance_redirect",
+        "redirectedUrl": "https://www.neea.edu.cn/html1/folder/19093/4844-1.htm",
+        "observedAtUtc": "2026-10-02T06:54:43Z"
       },
       {
         "url": "https://www.chinaielts.org/press-office/ielts-eTRF",
         "publisher": "British Council 雅思中文官网",
         "checkedAt": "2026-10-02",
-        "observedAtUtc": "2026-10-02T02:32:41Z",
-        "readScope": "公告正文确认第四季度安排已公布；两张日历图片未能读取，未据此填写日期。",
+        "observedAtUtc": "2026-10-02T06:55:59Z",
+        "readScope": "公告正文及问答已核读；4张日历／截止日期图片未能读取，未据此填写日期。",
         "retrievalStatus": "announcement_read_calendar_images_unreadable"
       }
     ]
@@ -1989,7 +2038,7 @@
   ],
   "evidenceReview": {
     "checkedAt": "2026-10-02",
-    "selectionNote": "当前40项资源默认推荐21项、参考19项；其中24篇经验默认全部展示，6篇推荐阅读、18篇参考案例仍可筛选。本轮新增7篇均为参考：包含较低起点、在职、反复考试和未解决的写说瓶颈，不按高分与否评定质量。原33条资源记录保持不变；商业关系、评论和成绩核验边界逐篇披露。",
+    "selectionNote": "当前41项资源默认推荐22项、参考19项；其中24篇经验默认全部展示，6篇推荐阅读、18篇参考案例仍可筛选。本轮新增7篇均为参考：包含较低起点、在职、反复考试和未解决的写说瓶颈，不按高分与否评定质量。原33条资源记录保持不变；商业关系、评论和成绩核验边界逐篇披露。 2026-10-02定期检查另补充1篇官方课外阅读活动，24篇经验及其推荐身份保持不变。",
     "conflicts": [
       {
         "topic": "短期高分是不是通用路径",
@@ -2129,5 +2178,52 @@
       }
     ],
     "rejectedOrHeldReviewScope": "沿用候选研究记录；本轮未再次核读被排除来源，不计入7篇正文核读。"
+  },
+  "scheduledRefreshReview": {
+    "checkedAt": "2026-10-02",
+    "scope": "本轮定期检查的限定范围，不表示重新核读全部历史资源、评论或课程。",
+    "newResourceIds": [
+      "official-independent-reading-project"
+    ],
+    "unchanged": "原40项资源、24篇经验、学习计划和练习保持不变。政策及杭州4个公开机考考点未发现变更；考期详情与考位仍未核实。",
+    "sourceCoverage": [
+      {
+        "platform": "IELTS官方／教育部教育考试院",
+        "scope": "复核大陆考试形式、费用、评分说明、报名入口、杭州4个机考考点和第四季度公告；逐日详情未取得。"
+      },
+      {
+        "platform": "IELTS.org学习文章",
+        "scope": "完整核读2篇独立学习／课外阅读文章；选入1篇，另1篇与现有复盘方法重叠。"
+      },
+      {
+        "platform": "教师网站",
+        "scope": "重开Liz介绍页、Simon视频目录和IELTS Advantage学习方法目录；读取6周计划的部分可提取文字。没有观看视频、注册课程或把目录当成完整课程核读。"
+      },
+      {
+        "platform": "B站",
+        "scope": "新增核读白钢cc 2021自学文章的完整可提取正文；评论和成绩图片未读。过程与现有案例重叠，且有固定周期／分数推断，未新增卡片。"
+      },
+      {
+        "platform": "知乎",
+        "scope": "新增完整核读雪梨同学在职文章；有明确试听引流、固定周期提分推断，且时间账本合计不一致，未选入。评论与成绩图未核验。"
+      },
+      {
+        "platform": "抖音",
+        "scope": "只读取备考视频的标题、说明及部分可见评论；没有观看视频，不采用智能文稿作为观看证据，未新增卡片。"
+      },
+      {
+        "platform": "小红书／贴吧",
+        "scope": "已搜索；未找到可核读且符合质量要求的新雅思原帖。搜索结果与访问异常不计入正文阅读覆盖，也不推断整个平台不可访问。"
+      },
+      {
+        "platform": "Reddit",
+        "scope": "核读2026年4月版主资源指南正文及1条可见致谢评论；其中写作评分维度权重说法与官方不符，不作为规则来源。"
+      }
+    ],
+    "boundaries": [
+      "没有观看完整视频、独立核验考生成绩或体验付费课程。",
+      "同作者、商业推荐与转载不作为独立效果证据。",
+      "只新增原创短摘要和来源链接；未复制题库、教材或评论个人资料。"
+    ]
   }
 }

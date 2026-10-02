@@ -32,6 +32,7 @@ function harness({rawState,hash='',offline=false,storageBlocked=false}={}){
 }
 (async()=>{
  const h=harness(),{nodes:n,doc}=h;await h.flush();
+ assert.equal(n['update-status'].textContent,'每日检查已启用','completed bounded refresh removes first-run pending label');
  assert.equal(n['panel-start'].hidden,false);assert.equal(n['site-intro'].hidden,false);assert.equal(n['resource-grid'].children.length,core.filterResources(core.normalizeCatalog(data).resources,{skill:'listening',recommendation:'recommended'},[]).length);
  assert.equal(n['advanced-filters'].open,false,'advanced filters collapsed');assert.ok(h.text(n['learning-guide']).includes('优先排查的错因'));
  h.intents.find(b=>b.dataset.intent==='writing').dispatch('click');assert.equal(n['skill-filter'].value,'writing');assert.equal(n['panel-library'].hidden,false);assert.equal(n['site-intro'].hidden,true);assert.match(h.context.location.hash,/library\/writing/);
@@ -46,7 +47,7 @@ function harness({rawState,hash='',offline=false,storageBlocked=false}={}){
   if(r.sourceDateCaveat)assert.ok(h.text(card).includes(r.sourceDateCaveat));
   if(r.discussionEvidence?.length){assert.ok(h.text(card).includes(r.discussionEvidence[0].attributionCaveat));assert.ok(card.querySelectorAll('a').some(a=>a.href===r.discussionEvidence[0].url));}
  }
- for(const r of data.resources.slice(28)){
+ for(const r of data.resources.slice(28,40)){
   const link=doc.querySelectorAll('.experience-source-links').flatMap(n=>n.children).find(n=>n.href==='#experience-case-'+r.id);
   assert.ok(link,'new source is reachable from synthesis');link.dispatch('click');link.dispatch('click');
   assert.equal(doc.getElementById('experience-scope').value,r.recommendedByDefault===false?'reference':'recommended');
@@ -57,8 +58,13 @@ function harness({rawState,hash='',offline=false,storageBlocked=false}={}){
  scope.value='all';scope.dispatch('change');
  const question=doc.getElementById('experience-topic');question.value='timing';question.dispatch('change');assert.equal(doc.querySelectorAll('.experience-card').length,15);
  n['tab-start'].dispatch('keydown',{key:'ArrowLeft'});assert.equal(h.active,n['tab-exams']);n['tab-exams'].dispatch('keydown',{key:'ArrowRight'});assert.equal(h.active,n['tab-start']);
- h.hash('#library');n['skill-navigation'].dispatch('click',{target:n['skill-navigation'].children.find(b=>b.dataset.skill==='all')});assert.equal(n['resource-grid'].children.length,21);n['recommendation-filter'].value='all';n['filter-form'].dispatch('change');assert.equal(n['resource-grid'].children.length,40);n['recommendation-filter'].value='reference';n['filter-form'].dispatch('change');assert.equal(n['resource-grid'].children.length,19);
- for(const r of data.resources.slice(33)){const card=n['resource-grid'].children.find(c=>c.dataset.resourceId===r.id);assert.ok(card);assert.ok(h.text(card).includes('原文自述与作者建议'));if(r.sourceDateCaveat)assert.ok(h.text(card).includes(r.sourceDateCaveat));if(r.discussionEvidence?.length)assert.ok(h.text(card).includes(r.discussionEvidence[0].attributionCaveat));}
+ h.hash('#library/reading/resource/official-independent-reading-project');
+ const readingProject=doc.getElementById('detail-official-independent-reading-project');
+ assert.ok(readingProject.open,'new official resource opens through existing detail route');
+ assert.ok(h.text(readingProject).includes('20分钟')&&h.text(readingProject).includes('不是官方考试限时'));
+ assert.ok(readingProject.querySelectorAll('a').some(a=>a.href===data.resources.find(r=>r.id==='official-independent-reading-project').url),'source link points to reviewed official article');
+ h.hash('#library');n['skill-navigation'].dispatch('click',{target:n['skill-navigation'].children.find(b=>b.dataset.skill==='all')});assert.equal(n['resource-grid'].children.length,22);n['recommendation-filter'].value='all';n['filter-form'].dispatch('change');assert.equal(n['resource-grid'].children.length,41);n['recommendation-filter'].value='reference';n['filter-form'].dispatch('change');assert.equal(n['resource-grid'].children.length,19);
+ for(const r of data.resources.slice(33,40)){const card=n['resource-grid'].children.find(c=>c.dataset.resourceId===r.id);assert.ok(card);assert.ok(h.text(card).includes('原文自述与作者建议'));if(r.sourceDateCaveat)assert.ok(h.text(card).includes(r.sourceDateCaveat));if(r.discussionEvidence?.length)assert.ok(h.text(card).includes(r.discussionEvidence[0].attributionCaveat));}
  n.search.value='nothing matches';n['filter-form'].dispatch('input');assert.equal(n['empty-state'].hidden,false);n['empty-reset'].dispatch('click');assert.equal(n['skill-filter'].value,'listening');assert.equal(n['recommendation-filter'].value,'recommended');
  let save=doc.querySelectorAll('[data-save]')[0];const id=save.dataset.save;const detail=doc.getElementById('detail-'+id);detail.open=true;n['resource-grid'].dispatch('click',{target:save});assert.ok(JSON.parse(h.saved.get('ieltsorbit.local.v1')).saved.includes(id));assert.equal(doc.getElementById('detail-'+id).open,true,'bookmark preserves open detail');n['saved-filter'].dispatch('click');assert.equal(n['resource-grid'].children.length,1);save=doc.querySelectorAll('[data-save]')[0];n['resource-grid'].dispatch('click',{target:save});assert.equal(n['resource-grid'].children.length,0);assert.equal(h.active,n['saved-filter']);
  h.hash('#path');assert.equal(n['plan-step-1'].hidden,false);assert.equal(n['path-result'].hidden,true);n['exam-history'].value='no';n['plan-next'].dispatch('click');assert.equal(n['plan-step-2'].hidden,false);assert.equal(h.active,n['plan-step-2']);n.target.value='7';n['plan-next'].dispatch('click');n['daily-time'].value='60';n['plan-next'].dispatch('click');n['weak-skill'].value='writing';
@@ -88,8 +94,8 @@ function harness({rawState,hash='',offline=false,storageBlocked=false}={}){
  assert.equal(overview.saved.get('ieltsorbit.local.v1'),personal);
  overview.hash('#library');on['skill-navigation'].dispatch('click',{target:on['skill-navigation'].children.find(b=>b.dataset.skill==='all')});
  assert.equal(on['skill-navigation'].children.find(b=>b.dataset.skill==='all').textContent,'全部科目','subject label no longer falsely promises all resources');
- assert.equal(overview.doc.querySelectorAll('.learning-overview-grid')[0].children.length,4);assert.equal(on['recommendation-filter'].value,'recommended');assert.equal(on['resource-grid'].children.length,21);
- assert.ok(overview.text(on['scope-help']).includes('40 项：21 项默认推荐、19 项参考案例'));
+ assert.equal(overview.doc.querySelectorAll('.learning-overview-grid')[0].children.length,4);assert.equal(on['recommendation-filter'].value,'recommended');assert.equal(on['resource-grid'].children.length,22);
+ assert.ok(overview.text(on['scope-help']).includes('41 项：22 项默认推荐、19 项参考案例'));
  overview.hash('#experience');const takeaways=overview.doc.querySelectorAll('.experience-takeaways')[0];assert.equal(takeaways.querySelectorAll('li').length,4);assert.equal(takeaways.querySelectorAll('details').length,0,'four takeaways are not hidden in a disclosure');
  const next=overview.doc.querySelectorAll('.experience-next')[0];assert.ok(next.querySelectorAll('a').some(a=>a.href==='#path'));next.querySelector('button').dispatch('click');assert.equal(overview.active,overview.doc.getElementById('experience-topic'),'browse shortcut focuses the question filter');
  overview.hash('#experience-case-v2ex-first-attempt-reflection-2023');overview.doc.getElementById('experience-case-v2ex-first-attempt-reflection-2023').querySelector('.experience-return').dispatch('click');assert.equal(overview.context.location.hash,'#experience');assert.equal(overview.doc.getElementById('experience-scope').value,'all');assert.equal(overview.doc.querySelectorAll('.experience-card').length,24);assert.equal(overview.saved.get('ieltsorbit.local.v1'),personal,'all case and plan return journeys leave saved state unchanged');
