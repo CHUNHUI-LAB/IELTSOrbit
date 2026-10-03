@@ -13,3 +13,10 @@ function beforeTeachingResources(resources){return resources.map(resource=>{
 });}
 function beforeTeachingCatalog(catalog){const prior={...catalog,resources:beforeTeachingResources(catalog.resources)};delete prior.teachingSupplementReview;return prior;}
 module.exports={legacyResources,reviewedIds,beforeTeachingResources,beforeTeachingCatalog,foundationNoteSuffix};
+
+// 2026-10-03 experience batch: project ONLY its three appended IDs out.
+// The batch test pins the exact suffix/order and whole pre-batch catalog digest.
+const listeningBatchIds=Object.freeze(['bili-baigang-listening-bottlenecks-2021','note-taku-listening-peak-stability-2026','reddit-gt-reading-improves-writing-falls-2026']);
+function beforeListeningBatchCatalog(catalog){return {...catalog,resources:catalog.resources.filter(r=>!listeningBatchIds.includes(r.id))};}
+module.exports.listeningBatchIds=listeningBatchIds;
+module.exports.beforeListeningBatchCatalog=beforeListeningBatchCatalog;

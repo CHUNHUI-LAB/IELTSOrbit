@@ -1,7 +1,7 @@
 const {legacyResources}=require('./resource-history.js');
 const assert=require('node:assert/strict');
 const crypto=require('node:crypto');
-const raw=require('../data/catalog.json'),core=require('../assets/core.js'),experience=require('../assets/experience.js');
+const current=require('../data/catalog.json'),raw=require('./resource-history.js').beforeListeningBatchCatalog(current),core=require('../assets/core.js'),experience=require('../assets/experience.js');
 const digest=x=>crypto.createHash('sha256').update(JSON.stringify(x)).digest('hex');
 assert.equal(digest(legacyResources(raw.resources).slice(0,41)),'0e355fed7be1e0ea7d71eb749eeba6493776c8775018dba16c79fd315d2d8b5c','all 41 previously published original fields remain unchanged');
 const ids=['reddit-feedback-not-understood-writing-2026','vocus-losa-writing-error-transfer-2026','note-digiros-y-speaking-transfer-gap-2026'];
@@ -37,5 +37,5 @@ assert.ok(experience.scopeText(raw.resources).includes('27篇经验：6篇推荐
 assert.ok(experience.scopeText([]).startsWith('基于本站0篇经验：0篇推荐阅读、0篇参考案例'));
 assert.ok(experience.scopeText([y]).startsWith('基于本站1篇经验：0篇推荐阅读、1篇参考案例'));
 const allSourceIds=[...experience.overview.themes,...experience.overview.disagreements].flatMap(x=>x.sourceIds);
-assert.deepEqual([...new Set(allSourceIds)].sort(),raw.resources.filter(r=>r.sourceType==='experience').map(r=>r.id).sort());
+assert.deepEqual([...new Set(allSourceIds)].sort(),current.resources.filter(r=>r.sourceType==='experience').map(r=>r.id).sort());
 console.log('PASS: 41 unchanged objects, exactly 3 reference additions, author/commenter separation, dated self-report limits, written-drill/AI distinctions, linked same-case evidence, dynamic counts');

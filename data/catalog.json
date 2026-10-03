@@ -1962,6 +1962,185 @@
         "sourceUrl": "https://note.com/digiros/n/nf3fe968f360d",
         "reviewMethod": "公开正文复核，结合明确注明的可见评论或自制图片；只保留短摘要与来源链接"
       }
+    },
+    {
+      "id": "bili-baigang-listening-bottlenecks-2021",
+      "title": "听写正确率提高后仍卡分：先查听力错因，也给写作留时间",
+      "originalTitle": "〖八千字长文〗3个月雅思自学5.5到7经验分享",
+      "url": "https://www.bilibili.com/opus/599565309830101641",
+      "provider": "B站／白钢cc",
+      "publishedAt": "2021-12-02",
+      "skills": [
+        "listening",
+        "reading",
+        "writing"
+      ],
+      "levels": [
+        "foundation",
+        "developing"
+      ],
+      "authorContext": {
+        "baseline": "自报2019首考总分5.5；本轮听力自测5–6，阅读7但超时",
+        "preparationDuration": "不到3个月，作者估计日均4小时；不是零基础",
+        "outcome": "自报总分7、最低单项6；写作未完成，口语仍6；未独立核验成绩图"
+      },
+      "summary": "作者自报2019年首考5.5，2021年备考不到3个月后总分7、最低单项6。听写练习遇到瓶颈后，按发音、拼写、数字和同义替换排查错因；阅读到60分钟截止计分。作者也反思听力占用过多准备时间，写作最终未完成。",
+      "reportedRoutine": [
+        "作者自报听写练习近一个月仍在6分附近，随后排查发音、拼写、数字及同义替换等错因。",
+        "阅读按60分钟截止计分；反思听力占用过多备考时间，最终写作未完成。"
+      ],
+      "actionableMethods": [
+        "本站建议：先把听力错误按听辨、拼写、数字与释义理解分开，再选一个问题练习。",
+        "本站建议：用固定限时口径检查阅读，同时给写作保留完整作答时间。"
+      ],
+      "curatorInterpretation": "同一训练长期卡住时，可以检查错因与时间分配；不能证明分类练习导致作者成绩变化。",
+      "commercial": null,
+      "commercialDisclosure": "正文提及商业教材与工具，未见直接售课；利益关系未核查",
+      "price": "免费公开文章；文中提及的付费教材或服务未独立评估",
+      "evidenceScope": "已读公开文章正文各节（页面共144行，正文约L28–137）；未查看图片、评论、视频或教材外链",
+      "commentsReview": {
+        "status": "not_reviewed",
+        "detail": "未核读评论、图片、视频或教材外链。"
+      },
+      "selectionReason": "低中起点、听力瓶颈、时间分配；不是速成保证",
+      "excludeFromGeneralGuidance": [
+        "成绩、练习量、因果解释均为作者自述",
+        "不采纳只练英音、倍速必然提分、某结构能补偿未完成等泛化",
+        "不采用PTE换算或未授权PDF分享方式"
+      ],
+      "caution": "不到三个月是本轮备考窗口；作者此前已考过5.5，不是零基础速成。原文未明确考试为Academic或GT。成绩与练习记录未独立核验，不构成提分承诺。",
+      "sourceType": "experience",
+      "checkedAt": "2026-10-03",
+      "status": "curated_with_caveats",
+      "recommendedByDefault": false,
+      "access": "公开正文；实际核读范围见详情",
+      "collection": "听读瓶颈、成绩稳定性与单项波动参考",
+      "provenance": {
+        "reviewedAt": "2026-10-03",
+        "scope": "已读公开文章正文各节（页面共144行，正文约L28–137）；未查看图片、评论、视频或教材外链",
+        "sourceUrl": "https://www.bilibili.com/opus/599565309830101641",
+        "reviewMethod": "公开正文及明确标注的可见评论经独立复核；仅保留短摘要和来源链接"
+      },
+      "sourceDateCaveat": "原文2021-12-02发布，涉及2019年首考及2021年本轮备考；不是当前考试规则。"
+    },
+    {
+      "id": "note-taku-listening-peak-stability-2026",
+      "title": "第一次听到7.5以后，还要练习稳定表现",
+      "originalTitle": "〖社会人学習〗仕事をしながらListeningスコアを5.0→7.5に伸ばした方法",
+      "url": "https://note.com/taku_lets/n/n2d0248989519",
+      "provider": "note／レッツ",
+      "publishedAt": "2026-04-19",
+      "skills": [
+        "listening"
+      ],
+      "levels": [
+        "foundation",
+        "developing"
+      ],
+      "authorContext": {
+        "baseline": "日本在职、无留学经历；Academic首考听力自报5，确切考试年份未核实",
+        "preparationDuration": "首次听力7.5约70小时、3–4个月；再投入70–80小时，自学习开始约半年稳定在7–7.5（均为自述）",
+        "outcome": "自报曾四次听力7.5；总分7.5那次听力7、阅读8.5、口语写作7；成绩未独立核验"
+      },
+      "summary": "日本在职作者自报听力从5到首次7.5约用70小时，之后另投入70–80小时才稳定在7–7.5。他结合完整模拟和分Part练习，通勤收听预先选好的兴趣内容，漏听处回放。成绩和时间均为自述，首次峰值不等于稳定表现。",
+      "reportedRoutine": [
+        "作者自报结合完整听力模拟与分Part练习。",
+        "通勤收听预先选好的兴趣内容，漏听处回放；跟读难坚持是其个人体验。"
+      ],
+      "actionableMethods": [
+        "本站建议：分别检查具体弱点和完整任务中的持续注意力。",
+        "本站建议：评估时区分首次峰值与多次稳定表现；这是编辑建议，不表示作者建立了该记录流程。"
+      ],
+      "curatorInterpretation": "峰值与稳定表现不同；不因作者跟读困难就判定跟读无用，也不从末段疑似Speaking笔误推导口语提升。",
+      "commercial": null,
+      "commercialDisclosure": "推荐商业音变教材；本文未独立验证价格、购买情况或利益关系",
+      "price": "免费公开文章；文中提及的付费教材或服务未独立评估",
+      "evidenceScope": "已读日文正文（页面共168行，正文约L15–129）；未查看评论、音频、外链教材或成绩凭证",
+      "commentsReview": {
+        "status": "not_reviewed",
+        "detail": "未核读评论、音频、外链教材或成绩凭证。"
+      },
+      "selectionReason": "在职、听力低起点、需要稳定分数",
+      "excludeFromGeneralGuidance": [
+        "自报时长和成绩，无独立因果验证",
+        "末段误写Speaking，本文主题和成绩明细均为Listening；不据此生成口语提分结论",
+        "提及音变付费产品，未核验购买或利益关系"
+      ],
+      "caution": "2026是发表年，不能当作确切考试年份；自报时间和成绩不能验证训练因果效果。 成绩与练习记录未独立核验，不构成提分承诺。",
+      "sourceType": "experience",
+      "checkedAt": "2026-10-03",
+      "status": "curated_with_caveats",
+      "recommendedByDefault": false,
+      "access": "公开正文；实际核读范围见详情",
+      "collection": "听读瓶颈、成绩稳定性与单项波动参考",
+      "provenance": {
+        "reviewedAt": "2026-10-03",
+        "scope": "已读日文正文（页面共168行，正文约L15–129）；未查看评论、音频、外链教材或成绩凭证",
+        "sourceUrl": "https://note.com/taku_lets/n/n2d0248989519",
+        "reviewMethod": "公开正文及明确标注的可见评论经独立复核；仅保留短摘要和来源链接"
+      },
+      "sourceDateCaveat": "2026-04-19为文章发布日期；确切考试经历年份未核实。"
+    },
+    {
+      "id": "reddit-gt-reading-improves-writing-falls-2026",
+      "title": "阅读提高到8，写作却回落：复考要看四项而不只看强项",
+      "originalTitle": "Retook IELTS (General Training) to improve Reading, but Writing dropped from 7 to 6.5 — EOR worth it?",
+      "url": "https://www.reddit.com/r/IELTS/comments/1qrycph/retook_ielts_general_training_to_improve_reading/",
+      "provider": "Reddit r/IELTS／Ceece_mimi",
+      "publishedAt": null,
+      "skills": [
+        "reading",
+        "writing",
+        "general"
+      ],
+      "levels": [
+        "developing",
+        "advanced"
+      ],
+      "authorContext": {
+        "baseline": "GT自报2025年9月阅读6.5、写作7，口语保持7.5；旧听力未给具体分数",
+        "preparationDuration": "约三个月，作者自报2026-01-29复考",
+        "outcome": "GT自报听力8、阅读8、口语7.5、写作6.5；复议结果未知；成绩未独立核验"
+      },
+      "summary": "作者自报GT复考阅读由6.5升至8，写作由7降至6.5，本次听8、说7.5。作者在可见评论中说明，阅读使用官方及Cambridge材料，60分钟计时后分析错题。帖子未证明写作回落的原因，也未提供复议结果。",
+      "reportedRoutine": [
+        "作者在可见评论中自述：使用官方及Cambridge阅读材料，60分钟计时后逐题分析错误。",
+        "主帖自报阅读改善而写作回落，询问复议；未提供复议结果。"
+      ],
+      "actionableMethods": [
+        "本站建议：分别保存四项前后成绩及训练条件，避免一科提升遮住另一科回落。",
+        "本站建议：限时练习后解释错题依据，而不只比较套题得分。"
+      ],
+      "curatorInterpretation": "阅读训练说明来自作者评论；其他评论者的建议不作为作者执行事实。四科对照记录是编辑建议，帖子未证明写作回落原因。",
+      "commercial": null,
+      "commercialDisclosure": "所读主帖与可见人工评论未见直接售课；未独立核查利益关系",
+      "price": "免费公开文章；文中提及的付费教材或服务未独立评估",
+      "evidenceScope": "完整主帖正文L22–26及6条可见人工评论（Hestia9285两条、作者三条、Euphoric_Result24一条）；未展开More replies，未审核成绩图片；机器人回复另计",
+      "commentsReview": {
+        "status": "partial",
+        "detail": "完整主帖及6条可见人工评论：Hestia9285两条、作者三条、Euphoric_Result24一条。未展开More replies，未核验成绩图片；机器人回复不计入6条。"
+      },
+      "selectionReason": "GT、复考、单项波动",
+      "excludeFromGeneralGuidance": [
+        "GT阅读和Academic不互换",
+        "EOR/OSR、移民要求等不是本帖可确证官方规则",
+        "评论中的作者训练说明与其他人的建议分开",
+        "未展开More replies，不能说读完全部评论"
+      ],
+      "caution": "此例是General Training；不能将GT阅读成绩直接当作Academic训练效果，也不能从自我感觉推断写作下降原因。 成绩与练习记录未独立核验，不构成提分承诺。",
+      "sourceType": "experience",
+      "checkedAt": "2026-10-03",
+      "status": "curated_with_caveats",
+      "recommendedByDefault": false,
+      "access": "公开正文；实际核读范围见详情",
+      "collection": "听读瓶颈、成绩稳定性与单项波动参考",
+      "provenance": {
+        "reviewedAt": "2026-10-03",
+        "scope": "完整主帖正文L22–26及6条可见人工评论（Hestia9285两条、作者三条、Euphoric_Result24一条）；未展开More replies，未审核成绩图片；机器人回复另计",
+        "sourceUrl": "https://www.reddit.com/r/IELTS/comments/1qrycph/retook_ielts_general_training_to_improve_reading/",
+        "reviewMethod": "公开正文及明确标注的可见评论经独立复核；仅保留短摘要和来源链接"
+      },
+      "sourceDateCaveat": "本次可见页面仅显示相对发布时间，精确发表日期未确认；2026-01-29复考日期为作者自述。"
     }
   ],
   "policies": [

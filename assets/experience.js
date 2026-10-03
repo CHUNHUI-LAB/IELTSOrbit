@@ -1,9 +1,9 @@
 (function(root){
 'use strict';
 const overview={
-  "scope": "本轮新增3个反馈理解与迁移参考案例，来源是4篇公开正文；同一作者两文合并。此前案例沿用已披露的核读边界。本轮没有重新核验任何成绩，也未观看外链视频或体验课程；未读评论和图片逐篇注明。",
+  "scope": "2026-10-03补充3篇听读瓶颈、稳定表现与单项波动参考案例，分别来自B站、note与Reddit公开正文；Reddit另核读6条可见人工评论，隐藏回复未读。此前案例保留原核读范围；本轮未重新核验任何成绩，也未观看视频、审核图片或体验付费课程。",
   "headline": "先看起点，再看练习过程；把经验变成可检查的下一步",
-  "summary": "先辨认起点、实际输出和未解决的问题，再比较练习过程。收到批改不等于理解问题，旧题改对也不等于新题或现场完成：新案例分别补充反馈难以执行、键盘与反复改句的超时，以及书面短句练习改善但现场口语仍有困难。保留初稿或录音、解释修改理由、换题检查，是本站建议；这些自述不能证明课程、AI或时长决定分数。",
+  "summary": "先辨认起点、实际输出和未解决的问题，再比较练习过程。收到批改不等于理解问题，旧题改对也不等于新题或现场完成：既有案例分别补充反馈难以执行、键盘与反复改句的超时，以及书面短句练习改善但现场口语仍有困难。保留初稿或录音、解释修改理由、换题检查，是本站建议；这些自述不能证明课程、AI或时长决定分数。 本次补充听写卡分后的错因排查、首次峰值与稳定表现的差别，以及GT复考阅读提高但写作回落；不把单项变化、备考时长或自报成绩当作因果证据。",
   "themes": [
     {
       "title": "备考天数相近，起点可能完全不同",
@@ -112,6 +112,15 @@ const overview={
         "sunny-working-speaking-osr-2025",
         "reddit-three-attempts-conditions-writing-flat-2026",
         "note-digiros-y-speaking-transfer-gap-2026"
+      ]
+    },
+    {
+      "title": "单项进步、首次峰值与稳定表现，要分开看",
+      "synthesis": "白钢cc反思听力备考挤占写作时间；レッツ描述首次听力7.5后仍继续练习才稳定；GT复考者则自报阅读提升但写作回落。本站建议同时检查错因、四项差距与多次表现。这些不同起点、不同考试类型的自述不能拼成统一提分路线，也不能解释单项回落的原因。",
+      "sourceIds": [
+        "bili-baigang-listening-bottlenecks-2021",
+        "note-taku-listening-peak-stability-2026",
+        "reddit-gt-reading-improves-writing-falls-2026"
       ]
     }
   ],
@@ -223,7 +232,7 @@ const overview={
   ]
 };
 const topics={all:'全部问题',start:'从哪里开始',input:'听读怎么练',output:'写说怎么练',timing:'时间与考场复盘'};
-const topicIds={"start":["experience-c2","experience-85","zhihu-case","bili-experience-nonzero-2023","tahsin-high-baseline-2022","linuxdo-work-gap-study-2026","dcard-working-dictation-review","candice-working-rewrite-case","ptt-repeated-writing-attempts-2018","xiaohongshu-self-study-single-skill-gap-2025","csdn-four-attempts-output-gap-2020","ptt-working-four-tests-speaking-gap-2025","siang-long-gap-writing-time-2024","mudlady-seven-attempts-writing-output-2023","sunny-working-speaking-osr-2025","vocus-losa-writing-error-transfer-2026","note-digiros-y-speaking-transfer-gap-2026"],"input":["experience-c2","experience-85","bili-experience-math-2025","bili-reading-error-log-2023","bili-reading-error-log-pang-2023","v2ex-first-attempt-reflection-2023","linuxdo-work-gap-study-2026","dcard-working-dictation-review","xiaohongshu-self-study-single-skill-gap-2025","csdn-four-attempts-output-gap-2020","siang-long-gap-writing-time-2024"],"output":["experience-c2","experience-85","zhihu-case","bili-experience-nonzero-2023","bili-experience-math-2025","tahsin-high-baseline-2022","reddit-writing-feedback-compare-2026","ielts-esther-timing-2025","ielts-ramadhanight-2025","linuxdo-work-gap-study-2026","dcard-working-dictation-review","candice-working-rewrite-case","ptt-repeated-writing-attempts-2018","xiaohongshu-self-study-single-skill-gap-2025","csdn-four-attempts-output-gap-2020","ptt-working-four-tests-speaking-gap-2025","siang-long-gap-writing-time-2024","mudlady-seven-attempts-writing-output-2023","sunny-working-speaking-osr-2025","reddit-writing55-unresolved-thread-2026","reddit-three-attempts-conditions-writing-flat-2026","reddit-feedback-not-understood-writing-2026","vocus-losa-writing-error-transfer-2026","note-digiros-y-speaking-transfer-gap-2026"],"timing":["bili-experience-math-2025","tahsin-high-baseline-2022","ielts-esther-timing-2025","ielts-ramadhanight-2025","v2ex-first-attempt-reflection-2023","linuxdo-work-gap-study-2026","dcard-working-dictation-review","candice-working-rewrite-case","ptt-repeated-writing-attempts-2018","csdn-four-attempts-output-gap-2020","ptt-working-four-tests-speaking-gap-2025","siang-long-gap-writing-time-2024","mudlady-seven-attempts-writing-output-2023","sunny-working-speaking-osr-2025","reddit-three-attempts-conditions-writing-flat-2026","vocus-losa-writing-error-transfer-2026","note-digiros-y-speaking-transfer-gap-2026"]};
+const topicIds={"start":["experience-c2","experience-85","zhihu-case","bili-experience-nonzero-2023","tahsin-high-baseline-2022","linuxdo-work-gap-study-2026","dcard-working-dictation-review","candice-working-rewrite-case","ptt-repeated-writing-attempts-2018","xiaohongshu-self-study-single-skill-gap-2025","csdn-four-attempts-output-gap-2020","ptt-working-four-tests-speaking-gap-2025","siang-long-gap-writing-time-2024","mudlady-seven-attempts-writing-output-2023","sunny-working-speaking-osr-2025","vocus-losa-writing-error-transfer-2026","note-digiros-y-speaking-transfer-gap-2026"],"input":["experience-c2","experience-85","bili-experience-math-2025","bili-reading-error-log-2023","bili-reading-error-log-pang-2023","v2ex-first-attempt-reflection-2023","linuxdo-work-gap-study-2026","dcard-working-dictation-review","xiaohongshu-self-study-single-skill-gap-2025","csdn-four-attempts-output-gap-2020","siang-long-gap-writing-time-2024","bili-baigang-listening-bottlenecks-2021","note-taku-listening-peak-stability-2026","reddit-gt-reading-improves-writing-falls-2026"],"output":["experience-c2","experience-85","zhihu-case","bili-experience-nonzero-2023","bili-experience-math-2025","tahsin-high-baseline-2022","reddit-writing-feedback-compare-2026","ielts-esther-timing-2025","ielts-ramadhanight-2025","linuxdo-work-gap-study-2026","dcard-working-dictation-review","candice-working-rewrite-case","ptt-repeated-writing-attempts-2018","xiaohongshu-self-study-single-skill-gap-2025","csdn-four-attempts-output-gap-2020","ptt-working-four-tests-speaking-gap-2025","siang-long-gap-writing-time-2024","mudlady-seven-attempts-writing-output-2023","sunny-working-speaking-osr-2025","reddit-writing55-unresolved-thread-2026","reddit-three-attempts-conditions-writing-flat-2026","reddit-feedback-not-understood-writing-2026","vocus-losa-writing-error-transfer-2026","note-digiros-y-speaking-transfer-gap-2026","bili-baigang-listening-bottlenecks-2021","reddit-gt-reading-improves-writing-falls-2026"],"timing":["bili-experience-math-2025","tahsin-high-baseline-2022","ielts-esther-timing-2025","ielts-ramadhanight-2025","v2ex-first-attempt-reflection-2023","linuxdo-work-gap-study-2026","dcard-working-dictation-review","candice-working-rewrite-case","ptt-repeated-writing-attempts-2018","csdn-four-attempts-output-gap-2020","ptt-working-four-tests-speaking-gap-2025","siang-long-gap-writing-time-2024","mudlady-seven-attempts-writing-output-2023","sunny-working-speaking-osr-2025","reddit-three-attempts-conditions-writing-flat-2026","vocus-losa-writing-error-transfer-2026","note-digiros-y-speaking-transfer-gap-2026","bili-baigang-listening-bottlenecks-2021","note-taku-listening-peak-stability-2026","reddit-gt-reading-improves-writing-falls-2026"]};
 const legacy={
  'experience-c2':{baseline:'作者自报已有 C2 与长期英语使用背景',training:['限时练习、段落概括和修改作文'],duration:'自报约四周',outcome:'作者自报总分8.5，未独立核验',limit:'四周是该作者的备考窗口，不能照搬为普通起点的提分周期。'},
  'experience-85':{baseline:'长期参与演讲与辩论；不是未接触英语的起点',training:['分段听力训练可用于小任务试验'],duration:'自报约一周半',outcome:'作者自报 L9/R8.5/W7.5/S8.5，未独立核验',limit:'排斥官方资源、追求超长作文等个体意见不作为统一建议。'},
