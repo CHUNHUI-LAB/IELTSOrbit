@@ -9,14 +9,15 @@ function externalLink(text,url,className){const a=create('a',className,text);a.h
 function internalLink(text,hash,className){const a=create('a',className,text);a.href='#'+hash;return a;}
 function list(items,tag='ul',className=''){const ul=create(tag,className);items.forEach(text=>ul.append(create('li','',text)));return ul;}
 function persist(message){try{localStorage.setItem(key,JSON.stringify(state));if(message)$('local-status').textContent=message;return true;}catch{$('local-status').textContent='浏览器不允许保存；这些选择只在当前页面暂存。';return false;}}
-function resourceHash(resource,skill){const selected=core.learningGuides[skill]?skill:resource.skills.find(s=>core.learningGuides[s])||'listening';return 'library/'+selected+'/resource/'+resource.id;}
+function resourceHash(resource,skill){const selected=core.learningGuides[skill]&&resource.skills.includes(skill)?skill:resource.skills.find(s=>core.learningGuides[s])||'all';return 'library/'+selected+'/resource/'+resource.id;}
 function getFilters(){return{recommendation:$('recommendation-filter').value,query:$('search').value,sourceType:$('source-filter').value,skill:$('skill-filter').value,level:$('level-filter').value,price:$('price-filter').value,access:$('access-filter').value,savedOnly};}
 function resourceCard(resource){
  const card=create('article','resource-card');card.dataset.resourceId=resource.id;card.id='resource-'+resource.id;
  const top=create('div','card-top');top.append(create('span','source-tag '+resource.sourceType,core.labels.sourceType[resource.sourceType]||'来源待分类'));
  const save=create('button','save-button',state.saved.includes(resource.id)?'已收藏':'收藏');save.type='button';save.dataset.save=resource.id;save.setAttribute('aria-pressed',String(state.saved.includes(resource.id)));save.setAttribute('aria-label',(state.saved.includes(resource.id)?'取消收藏：':'收藏：')+resource.title);top.append(save);card.append(top);
- card.append(create('h3','',resource.title),create('p','provider',resource.provider||''),create('p','card-summary',resource.summary||''));
- if(resource.recommendedByDefault===false)card.append(create('p','reference-label',(resource.collection||'比较案例')+' · 非默认推荐'));
+ const main=create('div','resource-main');main.append(create('h3','',resource.title),create('p','provider',resource.provider||''));if(resource.recommendedByDefault===false)main.append(create('p','reference-label',(resource.collection||'比较案例')+' · 非默认推荐'));main.append(create('p','card-summary',resource.summary||''));card.append(main);
+ const fit=create('div','resource-fit');fit.append(create('h4','','适合谁'),create('p','',resource.levels.map(level=>core.labels.levels[level]||level).join(' · ')),create('h4','','如何使用'),create('p','',resource.actionableMethods?.[0]||'先读站内摘要，再选一个小任务实践。'));card.append(fit);
+ const actions=create('div','resource-actions');actions.append(internalLink('查看摘要 →',resourceHash(resource,$('skill-filter').value),'primary-button'));card.append(actions);
  const detail=create('details','resource-detail');detail.id='detail-'+resource.id;detail.append(create('summary','','展开站内详情与使用方法'));
  const inside=create('div','detail-body');inside.append(create('p','evidence-label',resource.sourceType==='official'?'官方资料：用于核对题型、标准或官方建议':resource.sourceType==='experience'?'个人经验：过程可借鉴，自报结果不能作为效果证明':'教学材料：方法供练习检验，不是官方考试规则'));
  if(resource.reportedRoutine?.length)inside.append(create('h4','','原文自述与作者建议'),list(resource.reportedRoutine));
@@ -45,8 +46,8 @@ function renderGuide(){
  const main=create('section','guide-summary guide-summary--subject');const lead=create('div','guide-lead'),heading=create('div','guide-heading');heading.append(create('p','eyebrow',guide.title+' · 先抓一个重点'),create('h3','',guide.focus));lead.append(heading);
  const quick=create('div','guide-next');const starter=catalog.resources.find(r=>r.id===guide.resources[0]);if(starter)quick.append(internalLink('先读：'+starter.title,resourceHash(starter,skill),'primary-button'));quick.append(internalLink('安排进今天的计划','path','text-button'));lead.append(quick);main.append(lead);
  const cols=create('div','guide-columns');const mistakes=create('div');mistakes.append(create('h4','','优先排查的错因'),list(guide.mistakes));const order=create('div');order.append(create('h4','','建议从这个顺序开始'),list(guide.order,'ol'));cols.append(mistakes,order);main.append(cols);
- const method=create('details','method-detail');method.append(create('summary','',guide.methodTitle+' · 展开操作步骤'));const body=create('div','detail-body');body.append(list(guide.steps,'ol'),create('p','expected-output','完成后留下什么：'+guide.output),create('p','evidence-label',guide.basis));const sources=create('div','internal-source-links');
- guide.resources.forEach(id=>{const r=catalog.resources.find(x=>x.id===id);if(r)sources.append(internalLink('站内摘要：'+r.title,resourceHash(r,skill)));});body.append(sources);if(skill==='reading'){const practice=create('a','secondary-button','选择原创阅读题组（每套10题）');practice.href='./practice-preview/';body.append(practice,create('p','micro-copy','本站原创练习，不是历年真题、完整模考或雅思估分。'));}method.append(body);main.append(method);$('learning-guide').replaceChildren(main);
+ const method=create('details','method-detail');method.append(create('summary','',guide.methodTitle+' · 展开操作步骤'));const body=create('div','detail-body');body.append(list(guide.steps,'ol','method-steps'),create('p','expected-output','完成后留下什么：'+guide.output),create('p','evidence-label',guide.basis));const sources=create('div','internal-source-links');
+ guide.resources.forEach(id=>{const r=catalog.resources.find(x=>x.id===id);if(r)sources.append(internalLink('站内摘要：'+r.title,resourceHash(r,skill)));});body.append(sources);if(skill==='reading'){const practice=create('a','secondary-button','选择原创阅读题组（每套10题）');practice.href='./practice-preview/';body.append(practice,create('p','micro-copy','本站原创练习，不是历年真题、完整模考或雅思估分。'));}method.append(body);main.append(internalLink('查看完整方法 →','library/'+skill+'/method','method-reader-link'),method);$('learning-guide').replaceChildren(main);
 }
 function renderFilterFeedback(){
  const container=$('active-filters');if(!container)return;
@@ -69,6 +70,14 @@ function renderResources(){
  const total=catalog.resources.length,recommended=catalog.resources.filter(r=>r.recommendedByDefault!==false).length;$('scope-help').textContent=loadFailed?'资料未加载成功，不能把结果理解为完整目录。':`资料库共 ${total} 项：${recommended} 项默认推荐、${total-recommended} 项参考案例。上方科目与这里的资料范围分别筛选。`;
  renderFilterFeedback();
  $('saved-count').textContent=String(state.saved.filter(id=>catalog.resources.some(r=>r.id===id)).length);$('saved-filter').setAttribute('aria-pressed',String(savedOnly));$('empty-state').hidden=loadFailed||resources.length>0;$('load-error').hidden=!loadFailed;
+ syncResourceReader();
+}
+function syncResourceReader(){
+ const route=core.parseRoute(location.hash);if(route.tab!=='library'||!route.resource)return;
+ const card=$('resource-'+route.resource),detail=$('detail-'+route.resource);if(!card||!detail)return;
+ $('panel-library').dataset.view='resource';detail.open=true;
+ document.querySelectorAll('.resource-card').forEach(n=>{n.dataset.expanded=String(n===card);});
+ let back=card.querySelector('.reader-back');if(!back){back=internalLink('← 返回资料列表',libraryReturn?.hash||($('skill-filter').value==='all'?'library':'library/'+$('skill-filter').value),'reader-back secondary-button');card.append(back);}
 }
 function resetFilters(skill='listening'){$('filter-form').reset();$('skill-filter').value=skill;savedOnly=false;renderGuide();renderResources();}
 function readPlan(){return core.normalizePlan({examHistory:$('exam-history').value,baseline:$('baseline').value,target:$('target').value,dailyMinutes:$('daily-time').value,weakSkill:$('weak-skill').value});}
@@ -110,31 +119,38 @@ function resetCurrentFilters(){const skill=$('skill-filter').value||'listening';
 function applyRoute(focus){
  const hash=location.hash.replace(/^#/,''),route=core.parseRoute(location.hash),previous=core.parseRoute(lastRoute);
  switchTab(route.tab,focus);
+ $('panel-library').dataset.view='overview';
+ $('panel-path').dataset.view=route.planResult?'result':'wizard';
  if(route.tab==='experience'){if(route.experienceCase)experienceView?.openCase(route.experienceCase);else experienceView?.returnToOverview();}
  if(route.tab==='library'){
+  const methodView=hash.split('/')[2]==='method';
+  $('library-title').textContent=methodView&&route.skill?core.learningGuides[route.skill].title+'方法：从练习到复盘':'学习资料';
   if(route.resource&&!previous.resource&&previous.tab==='library'&&lastRoute){libraryReturn={hash:lastRoute,filters:getFilters(),opened:Array.from(document.querySelectorAll('.resource-detail')).filter(n=>n.open).map(n=>n.id),scrollY:window.scrollY||0,methodOpen:!!document.querySelectorAll('.method-detail')[0]?.open};}
   if(!route.resource&&libraryReturn&&hash===libraryReturn.hash){restoreLibrary(libraryReturn);libraryReturn=null;}
   else{
    if(!route.resource&&previous.resource)libraryReturn=null;
    if(route.skill&&$('skill-filter').value!==route.skill){$('skill-filter').value=route.skill;renderGuide();renderResources();}
    if(route.resource){const r=catalog.resources.find(r=>r.id===route.resource);if(r){
-    if(!$('detail-'+r.id)){resetFilters(route.skill||'all');$('recommendation-filter').value=r.recommendedByDefault===false?'reference':'recommended';renderResources();}
-    const d=$('detail-'+r.id);if(d){d.open=true;d.scrollIntoView?.({block:'center',behavior:'auto'});}
+    if(!$('detail-'+r.id)){resetFilters(r.skills.includes(route.skill)?route.skill:'all');$('recommendation-filter').value=r.recommendedByDefault===false?'reference':'recommended';renderResources();}
+    const d=$('detail-'+r.id);if(d){syncResourceReader();const card=$('resource-'+r.id);card.tabIndex=-1;if(hash!==lastRoute||!card.contains?.(document.activeElement))card.focus({preventScroll:true});card.scrollIntoView?.({block:'start',behavior:'auto'});}
    }}
   }
+  if(methodView){$('panel-library').dataset.view='method';const detail=document.querySelectorAll('.method-detail')[0];if(detail)detail.open=true;const reader=$('learning-guide');reader.tabIndex=-1;if(hash!==lastRoute)reader.focus({preventScroll:true});}
+  if(!route.resource&&previous.resource){const target=methodView?$('learning-guide'):$('resource-'+previous.resource)?.querySelector('.resource-actions')?.querySelector('a')||$('search');target.focus({preventScroll:true});}
  }
- if(route.tab==='path'){if(route.planStep)showPlanStep(route.planStep);else if(route.planResult||state.path?.completed)showPlanResult();else showPlanStep(planStep);}
+ if(route.tab==='path'){if(route.planStep)showPlanStep(route.planStep);else if(route.planResult||state.path?.completed)showPlanResult();else showPlanStep(planStep);if(previous.tab==='path'&&hash!==lastRoute){const target=$('plan-wizard').hidden?$('path-result'):$('plan-step-'+planStep);target.tabIndex=-1;target.focus({preventScroll:true});}}
  lastRoute=hash;
 }
 function navigate(hash,focus=false){location.hash=hash;applyRoute(focus);}
 document.querySelectorAll('[data-tab]').forEach(button=>{button.addEventListener('click',()=>navigate(button.dataset.tab));button.addEventListener('keydown',event=>{let index=tabs.indexOf(button.dataset.tab);if(event.key==='ArrowRight')index=(index+1)%tabs.length;else if(event.key==='ArrowLeft')index=(index+tabs.length-1)%tabs.length;else if(event.key==='Home')index=0;else if(event.key==='End')index=tabs.length-1;else return;event.preventDefault();navigate(tabs[index],true);});});
 window.addEventListener('hashchange',()=>applyRoute(false));
+$('skip-main').addEventListener('click',event=>{event.preventDefault();$('main').focus({preventScroll:true});$('main').scrollIntoView?.({block:'start',behavior:'auto'});});
 document.querySelectorAll('[data-go]').forEach(button=>button.addEventListener('click',()=>navigate(button.dataset.go,true)));
 document.querySelectorAll('[data-intent]').forEach(button=>button.addEventListener('click',()=>{const intent=button.dataset.intent;if(intent==='experience'){navigate('experience',true);return;}resetFilters(intent);navigate('library/'+intent,true);}));
 $('skill-navigation').addEventListener('click',event=>{const b=event.target.closest('[data-skill]');if(!b)return;resetFilters(b.dataset.skill);navigate(b.dataset.skill==='all'?'library':'library/'+b.dataset.skill);});
 $('home-search-form').addEventListener('submit',event=>{event.preventDefault();resetFilters('all');$('search').value=$('home-search').value.trim();libraryReturn=null;renderResources();navigate('library');$('search').focus({preventScroll:true});$('filter-form').scrollIntoView?.({block:'start',behavior:'auto'});});
 $('filter-form').addEventListener('submit',event=>event.preventDefault());$('filter-form').addEventListener('input',renderResources);$('filter-form').addEventListener('change',event=>{renderGuide();renderResources();if(event.target.id==='skill-filter')navigate(core.learningGuides[event.target.value]?'library/'+event.target.value:'library');});$('reset-filters').addEventListener('click',resetCurrentFilters);$('empty-reset').addEventListener('click',()=>{resetCurrentFilters();$('search').focus({preventScroll:true});});$('saved-filter').addEventListener('click',()=>{savedOnly=!savedOnly;renderResources();});
-$('resource-grid').addEventListener('click',event=>{const b=event.target.closest('[data-save]');if(!b)return;const id=b.dataset.save;if(state.saved.includes(id))state.saved=state.saved.filter(v=>v!==id);else state.saved.push(id);persist();const opened=Array.from(document.querySelectorAll('.resource-detail')).filter(n=>n.open).map(n=>n.id);const removed=savedOnly&&!state.saved.includes(id);renderResources();opened.forEach(id=>{if($(id))$(id).open=true;});const replacement=Array.from(document.querySelectorAll('[data-save]')).find(n=>n.dataset.save===id);if(replacement)replacement.focus();else if(removed)$('saved-filter').focus();});
+$('resource-grid').addEventListener('click',event=>{const b=event.target.closest('[data-save]');if(!b)return;const id=b.dataset.save;if(state.saved.includes(id))state.saved=state.saved.filter(v=>v!==id);else state.saved.push(id);persist();const opened=Array.from(document.querySelectorAll('.resource-detail')).filter(n=>n.open).map(n=>n.id);const removed=savedOnly&&!state.saved.includes(id);renderResources();if(removed&&core.parseRoute(location.hash).resource===id)navigate(libraryReturn?.hash||'library/'+($('skill-filter').value||'listening'));opened.forEach(id=>{if($(id))$(id).open=true;});const replacement=Array.from(document.querySelectorAll('[data-save]')).find(n=>n.dataset.save===id);if(replacement)replacement.focus();else if(removed)$('saved-filter').focus();});
 $('plan-form').addEventListener('submit',event=>event.preventDefault());$('plan-next').addEventListener('click',()=>{if(planStep<4){navigate('path/step/'+(planStep+1));$('plan-step-'+planStep).focus();return;}state.path={...readPlan(),completed:true};$('path-save-status').textContent=persist()?'已生成并保存在本浏览器':'已生成；当前页面暂存，关闭后可能丢失';navigate('path/result');});$('plan-back').addEventListener('click',()=>{navigate('path/step/'+Math.max(1,planStep-1));$('plan-step-'+planStep).focus();});$('edit-plan').addEventListener('click',()=>navigate('path/step/1'));const discardDraft=()=>{setPlan(state.path);$('path-save-status').textContent='已返回原计划，未保存刚才的调整。';navigate('path/result');};$('cancel-plan-edit').addEventListener('click',discardDraft);$('discard-plan-draft').addEventListener('click',discardDraft);$('save-path').addEventListener('click',()=>{state.path={...readPlan(),completed:true};$('path-save-status').textContent=persist()?'已保存在本浏览器':'当前页面已暂存，关闭后可能丢失';showPlanResult();});
 $('clear-local').addEventListener('click',()=>{state={saved:[],path:null};try{localStorage.removeItem(key);$('local-status').textContent='已清除本浏览器保存的收藏与路径选项。';}catch{$('local-status').textContent='已清除当前页面的选择；浏览器存储不可用。';}setPlan(null);planStep=1;planViewed=false;$('plan-return').hidden=true;showPlanStep(1);renderResources();if(core.parseRoute(location.hash).tab==='path')navigate('path/step/1');});
 $('retry-load').addEventListener('click',loadCatalog);
