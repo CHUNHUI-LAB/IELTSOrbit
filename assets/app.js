@@ -29,7 +29,7 @@ function resourceCard(resource){
  if(resource.authorContext){line('作者起点',resource.authorContext.baseline);line('投入时长',resource.authorContext.preparationDuration);line('结果性质',resource.authorContext.outcome);}
  if(resource.discussionEvidence?.length)resource.discussionEvidence.forEach(record=>{line('楼内评论（归属未确认）',record.claim);line('身份边界',record.attributionCaveat);if(core.safeUrl(record.url))inside.append(externalLink('查看这条评论 ↗',record.url));});
  if(resource.curatorInterpretation)line('编辑判断',resource.curatorInterpretation);
- if(resource.relatedSources?.length)resource.relatedSources.forEach(record=>{if(core.safeUrl(record.url))inside.append(externalLink('同一案例配套原文：'+record.title+' ↗',record.url));});
+ if(resource.relatedSources?.length)resource.relatedSources.forEach(record=>{if(core.safeUrl(record.url))inside.append(externalLink('相关原文：'+record.title+' ↗',record.url));});
  if(resource.commentsReview)Object.entries(resource.commentsReview).filter(([k])=>k!=='status').forEach(([,v])=>line('评论核读',v));
  if(resource.excludeFromGeneralGuidance?.length){inside.append(create('h4','','不能推广成通用规则'),list(resource.excludeFromGeneralGuidance));}
  const bottom=create('div','card-bottom');bottom.append(externalLink('最后，阅读原文 ↗',resource.url,'resource-link'));inside.append(bottom);detail.append(inside);card.append(detail);return card;

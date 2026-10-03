@@ -34,6 +34,11 @@ function harness({rawState,hash='',offline=false,storageBlocked=false,mobile=fal
 }
 (async()=>{
  const h=harness(),{nodes:n,doc}=h;await h.flush();
+ // Teaching sources use neutral labels and remain clickable without being called an experience case.
+ const teaching=harness({hash:'#library/listening'});await teaching.flush();
+ for(const [id,url] of [['liz','https://ieltsliz.com/listening-practice-office-etiquette/'],['bc-mocks','https://www.teachingenglish.org.uk/professional-development/teachers/teaching-knowledge-database/t-w/weak-forms']]){
+  const card=teaching.doc.getElementById('resource-'+id),link=card.querySelectorAll('a').find(a=>a.href===url);assert(link);assert(link.textContent.startsWith('相关原文：'));assert.equal(link.target,'_blank');assert.equal(link.rel,'noopener noreferrer');
+ }
  // Mobile task navigation must focus a visible panel, never collapsed header tabs.
  const mobileUI=harness({mobile:true});await mobileUI.flush();mobileUI.intents.find(n=>n.dataset.intent==='writing').dispatch('click');assert.equal(mobileUI.active,mobileUI.nodes['panel-library']);assert.equal(mobileUI.active.hidden,false);assert.equal(mobileUI.active.tabIndex,-1);assert.equal(mobileUI.active.lastScroll.block,'start');
  mobileUI.nodes['tab-path'].focus();mobileUI.nodes['tab-path'].dispatch('click');assert.equal(mobileUI.active,mobileUI.nodes['panel-path']);assert.equal(mobileUI.active.hidden,false);assert.equal(mobileUI.active.lastScroll.block,'start');

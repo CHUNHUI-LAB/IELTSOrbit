@@ -73,9 +73,16 @@
         "本站建议：按技能进入练习页，先完成一个薄弱题型的小样题，再决定是否练完整一科。",
         "听力完成后用答案和文字稿复盘；阅读核对答案时，回到原文标出判断依据。",
         "练完整阅读或写作时可分别自设 60 分钟计时。网页体验本身不计时，部分界面功能与正式考试不同；小样题练习不必套用完整单科时长。",
-        "写作先独立完成两项任务，再查看 Task 2 考官评语，选一个问题修改。免费入口和预约后开放的 IELTS Ready Premium 权益分开核对，不把后者当作无条件免费。"
+        "写作先独立完成两项任务，再查看 Task 2 考官评语，选一个问题修改。免费入口和预约后开放的 IELTS Ready Premium 权益分开核对，不把后者当作无条件免费。",
+        "听力基础补充（非模拟题组）：如果连续句中的小词容易漏听，可参考下方 Weak forms 方法说明，用短句听写或数词数练习发现弱读词；它是教师课堂活动建议，不是已核听的音频课程或带完整答案的自测题。"
       ],
-      "curatorInterpretation": "使用建议补充核读：2026-10-03。已读 Academic 入口及听力、阅读、写作子页的完整实质正文；未打开下载 PDF、Inspera 题目或音频。口语子页抓取返回错误，本轮不新增依赖其正文的主张。操作步骤为本站编辑建议；页面未标明发布日期或更新日期。纸质练习材料不代表中国大陆当前考试形式或誊写规则。"
+      "curatorInterpretation": "使用建议补充核读：2026-10-03。已读 Academic 入口及听力、阅读、写作子页的完整实质正文；未打开下载 PDF、Inspera 题目或音频。口语子页抓取返回错误，本轮不新增依赖其正文的主张。操作步骤为本站编辑建议；页面未标明发布日期或更新日期。纸质练习材料不代表中国大陆当前考试形式或誊写规则。 基础方法补充核读：2026-10-03。另读 British Council TeachingEnglish 的 Weak forms 主文，仅采用短句听写或数词数提高弱读意识的建议；这是独立于上方模拟练习入口的基础方法说明，未运行课堂活动，也未核验配套音频或答案。主文未标明作者及发布日期，不从相关内容卡推断年龄、CEFR或学习时长，不证明能提高雅思分数。",
+      "relatedSources": [
+        {
+          "title": "听力基础方法：Weak forms（非模拟题组）",
+          "url": "https://www.teachingenglish.org.uk/professional-development/teachers/teaching-knowledge-database/t-w/weak-forms"
+        }
+      ]
     },
     {
       "id": "writing-rubric",
@@ -250,7 +257,19 @@
       "checkedAt": "2026-10-01",
       "status": "curated",
       "commercial": true,
-      "evidenceScope": "公开来源页面已读；不代表完整课程体验"
+      "evidenceScope": "公开来源页面已读；不代表完整课程体验",
+      "actionableMethods": [
+        "本站建议：打开下方 Office Etiquette 小练习，按页面的一词限制先听一次并作答，再展开答案说明与文字稿。",
+        "错题回到对应句，先判断是否因重复词而忽略真正的意思，再看页面的释义解释。",
+        "对照该练习要求检查答案是否来自录音原词，以及填入后词性和语法是否合适；把释义误判、原词选择与词形问题分开记录。"
+      ],
+      "relatedSources": [
+        {
+          "title": "Office Etiquette · 听力填空与反馈（2017年教师自编小练习）",
+          "url": "https://ieltsliz.com/listening-practice-office-etiquette/"
+        }
+      ],
+      "curatorInterpretation": "具体练习补充核读：2026-10-03。Office Etiquette 正文注明2017年，为 Liz 教师自编的公开免费小练习；站点同时销售 Advanced IELTS 等产品。已读正文、题目、答案解释和文字稿；未播放音频。只核读部分2017年评论，不声称读完页面标示的158条评论，评论不作为提分效果证据。这里仅归纳反馈步骤并链接原页，不转载题目、答案或文字稿；短练习不是完整模考，不保证分数或限时迁移效果。原目录条目的核验日保留。"
     },
     {
       "id": "simon",
@@ -2526,5 +2545,36 @@
         "只新增原创短摘要和来源链接；未复制题库、教材或评论个人资料。"
       ]
     }
-  ]
+  ],
+  "teachingSupplementReview": {
+    "checkedAt": "2026-10-03",
+    "scope": "对既有 Liz 与 British Council 资源增加具体教学深链接和使用提示；不是新题库、新考生经验或新增独立机构。",
+    "updatedResourceIds": [
+      "liz",
+      "bc-mocks"
+    ],
+    "newResourceIds": [],
+    "sources": [
+      {
+        "resourceId": "liz",
+        "url": "https://ieltsliz.com/listening-practice-office-etiquette/",
+        "sourceYear": "2017",
+        "readScope": "正文、题目、答案说明与文字稿，以及部分2017年评论；音频未播放，未宣称核读全部158条评论。",
+        "kind": "教师自编免费小练习；商业站点，不是考生提分自述"
+      },
+      {
+        "resourceId": "bc-mocks",
+        "url": "https://www.teachingenglish.org.uk/professional-development/teachers/teaching-knowledge-database/t-w/weak-forms",
+        "sourceYear": null,
+        "readScope": "Weak forms 主文已读；仅短句听写与数词数意识活动，未运行课堂活动或核验音频答案。",
+        "kind": "教师发展基础方法说明，不是IELTS模拟题库或已验证课程"
+      }
+    ],
+    "boundaries": [
+      "只链接并提供原创短方法归纳，不转载练习题、答案、文字稿或评论个人信息。",
+      "没有分数保证、年龄或CEFR分配；发布日期与核读日期分开。",
+      "资源卡片仍44项、经验仍27篇；既有机构的深链接不计为新增独立来源。",
+      "此前官方资源的4步建议与核读说明保留为前缀；政策、考点、考期、学习计划、练习状态和定期检查历史不变。"
+    ]
+  }
 }
