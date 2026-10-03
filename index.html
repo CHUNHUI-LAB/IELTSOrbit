@@ -8,9 +8,9 @@
   <title>IELTSOrbit · 雅思学习导航</title>
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./assets/styles.css?v=cfc01c25488c">
-  <link rel="stylesheet" href="./assets/orbit-ui.css?v=f95e8a7a6623">
+  <link rel="stylesheet" href="./assets/orbit-ui.css?v=5a2e70ad0a20">
   <script defer src="./assets/orbit-ui.js?v=2a669343e508"></script>
-  <script defer src="./assets/core.js?v=bcbe695cf086"></script><script defer src="./assets/experience.js?v=bc3e0d42cb28"></script><script defer src="./assets/app.js?v=4fbf7b0808c5"></script>
+  <script defer src="./assets/core.js?v=bcbe695cf086"></script><script defer src="./assets/experience.js?v=d34d30701bfa"></script><script defer src="./assets/app.js?v=c7877318cdf3"></script>
 </head>
 <body>
 <a id="skip-main" class="skip-link" href="#main">跳到主要内容</a>
@@ -40,7 +40,7 @@
     <div class="home-disclosure"><span>学习资料默认以 Academic 为主，考试类别须按用途另行确认</span><span>考期与余位以官方报名系统为准</span></div>
   </section>
   <section id="panel-library" class="panel" role="tabpanel" aria-labelledby="tab-library" hidden>
-    <div class="section-heading library-heading"><div><h2 id="library-title">学习资料</h2><p>先读单科重点与资料摘要，再留下答案、初稿或录音。原文放在站内详情的最后。</p></div></div>
+    <div class="section-heading library-heading"><div><h1 id="library-title">学习资料</h1><p>先读单科重点与资料摘要，再留下答案、初稿或录音。原文放在站内详情的最后。</p></div></div>
     <div id="plan-return" class="journey-return" hidden><a href="#path/result">← 回到今天与本周计划</a><span>查看资料不会改动已保存的选择</span></div>
     <form id="filter-form" class="guided-filter" role="search" aria-label="筛选学习资料">
       <label class="search-control"><span>搜索当前资料</span><input id="search" type="search" placeholder="例如：定位、录音、写作反馈" autocomplete="off"></label>
@@ -66,9 +66,9 @@
     <div id="empty-state" class="empty-state" hidden><span aria-hidden="true">⌕</span><h3>暂时没有匹配的资料</h3><p>试试减少筛选条件，或搜索更宽泛的关键词。</p><button id="empty-reset" class="secondary-button" type="button">恢复默认筛选</button></div>
     <aside class="source-guide" aria-labelledby="source-guide-title"><h3 id="source-guide-title">同样是资料，证据的分量不同</h3><div class="source-guide-grid"><p><strong>官方资料</strong>用于核对考试形式、评分标准和报名政策。</p><p><strong>教师讲解</strong>提供训练方法，效果仍需用自己的练习检验。</p><p><strong>考生经验</strong>适合借鉴过程，个人成绩不代表可复制的结果。</p></div><details class="coverage-details"><summary>本轮核验范围与覆盖缺口</summary><div id="coverage-list"></div></details><details class="coverage-details"><summary>经验怎么用：方法、分歧与证据边界</summary><div id="evidence-review"></div></details></aside>
   </section>
-  <section id="panel-experience" class="panel" role="tabpanel" aria-labelledby="tab-experience" hidden><div class="section-heading"><div><p class="eyebrow">看清别人做了什么，再判断是否适合自己</p><h2>备考经验</h2><p>先读跨案例总结，再按你的问题看过程。自报成绩与备考时长不能直接变成你的提分计划。</p></div></div><div id="experience-root"></div></section>
+  <section id="panel-experience" class="panel" role="tabpanel" aria-labelledby="tab-experience" hidden><div class="section-heading"><div><p class="eyebrow">看清别人做了什么，再判断是否适合自己</p><h1 id="experience-title">备考经验</h1><p>先读跨案例总结，再按你的问题看过程。自报成绩与备考时长不能直接变成你的提分计划。</p></div></div><div id="experience-root"></div></section>
   <section id="panel-path" class="panel" role="tabpanel" aria-labelledby="tab-path" hidden>
-    <div class="section-heading"><div><p class="eyebrow">四个小选择，换成今天能做的事</p><h2>制定学习计划</h2><p>不用先估分，也不用现在决定首考日期。按你的回答给出可调整的练习建议。</p></div></div>
+    <div class="section-heading"><div><p class="eyebrow">四个小选择，换成今天能做的事</p><h1>制定学习计划</h1><p>不用先估分，也不用现在决定首考日期。按你的回答给出可调整的练习建议。</p></div></div>
     <ol class="journey-steps" aria-label="计划使用顺序"><li><strong>1 · 填四项选择</strong><span>不确定的项目可以跳过</span></li><li><strong>2 · 看今天与7天安排</strong><span>每项任务都能打开方法和资料</span></li><li><strong>3 · 练完后再调整</strong><span>按自己的记录改优先项</span></li></ol>
     <div class="plan-shell">
       <div id="plan-wizard" class="plan-wizard"><aside class="wizard-explainer"><p class="eyebrow">可随时调整的起步安排</p><h3>给今天留一个清晰的任务</h3><ol><li><strong>训练</strong><span>按可用时间完成一个小任务</span></li><li><strong>反馈</strong><span>对照原文或评分要求找问题</span></li><li><strong>复盘</strong><span>留下一条明天能尝试的动作</span></li></ol><p class="micro-copy">不确定的经历、分数和优先项都可以不填写。计划不估分，也不预测提分周期。</p></aside>
@@ -89,7 +89,7 @@
     <div class="practice-note"><h3>用可观察的变化衡量练习</h3><p>以下为编辑建议，不是成绩或周期承诺。</p><ul id="methodology-list" class="methodology-list"></ul><div id="methodology-sources" class="methodology-sources"></div><button class="text-button" type="button" data-go="library">回到资料库挑选练习</button></div>
   </section>
   <section id="panel-exams" class="panel" role="tabpanel" aria-labelledby="tab-exams" hidden>
-    <div class="section-heading"><div><p class="eyebrow">先核对，再安排</p><h2>杭州考点与考期</h2><p>从杭州开始整理公开信息。城市与考点介绍不等于实时可报名场次。</p></div><span class="location-chip">杭州 · 首批覆盖</span></div>
+    <div class="section-heading"><div><p class="eyebrow">先核对，再安排</p><h1>杭州考点与考期</h1><p>从杭州开始整理公开信息。城市与考点介绍不等于实时可报名场次。</p></div><span class="location-chip">杭州 · 首批覆盖</span></div>
     <div id="exam-overview" class="exam-overview"></div>
     <div class="subsection-heading"><h3>在哪里考？</h3><p>先比较地点，展开看地址与核验范围。公开名录不代表当期开放。</p></div><div id="center-list" class="center-list"></div>
     <div class="subsection-heading"><h3>什么时候考？</h3><p>公开计划日期与杭州可报名场次、余位是不同信息。</p></div><div id="calendar-list" class="calendar-list"></div>
