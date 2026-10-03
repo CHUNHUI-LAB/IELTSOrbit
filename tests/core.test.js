@@ -1,3 +1,4 @@
+const {legacyResources}=require('./resource-history.js');
 const counts=require('./catalog-counts.js');
 const assert=require('node:assert/strict');
 const core=require('../assets/core.js');
@@ -46,7 +47,7 @@ console.log('PASS: current catalog counts and complete experience coverage; reta
 
 const crypto=require('node:crypto');
 const digest=value=>crypto.createHash('sha256').update(JSON.stringify(value)).digest('hex');
-assert.equal(digest(source.resources.slice(0,15)),'dd6b39098a366c6835d5e452b8c40e57d543245fd5cc3fe04debf8ccf690b29b','original 15 resources preserved');
+assert.equal(digest(legacyResources(source.resources).slice(0,15)),'dd6b39098a366c6835d5e452b8c40e57d543245fd5cc3fe04debf8ccf690b29b','original 15 resource fields preserved');
 const {lastScheduledCheckAt,lastScheduledCheckScope,...initialMetadata}=source.metadata;
 assert.equal(digest({...initialMetadata,firstScheduledRunVerified:false}),'2c61c1364ee41f79b752e8eab8f0e416fbbba1e9731694b1bcc77a80e3986594','initial catalog metadata preserved except verified scheduled check fields');
 assert.equal(digest(source.policies),'5ca2c5ad3691f44032f282741fa67d3e976abf84b10ec28b8a154156fb742a79','policies preserved');
@@ -67,15 +68,15 @@ assert.equal(source.evidenceReview.conflicts.length,5);
 assert.equal(source.metadata.dailyUpdatesEnabled,true);assert.equal(source.metadata.firstScheduledRunVerified,true);
 console.log('PASS: current catalog counts and complete experience coverage; retained source, route, state, and provenance regressions.');
 
-assert.equal(digest(source.resources.slice(0,28)),'cb065c66a2ea2252bee32313b2bb58ac3cf56d56d00bf757b336f00919e10905','all 28 pre-expansion records preserved without edits');
+assert.equal(digest(legacyResources(source.resources).slice(0,28)),'cb065c66a2ea2252bee32313b2bb58ac3cf56d56d00bf757b336f00919e10905','all 28 pre-expansion records original fields preserved');
 console.log('PASS: all 28 pre-expansion resource records preserved byte-equivalently after JSON parsing.');
 
-assert.equal(digest(source.resources.slice(0,33)),'b483ec9868ada2c0a80365105a3e800fe7b9c367b8d3b868623bab05b41deabb','all 33 pre-batch records preserved without edits');
+assert.equal(digest(legacyResources(source.resources).slice(0,33)),'b483ec9868ada2c0a80365105a3e800fe7b9c367b8d3b868623bab05b41deabb','all 33 pre-batch records original fields preserved');
 console.log('PASS: all 33 pre-batch resource objects preserved; official center/calendar refresh checked separately.');
 
 // Official directory facts must never be promoted into bookable dates or seats.
 assert.equal(source.schemaVersion,1,'additive metadata remains compatible with the existing adapter');
-assert.equal(digest(source.resources.slice(0,40)),'0cba66ebeeac758b10bc3cba92945c51773d04385e4d1cf3c0047e6ad195b8ab','all 40 learning-resource objects unchanged');
+assert.equal(digest(legacyResources(source.resources).slice(0,40)),'0cba66ebeeac758b10bc3cba92945c51773d04385e4d1cf3c0047e6ad195b8ab','all 40 learning-resource original fields unchanged');
 assert.deepEqual(source.centers.map(c=>[c.id,c.neeaCenterCode,c.address,c.writtenTestVenue]),[
  ['zj-exam','100197','浙江省杭州市西湖区学院路35号','浙江教育综合大楼'],
  ['zju-huajiachi','100369','浙江省杭州市上城区凯旋路268号浙江大学（华家池校区）','中心大楼-南楼1楼'],

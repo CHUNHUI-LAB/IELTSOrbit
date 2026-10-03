@@ -1,8 +1,9 @@
+const {legacyResources}=require('./resource-history.js');
 const assert=require('node:assert/strict');
 const crypto=require('node:crypto');
 const raw=require('../data/catalog.json'),core=require('../assets/core.js'),experience=require('../assets/experience.js');
 const digest=x=>crypto.createHash('sha256').update(JSON.stringify(x)).digest('hex');
-assert.equal(digest(raw.resources.slice(0,41)),'0e355fed7be1e0ea7d71eb749eeba6493776c8775018dba16c79fd315d2d8b5c','all 41 previously published objects remain unchanged');
+assert.equal(digest(legacyResources(raw.resources).slice(0,41)),'0e355fed7be1e0ea7d71eb749eeba6493776c8775018dba16c79fd315d2d8b5c','all 41 previously published original fields remain unchanged');
 const ids=['reddit-feedback-not-understood-writing-2026','vocus-losa-writing-error-transfer-2026','note-digiros-y-speaking-transfer-gap-2026'];
 assert.deepEqual(raw.resources.slice(41).map(r=>r.id),ids,'only the three reviewed additions');
 assert.equal(raw.resources.length,44);assert.equal(raw.resources.filter(r=>r.sourceType==='experience').length,27);

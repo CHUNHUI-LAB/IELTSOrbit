@@ -1,0 +1,22 @@
+'use strict';
+const assert=require('node:assert/strict'),crypto=require('node:crypto');
+const raw=require('../data/catalog.json'),core=require('../assets/core.js');
+const {legacyResources,reviewedIds}=require('./resource-history.js');
+const digest=x=>crypto.createHash('sha256').update(JSON.stringify(x)).digest('hex');
+assert.equal(digest(legacyResources(raw.resources)),'fed00a483a03cd374debaefe56f26eff38682663c133e334094cb7e1e7b64bec','all original fields of all44 published resources remain exact');
+const previousReview=raw.scheduledRefreshHistory.find(x=>x.checkedAt==='2026-10-02');
+assert.equal(digest(previousReview),'31fa8603479f439e00609094f66f0bb0023ff72d9e4ef675965f301815120170','previous successful check retained exactly');
+const beforeMaintenance={...raw,resources:legacyResources(raw.resources),metadata:{...raw.metadata,lastScheduledCheckAt:'2026-10-02',lastScheduledCheckScope:'政策、杭州考点、公告状态及本轮来源筛选；未重读全部既有资源'},scheduledRefreshReview:previousReview};delete beforeMaintenance.scheduledRefreshHistory;
+assert.equal(digest(beforeMaintenance),'6e4d09db8bbb588c30c24c6201f77b12d89a3ce1c606cb11e92074fc6301f37d','entire pre-maintenance catalog exactly recoverable: no undeclared data changes');
+assert.equal(raw.resources.length,44);assert.equal(raw.resources.filter(r=>r.sourceType==='experience').length,27);
+const normalized=core.normalizeCatalog(raw);
+for(const id of reviewedIds){const r=raw.resources.find(r=>r.id===id);assert.equal(r.sourceType,'official');assert.equal(r.checkedAt,'2026-10-01','original row date is preserved; supplement is separately dated');assert.equal(r.actionableMethods.length,4);assert(r.actionableMethods[0].startsWith('本站建议：'));assert(r.curatorInterpretation.includes('2026-10-03'));assert(r.curatorInterpretation.includes('未'));assert.equal(normalized.resources.find(r=>r.id===id).actionableMethods.length,4);assert.equal(normalized.resources.find(r=>r.id===id).curatorInterpretation,r.curatorInterpretation);}
+const samples=raw.resources.find(r=>r.id==='official-samples'),bc=raw.resources.find(r=>r.id==='bc-mocks'),writing=raw.resources.find(r=>r.id==='writing-rubric');
+assert(samples.actionableMethods.some(x=>x.includes('不计时')&&x.includes('另设计时器')));assert(samples.actionableMethods.some(x=>x.includes('部分地区')&&x.includes('差异')));assert(samples.curatorInterpretation.includes('不计作两套独立题库'));
+assert(bc.actionableMethods.some(x=>x.includes('60 分钟')&&x.includes('小样题')));assert(bc.curatorInterpretation.includes('口语子页抓取返回错误'));assert(bc.actionableMethods.some(x=>x.includes('Premium')&&x.includes('不把后者当作无条件免费')));
+assert(writing.curatorInterpretation.includes('七段网页文字稿')&&writing.curatorInterpretation.includes('未播放'));
+assert.equal(raw.metadata.checkedAt,'2026-10-01');assert.equal(raw.metadata.lastScheduledCheckAt,'2026-10-03');assert.equal(raw.metadata.firstScheduledRunVerified,true);
+assert.equal(raw.scheduledRefreshReview.checkedAt,'2026-10-03');assert.deepEqual(raw.scheduledRefreshReview.newResourceIds,[]);assert.deepEqual(new Set(raw.scheduledRefreshReview.updatedResourceIds),reviewedIds);assert(raw.scheduledRefreshHistory.some(x=>x.checkedAt==='2026-10-02'&&x.newResourceIds.includes('official-independent-reading-project')));
+assert(raw.scheduledRefreshReview.boundaries.some(x=>x.includes('未重新核读教师课程')));
+assert.deepEqual(raw.calendar.dates,[]);assert.deepEqual(raw.calendar.centerSessions,[]);assert.equal(raw.calendar.seatsAvailable,null);assert(raw.centers.every(x=>x.sessions.length===0&&x.seatsAvailable===null));
+console.log('PASS:3 bounded official usage supplements; all44 prior resource fields exact; 27experiences unchanged; no repeated-source count inflation, regional overclaim, timing guarantee, new dates or seats; previous successful check archived.');

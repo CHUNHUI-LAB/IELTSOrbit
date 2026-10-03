@@ -1,3 +1,4 @@
+const {legacyResources}=require('./resource-history.js');
 const counts=require('./catalog-counts.js');
 const assert=require('node:assert/strict');
 const crypto=require('node:crypto');
@@ -17,7 +18,7 @@ const ids=[
 const byId=id=>raw.resources.find(r=>r.id===id);
 const additions=ids.map(byId);
 assert.deepEqual(raw.resources.slice(33,40).map(r=>r.id),ids,'the seven reviewed plateau additions remain unchanged');
-assert.equal(crypto.createHash('sha256').update(JSON.stringify(raw.resources.slice(0,33))).digest('hex'),'b483ec9868ada2c0a80365105a3e800fe7b9c367b8d3b868623bab05b41deabb','every original record unchanged');
+assert.equal(crypto.createHash('sha256').update(JSON.stringify(legacyResources(raw.resources).slice(0,33))).digest('hex'),'b483ec9868ada2c0a80365105a3e800fe7b9c367b8d3b868623bab05b41deabb','every original record field unchanged');
 assert.equal(new Set(raw.resources.map(r=>new URL(r.url).href)).size,counts.resources,'no duplicate source URL');
 assert.equal(raw.experienceBatchReview.acceptedCount,7);
 assert.equal(raw.experienceBatchReview.recommendedCount,0);

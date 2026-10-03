@@ -9,8 +9,8 @@
     "privacy": "选择仅在浏览器本地使用；不收集成绩、申请资料、账号或报名记录。",
     "disclaimer": "非 IELTS 官方网站；不保证提分速度，不代表报名成功或实时考位。",
     "firstScheduledRunVerified": true,
-    "lastScheduledCheckAt": "2026-10-02",
-    "lastScheduledCheckScope": "政策、杭州考点、公告状态及本轮来源筛选；未重读全部既有资源"
+    "lastScheduledCheckAt": "2026-10-03",
+    "lastScheduledCheckScope": "限定补充3项官方资源使用建议，并核对官方政策与杭州机考名录；未重读全部既有资源、经验和评论"
   },
   "resources": [
     {
@@ -36,7 +36,14 @@
       "checkedAt": "2026-10-01",
       "status": "curated",
       "commercial": false,
-      "evidenceScope": "公开来源页面已读；不代表完整课程体验"
+      "evidenceScope": "公开来源页面已读；不代表完整课程体验",
+      "actionableMethods": [
+        "本站建议：先选一个薄弱题型独立作答，再打开对应答案；听力复盘可沿页面的文字稿链接定位问题。",
+        "写完 Task 2 后，再阅读页面所列的考官评语与分数示例，对照自己的题目回应和论证，不照搬范文。",
+        "熟悉题型后再使用完整 practice experience。该体验本身不计时；如要限时训练，需要另设计时器。",
+        "核对练习与当地报名的作答形式。页面的 Writing on Paper 只标为部分地区提供；练习体验的计时、划线与笔记功能也与正式考试有差异，不能当作完全一致的考场模拟。"
+      ],
+      "curatorInterpretation": "使用建议补充核读：2026-10-03。已读全部实质正文、四技能入口、Writing on Paper 与完整体验说明；未打开题目运行界面、答案或范文 PDF、音频及口语 PDF。步骤为本站建议，未声称已亲自运行题库。页面未标明发布日期或更新日期；纸质材料入口不能用来推断中国大陆当前仍提供纸笔考试。与 British Council 多项入口指向相同 Inspera 资源，不计作两套独立题库。"
     },
     {
       "id": "bc-mocks",
@@ -61,7 +68,14 @@
       "checkedAt": "2026-10-01",
       "status": "curated",
       "commercial": false,
-      "evidenceScope": "公开来源页面已读；不代表完整课程体验"
+      "evidenceScope": "公开来源页面已读；不代表完整课程体验",
+      "actionableMethods": [
+        "本站建议：按技能进入练习页，先完成一个薄弱题型的小样题，再决定是否练完整一科。",
+        "听力完成后用答案和文字稿复盘；阅读核对答案时，回到原文标出判断依据。",
+        "练完整阅读或写作时可分别自设 60 分钟计时。网页体验本身不计时，部分界面功能与正式考试不同；小样题练习不必套用完整单科时长。",
+        "写作先独立完成两项任务，再查看 Task 2 考官评语，选一个问题修改。免费入口和预约后开放的 IELTS Ready Premium 权益分开核对，不把后者当作无条件免费。"
+      ],
+      "curatorInterpretation": "使用建议补充核读：2026-10-03。已读 Academic 入口及听力、阅读、写作子页的完整实质正文；未打开下载 PDF、Inspera 题目或音频。口语子页抓取返回错误，本轮不新增依赖其正文的主张。操作步骤为本站编辑建议；页面未标明发布日期或更新日期。纸质练习材料不代表中国大陆当前考试形式或誊写规则。"
     },
     {
       "id": "writing-rubric",
@@ -83,7 +97,14 @@
       "checkedAt": "2026-10-01",
       "status": "curated",
       "commercial": false,
-      "evidenceScope": "公开来源页面已读；不代表完整课程体验"
+      "evidenceScope": "公开来源页面已读；不代表完整课程体验",
+      "actionableMethods": [
+        "本站建议：先读对应任务的评分讲解。Academic Task 1 检查概述、主要特征与信息准确性；Task 2 检查题目覆盖、立场和论据。",
+        "拿一篇自己的旧作文对照四项评分维度，逐项标出已做到和缺少的内容，暂不把自检换算成分数。",
+        "分两轮检查：先看段落推进和句间关系，再查用词搭配、拼写、语法及标点。",
+        "选一类反复出现的问题改写，复核修改后是否更清楚。自检不能替代正式评分，也不保证达到某个分数。"
+      ],
+      "curatorInterpretation": "使用建议补充核读：2026-10-03。已读页面正文及七段网页文字稿，含 Academic、General Training、词汇及语法标点部分；未打开两份评分 PDF，未播放嵌入视频。以上操作顺序是本站编辑建议，不是官方指定学习流程。页面未标明发布日期或更新日期；原条目核验日保留，不能将本次文字稿核读当作全部材料重新核验。"
     },
     {
       "id": "all-rubrics",
@@ -2381,50 +2402,56 @@
     "rejectedOrHeldReviewScope": "沿用候选研究记录；本轮未再次核读被排除来源，不计入7篇正文核读。"
   },
   "scheduledRefreshReview": {
-    "checkedAt": "2026-10-02",
-    "scope": "本轮定期检查的限定范围，不表示重新核读全部历史资源、评论或课程。",
-    "newResourceIds": [
-      "official-independent-reading-project"
+    "checkedAt": "2026-10-03",
+    "scope": "限定范围维护：3项既有官方资源的使用建议，以及本轮官方政策、杭州机考名录和公告可读状态；不是全库或全平台重新核读。",
+    "newResourceIds": [],
+    "updatedResourceIds": [
+      "writing-rubric",
+      "official-samples",
+      "bc-mocks"
     ],
-    "unchanged": "原40项资源、24篇经验、学习计划和练习保持不变。政策及杭州4个公开机考考点未发现变更；考期详情与考位仍未核实。",
+    "unchanged": "44项资源、27篇经验数量与身份不变；仅给3项既有官方资源追加使用步骤和补充核读说明。其余既有字段、政策、考点、考期、计划、练习与所有前端文件不变。",
     "sourceCoverage": [
       {
-        "platform": "IELTS官方／教育部教育考试院",
-        "scope": "复核大陆考试形式、费用、评分说明、报名入口、杭州4个机考考点和第四季度公告；逐日详情未取得。"
+        "platform": "IELTS.org 写作评分资源",
+        "scope": "完整核读正文及7段网页文字稿；未打开评分PDF、未播放视频。",
+        "urls": [
+          "https://ielts.org/take-a-test/preparation-resources/writing-test-resources"
+        ]
       },
       {
-        "platform": "IELTS.org学习文章",
-        "scope": "完整核读2篇独立学习／课外阅读文章；选入1篇，另1篇与现有复盘方法重叠。"
+        "platform": "IELTS.org Academic样题入口",
+        "scope": "完整核读实质正文和四技能入口说明；未进入题目界面、答案范文PDF或音频。保留体验不计时、功能差异及地区限制。",
+        "urls": [
+          "https://ielts.org/take-a-test/preparation-resources/sample-test-questions/academic-test"
+        ]
       },
       {
-        "platform": "教师网站",
-        "scope": "重开Liz介绍页、Simon视频目录和IELTS Advantage学习方法目录；读取6周计划的部分可提取文字。没有观看视频、注册课程或把目录当成完整课程核读。"
+        "platform": "British Council Academic练习入口",
+        "scope": "核读入口及听力、阅读、写作子页实质正文；口语子页抓取返回错误，未将其计为已读；PDF、Inspera题目、音频未打开。",
+        "urls": [
+          "https://takeielts.britishcouncil.org/prepare/ielts-free-practice-mock-tests/academic",
+          "https://takeielts.britishcouncil.org/prepare/ielts-free-practice-mock-tests/academic/listening",
+          "https://takeielts.britishcouncil.org/prepare/ielts-free-practice-mock-tests/academic/reading",
+          "https://takeielts.britishcouncil.org/prepare/ielts-free-practice-mock-tests/academic/writing"
+        ]
       },
       {
-        "platform": "B站",
-        "scope": "新增核读白钢cc 2021自学文章的完整可提取正文；评论和成绩图片未读。过程与现有案例重叠，且有固定周期／分数推断，未新增卡片。"
-      },
-      {
-        "platform": "知乎",
-        "scope": "新增完整核读雪梨同学在职文章；有明确试听引流、固定周期提分推断，且时间账本合计不一致，未选入。评论与成绩图未核验。"
-      },
-      {
-        "platform": "抖音",
-        "scope": "只读取备考视频的标题、说明及部分可见评论；没有观看视频，不采用智能文稿作为观看证据，未新增卡片。"
-      },
-      {
-        "platform": "小红书／贴吧",
-        "scope": "已搜索；未找到可核读且符合质量要求的新雅思原帖。搜索结果与访问异常不计入正文阅读覆盖，也不推断整个平台不可访问。"
-      },
-      {
-        "platform": "Reddit",
-        "scope": "核读2026年4月版主资源指南正文及1条可见致谢评论；其中写作评分维度权重说法与官方不符，不作为规则来源。"
+        "platform": "NEEA杭州机考名录及BC中国官网",
+        "scope": "2026-10-03 06:25:52 UTC核读标准雅思机考杭州名录4处：100197、100369、100374、150079；不是UKVI目录。费用及第四季度公告正文未发现需改写的已记录规则。Q4考期与截止日期图片仍无法读取，NEEA新闻索引超时/提取失败不等于没有新公告。未登录报名，未取得逐日场次或余位。",
+        "urls": [
+          "https://ielts.neea.cn/showTestCenters",
+          "https://www.chinaielts.org/press-office/ielts-eTRF",
+          "https://www.chinaielts.org/press-office/IELTS-Chinese-Mainland-Exam-Registration-Fee-Update-2026"
+        ]
       }
     ],
     "boundaries": [
-      "没有观看完整视频、独立核验考生成绩或体验付费课程。",
-      "同作者、商业推荐与转载不作为独立效果证据。",
-      "只新增原创短摘要和来源链接；未复制题库、教材或评论个人资料。"
+      "仅追加原创短使用建议与核读边界；未复制题目、答案、范文、教材、成绩图或评论个人资料。",
+      "本轮未重新核读教师课程、27篇经验正文或社交评论，不声称跨平台全面检查。",
+      "以上页面未显示明确内容发布日期或更新日期；页脚版权年份不当作内容更新时间。",
+      "资料库首页总核验日及各条目原核验日不变，追加建议另标2026-10-03；历史成功检查保留。",
+      "保留空场次数组与未知余位，不用全国公告推断杭州当前可报名场次。"
     ]
   },
   "feedbackTransferReview": {
@@ -2450,5 +2477,54 @@
       "发表日期、经历日期与末轮准备窗口不同；没有成功率、平均提分周期或课程效果证据。",
       "本轮没有新增合格的小红书、贴吧、知乎独立正文或完整视频案例；不以搜索结果当作正文覆盖。"
     ]
-  }
+  },
+  "scheduledRefreshHistory": [
+    {
+      "checkedAt": "2026-10-02",
+      "scope": "本轮定期检查的限定范围，不表示重新核读全部历史资源、评论或课程。",
+      "newResourceIds": [
+        "official-independent-reading-project"
+      ],
+      "unchanged": "原40项资源、24篇经验、学习计划和练习保持不变。政策及杭州4个公开机考考点未发现变更；考期详情与考位仍未核实。",
+      "sourceCoverage": [
+        {
+          "platform": "IELTS官方／教育部教育考试院",
+          "scope": "复核大陆考试形式、费用、评分说明、报名入口、杭州4个机考考点和第四季度公告；逐日详情未取得。"
+        },
+        {
+          "platform": "IELTS.org学习文章",
+          "scope": "完整核读2篇独立学习／课外阅读文章；选入1篇，另1篇与现有复盘方法重叠。"
+        },
+        {
+          "platform": "教师网站",
+          "scope": "重开Liz介绍页、Simon视频目录和IELTS Advantage学习方法目录；读取6周计划的部分可提取文字。没有观看视频、注册课程或把目录当成完整课程核读。"
+        },
+        {
+          "platform": "B站",
+          "scope": "新增核读白钢cc 2021自学文章的完整可提取正文；评论和成绩图片未读。过程与现有案例重叠，且有固定周期／分数推断，未新增卡片。"
+        },
+        {
+          "platform": "知乎",
+          "scope": "新增完整核读雪梨同学在职文章；有明确试听引流、固定周期提分推断，且时间账本合计不一致，未选入。评论与成绩图未核验。"
+        },
+        {
+          "platform": "抖音",
+          "scope": "只读取备考视频的标题、说明及部分可见评论；没有观看视频，不采用智能文稿作为观看证据，未新增卡片。"
+        },
+        {
+          "platform": "小红书／贴吧",
+          "scope": "已搜索；未找到可核读且符合质量要求的新雅思原帖。搜索结果与访问异常不计入正文阅读覆盖，也不推断整个平台不可访问。"
+        },
+        {
+          "platform": "Reddit",
+          "scope": "核读2026年4月版主资源指南正文及1条可见致谢评论；其中写作评分维度权重说法与官方不符，不作为规则来源。"
+        }
+      ],
+      "boundaries": [
+        "没有观看完整视频、独立核验考生成绩或体验付费课程。",
+        "同作者、商业推荐与转载不作为独立效果证据。",
+        "只新增原创短摘要和来源链接；未复制题库、教材或评论个人资料。"
+      ]
+    }
+  ]
 }
