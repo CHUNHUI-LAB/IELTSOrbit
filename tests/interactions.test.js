@@ -3,7 +3,7 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs'),vm=require('node:vm');
 const core=require('../assets/core.js'),data=require('../data/catalog.json');
 const html=fs.readFileSync(require.resolve('../index.html'),'utf8');
-function harness({rawState,hash='',offline=false,storageBlocked=false}={}){
+function harness({rawState,hash='',offline=false,storageBlocked=false,mobile=false}={}){
  let active,fetches=0;
  const nodes={},saved=new Map(rawState?[['ieltsorbit.local.v1',rawState]]:[]),events={};
  const descendants=n=>n.children.flatMap(c=>[c,...descendants(c)]);
@@ -20,12 +20,13 @@ function harness({rawState,hash='',offline=false,storageBlocked=false}={}){
   querySelectorAll(selector){return descendants(this).filter(n=>match(n,selector));}querySelector(selector){return this.querySelectorAll(selector)[0]||null;}
   reset(){for(const id of ['source-filter','level-filter','price-filter','access-filter'])nodes[id].value='all';nodes['skill-filter'].value='listening';nodes.search.value='';nodes['recommendation-filter'].value='recommended';}
  }
- const doc={baseURI:'https://example.test/IELTSOrbit/',getElementById:id=>nodes[id]||Object.values(nodes).flatMap(descendants).find(n=>n.id===id)||null,createElement:tag=>new Element(tag),createDocumentFragment:()=>new Element('fragment'),querySelectorAll:selector=>selector==='[data-intent]'?intents:Object.values(nodes).flatMap(n=>[n,...descendants(n)]).filter(n=>match(n,selector))};
+ const doc={get activeElement(){return active;},baseURI:'https://example.test/IELTSOrbit/',getElementById:id=>nodes[id]||Object.values(nodes).flatMap(descendants).find(n=>n.id===id)||null,createElement:tag=>new Element(tag),createDocumentFragment:()=>new Element('fragment'),querySelectorAll:selector=>selector==='[data-intent]'?intents:Object.values(nodes).flatMap(n=>[n,...descendants(n)]).filter(n=>match(n,selector))};
  [...html.matchAll(/\bid="([^"]+)"/g)].forEach(m=>nodes[m[1]]=new Element('div',m[1]));
  for(const id of ['source-filter','level-filter','price-filter','access-filter'])nodes[id].value='all';nodes['skill-filter'].value='listening';nodes['recommendation-filter'].value='recommended';
  for(const tab of ['start','library','experience','path','exams'])nodes['tab-'+tab].dataset.tab=tab;
+ nodes['main-navigation'].contains=node=>['start','library','experience','path','exams'].some(t=>nodes['tab-'+t]===node);
  const intents=['listening','reading','writing','speaking','experience'].map(value=>{const n=new Element('button');n.dataset.intent=value;return n;});
- const context={window:{IELTSCore:core,addEventListener:(k,f)=>events[k]=f},document:doc,location:{hash},localStorage:{getItem:k=>{if(storageBlocked)throw new Error('blocked');return saved.get(k);},setItem:(k,v)=>{if(storageBlocked)throw new Error('blocked');saved.set(k,v);},removeItem:k=>{if(storageBlocked)throw new Error('blocked');saved.delete(k);}},fetch:async url=>{fetches++;assert.equal(String(url),'https://example.test/IELTSOrbit/data/catalog.json');if(offline)throw new Error('offline');return{ok:true,json:async()=>data};},URL,console};
+ const context={window:{IELTSCore:core,matchMedia:()=>({matches:mobile}),addEventListener:(k,f)=>events[k]=f},document:doc,location:{hash},localStorage:{getItem:k=>{if(storageBlocked)throw new Error('blocked');return saved.get(k);},setItem:(k,v)=>{if(storageBlocked)throw new Error('blocked');saved.set(k,v);},removeItem:k=>{if(storageBlocked)throw new Error('blocked');saved.delete(k);}},fetch:async url=>{fetches++;assert.equal(String(url),'https://example.test/IELTSOrbit/data/catalog.json');if(offline)throw new Error('offline');return{ok:true,json:async()=>data};},URL,console};
  context.window.location=context.location;
  vm.runInNewContext(fs.readFileSync(require.resolve('../assets/experience.js'),'utf8'),context);
  vm.runInNewContext(fs.readFileSync(require.resolve('../assets/app.js'),'utf8'),context);
@@ -33,6 +34,15 @@ function harness({rawState,hash='',offline=false,storageBlocked=false}={}){
 }
 (async()=>{
  const h=harness(),{nodes:n,doc}=h;await h.flush();
+ // Mobile task navigation must focus a visible panel, never collapsed header tabs.
+ const mobileUI=harness({mobile:true});await mobileUI.flush();mobileUI.intents.find(n=>n.dataset.intent==='writing').dispatch('click');assert.equal(mobileUI.active,mobileUI.nodes['panel-library']);assert.equal(mobileUI.active.hidden,false);assert.equal(mobileUI.active.tabIndex,-1);
+ mobileUI.nodes['tab-path'].focus();mobileUI.nodes['tab-path'].dispatch('click');assert.equal(mobileUI.active,mobileUI.nodes['panel-path']);assert.equal(mobileUI.active.hidden,false);
+ // Homepage search opens all subjects without stale filters or writes.
+ const homeSearch=harness({rawState:JSON.stringify({saved:['writing-rubric'],path:null})});await homeSearch.flush();
+ const hs=homeSearch.nodes,beforeHomeSearch=homeSearch.saved.get('ieltsorbit.local.v1');hs['source-filter'].value='experience';hs['price-filter'].value='paid';hs['home-search'].value='  写作  ';hs['home-search-form'].dispatch('submit');
+ assert.equal(homeSearch.context.location.hash,'library');assert.equal(hs['panel-library'].hidden,false);assert.equal(hs.search.value,'写作');assert.equal(hs['skill-filter'].value,'all');assert.equal(hs['source-filter'].value,'all');assert.equal(hs['price-filter'].value,'all');assert.equal(homeSearch.active,hs.search);assert.equal(homeSearch.saved.get('ieltsorbit.local.v1'),beforeHomeSearch);
+ hs['home-search'].value='<img src=x onerror=alert(1)>';hs['home-search-form'].dispatch('submit');assert.equal(hs['empty-state'].hidden,false);hs['home-search'].value='';hs['home-search-form'].dispatch('submit');assert.equal(hs['empty-state'].hidden,true);assert.equal(hs.search.value,'');assert.equal(homeSearch.saved.get('ieltsorbit.local.v1'),beforeHomeSearch);
+
  // The library entry preserves real learning conclusions while exposing its first action earlier.
  for(const [skill,guide] of Object.entries(core.learningGuides)){
   const compact=harness({hash:'#library/'+skill,rawState:JSON.stringify({saved:['writing-rubric'],path:null})});await compact.flush();
