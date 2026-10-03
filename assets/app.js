@@ -15,7 +15,7 @@ function resourceCard(resource){
  const card=create('article','resource-card');card.dataset.resourceId=resource.id;card.id='resource-'+resource.id;
  const top=create('div','card-top');top.append(create('span','source-tag '+resource.sourceType,core.labels.sourceType[resource.sourceType]||'来源待分类'));
  const save=create('button','save-button',state.saved.includes(resource.id)?'已收藏':'收藏');save.type='button';save.dataset.save=resource.id;save.setAttribute('aria-pressed',String(state.saved.includes(resource.id)));save.setAttribute('aria-label',(state.saved.includes(resource.id)?'取消收藏：':'收藏：')+resource.title);top.append(save);card.append(top);
- const main=create('div','resource-main');main.append(create('h3','',resource.title),create('p','provider',resource.provider||''));if(resource.recommendedByDefault===false)main.append(create('p','reference-label',(resource.collection||'比较案例')+' · 非默认推荐'));main.append(create('p','card-summary',resource.summary||''));card.append(main);
+ const main=create('div','resource-main');main.append(create('h3','resource-title',resource.title),create('p','provider',resource.provider||''));if(resource.recommendedByDefault===false)main.append(create('p','reference-label',(resource.collection||'比较案例')+' · 非默认推荐'));main.append(create('p','card-summary',resource.summary||''));card.append(main);
  const fit=create('div','resource-fit');fit.append(create('h4','','适合谁'),create('p','',resource.levels.map(level=>core.labels.levels[level]||level).join(' · ')),create('h4','','如何使用'),create('p','',resource.actionableMethods?.[0]||'先读站内摘要，再选一个小任务实践。'));card.append(fit);
  const actions=create('div','resource-actions');actions.append(internalLink('查看摘要 →',resourceHash(resource,$('skill-filter').value),'primary-button'));card.append(actions);
  const detail=create('details','resource-detail');detail.id='detail-'+resource.id;detail.append(create('summary','','展开站内详情与使用方法'));
@@ -73,7 +73,9 @@ function renderResources(){
  syncResourceReader();
 }
 function syncResourceReader(){
- const route=core.parseRoute(location.hash);if(route.tab!=='library'||!route.resource)return;
+ const route=core.parseRoute(location.hash);
+ document.querySelectorAll('.resource-card').forEach(card=>{const main=card.querySelector('.resource-main'),title=main.querySelector('.resource-title'),tag=route.tab==='library'&&route.resource===card.dataset.resourceId?'h1':'h3';if(title.tagName.toLowerCase()!==tag)main.replaceChildren(...Array.from(main.children).map(child=>child===title?create(tag,'resource-title',title.textContent):child));});
+ if(route.tab!=='library'||!route.resource)return;
  const card=$('resource-'+route.resource),detail=$('detail-'+route.resource);if(!card||!detail)return;
  $('panel-library').dataset.view='resource';detail.open=true;
  document.querySelectorAll('.resource-card').forEach(n=>{n.dataset.expanded=String(n===card);});
@@ -121,7 +123,7 @@ function applyRoute(focus){
  switchTab(route.tab,focus);
  $('panel-library').dataset.view='overview';
  $('panel-path').dataset.view=route.planResult?'result':'wizard';
- if(route.tab==='experience'){if(route.experienceCase)experienceView?.openCase(route.experienceCase);else experienceView?.returnToOverview();}
+ if(route.tab==='experience'){if(route.experienceCase)experienceView?.openCase(route.experienceCase);else experienceView?.returnToOverview();$('experience-title').setAttribute('aria-level',$('experience-root').dataset.view==='detail'?'2':'1');}
  if(route.tab==='library'){
   const methodView=hash.split('/')[2]==='method';
   $('library-title').textContent=methodView&&route.skill?core.learningGuides[route.skill].title+'方法：从练习到复盘':'学习资料';
@@ -136,6 +138,7 @@ function applyRoute(focus){
    }}
   }
   if(methodView){$('panel-library').dataset.view='method';const detail=document.querySelectorAll('.method-detail')[0];if(detail)detail.open=true;const reader=$('learning-guide');reader.tabIndex=-1;if(hash!==lastRoute)reader.focus({preventScroll:true});}
+  syncResourceReader();
   if(!route.resource&&previous.resource){const target=methodView?$('learning-guide'):$('resource-'+previous.resource)?.querySelector('.resource-actions')?.querySelector('a')||$('search');target.focus({preventScroll:true});}
  }
  if(route.tab==='path'){if(route.planStep)showPlanStep(route.planStep);else if(route.planResult||state.path?.completed)showPlanResult();else showPlanStep(planStep);if(previous.tab==='path'&&hash!==lastRoute){const target=$('plan-wizard').hidden?$('path-result'):$('plan-step-'+planStep);target.tabIndex=-1;target.focus({preventScroll:true});}}
