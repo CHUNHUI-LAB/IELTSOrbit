@@ -15,7 +15,7 @@ function harness({rawState,hash='',offline=false,storageBlocked=false,mobile=fal
   setAttribute(k,v){this.attrs[k]=v;}getAttribute(k){return this.attrs[k];}
   addEventListener(k,f){(this.events[k]??=[]).push(f);}
   dispatch(k,event={}){if(this.disabled)return;const e={target:this,preventDefault(){},...event};for(const f of this.events[k]||[])f(e);}
-  focus(){active=this;}scrollIntoView(){}
+  focus(){active=this;}scrollIntoView(options){this.lastScroll=options;}
   closest(selector){return match(this,selector)?this:this.parent?.closest(selector)||null;}
   querySelectorAll(selector){return descendants(this).filter(n=>match(n,selector));}querySelector(selector){return this.querySelectorAll(selector)[0]||null;}
   reset(){for(const id of ['source-filter','level-filter','price-filter','access-filter'])nodes[id].value='all';nodes['skill-filter'].value='listening';nodes.search.value='';nodes['recommendation-filter'].value='recommended';}
@@ -35,8 +35,8 @@ function harness({rawState,hash='',offline=false,storageBlocked=false,mobile=fal
 (async()=>{
  const h=harness(),{nodes:n,doc}=h;await h.flush();
  // Mobile task navigation must focus a visible panel, never collapsed header tabs.
- const mobileUI=harness({mobile:true});await mobileUI.flush();mobileUI.intents.find(n=>n.dataset.intent==='writing').dispatch('click');assert.equal(mobileUI.active,mobileUI.nodes['panel-library']);assert.equal(mobileUI.active.hidden,false);assert.equal(mobileUI.active.tabIndex,-1);
- mobileUI.nodes['tab-path'].focus();mobileUI.nodes['tab-path'].dispatch('click');assert.equal(mobileUI.active,mobileUI.nodes['panel-path']);assert.equal(mobileUI.active.hidden,false);
+ const mobileUI=harness({mobile:true});await mobileUI.flush();mobileUI.intents.find(n=>n.dataset.intent==='writing').dispatch('click');assert.equal(mobileUI.active,mobileUI.nodes['panel-library']);assert.equal(mobileUI.active.hidden,false);assert.equal(mobileUI.active.tabIndex,-1);assert.equal(mobileUI.active.lastScroll.block,'start');
+ mobileUI.nodes['tab-path'].focus();mobileUI.nodes['tab-path'].dispatch('click');assert.equal(mobileUI.active,mobileUI.nodes['panel-path']);assert.equal(mobileUI.active.hidden,false);assert.equal(mobileUI.active.lastScroll.block,'start');
  // Homepage search opens all subjects without stale filters or writes.
  const homeSearch=harness({rawState:JSON.stringify({saved:['writing-rubric'],path:null})});await homeSearch.flush();
  const hs=homeSearch.nodes,beforeHomeSearch=homeSearch.saved.get('ieltsorbit.local.v1');hs['source-filter'].value='experience';hs['price-filter'].value='paid';hs['home-search'].value='  写作  ';hs['home-search-form'].dispatch('submit');
