@@ -1,7 +1,7 @@
 'use strict';
 const assert=require('node:assert/strict'),crypto=require('node:crypto');
 const {beforeTeachingCatalog}=require('./resource-history.js');
-const raw=beforeTeachingCatalog(require('../data/catalog.json')),core=require('../assets/core.js');
+const raw=beforeTeachingCatalog(require('./resource-history.js').beforeListeningBatchCatalog(require('../data/catalog.json'))),core=require('../assets/core.js');
 const {legacyResources,reviewedIds}=require('./resource-history.js');
 const digest=x=>crypto.createHash('sha256').update(JSON.stringify(x)).digest('hex');
 assert.equal(digest(legacyResources(raw.resources)),'fed00a483a03cd374debaefe56f26eff38682663c133e334094cb7e1e7b64bec','all original fields of all44 published resources remain exact');

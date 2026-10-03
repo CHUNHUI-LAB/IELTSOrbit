@@ -1,6 +1,6 @@
 'use strict';
 const assert=require('node:assert/strict'),fs=require('node:fs'),crypto=require('node:crypto');
-const raw=require('../data/catalog.json'),core=require('../assets/core.js');
+const raw=require('./resource-history.js').beforeListeningBatchCatalog(require('../data/catalog.json')),core=require('../assets/core.js');
 const {beforeTeachingCatalog,foundationNoteSuffix}=require('./resource-history.js');
 const digest=x=>crypto.createHash('sha256').update(JSON.stringify(x)).digest('hex');
 assert.equal(digest(beforeTeachingCatalog(raw)),'99666d881eaf8c15db6ab341fbb21a8380fbbadf2532da7b6d6ea3f6a03d9ba1','entire9c6241a catalog preserved behind only explicitly allowed teaching additions');
