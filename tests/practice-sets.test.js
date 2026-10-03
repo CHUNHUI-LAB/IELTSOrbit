@@ -16,7 +16,7 @@ test('Old URLs retain the exact legacy key; new routes own a separate key, no mi
 test('Both cards name topic, all question types and exact counts without answer patterns',async()=>{
  const h=harness({setId:NEW});assert.match(h.nodes['set-choices'].innerHTML,/The Repair Library/);assert.match(h.nodes['set-choices'].innerHTML,/Reading Between the Objects/);
  assert.equal(h.nodes[link(NEW)].getAttribute('aria-current'),'page');assert.equal(h.nodes[link(OLD)].getAttribute('aria-current'),undefined);
- assert.equal(h.value('P.words(C)'),636);assert.equal(h.nodes['set-stats'].textContent,'636 词 · 6 段 · 10 题 · 建议 15 分钟');
+ assert.equal(h.value('P.words(C)'),636);assert.equal(h.nodes['set-stats'].textContent,'636 词 · 6 段 · 10 题 · 限时 15 分钟');
  assert.equal(h.nodes['set-types'].textContent,'判断题（TRUE / FALSE / NOT GIVEN） 6 题 · 原文填空 4 题');
  assert.match(h.nodes['set-instructions'].textContent,/第 7–9 题恰好 2 个词，第 10 题恰好 1 个词/);
  assert.match(h.nodes['set-rights'].textContent,/Bellwick Museum/);assert.doesNotMatch(h.nodes['set-rights'].textContent,/Mereford/);assert.match(h.nodes['set-notice'].textContent,/虚构教学情境/);

@@ -162,13 +162,14 @@ function renderSetMetadata(){
  document.title='IELTSOrbit · '+C.title;
  $('set-title').textContent=C.title+' · '+C.subtitle;
  $('workspace-title').textContent=C.title;
- $('set-stats').textContent=`${P.words(C)} 词 · ${C.paragraphs.length} 段 · ${C.questions.length} 题 · 建议 ${C.durationSeconds/60} 分钟`;
+ $('set-stats').textContent=`${P.words(C)} 词 · ${C.paragraphs.length} 段 · ${C.questions.length} 题 · 限时 ${C.durationSeconds/60} 分钟`;
+ $('set-timing').textContent=`两种模式均按 ${C.durationSeconds/60} 分钟倒计时，时间用完会自动交卷；练习模式可暂停。未暂停时，刷新、离开或切换题组仍继续计时。`;
  $('set-types').textContent=P.types(C);
  $('set-notice').textContent=C.notice;
  $('set-instructions').textContent=P.instructions(C);
  $('set-rights').textContent=selectedSet.rights+' 内容版本：'+C.version+'。此页面为原创练习，不代表 IELTS 官方认可。';
  $('set-route-warning').hidden=!requestedSet||!!P.get(requestedSet);
- $('set-choices').innerHTML=P.sets.map(set=>`<a id="set-link-${set.content.id}" class="set-card${set===selectedSet?' selected':''}" href="${P.href(set.content.id)}" ${set===selectedSet?'aria-current="page"':''}><span class="hint">${set===selectedSet?'当前题组':'另一套原创练习'} · ${esc(set.focus)}</span><strong lang="en">${esc(set.content.title)}</strong><span>${esc(set.content.subtitle)}</span><span class="hint">${P.words(set.content)} 词 · ${set.content.questions.length} 题 · 建议 ${set.content.durationSeconds/60} 分钟</span><span class="hint">${esc(P.types(set.content))}</span></a>`).join('');
+ $('set-choices').innerHTML=P.sets.map(set=>`<a id="set-link-${set.content.id}" class="set-card${set===selectedSet?' selected':''}" href="${P.href(set.content.id)}" ${set===selectedSet?'aria-current="page"':''}><span class="hint">${set===selectedSet?'当前题组':'另一套原创练习'} · ${esc(set.focus)}</span><strong lang="en">${esc(set.content.title)}</strong><span>${esc(set.content.subtitle)}</span><span class="hint">${P.words(set.content)} 词 · ${set.content.questions.length} 题 · 限时 ${set.content.durationSeconds/60} 分钟</span><span class="hint">${esc(P.types(set.content))}</span></a>`).join('');
  for(const set of P.sets)$('set-link-'+set.content.id).onclick=e=>{
   // Modified clicks retain the current document and use native link semantics.
   if(e.ctrlKey||e.metaKey||e.shiftKey||e.altKey)return;
