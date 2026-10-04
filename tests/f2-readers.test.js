@@ -43,6 +43,34 @@ vm.runInNewContext(prelude+'\nglobalThis.makeHarness=harness;',scope);
  e.hash('#experience-case-'+id);e.hash('#experience-case-missing');assert.equal(root.dataset.view,'overview');assert.equal(e.nodes['experience-title'].getAttribute('aria-level'),'1');assert.equal(e.active,topic);assert.equal(root.querySelectorAll('.experience-card').filter(c=>c.dataset.reader==='true').length,0);assert(e.text(root).includes('未找到这篇经验'));e.hash('#experience-case-missing');assert.equal((e.text(root).match(/未找到这篇经验/g)||[]).length,1,'repeated missing routes do not duplicate notices');
  assert.equal(e.nodes['experience-title'].getAttribute('aria-level'),'1','missing case restores the overview heading');assert.equal(e.saved.size,0);
  const all=scope.makeHarness({hash:'#library'});await all.flush();all.nodes['skill-filter'].value='all';all.nodes['recommendation-filter'].value='all';all.nodes['filter-form'].dispatch('change');const entries=all.nodes['resource-grid'].children.map(card=>({id:card.dataset.resourceId,hash:card.querySelector('.resource-actions').querySelector('a').href}));assert.equal(entries.length,require('../data/catalog.json').resources.length);for(const entry of entries){all.hash(entry.hash);const card=all.doc.getElementById('resource-'+entry.id);assert(card,'every real catalog record is reachable: '+entry.id);assert.equal(card.dataset.expanded,'true');assert.equal(card.querySelector('.resource-title').tagName,'h1');assert.equal(all.active,card);all.hash('#library');}for(const legacyHash of ['#library/listening/resource/score','#library/all/resource/score']){const cold=scope.makeHarness({hash:legacyHash});await cold.flush();assert.equal(cold.doc.getElementById('resource-score').dataset.expanded,'true');assert.equal(cold.nodes['skill-filter'].value,'all');assert.equal(cold.doc.getElementById('resource-score').querySelector('.reader-back').href,'#library');}
+ // Exercise the production readers using the real catalog, not only source-string checks.
+ const lizRecord=require('../data/catalog.json').resources.find(r=>r.id==='liz');
+ const lizTargets={listening:'listening-practice-office-etiquette/',reading:'reading-skills-for-ielts-paraphrasing/',writing:'ielts-writing-task-2-essay-planning-tips/',speaking:'common-mistake-in-speaking-part-3/'};
+ const persisted=JSON.stringify({saved:['liz'],path:{examHistory:'yes',baseline:'6',target:'7',dailyMinutes:'30',weakSkill:'reading',completed:true}});
+ for(const [skill,path] of Object.entries(lizTargets)){
+  const real=scope.makeHarness({hash:'#library/'+skill,rawState:persisted});await real.flush();
+  const summary=real.doc.getElementById('resource-liz');assert(summary,'real recommended '+skill+' classification retains multi-skill directory');
+  assert.equal(summary.querySelector('.resource-title').textContent,lizRecord.title);
+  assert(real.text(summary.querySelector('.resource-fit')).includes('先按下面的科目标签'));
+  assert(!real.text(summary.querySelector('.resource-fit')).includes('Office Etiquette'),'the generic card preview no longer mislabels an audio task as every skill');
+  assert.equal(summary.querySelector('.resource-actions').querySelector('a').href,'#library/'+skill+'/resource/liz');
+  for(let cycle=0;cycle<2;cycle++){
+   real.hash('#library/'+skill+'/resource/liz');const reader=real.doc.getElementById('resource-liz');
+   assert.equal(reader.dataset.expanded,'true');assert.equal(reader.querySelector('.resource-title').tagName,'h1');
+   assert.equal(reader.querySelector('.reader-back').href,'#library/'+skill);assert.equal(real.active,reader);
+   const actualText=real.text(real.doc.getElementById('detail-liz'));
+   for(const step of lizRecord.actionableMethods)assert(actualText.includes(step));
+   assert(actualText.includes('分项对齐复核：2026-10-04')&&actualText.includes('未播放音视频'));
+   const source=reader.querySelectorAll('a').find(link=>link.href==='https://ieltsliz.com/'+path);
+   assert(source,'each skill has a relevant live-reader source link: '+skill);assert(source.textContent.startsWith('相关原文：'));assert.equal(source.target,'_blank');assert.equal(source.rel,'noopener noreferrer');
+   assert.equal(real.nodes['recommendation-filter'].value,'recommended');assert.equal(real.nodes['skill-filter'].value,skill);
+   real.hash('#library/'+skill);assert.equal(real.nodes['panel-library'].dataset.view,'overview');
+  }
+  assert.equal(real.saved.get('ieltsorbit.local.v1'),persisted,'classification and reader navigation preserve existing ID, saved plan and favorites');
+  const direct=scope.makeHarness({hash:'#library/'+skill+'/resource/liz'});await direct.flush();assert.equal(direct.doc.getElementById('resource-liz').dataset.expanded,'true');
+ }
+ const vocab=scope.makeHarness({hash:'#library'});await vocab.flush();vocab.nodes['skill-filter'].value='vocabulary';vocab.nodes['filter-form'].dispatch('change');const vocabCard=vocab.doc.getElementById('resource-liz');assert(vocabCard);assert(vocab.text(vocabCard).includes('词汇｜Lack'));assert(vocabCard.querySelectorAll('a').some(link=>link.href==='https://ieltsliz.com/lack-vocabulary-and-sample-sentences/'));
+ console.log('PASS: real Liz recommended readers across four skills, vocabulary filter, labelled steps, corresponding links, repeat/Back/cold routes and unchanged local state.');
  const plan=scope.makeHarness({hash:'#path/step/1'});await plan.flush();for(let step=0;step<4;step++)plan.nodes['plan-next'].dispatch('click');assert.equal(plan.active,plan.nodes['path-result'],'Generate focuses the visible plan');plan.nodes['edit-plan'].dispatch('click');assert.equal(plan.active,plan.nodes['plan-step-1'],'Edit focuses the first visible fieldset');plan.nodes['cancel-plan-edit'].dispatch('click');assert.equal(plan.active,plan.nodes['path-result'],'Cancel restores focus to visible result');
  const html=fs.readFileSync(require.resolve('../index.html'),'utf8');
  assert.equal((html.match(/class="home-task"/g)||[]).length,3);
