@@ -4,7 +4,7 @@ const fs=require('node:fs'),vm=require('node:vm');
 const core=require('../assets/core.js'),data=require('../data/catalog.json');
 const html=fs.readFileSync(require.resolve('../index.html'),'utf8');
 function harness({rawState,hash='',offline=false,storageBlocked=false,mobile=false,catalogData=data}={}){
- let active,fetches=0;
+ let active,fetches=0,storageWrites=0;
  const nodes={},saved=new Map(rawState?[['ieltsorbit.local.v1',rawState]]:[]),events={};
  const descendants=n=>n.children.flatMap(c=>[c,...descendants(c)]);
  const match=(node,selector)=>selector.startsWith('#')?node.id===selector.slice(1):selector.startsWith('.')?String(node.className||'').split(' ').includes(selector.slice(1)):selector.startsWith('[data-')?(()=>{const [raw,value]=selector.slice(1,-1).split('=');const key=raw.slice(5).replace(/-([a-z])/g,(_,v)=>v.toUpperCase());return value?node.dataset[key]===value.replace(/"/g,''):Object.hasOwn(node.dataset,key);})():node.tagName===selector;
@@ -26,11 +26,11 @@ function harness({rawState,hash='',offline=false,storageBlocked=false,mobile=fal
  for(const tab of ['start','library','experience','path','exams'])nodes['tab-'+tab].dataset.tab=tab;
  nodes['main-navigation'].contains=node=>['start','library','experience','path','exams'].some(t=>nodes['tab-'+t]===node);
  const intents=['listening','reading','writing','speaking','experience'].map(value=>{const n=new Element('button');n.dataset.intent=value;return n;});
- const context={window:{IELTSCore:core,matchMedia:()=>({matches:mobile}),addEventListener:(k,f)=>events[k]=f},document:doc,location:{hash},localStorage:{getItem:k=>{if(storageBlocked)throw new Error('blocked');return saved.get(k);},setItem:(k,v)=>{if(storageBlocked)throw new Error('blocked');saved.set(k,v);},removeItem:k=>{if(storageBlocked)throw new Error('blocked');saved.delete(k);}},fetch:async url=>{fetches++;assert.equal(String(url),'https://example.test/IELTSOrbit/data/catalog.json');if(offline)throw new Error('offline');return{ok:true,json:async()=>catalogData};},URL,console};
+ const context={window:{IELTSCore:core,matchMedia:()=>({matches:mobile}),addEventListener:(k,f)=>events[k]=f},document:doc,location:{hash},localStorage:{getItem:k=>{if(storageBlocked)throw new Error('blocked');return saved.get(k);},setItem:(k,v)=>{if(storageBlocked)throw new Error('blocked');saved.set(k,v);storageWrites++;},removeItem:k=>{if(storageBlocked)throw new Error('blocked');saved.delete(k);}},fetch:async url=>{fetches++;assert.equal(String(url),'https://example.test/IELTSOrbit/data/catalog.json');if(offline)throw new Error('offline');return{ok:true,json:async()=>catalogData};},URL,console};
  context.window.location=context.location;
  vm.runInNewContext(fs.readFileSync(require.resolve('../assets/experience.js'),'utf8'),context);
  vm.runInNewContext(fs.readFileSync(require.resolve('../assets/app.js'),'utf8'),context);
- return{nodes,doc,intents,saved,context,events,descendants,get active(){return active;},get fetches(){return fetches;},text:n=>[n,...descendants(n)].map(n=>n.textContent).join(' '),hash:value=>{context.location.hash=value;events.hashchange();},flush:()=>new Promise(setImmediate)};
+ return{nodes,doc,intents,saved,context,events,descendants,get active(){return active;},get fetches(){return fetches;},get storageWrites(){return storageWrites;},text:n=>[n,...descendants(n)].map(n=>n.textContent).join(' '),hash:value=>{context.location.hash=value;events.hashchange();},flush:()=>new Promise(setImmediate)};
 }
 (async()=>{
  const h=harness(),{nodes:n,doc}=h;await h.flush();
@@ -217,6 +217,101 @@ function harness({rawState,hash='',offline=false,storageBlocked=false,mobile=fal
  assert.ok(interrupted.text(dn['path-result']).includes('每天约 15 分钟'));assert.equal(dn['plan-draft-status'].hidden,false);assert.ok(dn['plan-draft-status'].textContent.includes('尚未保存的调整'));assert.equal(dn['save-path'].textContent,'保存当前调整');assert.equal(dn['edit-plan'].textContent,'继续调整草稿');assert.equal(dn['discard-plan-draft'].hidden,false);assert.equal(interrupted.saved.get('ieltsorbit.local.v1'),personal,'leaving and re-entering result preserves original storage and live draft');
  dn['discard-plan-draft'].dispatch('click');assert.equal(dn['daily-time'].value,'60');assert.equal(dn['weak-skill'].value,'writing');assert.equal(dn['plan-draft-status'].hidden,true);assert.equal(dn['discard-plan-draft'].hidden,true);assert.equal(interrupted.saved.get('ieltsorbit.local.v1'),personal,'discard restores the original without writing');
  dn['edit-plan'].dispatch('click');dn['daily-time'].value='15';interrupted.hash('#path/result');dn['save-path'].dispatch('click');assert.equal(JSON.parse(interrupted.saved.get('ieltsorbit.local.v1')).path.dailyMinutes,'15','explicit save alone accepts draft');assert.equal(dn['plan-draft-status'].hidden,true);assert.equal(dn['save-path'].textContent,'保存这组选择');assert.ok(dn['path-save-status'].textContent.includes('已保存在本浏览器'));
+
+ // Regression: complete all four editing steps before generating, never skip straight to result.
+ const storageKey='ieltsorbit.local.v1';
+ const editedPlan={examHistory:'no',baseline:'unknown',target:'7',dailyMinutes:'15',weakSkill:'reading',completed:true};
+ const generateEditedPreview=view=>{
+  const pn=view.nodes,original=view.saved.get(storageKey),writes=view.storageWrites;
+  pn['edit-plan'].dispatch('click');
+  assert.equal(pn['plan-step-1'].hidden,false);
+  pn['exam-history'].value=editedPlan.examHistory;pn.baseline.value=editedPlan.baseline;
+  pn['plan-next'].dispatch('click');assert.equal(pn['plan-step-2'].hidden,false);
+  pn.target.value=editedPlan.target;
+  pn['plan-next'].dispatch('click');assert.equal(pn['plan-step-3'].hidden,false);
+  pn['daily-time'].value=editedPlan.dailyMinutes;
+  pn['plan-next'].dispatch('click');assert.equal(pn['plan-step-4'].hidden,false);
+  pn['weak-skill'].value=editedPlan.weakSkill;
+  assert.equal(pn['plan-next'].textContent,'生成今天与本周计划');
+  pn['plan-next'].dispatch('click');
+  assert.equal(pn['plan-wizard'].hidden,true);assert.equal(pn['path-result'].hidden,false);
+  assert.equal(pn['plan-result-actions'].hidden,false);
+  assert.match(view.text(pn['path-result']),/每天约 15 分钟，先练阅读/);
+  assert.equal(pn['plan-draft-status'].hidden,false);
+  assert.match(pn['plan-draft-status'].textContent,/点击“保存当前调整”才会替换原计划/);
+  assert.equal(pn['save-path'].textContent,'保存当前调整');
+  assert.equal(pn['discard-plan-draft'].hidden,false);
+  assert.equal(pn['path-save-status'].textContent,'','preview never announces a save');
+  assert.equal(view.saved.get(storageKey),original,'full four-step generate preserves byte-exact original storage');
+  assert.equal(view.storageWrites,writes,'generating an existing plan performs no storage write');
+ };
+ const fullDiscard=harness({rawState:personal,hash:'#path'});await fullDiscard.flush();
+ generateEditedPreview(fullDiscard);
+ fullDiscard.hash('#library');fullDiscard.hash('#path/result');
+ assert.equal(fullDiscard.saved.get(storageKey),personal);
+ assert.equal(fullDiscard.nodes['plan-draft-status'].hidden,false);
+ fullDiscard.nodes['discard-plan-draft'].dispatch('click');
+ assert.equal(fullDiscard.nodes['daily-time'].value,'60');assert.equal(fullDiscard.nodes['weak-skill'].value,'writing');
+ assert.match(fullDiscard.text(fullDiscard.nodes['path-result']),/每天约 60 分钟，先练写作/);
+ assert.equal(fullDiscard.nodes['plan-draft-status'].hidden,true);
+ assert.equal(fullDiscard.saved.get(storageKey),personal);assert.equal(fullDiscard.storageWrites,0);
+ // Repeat after discard, then navigate back/forward through step 4 and regenerate.
+ generateEditedPreview(fullDiscard);
+ fullDiscard.hash('#path/step/4');fullDiscard.nodes['plan-next'].dispatch('click');
+ assert.equal(fullDiscard.saved.get(storageKey),personal);assert.equal(fullDiscard.storageWrites,0);
+ assert.equal(fullDiscard.doc.querySelectorAll('.today-task').length,3);
+ assert.equal(fullDiscard.doc.querySelectorAll('.week-day').length,7);
+ fullDiscard.nodes['edit-plan'].dispatch('click');fullDiscard.nodes['cancel-plan-edit'].dispatch('click');
+ assert.equal(fullDiscard.nodes['daily-time'].value,'60');assert.equal(fullDiscard.saved.get(storageKey),personal);
+
+ const fullRefresh=harness({rawState:personal,hash:'#path'});await fullRefresh.flush();
+ generateEditedPreview(fullRefresh);
+ const refreshedPreview=harness({rawState:fullRefresh.saved.get(storageKey),hash:'#path/result'});await refreshedPreview.flush();
+ assert.equal(refreshedPreview.nodes['daily-time'].value,'60');assert.equal(refreshedPreview.nodes['weak-skill'].value,'writing');
+ assert.equal(refreshedPreview.nodes['plan-draft-status'].hidden,true);
+ assert.equal(refreshedPreview.saved.get(storageKey),personal);assert.equal(refreshedPreview.storageWrites,0);
+
+ const fullSave=harness({rawState:personal,hash:'#path'});await fullSave.flush();
+ generateEditedPreview(fullSave);
+ fullSave.nodes['save-path'].dispatch('click');
+ const accepted=JSON.parse(fullSave.saved.get(storageKey));
+ assert.deepEqual(accepted,{saved:['writing-rubric'],path:editedPlan});
+ assert.equal(fullSave.storageWrites,1);assert.equal(fullSave.nodes['plan-draft-status'].hidden,true);
+ assert.equal(fullSave.nodes['discard-plan-draft'].hidden,true);
+ assert.match(fullSave.nodes['path-save-status'].textContent,/已保存在本浏览器/);
+ const refreshedSave=harness({rawState:fullSave.saved.get(storageKey),hash:'#path/result'});await refreshedSave.flush();
+ assert.equal(refreshedSave.nodes['daily-time'].value,'15');assert.equal(refreshedSave.nodes['weak-skill'].value,'reading');
+ assert.equal(refreshedSave.nodes['plan-draft-status'].hidden,true);
+ assert.deepEqual(JSON.parse(refreshedSave.saved.get(storageKey)),accepted);
+
+ // A separate bookmark write while previewing must also persist the ORIGINAL plan.
+ const bookmarkDuringPreview=harness({rawState:personal,hash:'#path'});await bookmarkDuringPreview.flush();
+ generateEditedPreview(bookmarkDuringPreview);
+ bookmarkDuringPreview.hash('#library/writing');
+ const saveResource=bookmarkDuringPreview.doc.getElementById('resource-writing-rubric').querySelector('[data-save]');
+ bookmarkDuringPreview.nodes['resource-grid'].dispatch('click',{target:saveResource});
+ assert.deepEqual(JSON.parse(bookmarkDuringPreview.saved.get(storageKey)).path,JSON.parse(personal).path);
+ assert.deepEqual(JSON.parse(bookmarkDuringPreview.saved.get(storageKey)).saved,[]);
+ bookmarkDuringPreview.hash('#path/result');
+ assert.equal(bookmarkDuringPreview.nodes['plan-draft-status'].hidden,false);
+ bookmarkDuringPreview.nodes['discard-plan-draft'].dispatch('click');
+ assert.equal(bookmarkDuringPreview.nodes['daily-time'].value,'60');
+ assert.deepEqual(JSON.parse(bookmarkDuringPreview.saved.get(storageKey)).path,JSON.parse(personal).path);
+
+ // First creation keeps auto-save, explicitly named in the final step's action.
+ for(const rawState of [undefined,JSON.stringify({saved:['writing-rubric'],path:{baseline:'6.5',target:'7.5'}})]){
+  const first=harness({rawState,hash:'#path'});await first.flush();
+  const before=first.saved.get(storageKey);
+  for(let step=1;step<4;step++){assert.equal(first.nodes['plan-step-'+step].hidden,false);first.nodes['plan-next'].dispatch('click');assert.equal(first.saved.get(storageKey),before);}
+  assert.equal(first.nodes['plan-next'].textContent,'生成并保存今天与本周计划');
+  first.nodes['plan-next'].dispatch('click');assert.equal(first.storageWrites,1);
+  assert.equal(JSON.parse(first.saved.get(storageKey)).path.completed,true);
+  assert.match(first.nodes['path-save-status'].textContent,/已生成并保存在本浏览器/);
+  const restored=harness({rawState:first.saved.get(storageKey),hash:'#path/result'});await restored.flush();
+  assert.equal(restored.nodes['plan-draft-status'].hidden,true);
+  assert.equal(restored.saved.get(storageKey),first.saved.get(storageKey));
+ }
+ console.log('PASS: full four-step plan preview is read-only; discard/cancel, regenerate, refresh, explicit save, bookmark isolation, and first/legacy creation autosave.');
  const unsavedResult=harness({hash:'#path/result'});await unsavedResult.flush();assert.equal(unsavedResult.nodes['plan-draft-status'].hidden,false);assert.equal(unsavedResult.nodes['discard-plan-draft'].hidden,true);assert.equal(unsavedResult.saved.size,0,'read-only result preview does not save');
  console.log('PASS: interrupted live drafts are explicitly labeled; discard restores original without writes; explicit save accepts draft and clears notice; unsaved previews remain unsaved.');
  const visibleScope=html.indexOf('id="recommendation-filter"'),advanced=html.indexOf('<details id="advanced-filters"');assert.ok(visibleScope<advanced,'scope control is outside the collapsed advanced filters');
