@@ -1,0 +1,28 @@
+{
+  "checkedAt": "2026-10-04",
+  "baseCommit": "5dd38bada81664434619a99b105de067e02d7390",
+  "sourceIds": [
+    "ptt-listening-reading-evidence-review-2018",
+    "ptt-writing-sentence-feedback-eor-2017"
+  ],
+  "acceptedCount": 2,
+  "sources": [
+    {
+      "url": "https://www.ptt.cc/bbs/IELTS/M.1543683289.A.93E.html",
+      "publishedAt": "2018-12-02",
+      "readScope": "已核读原帖正文及提取到的可见评论，包括作者对phgrace、iiiii、DUFTON的回复；未审核成绩与笔记图片、未打开资料汇编外链。直接网页读取曾403，正文核读来自Exa提取，不把403算作阅读。",
+      "commentScope": "已读提取到的可见评论；作者补充说写起点、全职开始时间及遇过重复题。其他人的赞赏或技巧争论不是独立效果验证；不保证包含所有历史回复。"
+    },
+    {
+      "url": "https://www.ptt.cc/bbs/IELTS/M.1485357741.A.E12.html",
+      "publishedAt": "2017-01-25",
+      "readScope": "已读原帖正文和全部当前可见楼层（页面L5–54）；未核验成绩单或家教服务。",
+      "commentScope": "当前可见评论已读：veramagic质疑频繁考试成本，作者syslantyev澄清九次跨三年多；ggrr5566的复议成功属于另一人，不能合并为作者经历。未声称涵盖删除或不可见回复。"
+    }
+  ],
+  "limits": [
+    "原47条资源及所有历史核读字段保持原样；本次仅新增2篇参考案例。",
+    "成绩为作者自报，独立复核仅确认原文归属和表达边界，不认证成绩或训练效果。",
+    "未转载试题、教材、图片或资料汇编，未新增未读平台的覆盖声明。"
+  ]
+}

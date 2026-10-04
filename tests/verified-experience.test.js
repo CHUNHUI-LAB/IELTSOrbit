@@ -1,0 +1,41 @@
+'use strict';
+const assert=require('node:assert/strict'),crypto=require('node:crypto'),fs=require('node:fs');
+const raw=require('../data/catalog.json'),experience=require('../assets/experience.js'),core=require('../assets/core.js');
+const {beforeVerifiedExperienceCatalog,verifiedExperienceIds}=require('./resource-history.js');
+const hash=x=>crypto.createHash('sha256').update(JSON.stringify(x)).digest('hex');
+const baseHash='67cc44882abae06c9f2ad186986e1001b9eef809cf52a90886e049960d8d5914';
+assert.equal(hash(beforeVerifiedExperienceCatalog(raw)),baseHash,'all 47 prior resources and every catalog/history field remain exact');
+assert.equal(raw.resources.length,49);assert.equal(raw.resources.filter(r=>r.sourceType==='experience').length,32);
+assert.equal(new Set(raw.resources.map(r=>r.id)).size,49);assert.equal(new Set(raw.resources.map(r=>r.url.replace(/\/$/,''))).size,49);
+assert.deepEqual(raw.resources.slice(47).map(r=>r.id),verifiedExperienceIds,'exact two-case append-only suffix');
+assert.equal(raw.resources.filter(r=>r.recommendedByDefault!==false).length,22);assert.equal(raw.resources.filter(r=>r.sourceType==='experience'&&r.recommendedByDefault!==false).length,6);
+assert.ok(experience.scopeText(raw.resources).includes('32篇经验：6篇推荐阅读、26篇参考案例'));
+const [listening,writing]=raw.resources.slice(47);
+for(const r of [listening,writing]){
+ assert.equal(r.sourceType,'experience');assert.equal(r.recommendedByDefault,false);assert.equal(r.checkedAt,'2026-10-04');
+ assert.ok(r.reportedRoutine.length&&r.actionableMethods.every(x=>x.startsWith('本站建议：'))&&r.curatorInterpretation);
+ assert.ok(r.authorContext.outcome.includes('未独立核验')&&r.caution.includes('未独立核验'));
+ assert.ok(r.evidenceScope.includes('未')&&r.commentsReview.detail&&r.commercialDisclosure&&r.sourceDateCaveat);
+ assert.equal(r.provenance.sourceUrl,r.url);assert.equal(r.provenance.scope,r.evidenceScope);assert.equal(r.provenance.reviewedAt,r.checkedAt);
+ assert.ok(r.skills.every(x=>Object.hasOwn(core.labels.skills,x)));assert.ok(r.levels.every(x=>Object.hasOwn(core.labels.levels,x)));
+ assert.equal(core.parseRoute('#experience-case-'+r.id).experienceCase,r.id);
+ assert.ok(experience.selectCases(raw.resources,'all','all').includes(r));assert.ok(experience.selectCases(raw.resources,'all','reference').includes(r));assert.ok(!experience.selectCases(raw.resources).includes(r));
+ assert.ok(experience.overview.themes.at(-1).sourceIds.includes(r.id));assert.ok(experience.topicIds.timing.includes(r.id));
+ const c=experience.caseContent(r);assert.ok(c.baseline&&c.training.length&&c.duration&&c.outcome&&c.limit&&c.comments.length);
+}
+assert.ok(listening.summary.includes('匹配题')&&listening.summary.includes('填空只整理换词'));
+assert.ok(listening.authorContext.baseline.includes('6.5或7')&&listening.authorContext.baseline.includes('没有分别指定'));
+assert.ok(listening.authorContext.preparationDuration.includes('2018年3月')&&listening.authorContext.preparationDuration.includes('并非连续三年'));
+assert.ok(listening.caution.includes('重复题')&&listening.reportedRoutine.join('').includes('可能占半天'));
+assert.equal(listening.publishedAt,'2018-12-02');assert.ok(experience.topicIds.input.includes(listening.id));
+assert.equal(writing.publishedAt,'2017-01-25');assert.ok(experience.topicIds.output.includes(writing.id));
+assert.ok(writing.authorContext.outcome.includes('复议由6.5升至7'));assert.ok(writing.summary.includes('最终7来自复议'));
+assert.ok(writing.commentsReview.detail.includes('ggrr5566')&&writing.commentsReview.detail.includes('另一人'));
+assert.ok(writing.excludeFromGeneralGuidance.join('').includes('族裔'));
+const historicalTopics=Object.fromEntries(Object.entries(experience.topicIds).map(([k,ids])=>[k,ids.filter(id=>!verifiedExperienceIds.includes(id))]));
+assert.equal(hash(historicalTopics),'632845a36d497a74951f95a7a534bea16a0acfa99319f711988f293d72289f3b','all prior topic memberships/order preserved');
+const coverage=[...new Set([...experience.overview.themes,...experience.overview.disagreements].flatMap(x=>x.sourceIds))].sort();assert.deepEqual(coverage,raw.resources.filter(r=>r.sourceType==='experience').map(r=>r.id).sort());
+const review=require('../data/experience-review-2026-10-04.json');assert.deepEqual(review.sourceIds,verifiedExperienceIds);assert.equal(review.acceptedCount,2);assert.equal(review.sources.length,2);
+for(const mutate of [c=>c.resources[0].summary+=' altered',c=>c.resources[46].checkedAt='2026-10-04',c=>c.metadata.unreviewed=true,c=>c.resources.push({id:'unreviewed'})]){const c=structuredClone(raw);mutate(c);assert.notEqual(hash(beforeVerifiedExperienceCatalog(c)),baseHash);}
+const script=fs.readFileSync(require.resolve('../assets/experience.js'),'utf8'),html=fs.readFileSync(require.resolve('../index.html'),'utf8');const version=crypto.createHash('sha256').update(script).digest('hex').slice(0,12);assert.ok(html.includes('assets/experience.js?v='+version));
+console.log('PASS: exact full 47-record baseline/history, 49/32/22/6 counts, two bounded PTT cases, EOR and author/comment attribution, all 32 cited, prior topics, route availability and negative mutation controls');

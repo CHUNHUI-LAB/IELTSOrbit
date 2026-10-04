@@ -1,6 +1,6 @@
 'use strict';
 const assert=require('node:assert/strict'),crypto=require('node:crypto');
-const raw=require('../data/catalog.json'),experience=require('../assets/experience.js'),core=require('../assets/core.js');
+const current=require('../data/catalog.json'),raw=require('./resource-history.js').beforeVerifiedExperienceCatalog(current),experience=require('../assets/experience.js'),core=require('../assets/core.js');
 const {beforeListeningBatchCatalog,listeningBatchIds}=require('./resource-history.js');
 const hash=x=>crypto.createHash('sha256').update(JSON.stringify(x)).digest('hex');
 // Captured independently from remote fc9bbd75d1841ad0cd92792abee099d3218e6bec;
@@ -16,11 +16,11 @@ assert.equal(raw.resources.filter(r=>r.sourceType==='experience').length,30);
 assert.equal(raw.resources.filter(r=>r.recommendedByDefault!==false).length,22);
 assert.equal(raw.resources.filter(r=>r.sourceType==='experience'&&r.recommendedByDefault!==false).length,6);
 assert.equal(hash(experience.overview.themes.slice(0,8)),'209ac55578c3e1f6820ed2556d8469394392af183272cfae4a5d7ac9ba2f42c7','all eight prior themes remain byte-equivalent under JSON serialization');
-const historicalTopics=Object.fromEntries(Object.entries(experience.topicIds).map(([key,ids])=>[key,ids.filter(id=>!listeningBatchIds.includes(id))]));
+const historicalTopics=Object.fromEntries(Object.entries(experience.topicIds).map(([key,ids])=>[key,ids.filter(id=>!listeningBatchIds.includes(id)&&!require('./resource-history.js').verifiedExperienceIds.includes(id))]));
 assert.equal(hash(historicalTopics),'5a1e8616d854ddd70db043f49c7cf520b1f53a0415ad0a595c8e784a4b921250','all previous topic memberships and ordering preserved');
 assert.deepEqual(experience.overview.themes[8].sourceIds,listeningBatchIds);
 const coverage=[...new Set([...experience.overview.themes,...experience.overview.disagreements].flatMap(x=>x.sourceIds))].sort();
-assert.deepEqual(coverage,raw.resources.filter(r=>r.sourceType==='experience').map(r=>r.id).sort());
+assert.deepEqual(coverage,current.resources.filter(r=>r.sourceType==='experience').map(r=>r.id).sort());
 assert.ok(experience.scopeText(raw.resources).includes('30篇经验：6篇推荐阅读、24篇参考案例'));
 for(const r of raw.resources.slice(44)){
  assert.equal(r.sourceType,'experience');assert.equal(r.recommendedByDefault,false);assert.equal(r.checkedAt,'2026-10-03');

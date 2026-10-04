@@ -17,7 +17,7 @@ const app=fs.readFileSync(require.resolve('../assets/app.js'),'utf8');assert(app
 console.log('PASS:2 bounded teaching deep links; Liz2017/free-commercial/audio-unplayed/partial-comment boundaries; BCweakforms foundation separated;44/27 preserved; entire prior catalog/history exact; neutral related-source label.');
 
 // 2026-10-04 is a bounded content correction, not a reset of prior source checks.
-const current=require('../data/catalog.json');
+const current=require('./resource-history.js').beforeVerifiedExperienceCatalog(require('../data/catalog.json'));
 const {beforeSkillAlignmentCatalog}=require('./resource-history.js');
 const beforeAlignment=beforeSkillAlignmentCatalog(current);
 const baselineAlignmentHash='590b88cb0ebc281baf407268e8529f324d91c37627390aff875031b6a0a65e76';

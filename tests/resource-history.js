@@ -37,9 +37,15 @@ module.exports={legacyResources,reviewedIds,beforeTeachingResources,beforeTeachi
 // 2026-10-03 experience batch: project ONLY its three appended IDs out.
 // The batch test pins the exact suffix/order and whole pre-batch catalog digest.
 const listeningBatchIds=Object.freeze(['bili-baigang-listening-bottlenecks-2021','note-taku-listening-peak-stability-2026','reddit-gt-reading-improves-writing-falls-2026']);
-function beforeListeningBatchCatalog(catalog){const prior=beforeSkillAlignmentCatalog(catalog);return {...prior,resources:prior.resources.filter(r=>!listeningBatchIds.includes(r.id))};}
+function beforeListeningBatchCatalog(catalog){const prior=beforeSkillAlignmentCatalog(beforeVerifiedExperienceCatalog(catalog));return {...prior,resources:prior.resources.filter(r=>!listeningBatchIds.includes(r.id))};}
 module.exports.listeningBatchIds=listeningBatchIds;
 module.exports.beforeListeningBatchCatalog=beforeListeningBatchCatalog;
 
 module.exports.beforeSkillAlignmentCatalog=beforeSkillAlignmentCatalog;
 module.exports.beforeSkillAlignmentResources=beforeSkillAlignmentResources;
+
+// Project ONLY the two independently reviewed 2026-10-04 appended IDs.
+const verifiedExperienceIds=Object.freeze(["ptt-listening-reading-evidence-review-2018", "ptt-writing-sentence-feedback-eor-2017"]);
+function beforeVerifiedExperienceCatalog(catalog){return {...catalog,resources:catalog.resources.filter(r=>!verifiedExperienceIds.includes(r.id))};}
+module.exports.verifiedExperienceIds=verifiedExperienceIds;
+module.exports.beforeVerifiedExperienceCatalog=beforeVerifiedExperienceCatalog;

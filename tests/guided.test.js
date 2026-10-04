@@ -12,7 +12,7 @@ console.log('PASS: current catalog counts and complete experience coverage; reta
 
 const coverage=[...new Set([...experience.overview.themes,...experience.overview.disagreements].flatMap(section=>section.sourceIds))].sort();
 assert.deepEqual(coverage,catalog.resources.filter(r=>r.sourceType==='experience').map(r=>r.id).sort(),'synthesis cites all current experience cases');
-assert.equal(experience.overview.themes.slice(0,-1).length,8);assert.equal(experience.overview.themes.length,9);assert.equal(experience.overview.disagreements.length,7);assert.equal(experience.overview.suggestedSequence.length,5);
+assert.equal(experience.overview.themes.slice(0,-1).length,9);assert.equal(experience.overview.themes.length,10);assert.equal(experience.overview.disagreements.length,7);assert.equal(experience.overview.suggestedSequence.length,5);
 assert.ok(experience.scopeText(catalog.resources).includes('6篇推荐')&&experience.scopeText(catalog.resources).includes(counts.experienceReference+'篇参考'));assert.ok(experience.overview.scope.includes('未重新核验'));assert.ok(experience.overview.sequenceLabel.includes('不是'));
 console.log('PASS: current catalog counts and complete experience coverage; retained source, route, state, and provenance regressions.');
 
