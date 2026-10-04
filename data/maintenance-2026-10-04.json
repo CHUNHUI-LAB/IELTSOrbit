@@ -1,0 +1,89 @@
+{
+  "checkedAt": "2026-10-04",
+  "baseCommit": "b91316e018b1b9b784c33851adff339610d5a3bf",
+  "scope": "限定范围公开来源复核；本记录不改变资料卡、经验、政策、考点或前端，也不表示全库重新核读。",
+  "result": "no_verified_catalog_change",
+  "resourcesUnchanged": 47,
+  "experiencesUnchanged": 30,
+  "sources": [
+    {
+      "url": "https://www.chinaielts.org/press-office/IELTS-Chinese-Mainland-Exam-Registration-Fee-Update-2026",
+      "type": "official",
+      "scope": "已读费用公告实质正文；标准IELTS及UKVI为1990元，转退考手续费380元，与现有记录一致。未读日历图片、未进入报名。",
+      "publishedAt": null
+    },
+    {
+      "url": "https://www.chinaielts.org/book-ielts/one-skill-retake",
+      "type": "official",
+      "scope": "已读资格、60天期限、机构接收须确认及城市考点表；不将城市表视为可报名场次。与现有接收机构核对提醒无冲突。",
+      "publishedAt": null
+    },
+    {
+      "url": "https://ielts.org/take-a-test/your-results/ielts-scoring-in-detail",
+      "type": "official",
+      "scope": "已读总分平均与进位规则、听读分数说明；原始分换算存在试卷间小幅差异，不由非官方练习正确数推算稳获分数。未打开评分PDF或播放视频。",
+      "publishedAt": null
+    },
+    {
+      "url": "https://www.cambridgeenglish.org/exams-and-tests/ielts/preparation/",
+      "type": "official",
+      "scope": "已读准备资源目录和IELTS 21 Academic/GT简要说明；未读样题PDF、购买或使用教材。目录不是完整教材审查。",
+      "publishedAt": null
+    },
+    {
+      "url": "https://ielts.org/take-a-test/preparation-resources",
+      "type": "official",
+      "scope": "已读资源入口正文及分类；未重新核读全部链接、课程或视频。",
+      "publishedAt": null
+    },
+    {
+      "url": "https://www.zjzs.net/col/col282/index.html",
+      "type": "official_regional",
+      "scope": "已读杭州四处地点及注意事项；页面仍含纸笔模式，杭州电子科技大学写2号大街1号，与现有NEEA核读记录1158号不同。未用该页覆盖较具体NEEA记录，地址差异留待直接核对；不推断任何日期或余位。",
+      "publishedAt": null
+    },
+    {
+      "url": "https://www.ieltsadvantage.com/2023/03/15/how-to-improve-ielts-reading/",
+      "type": "commercial_teacher",
+      "scope": "已读完整实质正文：用官方练习辨认题型、拼写、阅读或计时弱项。未播放视频、体验课程或读取评论（页面标示5条但抓取无评论正文）。机构推广与高分效果主张未独立验证；方法与现有错因复盘重叠，本轮不新增。",
+      "publishedAt": null,
+      "publicationNote": "URL含2023/03/15；正文未明确显示发表日期，不把路径当已确认日期。"
+    },
+    {
+      "url": "https://www.reddit.com/r/IELTS/comments/1wsp07q/ielts_listening_stuck_on_75/",
+      "type": "public_discussion",
+      "scope": "已读主帖、10条可见人工评论/回复及1条机器人回复；未读隐藏评论或验证成绩。主帖称练习32–34题且已分析错题；练习来源不同、实考更易及8.5结果来自不同评论者，不能合并为楼主结果。未采用“容易9分”及不明第三方材料推荐。",
+      "publishedAt": "2026-09-28",
+      "publicationNote": "日期由搜索索引显示；页面抓取仅显示相对时间。",
+      "decision": "保留候选，不新增资源；缺少具体可重复训练步骤或可靠效果证据。"
+    },
+    {
+      "url": "https://www.dcard.tw/f/language/p/238121423",
+      "type": "public_experience",
+      "scope": "已读实质正文，未读任何评论（页面只显示23及评论控件）、未核验图片或成绩。作者称自学但用过付费批改；口语未计时、缺反馈有复盘价值，但背景听力不证明提分。正文提及教材扫描包，未打开、下载或传播；不推荐该材料。",
+      "publishedAt": null,
+      "decision": "保留候选；与已有经验主题重叠，日期、评论及资料版权边界未充分核清，不新增。"
+    }
+  ],
+  "unverifiedChecks": [
+    {
+      "url": "https://ielts.neea.cn/showTestCenters",
+      "result": "抓取返回412，未重新读取杭州目录；既有考点核验日期不变。"
+    },
+    {
+      "url": "https://ielts.neea.cn/allnews?locale=zh_CN",
+      "result": "抓取失败，不能据此断言没有新公告。"
+    },
+    {
+      "url": "https://www.chinaielts.org/press-office/ielts-eTRF",
+      "result": "直接正文读取失败/超时；搜索索引摘要仍支持9月1日起全机考、1–5天出分和电子成绩单。仅索引复核，未取得Q4日历图片，未改现有政策或日期。"
+    }
+  ],
+  "searchOnly": "另检索B站公开条目及Dcard其他经验：仅搜索摘要，不计为已读正文或评论；合集版权/推广关系未核清，未收录。",
+  "boundaries": [
+    "保留四个杭州考点sessions空数组、calendar.dates空数组及余位null；不登录、不预约、不付费。",
+    "不复制试题、教材、成绩图片、评论身份或私人信息；只保存原创短摘要和来源链接。",
+    "全库catalog、原核验日期、47项资源及30篇经验不变；未修订页面结构、学习计划或练习。",
+    "未作真实浏览器验收；DOM或静态测试不能替代渲染验收。"
+  ]
+}
