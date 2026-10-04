@@ -1,0 +1,59 @@
+{
+  "reviewedAt": "2026-10-04",
+  "status": "local_candidate_not_published",
+  "baseCommit": "2b4478292870c76155adde088c2a803dd97f5425",
+  "sourceIds": [
+    "dcard-speaking-record-transcript-feedback",
+    "douban-listening-hesitation-review-2022"
+  ],
+  "acceptedCount": 2,
+  "recommendedCount": 0,
+  "sources": [
+    {
+      "id": "dcard-speaking-record-transcript-feedback",
+      "url": "https://www.dcard.tw/f/language/p/259465974",
+      "publishedAt": null,
+      "scope": "2026-10-04已读完整可提取正文L9–13；评论区只显示数量标记31，无可读评论，成绩图未查看。",
+      "comments": {
+        "status": "not_reviewed",
+        "detail": "页面无可读评论内容；31只为页面数量标记，不表示已读31条。"
+      }
+    },
+    {
+      "id": "douban-listening-hesitation-review-2022",
+      "url": "https://www.douban.com/group/topic/265933957/?_spm_id=MjEwMTMzNTY3",
+      "publishedAt": "2022-05-01",
+      "scope": "2026-10-04已读完整可提取正文L44–359；底部评论呈现不完整，未读下一页、图片或外链视频。",
+      "comments": {
+        "status": "insufficient_extract",
+        "detail": "底部可见评论不完整，引用与回复不能可靠归属；不作为作者训练证据，未读下一页。"
+      }
+    }
+  ],
+  "held": [
+    {
+      "url": "https://www.reddit.com/r/IELTS/comments/1q2xiwu/experience_fluent_english_speaker_underperforming/",
+      "scope": "完整正文与14条可见人工评论；2条删除占位、2条机器人提示；折叠回复未读",
+      "reason": "强基础和AI估分混杂，实际阅读分数不变，与现有主题重复"
+    },
+    {
+      "url": "https://www.ptt.cc/bbs/IELTS/M.1674061597.A.437.html",
+      "scope": "全文与4条可见简短评论",
+      "reason": "反馈主题重复；第二次口语包含复议"
+    },
+    {
+      "url": "https://note.com/ielts_consult/n/n033a853592bf",
+      "scope": "公开全文",
+      "reason": "商品导购与效果承诺，缺实际训练轨迹"
+    },
+    {
+      "url": "https://note.com/choco1770/n/nc4ae8a558dee",
+      "scope": "免费正文；付费样例未读未购买",
+      "reason": "反馈主题重复，夹带考官归因"
+    }
+  ],
+  "notReviewedPlatforms": [
+    "本轮未核读小红书、知乎、贴吧、B站新正文"
+  ],
+  "retrievalCaveat": "豆瓣无参数URL第一次失败，搜索返回的同一公开帖子URL可读；未绕过登录或付费限制。"
+}

@@ -46,6 +46,14 @@ module.exports.beforeSkillAlignmentResources=beforeSkillAlignmentResources;
 
 // Project ONLY the two independently reviewed 2026-10-04 appended IDs.
 const verifiedExperienceIds=Object.freeze(["ptt-listening-reading-evidence-review-2018", "ptt-writing-sentence-feedback-eor-2017"]);
-function beforeVerifiedExperienceCatalog(catalog){return {...catalog,resources:catalog.resources.filter(r=>!verifiedExperienceIds.includes(r.id))};}
+function beforeVerifiedExperienceCatalog(catalog){catalog=beforeOutputReviewCatalog(catalog);return {...catalog,resources:catalog.resources.filter(r=>!verifiedExperienceIds.includes(r.id))};}
 module.exports.verifiedExperienceIds=verifiedExperienceIds;
 module.exports.beforeVerifiedExperienceCatalog=beforeVerifiedExperienceCatalog;
+
+// Project only this two-record append; independent output-review test pins the full 49-record baseline.
+const outputReviewIds=Object.freeze(["dcard-speaking-record-transcript-feedback", "douban-listening-hesitation-review-2022"]);
+function beforeOutputReviewCatalog(catalog){return {...catalog,resources:catalog.resources.filter(r=>!outputReviewIds.includes(r.id))};}
+function beforeOutputReviewTopics(topics){return Object.fromEntries(Object.entries(topics).map(([k,ids])=>[k,ids.filter(id=>!outputReviewIds.includes(id))]));}
+const outputThemeSuffix={"2": " 豆瓣个案另记录做对但犹豫的题；旧材料重练的熟悉效应未排除。", "7": " Dcard个案把课前录音交老师反馈，考前请朋友提问再计时录音；本站建议保留原音核对转录，不能凭识别错误诊断发音。"};
+function beforeOutputReviewThemes(themes){return themes.map((t,i)=>{const suffix=outputThemeSuffix[i];return {...t,sourceIds:t.sourceIds.filter(id=>!outputReviewIds.includes(id)),synthesis:suffix&&t.synthesis.endsWith(suffix)?t.synthesis.slice(0,-suffix.length):t.synthesis};});}
+Object.assign(module.exports,{outputReviewIds,beforeOutputReviewCatalog,beforeOutputReviewTopics,beforeOutputReviewThemes});
