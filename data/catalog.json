@@ -235,7 +235,7 @@
     },
     {
       "id": "liz",
-      "title": "IELTS Liz 免费分项课程",
+      "title": "IELTS Liz 分项学习目录与免费练习",
       "provider": "IELTS Liz",
       "url": "https://ieltsliz.com/free-ielts-preparation-blog/",
       "sourceType": "teacher",
@@ -253,23 +253,46 @@
       ],
       "price": "免费内容／另有付费产品",
       "access": "公开页面",
-      "summary": "按具体弱项选一课，再用练习检验，不连续囤看技巧视频。网站同时推广课程与电子书，教师建议仍需对照官方评分标准。",
+      "summary": "按听力、阅读、写作、口语或词汇选一个小任务。下方分别给出原文入口和练习动作；Office Etiquette 只用于听力，写作示例聚焦 Task 2 提纲。网站另售课程与电子书，教师建议需对照官方标准。",
       "checkedAt": "2026-10-01",
       "status": "curated",
       "commercial": true,
       "evidenceScope": "公开来源页面已读；不代表完整课程体验",
       "actionableMethods": [
-        "本站建议：打开下方 Office Etiquette 小练习，按页面的一词限制先听一次并作答，再展开答案说明与文字稿。",
-        "错题回到对应句，先判断是否因重复词而忽略真正的意思，再看页面的释义解释。",
-        "对照该练习要求检查答案是否来自录音原词，以及填入后词性和语法是否合适；把释义误判、原词选择与词形问题分开记录。"
+        "本站建议：先按下面的科目标签选一项，再打开同名相关原文；各项是不同练习，不需要依次全部做完。",
+        "听力｜Office Etiquette：按页面的一词限制先听一次作答，再看答案说明与文字稿；把释义误判、录音原词选择和词形问题分开记录。这是听力小练习。",
+        "阅读｜Paraphrasing：先读短文，再从词表中选择意思和语法都合适的表达；完成后沿答案页核对，回到原句解释误选原因。这是阅读释义技能练习，不是雅思真题或完整模拟。",
+        "写作｜Task 2 提纲：参考 Essay Planning Tips，拿一道已有题目，先列出题目要求、可用观点和支持理由，再安排段落；检查每个要点是否回应问题。这里只练提纲，不固定照搬教师建议的分钟数。",
+        "口语｜Part 3 回答范围：阅读 Common Mistake 的问题，先自己回答，再比较原文前后示例；题目问一般人群时，检查是否只讲了个人或家庭经历。用自己的表达重说，不背示例。",
+        "词汇｜Lack：先区分名词、动词和介词搭配，独立完成页面纠错，再对照参考改法；最后自己造句检查用法，不把近义词当作可以随意互换的词。"
       ],
       "relatedSources": [
         {
           "title": "Office Etiquette · 听力填空与反馈（2017年教师自编小练习）",
           "url": "https://ieltsliz.com/listening-practice-office-etiquette/"
+        },
+        {
+          "title": "阅读｜Reading Skills for IELTS: Paraphrasing（技能练习）",
+          "url": "https://ieltsliz.com/reading-skills-for-ielts-paraphrasing/"
+        },
+        {
+          "title": "阅读｜Answer to Reading Paraphrasing Lesson（先练后看）",
+          "url": "https://ieltsliz.com/answer-to-reading-paraphrasing-lesson/"
+        },
+        {
+          "title": "写作｜Task 2 Essay Planning Tips（提纲方法）",
+          "url": "https://ieltsliz.com/ielts-writing-task-2-essay-planning-tips/"
+        },
+        {
+          "title": "口语｜Common Mistake in Speaking Part 3（回答范围）",
+          "url": "https://ieltsliz.com/common-mistake-in-speaking-part-3/"
+        },
+        {
+          "title": "词汇｜Lack: vocabulary and sample sentences（用法与纠错）",
+          "url": "https://ieltsliz.com/lack-vocabulary-and-sample-sentences/"
         }
       ],
-      "curatorInterpretation": "具体练习补充核读：2026-10-03。Office Etiquette 正文注明2017年，为 Liz 教师自编的公开免费小练习；站点同时销售 Advanced IELTS 等产品。已读正文、题目、答案解释和文字稿；未播放音频。只核读部分2017年评论，不声称读完页面标示的158条评论，评论不作为提分效果证据。这里仅归纳反馈步骤并链接原页，不转载题目、答案或文字稿；短练习不是完整模考，不保证分数或限时迁移效果。原目录条目的核验日保留。"
+      "curatorInterpretation": "具体练习补充核读：2026-10-03。Office Etiquette 正文注明2017年，为 Liz 教师自编的公开免费小练习；站点同时销售 Advanced IELTS 等产品。已读正文、题目、答案解释和文字稿；未播放音频。只核读部分2017年评论，不声称读完页面标示的158条评论，评论不作为提分效果证据。这里仅归纳反馈步骤并链接原页，不转载题目、答案或文字稿；短练习不是完整模考，不保证分数或限时迁移效果。原目录条目的核验日保留。 分项对齐复核：2026-10-04。目录确有听读写说与词汇入口；补读阅读释义练习及独立答案页、Task 2 提纲、Part 3 回答范围和 lack 用法页的实质正文，并复读 Office Etiquette 的题目、答案说明和文字稿。以上步骤为本站按原文整理的练习建议；未播放音视频、未体验课程，本轮未系统核读评论，也未重读全站文章。新增页面未见明确的文章发表或更新日期，不以页眉年份或评论日期推断；原目录核验日及2026-10-03记录保留。"
     },
     {
       "id": "simon",
@@ -2754,6 +2777,74 @@
       "没有分数保证、年龄或CEFR分配；发布日期与核读日期分开。",
       "资源卡片仍44项、经验仍27篇；既有机构的深链接不计为新增独立来源。",
       "此前官方资源的4步建议与核读说明保留为前缀；政策、考点、考期、学习计划、练习状态和定期检查历史不变。"
+    ]
+  },
+  "resourceSkillAlignmentReview": {
+    "checkedAt": "2026-10-04",
+    "scope": "纠正 Liz 多科目录只有听力使用步骤的错配；保留目录身份和原分类，以有正文依据的分科动作补齐。不是全站重新核验。",
+    "updatedResourceIds": [
+      "liz"
+    ],
+    "newResourceIds": [],
+    "sources": [
+      {
+        "url": "https://ieltsliz.com/free-ielts-preparation-blog/",
+        "readScope": "使用说明正文及科目入口；核对多科目录身份，不背书资历、分数或营销主张。"
+      },
+      {
+        "url": "https://ieltsliz.com/listening-practice-office-etiquette/",
+        "readScope": "题目、答案解释与文字稿；正文自述2017年，未播放音频，本轮未系统核读评论。"
+      },
+      {
+        "url": "https://ieltsliz.com/reading-skills-for-ielts-paraphrasing/",
+        "readScope": "实质正文、填空说明、词表与答案页入口；明确是技能练习，未读其 National Geographic 外链。"
+      },
+      {
+        "url": "https://ieltsliz.com/answer-to-reading-paraphrasing-lesson/",
+        "readScope": "实质正文、答案与语义及语法解释；本轮未系统核读评论。"
+      },
+      {
+        "url": "https://ieltsliz.com/ielts-writing-task-2-essay-planning-tips/",
+        "readScope": "实质正文中的审题、观点筛选、支持理由与段落规划；未将建议时长、考试顺序或纸笔说明推广为当前规则。"
+      },
+      {
+        "url": "https://ieltsliz.com/common-mistake-in-speaking-part-3/",
+        "readScope": "实质正文的问题、前后示例及回答范围解释；本轮未系统核读评论。"
+      },
+      {
+        "url": "https://ieltsliz.com/lack-vocabulary-and-sample-sentences/",
+        "readScope": "实质正文的词义、词性、搭配、例句、纠错题及参考改法；本轮未系统核读评论。"
+      }
+    ],
+    "boundedComparison": {
+      "catalogResourceIds": [
+        "official-samples",
+        "bc-mocks",
+        "all-rubrics",
+        "cambridge",
+        "ready-cn",
+        "computer",
+        "simon",
+        "advantage",
+        "official-independent-reading-project"
+      ],
+      "catalogScope": "检查以上现有多科条目的标题、分类与使用文案；未发现与 Liz 相同的“多科目录只给听力步骤”错配。未重读全部外部原文，未修改这些条目或其核读日期。",
+      "teacherIndexReads": [
+        {
+          "url": "https://ielts-simon.study/video-courses/",
+          "readScope": "公开课程索引的科目与题型标题；未打开或观看课程，未核验付费权益。"
+        },
+        {
+          "url": "https://www.ieltsadvantage.com/category/study-tips/",
+          "readScope": "Study Tips 目录首屏文章标题、摘要与分科导航；未把列表摘要当完整方法文，也未体验课程。"
+        }
+      ]
+    },
+    "boundaries": [
+      "只保留原创简短方法归纳与来源链接，不转载题目、答案、文字稿或评论个人信息。",
+      "本轮只提供写作 Task 2 的提纲动作，不声称核读全套 Task 1 或完整课程；不保证提分，不采用营销主张。",
+      "来源发表日期未知就保持未知；2026-10-04是限定范围复核日期，原目录核验日和历史检查记录不变。",
+      "仍为47项资料、30篇经验；没有新增机构、经验或私人用户成绩，政策、考点、考期、练习、计划与界面保持不变。"
     ]
   }
 }
