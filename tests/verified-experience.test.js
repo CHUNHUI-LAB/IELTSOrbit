@@ -1,6 +1,6 @@
 'use strict';
 const assert=require('node:assert/strict'),crypto=require('node:crypto'),fs=require('node:fs');
-const raw=require('../data/catalog.json'),experience=require('../assets/experience.js'),core=require('../assets/core.js');
+const current=require('../data/catalog.json'),raw=require('./resource-history.js').beforeOutputReviewCatalog(current),experience=require('../assets/experience.js'),core=require('../assets/core.js');
 const {beforeVerifiedExperienceCatalog,verifiedExperienceIds}=require('./resource-history.js');
 const hash=x=>crypto.createHash('sha256').update(JSON.stringify(x)).digest('hex');
 const baseHash='67cc44882abae06c9f2ad186986e1001b9eef809cf52a90886e049960d8d5914';
@@ -32,9 +32,9 @@ assert.equal(writing.publishedAt,'2017-01-25');assert.ok(experience.topicIds.out
 assert.ok(writing.authorContext.outcome.includes('复议由6.5升至7'));assert.ok(writing.summary.includes('最终7来自复议'));
 assert.ok(writing.commentsReview.detail.includes('ggrr5566')&&writing.commentsReview.detail.includes('另一人'));
 assert.ok(writing.excludeFromGeneralGuidance.join('').includes('族裔'));
-const historicalTopics=Object.fromEntries(Object.entries(experience.topicIds).map(([k,ids])=>[k,ids.filter(id=>!verifiedExperienceIds.includes(id))]));
+const historicalTopics=Object.fromEntries(Object.entries(require('./resource-history.js').beforeOutputReviewTopics(experience.topicIds)).map(([k,ids])=>[k,ids.filter(id=>!verifiedExperienceIds.includes(id))]));
 assert.equal(hash(historicalTopics),'632845a36d497a74951f95a7a534bea16a0acfa99319f711988f293d72289f3b','all prior topic memberships/order preserved');
-const coverage=[...new Set([...experience.overview.themes,...experience.overview.disagreements].flatMap(x=>x.sourceIds))].sort();assert.deepEqual(coverage,raw.resources.filter(r=>r.sourceType==='experience').map(r=>r.id).sort());
+const coverage=[...new Set([...experience.overview.themes,...experience.overview.disagreements].flatMap(x=>x.sourceIds))].sort();assert.deepEqual(coverage,current.resources.filter(r=>r.sourceType==='experience').map(r=>r.id).sort());
 const review=require('../data/experience-review-2026-10-04.json');assert.deepEqual(review.sourceIds,verifiedExperienceIds);assert.equal(review.acceptedCount,2);assert.equal(review.sources.length,2);
 for(const mutate of [c=>c.resources[0].summary+=' altered',c=>c.resources[46].checkedAt='2026-10-04',c=>c.metadata.unreviewed=true,c=>c.resources.push({id:'unreviewed'})]){const c=structuredClone(raw);mutate(c);assert.notEqual(hash(beforeVerifiedExperienceCatalog(c)),baseHash);}
 const script=fs.readFileSync(require.resolve('../assets/experience.js'),'utf8'),html=fs.readFileSync(require.resolve('../index.html'),'utf8');const version=crypto.createHash('sha256').update(script).digest('hex').slice(0,12);assert.ok(html.includes('assets/experience.js?v='+version));

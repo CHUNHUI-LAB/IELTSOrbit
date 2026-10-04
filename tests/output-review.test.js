@@ -1,0 +1,18 @@
+'use strict';
+const assert=require('node:assert/strict'),crypto=require('node:crypto'),fs=require('node:fs');
+const raw=require('../data/catalog.json'),x=require('../assets/experience.js'),core=require('../assets/core.js');
+const {outputReviewIds:ids,beforeOutputReviewCatalog:prior,beforeOutputReviewTopics:topics,beforeOutputReviewThemes:themes}=require('./resource-history.js');
+const digest=s=>crypto.createHash('sha256').update(s).digest('hex');
+assert.equal(digest(JSON.stringify(prior(raw),null,2)+'\n'),'e7e0b9aaae8d9eb2f2a4f4bcb9ecb203394653bf8ba84da1e0a3725da7647632','all 49 resource objects and every catalog/history field exact');
+assert.deepEqual(raw.resources.slice(49).map(r=>r.id),ids);assert.equal(raw.resources.length,51);assert.equal(new Set(raw.resources.map(r=>r.id)).size,51);
+assert.equal(raw.resources.filter(r=>r.sourceType==='experience').length,34);assert.equal(raw.resources.filter(r=>r.recommendedByDefault!==false).length,22);assert.equal(x.selectCases(raw.resources).length,6);
+assert.equal(digest(JSON.stringify(themes(x.overview.themes))),'308ba2f4ec060878a02b1a477c63d966563c77cefe81d20c548fd6e6d0b113f7','all ten prior themes reconstructed by exact bounded suffixes');
+assert.equal(x.overview.themes.length,10);assert.equal(x.overview.disagreements.length,7);
+const fresh=raw.resources.slice(49);assert.equal(fresh[0].publishedAt,null);assert.equal(fresh[1].publishedAt,'2022-05-01');
+for(const r of fresh){assert.equal(r.recommendedByDefault,false);assert.equal(r.sourceType,'experience');assert.equal(r.checkedAt,'2026-10-04');assert.ok(r.caution.includes('未独立核验'));assert.ok(r.actionableMethods.every(v=>v.startsWith('本站建议：')));assert.equal(r.provenance.scope,r.evidenceScope);assert.equal(r.provenance.sourceUrl,r.url);assert.ok(r.commentsReview.detail&&r.sourceDateCaveat&&r.commercialDisclosure);assert.ok(r.skills.every(k=>core.labels.skills[k]));assert.ok(x.selectCases(raw.resources,'all','reference').includes(r));assert.ok(!x.selectCases(raw.resources).includes(r));assert.equal(core.parseRoute('#experience-case-'+r.id).experienceCase,r.id);assert.ok(core.normalizeCatalog(raw).resources.find(v=>v.id===r.id));}
+assert.ok(x.topicIds.output.includes(ids[0]));assert.ok(x.topicIds.input.includes(ids[1]));assert.ok(fresh[0].reportedRoutine.join('').includes('把转录交给AI修改'));assert.ok(fresh[0].actionableMethods.join('').includes('回听核对'));assert.ok(fresh[0].excludeFromGeneralGuidance.join('').includes('转录错误'));assert.ok(fresh[1].caution.includes('重复材料'));
+const coverage=[...new Set([...x.overview.themes,...x.overview.disagreements].flatMap(t=>t.sourceIds))].sort();assert.deepEqual(coverage,raw.resources.filter(r=>r.sourceType==='experience').map(r=>r.id).sort());
+const review=require('../data/experience-output-review-2026-10-04.json');assert.deepEqual(review.sourceIds,ids);assert.equal(review.recommendedCount,0);
+for(const mutate of [c=>c.resources[0].summary+=' changed',c=>c.resources[48].checkedAt='changed',c=>c.metadata.changed=true,c=>c.resources.push({id:'unexpected'})]){const c=structuredClone(raw);mutate(c);assert.notEqual(digest(JSON.stringify(prior(c),null,2)+'\n'),'e7e0b9aaae8d9eb2f2a4f4bcb9ecb203394653bf8ba84da1e0a3725da7647632');}
+const script=fs.readFileSync(require.resolve('../assets/experience.js'));assert.ok(fs.readFileSync(require.resolve('../index.html'),'utf8').includes('assets/experience.js?v='+digest(script).slice(0,12)));
+console.log('PASS: 51/34/22/6, byte-reconstructible 49-resource baseline and all history, exact two-case suffix, 10 themes, nullable date, reference-only routes, source boundaries and negative mutation controls');

@@ -2283,6 +2283,120 @@
         "sourceUrl": "https://www.ptt.cc/bbs/IELTS/M.1485357741.A.E12.html",
         "reviewMethod": "公开原文与可见评论分别核读并独立复核；仅收录短摘要、编辑建议和来源链接，不验证成绩或因果"
       }
+    },
+    {
+      "id": "dcard-speaking-record-transcript-feedback",
+      "title": "口语反馈材料：保留原始录音，再交给他人检查",
+      "originalTitle": "雅思口說經驗分享，口說6.5分進步到8分",
+      "url": "https://www.dcard.tw/f/language/p/259465974",
+      "provider": "Dcard／匿名在职考生",
+      "publishedAt": null,
+      "skills": [
+        "speaking"
+      ],
+      "levels": [
+        "developing",
+        "advanced"
+      ],
+      "authorContext": {
+        "baseline": "全职工作；此前口语自报多次6.5，也曾6.0",
+        "preparationDuration": "自报五个月；末阶段六堂一小时家教课，考前一周请朋友提问",
+        "outcome": "第四次口语自报8；成绩未独立核验"
+      },
+      "summary": "在职考生把课前口语录音交老师反馈，考前请朋友读题，自己计时录音并检查转录。可借鉴保留原始回答和具体问题；不能把自报口语8归因于家教、AI或某项练法。",
+      "reportedRoutine": [
+        "课前录音交老师听，课上录下示范。",
+        "请朋友读题，自己计时录音，再把转录交给AI修改。"
+      ],
+      "actionableMethods": [
+        "本站建议：保留原始录音和转录，请反馈者指出一个具体问题的位置，先回听核对。",
+        "本站建议：自己修正后再答一道未练过的问题，检查是否仍出现同类问题；这是编辑建议，原帖未给出完整迁移证据。"
+      ],
+      "curatorInterpretation": "补充反馈材料如何交给他人。原始录音、转录和修改稿应分开保存；不能因转录失败就认定发音错误。",
+      "commercial": true,
+      "commercialDisclosure": "原文推荐付费家教；赞助、返佣等关系未核实，本站不推荐服务。",
+      "price": "免费公开文章；文中家教为付费服务",
+      "evidenceScope": "2026-10-04已读完整可提取正文L9–13；评论区只显示数量标记31，无可读评论，成绩图未查看。",
+      "commentsReview": {
+        "status": "not_reviewed",
+        "detail": "页面无可读评论内容；31只为页面数量标记，不表示已读31条。"
+      },
+      "selectionReason": "在已有录音复盘基础上补充课前反馈材料和同伴提问的计时输出。",
+      "excludeFromGeneralGuidance": [
+        "不采用堆习语、固定理由数量或转录错误等同发音错误的主张。",
+        "不把个人成绩变化归因于AI、家教或固定练习量。"
+      ],
+      "caution": "成绩未独立核验，未见完整原稿—反馈—新题输出链；工具误识别也可能造成转录错误。",
+      "sourceDateCaveat": "发表日期未确认，publishedAt为null；2026-10-04仅为本次核读日。",
+      "sourceType": "experience",
+      "checkedAt": "2026-10-04",
+      "status": "curated_with_caveats",
+      "recommendedByDefault": false,
+      "access": "公开正文；实际核读边界见详情",
+      "collection": "原始输出与不确定答案复盘参考",
+      "provenance": {
+        "reviewedAt": "2026-10-04",
+        "scope": "2026-10-04已读完整可提取正文L9–13；评论区只显示数量标记31，无可读评论，成绩图未查看。",
+        "sourceUrl": "https://www.dcard.tw/f/language/p/259465974",
+        "reviewMethod": "公开实质正文核读；只保留短摘要、编辑建议和链接，未验证成绩或因果"
+      }
+    },
+    {
+      "id": "douban-listening-hesitation-review-2022",
+      "title": "复盘不只看错题：也检查做对但犹豫的地方",
+      "originalTitle": "自学三月雅思首考8分（附经验贴）！",
+      "url": "https://www.douban.com/group/topic/265933957/?_spm_id=MjEwMTMzNTY3",
+      "provider": "豆瓣／不闻风声日少",
+      "publishedAt": "2022-05-01",
+      "skills": [
+        "listening"
+      ],
+      "levels": [
+        "developing",
+        "advanced"
+      ],
+      "authorContext": {
+        "baseline": "非英语专业学生，自报四六级600+；不是零基础",
+        "preparationDuration": "自述约三个月，过程含考试取消后的中断",
+        "outcome": "标题自报首考总分8；成绩未独立核验，不从未读图片补分项"
+      },
+      "summary": "听力卡分后停止连续刷新套题，重听错误和犹豫位置，检查词音、词尾及理解问题。可借鉴的是记录不确定的答案；旧材料重练的熟悉效应未排除，自报总分不能证明练法效果。",
+      "reportedRoutine": [
+        "做完后重听错题及当时犹豫的题目，再整理文本中的对应位置。",
+        "卡分后重新做旧材料并研究错误，后来继续练习；重练不构成独立估分。"
+      ],
+      "actionableMethods": [
+        "本站建议：首次作答时标出犹豫题，复盘时先记自己听到什么，再核对文本。",
+        "本站建议：另用未练过的材料检查同类错误是否减少；旧题重做结果与新题表现分别记录。"
+      ],
+      "curatorInterpretation": "补充蒙对或犹豫题的复盘；新材料复核属于本站建议，原文没有排除记忆影响的实验。",
+      "commercial": null,
+      "commercialDisclosure": "个人经验含课程和教材推荐；未核实商业关系。资料包授权不明，不转引购买入口。",
+      "price": "免费公开文章；文中资料购买不作推荐",
+      "evidenceScope": "2026-10-04已读完整可提取正文L44–359；底部评论呈现不完整，未读下一页、图片或外链视频。",
+      "commentsReview": {
+        "status": "insufficient_extract",
+        "detail": "底部可见评论不完整，引用与回复不能可靠归属；不作为作者训练证据，未读下一页。"
+      },
+      "selectionReason": "把已做对但犹豫的位置纳入复盘，同时提示重复材料熟悉效应。",
+      "excludeFromGeneralGuidance": [
+        "不转引授权不明的资料包购买入口、教材或试题副本。",
+        "不照搬关键词必对应某答案的套路、背稿建议或历史机考界面说明。"
+      ],
+      "caution": "成绩未独立核验；强基础、重复材料与考试题材熟悉度均影响解释，不把总分归因于听力复盘。",
+      "sourceDateCaveat": "页面显示2022-05-01且标注已编辑；未确认另一次编辑日期，历史考试安排不作当前规则。",
+      "sourceType": "experience",
+      "checkedAt": "2026-10-04",
+      "status": "curated_with_caveats",
+      "recommendedByDefault": false,
+      "access": "公开正文；实际核读边界见详情",
+      "collection": "原始输出与不确定答案复盘参考",
+      "provenance": {
+        "reviewedAt": "2026-10-04",
+        "scope": "2026-10-04已读完整可提取正文L44–359；底部评论呈现不完整，未读下一页、图片或外链视频。",
+        "sourceUrl": "https://www.douban.com/group/topic/265933957/?_spm_id=MjEwMTMzNTY3",
+        "reviewMethod": "公开实质正文核读；只保留短摘要、编辑建议和链接，未验证成绩或因果"
+      }
     }
   ],
   "policies": [
