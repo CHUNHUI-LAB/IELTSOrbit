@@ -94,6 +94,16 @@ function harness({rawState,hash='',offline=false,storageBlocked=false,mobile=fal
   compact.hash(planLink.href);assert.equal(compact.nodes['path-result'].hidden,false);assert.equal(compact.nodes['daily-time'].value,'30');assert.equal(compact.nodes['weak-skill'].value,'listening');
   assert.equal(compact.saved.get('ieltsorbit.local.v1'),savedListeningPlan,'opening the plan from any subject never changes saved choices');
  }
+ // Both experience overview plan links are navigation only, with the same truthful label.
+ const experiencePlan=harness({hash:'#experience',rawState:savedListeningPlan});await experiencePlan.flush();
+ const planLinks=experiencePlan.nodes['experience-root'].querySelectorAll('a').filter(a=>a.href==='#path');
+ assert.equal(planLinks.length,2);
+ for(const link of planLinks){
+  assert.equal(link.textContent,'查看或调整学习计划');experiencePlan.hash(link.href);
+  assert.equal(experiencePlan.nodes['path-result'].hidden,false);assert.equal(experiencePlan.nodes['daily-time'].value,'30');assert.equal(experiencePlan.nodes['weak-skill'].value,'listening');
+  assert.equal(experiencePlan.saved.get('ieltsorbit.local.v1'),savedListeningPlan,'neither experience CTA schedules a step or replaces the saved plan');
+  experiencePlan.hash('#experience');
+ }
  const libraryMarkup=html.split('id="panel-library"')[1].split('id="panel-experience"')[0];
  assert(!libraryMarkup.includes('class="journey-steps"'));assert(libraryMarkup.includes('答案、初稿或录音'));
  const hierarchyCss=fs.readFileSync(require.resolve('../assets/styles.css'),'utf8').split('/* Library entry')[1];
