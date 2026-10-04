@@ -3,7 +3,7 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs'),vm=require('node:vm');
 const core=require('../assets/core.js'),data=require('../data/catalog.json');
 const html=fs.readFileSync(require.resolve('../index.html'),'utf8');
-function harness({rawState,hash='',offline=false,storageBlocked=false,mobile=false}={}){
+function harness({rawState,hash='',offline=false,storageBlocked=false,mobile=false,catalogData=data}={}){
  let active,fetches=0;
  const nodes={},saved=new Map(rawState?[['ieltsorbit.local.v1',rawState]]:[]),events={};
  const descendants=n=>n.children.flatMap(c=>[c,...descendants(c)]);
@@ -26,7 +26,7 @@ function harness({rawState,hash='',offline=false,storageBlocked=false,mobile=fal
  for(const tab of ['start','library','experience','path','exams'])nodes['tab-'+tab].dataset.tab=tab;
  nodes['main-navigation'].contains=node=>['start','library','experience','path','exams'].some(t=>nodes['tab-'+t]===node);
  const intents=['listening','reading','writing','speaking','experience'].map(value=>{const n=new Element('button');n.dataset.intent=value;return n;});
- const context={window:{IELTSCore:core,matchMedia:()=>({matches:mobile}),addEventListener:(k,f)=>events[k]=f},document:doc,location:{hash},localStorage:{getItem:k=>{if(storageBlocked)throw new Error('blocked');return saved.get(k);},setItem:(k,v)=>{if(storageBlocked)throw new Error('blocked');saved.set(k,v);},removeItem:k=>{if(storageBlocked)throw new Error('blocked');saved.delete(k);}},fetch:async url=>{fetches++;assert.equal(String(url),'https://example.test/IELTSOrbit/data/catalog.json');if(offline)throw new Error('offline');return{ok:true,json:async()=>data};},URL,console};
+ const context={window:{IELTSCore:core,matchMedia:()=>({matches:mobile}),addEventListener:(k,f)=>events[k]=f},document:doc,location:{hash},localStorage:{getItem:k=>{if(storageBlocked)throw new Error('blocked');return saved.get(k);},setItem:(k,v)=>{if(storageBlocked)throw new Error('blocked');saved.set(k,v);},removeItem:k=>{if(storageBlocked)throw new Error('blocked');saved.delete(k);}},fetch:async url=>{fetches++;assert.equal(String(url),'https://example.test/IELTSOrbit/data/catalog.json');if(offline)throw new Error('offline');return{ok:true,json:async()=>catalogData};},URL,console};
  context.window.location=context.location;
  vm.runInNewContext(fs.readFileSync(require.resolve('../assets/experience.js'),'utf8'),context);
  vm.runInNewContext(fs.readFileSync(require.resolve('../assets/app.js'),'utf8'),context);
@@ -34,6 +34,36 @@ function harness({rawState,hash='',offline=false,storageBlocked=false,mobile=fal
 }
 (async()=>{
  const h=harness(),{nodes:n,doc}=h;await h.flush();
+ // Current selection counts come from loaded resources, never a dated review's prose.
+ const assertCurrentSelection=(view,raw)=>{
+  const records=raw.resources,experiences=records.filter(r=>r.sourceType==='experience');
+  const recommended=records.filter(r=>r.recommendedByDefault!==false).length,experienceRecommended=experiences.filter(r=>r.recommendedByDefault!==false).length;
+  const current=view.nodes['evidence-review'].querySelector('.current-selection');
+  assert.equal(current.textContent,`当前${records.length}项资料：${recommended}项默认推荐、${records.length-recommended}项参考案例；其中${experiences.length}篇经验默认全部展示，${experienceRecommended}篇推荐阅读、${experiences.length-experienceRecommended}篇参考案例仍可筛选。`);
+  assert.equal(current.closest('details'),null,'the current count precedes the historical disclosure');
+  const history=view.nodes['evidence-review'].querySelector('.evidence-history');
+  if(raw.evidenceReview?.selectionNote){
+   assert(history);assert.equal(history.open,false);assert.equal(history.querySelector('summary').textContent,`${raw.evidenceReview.checkedAt||'未注明日期'} 选材审核记录（数量仅指当次）`);
+   assert.equal(history.querySelector('p').textContent,raw.evidenceReview.selectionNote.replace(/^当前/,'当次'),'dated original wording remains intact apart from its present-tense prefix');
+  }else assert.equal(history,null);
+ };
+ const originalCatalog=JSON.stringify(data);assertCurrentSelection(h,data);
+ const expanded=JSON.parse(originalCatalog);
+ expanded.resources.push({...expanded.resources.find(r=>r.sourceType==='official'),id:'count-regression-official',url:'https://example.org/count-regression-official'}, {...expanded.resources.find(r=>r.sourceType==='experience'),id:'count-regression-reference',url:'https://example.org/count-regression-reference',recommendedByDefault:false});
+ const expandedView=harness({catalogData:expanded});await expandedView.flush();assertCurrentSelection(expandedView,expanded);
+ assert.match(expandedView.nodes['scope-help'].textContent,new RegExp(`共 ${expanded.resources.length} 项`));
+ expanded.evidenceReview.selectionNote='当前999项资源；这是用于验证历史文案与当前统计独立的测试记录。';
+ const staleView=harness({catalogData:expanded});await staleView.flush();assertCurrentSelection(staleView,expanded);
+ delete expanded.evidenceReview;
+ const noHistory=harness({catalogData:expanded});await noHistory.flush();assertCurrentSelection(noHistory,expanded);
+ assert.equal(JSON.stringify(data),originalCatalog,'rendering never changes records, historical notes or source dates');
+ const readmeCurrent=fs.readFileSync(require.resolve('../README.md'),'utf8').split('## 2026-10-01 引导式学习流程')[0];
+ assert(readmeCurrent.includes(`当前共 ${counts.resources} 项资料，默认推荐 ${counts.resources-counts.reference} 项；另外 ${counts.reference} 项`));
+ assert(readmeCurrent.includes(`按问题浏览${counts.experiences}篇经验`));
+ assert(readmeCurrent.includes(`筛选${counts.experiences-counts.experienceReference}篇推荐阅读或${counts.experienceReference}篇参考案例`));
+ assert(readmeCurrent.includes(`默认展示全部${counts.experiences}篇，${counts.experiences-counts.experienceReference}篇推荐阅读与${counts.experienceReference}篇参考案例`));
+ console.log('PASS: live-data selection counts, stale/missing historical note, catalog immutability and README current overview');
+
  // Teaching sources use neutral labels and remain clickable without being called an experience case.
  const teaching=harness({hash:'#library/listening'});await teaching.flush();
  for(const [id,url] of [['liz','https://ieltsliz.com/listening-practice-office-etiquette/'],['bc-mocks','https://www.teachingenglish.org.uk/professional-development/teachers/teaching-knowledge-database/t-w/weak-forms']]){
@@ -49,8 +79,9 @@ function harness({rawState,hash='',offline=false,storageBlocked=false,mobile=fal
  hs['home-search'].value='<img src=x onerror=alert(1)>';hs['home-search-form'].dispatch('submit');assert.equal(hs['empty-state'].hidden,false);hs['home-search'].value='';hs['home-search-form'].dispatch('submit');assert.equal(hs['empty-state'].hidden,true);assert.equal(hs.search.value,'');assert.equal(homeSearch.saved.get('ieltsorbit.local.v1'),beforeHomeSearch);
 
  // The library entry preserves real learning conclusions while exposing its first action earlier.
+ const savedListeningPlan=JSON.stringify({saved:['writing-rubric'],path:{examHistory:'yes',baseline:'6',target:'7',dailyMinutes:'30',weakSkill:'listening',completed:true}});
  for(const [skill,guide] of Object.entries(core.learningGuides)){
-  const compact=harness({hash:'#library/'+skill,rawState:JSON.stringify({saved:['writing-rubric'],path:null})});await compact.flush();
+  const compact=harness({hash:'#library/'+skill,rawState:savedListeningPlan});await compact.flush();
   const root=compact.nodes['learning-guide'],subject=root.children[0],lead=subject.querySelector('.guide-lead'),columns=subject.querySelector('.guide-columns');
   assert(lead&&columns);assert(subject.children.indexOf(lead)<subject.children.indexOf(columns));
   assert(compact.text(lead).includes(guide.focus));
@@ -59,7 +90,9 @@ function harness({rawState,hash='',offline=false,storageBlocked=false,mobile=fal
   assert.equal(lead.closest('details'),null);assert.equal(columns.closest('details'),null,'subject conclusions remain visible without opening a disclosure');
   const primary=lead.querySelector('.primary-button');assert(primary);assert.equal(primary.href,'#library/'+skill+'/resource/'+guide.resources[0]);
   assert.equal(lead.querySelectorAll('.primary-button').length,1);assert.equal(subject.querySelector('.method-detail').open,false,'only the existing extended procedure stays folded');
-  assert.equal(compact.saved.get('ieltsorbit.local.v1'),JSON.stringify({saved:['writing-rubric'],path:null}));
+  const planLink=lead.querySelector('.text-button');assert.equal(planLink.textContent,'查看或调整学习计划');assert.equal(planLink.href,'#path','generic navigation makes no promise to schedule this subject');
+  compact.hash(planLink.href);assert.equal(compact.nodes['path-result'].hidden,false);assert.equal(compact.nodes['daily-time'].value,'30');assert.equal(compact.nodes['weak-skill'].value,'listening');
+  assert.equal(compact.saved.get('ieltsorbit.local.v1'),savedListeningPlan,'opening the plan from any subject never changes saved choices');
  }
  const libraryMarkup=html.split('id="panel-library"')[1].split('id="panel-experience"')[0];
  assert(!libraryMarkup.includes('class="journey-steps"'));assert(libraryMarkup.includes('答案、初稿或录音'));
