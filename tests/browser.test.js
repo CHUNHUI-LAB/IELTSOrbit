@@ -10,6 +10,22 @@ const server=http.createServer((req,res)=>{const pathname=new URL(req.url,'http:
  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));let browser;
  try{
   browser=await chromium.launch({headless:true});const page=await browser.newPage({viewport:{width:1440,height:1000}}),errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('http://127.0.0.1:'+server.address().port);await page.waitForFunction(count=>document.querySelectorAll('.experience-card').length===count,counts.experiences);
+  // Native anchor navigation, Back/Forward and reload regression for PR11.
+  // This is optional rendered QA; the DOM history model is a separate check.
+  const returns=await browser.newPage();returns.on('pageerror',e=>errors.push(e.message));
+  await returns.goto('http://127.0.0.1:'+server.address().port+'/#library/listening');
+  await returns.locator('#resource-cambridge').waitFor();await returns.locator('#search').fill('Cambridge');
+  await returns.locator('#resource-cambridge .resource-actions a').click();
+  assert.equal(await returns.locator('#resource-cambridge .reader-back').getAttribute('href'),'#library/listening');
+  await returns.locator('#resource-cambridge .resource-feedback a[href="#library/writing/method"]').click();
+  await returns.goBack();await returns.locator('#resource-cambridge[data-expanded="true"]').waitFor();
+  assert.equal(await returns.locator('#resource-cambridge .reader-back').getAttribute('href'),'#library/listening');
+  await returns.goForward();await returns.waitForURL('**/#library/writing/method');await returns.goBack();
+  await returns.reload();await returns.locator('#resource-cambridge[data-expanded="true"]').waitFor();
+  assert.equal(await returns.locator('#resource-cambridge .reader-back').getAttribute('href'),'#library/listening');
+  await returns.locator('#resource-cambridge .reader-back').click();assert.equal(await returns.locator('#search').inputValue(),'Cambridge');
+  assert.equal(await returns.locator('#panel-library').getAttribute('data-view'),'overview');
+  await returns.close();
   assert.equal(await page.locator('#panel-start').isVisible(),true);await page.locator('#home-tab-writing').click();await page.locator('#home-panel-writing .secondary-button').click();assert.equal(await page.locator('#skill-filter').inputValue(),'writing');assert.equal(await page.locator('#site-intro').isVisible(),false);assert.equal(await page.locator('#advanced-filters').getAttribute('open'),null);assert.match(await page.locator('#learning-guide').innerText(),/初稿/);
   await page.locator('.method-detail > summary').click();assert.equal(await page.locator('.method-detail .detail-body').isVisible(),true);
   await page.locator('#skill-navigation [data-skill=all]').click();assert.equal(await page.locator('.resource-card').count(),22);assert.equal(await page.locator('#recommendation-filter').isVisible(),true);assert.equal(await page.locator('#advanced-filters').getAttribute('open'),null);assert.equal(await page.locator('.learning-overview-grid article').count(),4);await page.selectOption('#recommendation-filter','reference');assert.equal(await page.locator('.resource-card').count(),counts.reference);

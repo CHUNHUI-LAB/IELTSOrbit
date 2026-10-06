@@ -86,7 +86,8 @@ function syncResourceReader(){
  const card=$('resource-'+route.resource),detail=$('detail-'+route.resource);if(!card||!detail)return;
  $('panel-library').dataset.view='resource';detail.open=true;
  document.querySelectorAll('.resource-card').forEach(n=>{n.dataset.expanded=String(n===card);});
- let back=card.querySelector('.reader-back');if(!back){back=internalLink('← 返回资料列表',libraryReturn?.hash||($('skill-filter').value==='all'?'library':'library/'+$('skill-filter').value),'reader-back secondary-button');card.append(back);}
+ const target=libraryReturn?.hash||($('skill-filter').value==='all'?'library':'library/'+$('skill-filter').value);
+ let back=card.querySelector('.reader-back');if(!back){back=internalLink('',target,'reader-back secondary-button');card.append(back);}back.href='#'+target;back.textContent=target.endsWith('/method')?'← 返回方法':'← 返回资料列表';
 }
 function resetFilters(skill='listening'){$('filter-form').reset();$('skill-filter').value=skill;savedOnly=false;renderGuide();renderResources();}
 function readPlan(){return core.normalizePlan({examHistory:$('exam-history').value,baseline:$('baseline').value,target:$('target').value,dailyMinutes:$('daily-time').value,weakSkill:$('weak-skill').value});}
@@ -129,6 +130,22 @@ function restoreLibrary(snapshot){
  Object.entries(ids).forEach(([key,id])=>{$(id).value=snapshot.filters[key];});savedOnly=snapshot.filters.savedOnly;renderGuide();renderResources();
  snapshot.opened.forEach(id=>{if($(id))$(id).open=true;});const method=document.querySelectorAll('.method-detail')[0];if(method)method.open=snapshot.methodOpen;window.scrollTo?.({top:snapshot.scrollY,behavior:'auto'});
 }
+// Return context belongs to a history entry, not a resource ID or the last
+// method visited. Only existing UI state is stored; localStorage is unchanged.
+function isLibraryOrigin(hash){return typeof hash==='string'&&/^library(?:\/(?:listening|reading|writing|speaking|all))?$|^library\/(?:listening|reading|writing|speaking)\/method$/.test(hash);}
+function librarySnapshot(hash){return isLibraryOrigin(hash)?{hash,filters:getFilters(),opened:Array.from(document.querySelectorAll('.resource-detail')).filter(n=>n.open).map(n=>n.id),scrollY:window.scrollY||0,methodOpen:!!document.querySelectorAll('.method-detail')[0]?.open}:null;}
+function validLibrarySnapshot(value){return !!value&&isLibraryOrigin(value.hash)&&value.filters&&['recommendation','query','sourceType','skill','level','price','access'].every(k=>typeof value.filters[k]==='string')&&typeof value.filters.savedOnly==='boolean'&&Array.isArray(value.opened)&&value.opened.every(id=>typeof id==='string')&&Number.isFinite(value.scrollY)&&typeof value.methodOpen==='boolean';}
+function historyRoute(hash){
+ try{const entry=window.history?.state?.ieltsorbitNavigation;return entry?.hash===hash&&(entry.returnTo===null||validLibrarySnapshot(entry.returnTo))?entry:null;}catch{return null;}
+}
+function rememberRoute(hash,returnTo){
+ try{
+  const history=window.history;if(!history?.replaceState)return;
+  const previous=history.state;if(previous!==null&&(typeof previous!=='object'||Array.isArray(previous)))return;
+  const entry={hash,returnTo};
+  if(JSON.stringify(previous?.ieltsorbitNavigation)!==JSON.stringify(entry))history.replaceState({...previous,ieltsorbitNavigation:entry},'');
+ }catch{/* Navigation remains usable when session-history state is unavailable. */}
+}
 function resetCurrentFilters(){const skill=$('skill-filter').value||'listening';libraryReturn=null;resetFilters(skill);navigate(skill==='all'?'library':'library/'+skill);}
 function applyRoute(focus){
  const hash=location.hash.replace(/^#/,''),route=core.parseRoute(location.hash),previous=core.parseRoute(lastRoute);
@@ -139,7 +156,7 @@ function applyRoute(focus){
  if(route.tab==='library'){
   const methodView=hash.split('/')[2]==='method';
   $('library-title').textContent=methodView&&route.skill?core.learningGuides[route.skill].title+'方法：从练习到复盘':'学习资料';
-  if(route.resource&&!previous.resource&&previous.tab==='library'&&lastRoute){libraryReturn={hash:lastRoute,filters:getFilters(),opened:Array.from(document.querySelectorAll('.resource-detail')).filter(n=>n.open).map(n=>n.id),scrollY:window.scrollY||0,methodOpen:!!document.querySelectorAll('.method-detail')[0]?.open};}
+  if(route.resource){const entry=historyRoute(hash);if(entry)libraryReturn=entry.returnTo;else if(hash!==lastRoute)libraryReturn=previous.tab==='library'&&!previous.resource&&lastRoute?librarySnapshot(lastRoute):previous.resource?libraryReturn:null;}
   if(!route.resource&&libraryReturn&&hash===libraryReturn.hash){restoreLibrary(libraryReturn);libraryReturn=null;}
   else{
    if(!route.resource&&previous.resource)libraryReturn=null;
@@ -154,11 +171,12 @@ function applyRoute(focus){
   if(!route.resource&&previous.resource){const target=methodView?$('learning-guide'):$('resource-'+previous.resource)?.querySelector('.resource-actions')?.querySelector('a')||$('search');target.focus({preventScroll:true});}
  }
  if(route.tab==='path'){if(route.planStep)showPlanStep(route.planStep);else if(route.planResult||state.path?.completed)showPlanResult();else showPlanStep(planStep);if(previous.tab==='path'&&hash!==lastRoute){const target=$('plan-wizard').hidden?$('path-result'):$('plan-step-'+planStep);target.tabIndex=-1;target.focus({preventScroll:true});}}
- lastRoute=hash;
+ lastRoute=hash;rememberRoute(hash,route.resource?libraryReturn:null);
 }
 function navigate(hash,focus=false){location.hash=hash;applyRoute(focus);}
 document.querySelectorAll('[data-tab]').forEach(button=>{button.addEventListener('click',()=>navigate(button.dataset.tab));button.addEventListener('keydown',event=>{let index=tabs.indexOf(button.dataset.tab);if(event.key==='ArrowRight')index=(index+1)%tabs.length;else if(event.key==='ArrowLeft')index=(index+tabs.length-1)%tabs.length;else if(event.key==='Home')index=0;else if(event.key==='End')index=tabs.length-1;else return;event.preventDefault();navigate(tabs[index],true);});});
 window.addEventListener('hashchange',()=>applyRoute(false));
+window.addEventListener('popstate',()=>applyRoute(false));
 $('skip-main').addEventListener('click',event=>{event.preventDefault();$('main').focus({preventScroll:true});$('main').scrollIntoView?.({block:'start',behavior:'auto'});});
 document.querySelectorAll('[data-go]').forEach(button=>button.addEventListener('click',()=>navigate(button.dataset.go,true)));
 document.querySelectorAll('[data-intent]').forEach(button=>button.addEventListener('click',()=>{const intent=button.dataset.intent;if(intent==='experience'){navigate('experience',true);return;}resetFilters(intent);navigate('library/'+intent,true);}));
