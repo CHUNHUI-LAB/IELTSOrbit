@@ -26,8 +26,11 @@ console.log('PASS: 12 learning-path combinations, source/skill/level/price/acces
 
 const source=require('../data/catalog.json');
 const catalog=core.normalizeCatalog(source);
+const {paperTrfStage,beforePaperTrfPolicyCatalog}=require('./policy-history.js');
+const historicalPolicyCatalog=beforePaperTrfPolicyCatalog(source);
 assert.equal(catalog.resources.length,counts.resources);
-assert.equal(catalog.policies.length,3);
+assert.equal(core.normalizeCatalog(historicalPolicyCatalog).policies.length,3,'original policy snapshot remains independently testable');
+assert.deepEqual(catalog.policies.map(policy=>policy.id),paperTrfStage.currentPolicyIds,'current normalization retains the exact reviewed policy order');
 assert.equal(catalog.centers.length,4);
 assert.equal(catalog.calendars.length,1);
 assert.equal(catalog.meta.checkedAt,'2026-10-01');
@@ -50,7 +53,7 @@ const digest=value=>crypto.createHash('sha256').update(JSON.stringify(value)).di
 assert.equal(digest(legacyResources(source.resources).slice(0,15)),'dd6b39098a366c6835d5e452b8c40e57d543245fd5cc3fe04debf8ccf690b29b','original 15 resource fields preserved');
 const {lastScheduledCheckAt,lastScheduledCheckScope,...initialMetadata}=source.metadata;
 assert.equal(digest({...initialMetadata,firstScheduledRunVerified:false}),'2c61c1364ee41f79b752e8eab8f0e416fbbba1e9731694b1bcc77a80e3986594','initial catalog metadata preserved except verified scheduled check fields');
-assert.equal(digest(source.policies),'5ca2c5ad3691f44032f282741fa67d3e976abf84b10ec28b8a154156fb742a79','policies preserved');
+assert.equal(digest(historicalPolicyCatalog.policies),'5ca2c5ad3691f44032f282741fa67d3e976abf84b10ec28b8a154156fb742a79','all three historical policies preserved');
 assert.equal(digest(source.centers),'11ec5fcc1d5887dd8fd86604febbb7ee3283ab016c36973aea4ff402cb8bda9b','centers matches the reviewed 2026-10-02 official-directory update');
 assert.equal(digest(source.calendar),'4eb1d9a56a41d59b3509ac71dff9fa5d290e4633aac8d8fea3ca8178025f9da2','calendar matches the reviewed scheduled check; UKVI detail now independently observed as maintenance');
 assert.equal(digest(source.paths),'8b81304b21530b5d3f1641afe3737746a43a5d14bc6adb74c2a9b47394c8e0e5','paths preserved');
