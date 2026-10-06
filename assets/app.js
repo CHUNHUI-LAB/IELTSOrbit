@@ -22,7 +22,14 @@ function resourceCard(resource){
  const inside=create('div','detail-body');inside.append(create('p','evidence-label',resource.sourceType==='official'?'官方资料：用于核对题型、标准或官方建议':resource.sourceType==='experience'?'个人经验：过程可借鉴，自报结果不能作为效果证明':'教学材料：方法供练习检验，不是官方考试规则'));
  if(resource.reportedRoutine?.length)inside.append(create('h4','','原文自述与作者建议'),list(resource.reportedRoutine));
  inside.append(create('h4','','这份资料怎么用'));
- if(resource.actionableMethods?.length)inside.append(list(resource.actionableMethods,'ol'));else inside.append(create('p','',resource.sourceType==='official'?'先核对当前学习任务对应的样题、题型或评分维度，选一个小任务实践；不要只浏览目录。':'先选与你当前错因相符的一节，边看边做一个小任务；用自己的新材料练习检验理解。'));
+ if(resource.actionableMethods?.length)inside.append(list(resource.actionableMethods,'ol'));else{
+  inside.append(create('p','',resource.sourceType==='official'?'先核对当前学习任务对应的样题、题型或评分维度，选一个小任务实践；不要只浏览目录。':'先选与你当前错因相符的一节，边看边做一个小任务；用自己的新材料练习检验理解。'));
+  const skills=resource.sourceType==='experience'?[]:resource.skills.filter(skill=>core.learningGuides[skill]);
+  if(skills.length){
+   const feedback=create('section','resource-feedback');feedback.append(create('h4','','本站建议：练习后的反馈与复盘'),create('p','evidence-label','选用下列分科方法留下一份记录；这是本站通用练习建议，不代表已体验这份资料的反馈服务。'));
+   const outputs=create('ul');skills.forEach(skill=>{const guide=core.learningGuides[skill],item=create('li');item.append(create('p','',guide.title+'：'+guide.output),internalLink('查看'+guide.title+'反馈与复盘步骤 →','library/'+skill+'/method'));outputs.append(item);});feedback.append(outputs);inside.append(feedback);
+  }
+ }
  if(resource.caution)inside.append(create('p','card-caution',resource.caution));
  const line=(label,value)=>{if(value)inside.append(create('p','',label+'：'+value));};
  line('费用',resource.priceLabel||core.labels.price[resource.price]);line('访问方式',resource.accessLabel||core.labels.access[resource.access]);
