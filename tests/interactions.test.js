@@ -4,7 +4,7 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs'),vm=require('node:vm');
 const core=require('../assets/core.js'),data=require('../data/catalog.json');
 const html=fs.readFileSync(require.resolve('../index.html'),'utf8');
-function harness({rawState,hash='',offline=false,storageBlocked=false,mobile=false,catalogData=data}={}){
+function harness({rawState,hash='',offline=false,storageBlocked=false,mobile=false,catalogData=data,browserHistory=null}={}){
  let active,fetches=0,storageWrites=0;
  const nodes={},saved=new Map(rawState?[['ieltsorbit.local.v1',rawState]]:[]),events={};
  const descendants=n=>n.children.flatMap(c=>[c,...descendants(c)]);
@@ -29,6 +29,7 @@ function harness({rawState,hash='',offline=false,storageBlocked=false,mobile=fal
  const intents=['listening','reading','writing','speaking','experience'].map(value=>{const n=new Element('button');n.dataset.intent=value;return n;});
  const context={window:{IELTSCore:core,confirm:()=>true,matchMedia:()=>({matches:mobile}),addEventListener:(k,f)=>events[k]=f},document:doc,location:{hash},localStorage:{getItem:k=>{if(storageBlocked)throw new Error('blocked');return saved.get(k);},setItem:(k,v)=>{if(storageBlocked)throw new Error('blocked');saved.set(k,v);storageWrites++;},removeItem:k=>{if(storageBlocked)throw new Error('blocked');saved.delete(k);}},fetch:async url=>{fetches++;assert.equal(String(url),'https://example.test/IELTSOrbit/data/catalog.json');if(offline)throw new Error('offline');return{ok:true,json:async()=>catalogData};},URL,console};
  context.window.location=context.location;
+ if(browserHistory)browserHistory.attach(context,events);
  vm.runInNewContext(fs.readFileSync(require.resolve('../assets/experience.js'),'utf8'),context);
  vm.runInNewContext(fs.readFileSync(require.resolve('../assets/app.js'),'utf8'),context);
  return{nodes,doc,intents,saved,context,events,descendants,get active(){return active;},get fetches(){return fetches;},get storageWrites(){return storageWrites;},text:n=>[n,...descendants(n)].map(n=>n.textContent).join(' '),hash:value=>{context.location.hash=value;events.hashchange();},flush:()=>new Promise(setImmediate)};
