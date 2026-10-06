@@ -1,4 +1,5 @@
 'use strict';
+const {beforePaperTrfPolicyCatalog}=require('./policy-history.js');
 // 2026-10-04: this five-field Liz correction is frozen in teaching-supplement.test.js.
 // Project only those fields back for historical hashes; unrelated fields remain observable.
 const beforeSkillAlignmentLizFields = {
@@ -52,7 +53,7 @@ module.exports.beforeVerifiedExperienceCatalog=beforeVerifiedExperienceCatalog;
 
 // Project only this two-record append; independent output-review test pins the full 49-record baseline.
 const outputReviewIds=Object.freeze(["dcard-speaking-record-transcript-feedback", "douban-listening-hesitation-review-2022"]);
-function beforeOutputReviewCatalog(catalog){return {...catalog,resources:catalog.resources.filter(r=>!outputReviewIds.includes(r.id))};}
+function beforeOutputReviewCatalog(catalog){catalog=beforePaperTrfPolicyCatalog(catalog);return {...catalog,resources:catalog.resources.filter(r=>!outputReviewIds.includes(r.id))};}
 function beforeOutputReviewTopics(topics){return Object.fromEntries(Object.entries(topics).map(([k,ids])=>[k,ids.filter(id=>!outputReviewIds.includes(id))]));}
 const outputThemeSuffix={"2": " 豆瓣个案另记录做对但犹豫的题；旧材料重练的熟悉效应未排除。", "7": " Dcard个案把课前录音交老师反馈，考前请朋友提问再计时录音；本站建议保留原音核对转录，不能凭识别错误诊断发音。"};
 function beforeOutputReviewThemes(themes){return themes.map((t,i)=>{const suffix=outputThemeSuffix[i];return {...t,sourceIds:t.sourceIds.filter(id=>!outputReviewIds.includes(id)),synthesis:suffix&&t.synthesis.endsWith(suffix)?t.synthesis.slice(0,-suffix.length):t.synthesis};});}

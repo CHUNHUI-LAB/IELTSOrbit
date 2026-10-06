@@ -2422,6 +2422,14 @@
       "text": "是否接受单科重考由成绩接收机构决定，不能默认所有申请项目接受。资格、期限和开考城市以官方当期说明为准。",
       "url": "https://www.chinaielts.org/book-ielts/one-skill-retake",
       "checkedAt": "2026-10-01"
+    },
+    {
+      "id": "trf-digital-only-2026-10",
+      "title": "10月起 IELTS/UKVI 全科与单科重考仅提供电子成绩单",
+      "text": "中国大陆自2026年10月1日考试起，IELTS与IELTS for UKVI学术类、培训类全科及单科重考不再提供纸质成绩单。全科考生可在成绩发布后第二日10点后从官方报名网站下载电子成绩单；单科重考通过官方服务小程序获取，具体下载时间以公告及平台显示为准。Life Skills仍提供纸质成绩单，暂不提供电子成绩单。",
+      "url": "https://www.chinaielts.org/press-office/paper-trf",
+      "effectiveFrom": "2026-10-01",
+      "checkedAt": "2026-10-06"
     }
   ],
   "centers": [

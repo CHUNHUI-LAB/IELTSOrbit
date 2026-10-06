@@ -1,0 +1,747 @@
+{
+  "checkedAt": "2026-10-06",
+  "checkedAtUtc": "2026-10-06T07:35:17Z",
+  "baseCommit": "f7e973bea4832b66defaaf3c11eddc5939eada24",
+  "scope": "官方考试形式、费用、报名、评分、杭州名录和Q4公开考期；另有界复核出版社、教师、Reddit、海外博客及国内平台。仅成功读取的具体页面计入正文，不代表全库或平台全量复核。",
+  "result": "one_verified_policy_append_candidate_held_due_to_existing_regression_failures",
+  "resourcesUnchanged": 51,
+  "experiencesUnchanged": 34,
+  "newResourceIds": [],
+  "addedPolicyIds": [
+    "trf-digital-only-2026-10"
+  ],
+  "sources": [
+    {
+      "url": "https://www.chinaielts.org/press-office/paper-trf",
+      "type": "official",
+      "scope": "Web公开正文第363–423行，含通知及6项问答；未读成绩单样图。",
+      "verifiedAtUtc": "2026-10-06T07:28:03Z",
+      "attemptedAtUtc": "2026-10-06T07:28:03Z",
+      "applicableYear": 2026,
+      "publishedAt": null,
+      "finding": "2026-10-01考试起，IELTS/UKVI学术类、培训类全科及单科重考停止提供纸质成绩单；Life Skills仍为纸质，暂不提供电子版。全科电子成绩单可于成绩发布后第二日10点后在报名网站下载。",
+      "limitations": [
+        "正文未显示发布日期，不能称为10月6日新发布。",
+        "通知开头对单科重考写“成绩发布后”，问答Q2写“第二日10点起”；OSR精确下载时间不作统一推断。",
+        "未核验个人成绩页、机构具体接收要求或送分操作。"
+      ],
+      "lastKnownSuccessfulRead": null,
+      "decision": "追加成绩单政策",
+      "effectiveDates": {
+        "paperTrfDiscontinued": "2026-10-01",
+        "eTrfEligibility": "2026-09-01"
+      },
+      "retrievalStatus": "body_read"
+    },
+    {
+      "url": "https://www.chinaielts.org/press-office/IELTS-Chinese-Mainland-Exam-Registration-2026-7-9",
+      "type": "official",
+      "scope": "Web正文第363–418行：退市日期、模式说明、报名截止概述及Q3公告标题；未读Q3日历图片。",
+      "verifiedAtUtc": "2026-10-06T07:28:25Z",
+      "attemptedAtUtc": "2026-10-06T07:28:25Z",
+      "applicableYear": 2026,
+      "publishedAt": null,
+      "finding": "中国大陆标准IELTS于2026-09-01、UKVI于2026-07-01停止纸笔考试。正文仍留考后3–5天说法，当前出分采用较晚生效的eTRF公告1–5天说明。",
+      "limitations": [
+        "这是Q3公告，不可用它推断Q4逐日考期。",
+        "未见明确发表日期。",
+        "现有“9月1日起两种考试均采用机考”并非错误；UKVI更早退市属于可补充精度。"
+      ],
+      "lastKnownSuccessfulRead": null,
+      "decision": "独立复核记录；不覆盖原条目与历史核验日",
+      "effectiveDates": {
+        "ieltsComputerOnly": "2026-09-01",
+        "ukviComputerOnly": "2026-07-01"
+      },
+      "retrievalStatus": "body_read"
+    },
+    {
+      "url": "https://www.chinaielts.org/press-office/ielts-eTRF",
+      "type": "official",
+      "scope": "Exa公开正文全文及Web第363–474行；另以普通HTTP核到正文HTML及4张日历图片地址。",
+      "verifiedAtUtc": "2026-10-06T07:29:05Z",
+      "attemptedAtUtc": "2026-10-06T07:29:05Z",
+      "applicableYear": 2026,
+      "publishedAt": null,
+      "finding": "9月1日起IELTS和UKVI全为机考、1–5天出分并可获电子成绩单；Q4考期已公布。旧文称纸质仍提供，须结合10月1日起生效的paper-trf新规则使用。",
+      "limitations": [
+        "四张日历图片本轮均未读取内容；正文不含逐日日期。",
+        "首次Web打开超时，随后Exa正文成功、Web带尾斜杠入口亦成功。",
+        "Web标注内容抓取于4天前；07:29:05Z是本轮读到正文的时间，不是网页更新时间。",
+        "未登录个人账号。"
+      ],
+      "lastKnownSuccessfulRead": {
+        "date": "2026-10-02",
+        "observedAtUtc": "2026-10-02T06:55:59Z",
+        "scope": "旧记录已读公告正文及问答，未读日历图片"
+      },
+      "decision": "独立复核记录；不覆盖原条目与历史核验日",
+      "effectiveDates": {
+        "computerAndEtrf": "2026-09-01"
+      },
+      "retrievalStatus": "body_read"
+    },
+    {
+      "url": "https://www.chinaielts.org/press-office/IELTS-Chinese-Mainland-Exam-Registration-Fee-Update-2026",
+      "type": "official",
+      "scope": "Web正文第363–438行费用及生效说明；未读Q1日历图片。",
+      "verifiedAtUtc": "2026-10-06T07:27:39Z",
+      "attemptedAtUtc": "2026-10-06T07:27:39Z",
+      "applicableYear": 2026,
+      "publishedAt": null,
+      "finding": "2026年标准IELTS与UKVI报名费各1990元，Life Skills1250元；转考/退考手续费380元。与catalog现有费用一致。",
+      "limitations": [
+        "未进入报名或支付页，实际付款及退转条件仍须按官方系统。",
+        "文中历史纸笔开放描述不代表10月仍可报纸笔。",
+        "未见明确发表日期。"
+      ],
+      "lastKnownSuccessfulRead": {
+        "date": "2026-10-04",
+        "scope": "maintenance记录已读费用公告正文"
+      },
+      "decision": "独立复核记录；不覆盖原条目与历史核验日",
+      "effectiveDates": {
+        "examFees": "2026-01-01",
+        "transferCancellationFees": "2026-01-01"
+      },
+      "retrievalStatus": "body_read"
+    },
+    {
+      "url": "https://www.chinaielts.org/about-ielts/ielts",
+      "type": "official",
+      "scope": "Web第363–423行及Exa正文：费用表、支付和退考问答。",
+      "verifiedAtUtc": "2026-10-06T07:30:28Z",
+      "attemptedAtUtc": "2026-10-06T07:30:28Z",
+      "applicableYear": 2026,
+      "publishedAt": null,
+      "finding": "补充核到OSR报名费1400元、全科和OSR转退费均380元；标准/UKVI复议1400元，Life Skills复议1000元。页面将报名缴费引向NEEA。",
+      "limitations": [
+        "页面还列纸质额外成绩单及寄送说明，不能未经核对将这些条款推广到10月1日以后所有考试。",
+        "OSR报名入口按OSR专页，不把本页泛称“唯一通道”套用于OSR。",
+        "未登录、支付或验证支付服务可用性；未见明确发表日期。"
+      ],
+      "lastKnownSuccessfulRead": null,
+      "decision": "独立复核记录；不覆盖原条目与历史核验日",
+      "retrievalStatus": "body_read"
+    },
+    {
+      "url": "https://www.chinaielts.org/book-ielts/one-skill-retake",
+      "type": "official",
+      "scope": "Web第364–444行：资格、60天、证件、机构认可、8城市13考点表、收费及小程序报名说明。",
+      "verifiedAtUtc": "2026-10-06T07:27:46Z",
+      "attemptedAtUtc": "2026-10-06T07:27:46Z",
+      "applicableYear": 2026,
+      "publishedAt": null,
+      "finding": "大陆BC全科机考出成绩后，原考试日起60天内可报名并参加一次OSR，使用同一证件，报名前确认接收机构认可。所列城市不含杭州；宁波在表内。",
+      "limitations": [
+        "页面未标年份或更新日期；applicableYear表示本轮2026年观察，不能推断条文自2026年开始。",
+        "城市名录不是当期场次、余位或可报名证明，也不能证明名录外城市永久不提供。",
+        "未开启微信小程序或读取个人资格。"
+      ],
+      "lastKnownSuccessfulRead": {
+        "date": "2026-10-04",
+        "scope": "maintenance已读资格、期限、机构认可和城市表"
+      },
+      "decision": "独立复核记录；不覆盖原条目与历史核验日",
+      "retrievalStatus": "body_read"
+    },
+    {
+      "url": "https://ielts.org/take-a-test/your-results/ielts-scoring-in-detail",
+      "type": "official",
+      "scope": "Web正文第204–429行，重点为总分平均/进位、听读原始分变动及写说评分维度；未开评分PDF或播放视频。",
+      "verifiedAtUtc": "2026-10-06T07:29:53Z",
+      "attemptedAtUtc": "2026-10-06T07:29:53Z",
+      "applicableYear": 2026,
+      "publishedAt": null,
+      "finding": "总分仍为四科平均后取最近半分，.25/.75向上取半分/整数；听读原始分门槛因试卷略变。写作每项四维等权、Task2权重更大；口语四维等权。",
+      "limitations": [
+        "通用评分规则，无明确生效年或网页发布日期。",
+        "未审评分PDF、具体题卷、非官方练习换算或AI评分；不能保证练习正确数对应正式成绩。"
+      ],
+      "lastKnownSuccessfulRead": {
+        "date": "2026-10-04",
+        "scope": "maintenance已读平均进位及听读说明"
+      },
+      "decision": "独立复核记录；不覆盖原条目与历史核验日",
+      "retrievalStatus": "body_read"
+    },
+    {
+      "url": "https://www.chinaielts.org/book-ielts",
+      "type": "official",
+      "scope": "Web第363–446行：报名、退转、考点、成绩入口及简要说明。",
+      "verifiedAtUtc": "2026-10-06T07:30:12Z",
+      "attemptedAtUtc": "2026-10-06T07:30:12Z",
+      "applicableYear": 2026,
+      "publishedAt": null,
+      "finding": "中国大陆报名指向教育部教育考试院网站；公开说明可于报名截止前变更考期/考点或取消。详细流程页本轮抓取412。",
+      "limitations": [
+        "仅核公开导航和概述，未验证全流程、截止时间、账户、付款、可报考点或余位。",
+        "页面宣传的考位充足不能当作实时库存。",
+        "无明确适用年份，2026是观察年。"
+      ],
+      "lastKnownSuccessfulRead": null,
+      "decision": "独立复核记录；不覆盖原条目与历史核验日",
+      "retrievalStatus": "body_read"
+    },
+    {
+      "url": "https://www.zjzs.net/col/col282/index.html",
+      "type": "official",
+      "scope": "Web全文40行及Exa实质正文，含杭州4处地点、考试模式、到场及证件注意事项。",
+      "verifiedAtUtc": "2026-10-06T07:28:25Z",
+      "attemptedAtUtc": "2026-10-06T07:28:25Z",
+      "applicableYear": 2026,
+      "publishedAt": null,
+      "finding": "杭州列省考试院、浙江大学、杭州电子科技大学、浙江科技大学。杭电地址写2号大街1号，与2026-10-02 NEEA记录1158号有差异；纸笔模式描述仍未同步。",
+      "limitations": [
+        "无发布日期；不能证明资料为2026年更新。",
+        "不能以较泛的省级名录覆盖既有NEEA详细考场和入口。",
+        "地址差异未解决；实际入场按官方系统和准考证。",
+        "名录不是当前可报名场次或余位。"
+      ],
+      "lastKnownSuccessfulRead": {
+        "date": "2026-10-04",
+        "scope": "maintenance已读杭州地点及发现同一地址差异"
+      },
+      "decision": "独立复核记录；不覆盖原条目与历史核验日",
+      "retrievalStatus": "body_read"
+    },
+    {
+      "url": "https://www.cambridgeenglish.org/exams-and-tests/ielts/preparation/",
+      "type": "official_publisher",
+      "verifiedAtUtc": "2026-10-06T07:28:09Z",
+      "publishedAt": null,
+      "applicableYear": 2026,
+      "finding": "现有Cambridge目录条目无需更新；目录含纸笔样题不表示中国大陆仍提供纸笔考试。",
+      "decision": "保留原资源与原核验日；本次复核独立记录。未并入此前待审的Cambridge五步练习候选。",
+      "commentsReview": "不适用；目录没有评论正文。",
+      "limitation": "出版社营销语不作效果证据；未确认出版日期或商品可购买状态。",
+      "scope": "已读目录实质正文（Guide、FAQs、免费样题及书目区域），确认仍列IELTS 21 Academic/GT、Mindset和Official Guide；没有读取教材内页、下载样题、购买或体验课程。"
+    },
+    {
+      "url": "https://ieltsliz.com/ielts-writing-task-2-addressing-the-task/",
+      "type": "commercial_teacher",
+      "verifiedAtUtc": "2026-10-06T07:28:53Z",
+      "publishedAt": null,
+      "applicableYear": null,
+      "yearNote": "文章未显示可确认的发表日期；评论为2017—2024年，不以评论或页眉2026推断文章年份。",
+      "finding": "作者在回复中补充应覆盖题目全部问题；4或5段取决于所表达的观点。考生评论中的失误与分数均为自述，作者也要求先提供完整题目才能判断。",
+      "decision": "不新增重复提纲资源；现有Liz分项入口已有Task 2提纲练习。",
+      "recommendationReason": "可作为审题自检的补充来源；不将教师具体结构偏好变为唯一官方要求。",
+      "limitation": "不采用某项最容易得分、选择某结构更安全的泛化断言；评论中的成绩不证明教学效果。正文带付费产品入口，未体验。",
+      "scope": "已读完整实质教学正文（题目要求、三种提纲和部分同意），以及评论区前5个顶层线程及其可见回复，共22条；第6线程只读问题，未计入完整线程。未读余下评论，不声称读完页示89条；未购买课程或打开付费材料。"
+    },
+    {
+      "url": "https://www.ieltsadvantage.com/2023/03/15/how-to-improve-ielts-reading/",
+      "type": "commercial_teacher",
+      "verifiedAtUtc": "2026-10-06T07:29:25Z",
+      "publishedAt": null,
+      "applicableYear": null,
+      "yearNote": "URL日期不是已核实的文章发表日期。",
+      "finding": "与10月4日复核及现有错因复盘方法重叠。",
+      "decision": "不新增；保留原资源和核验日期。",
+      "recommendationReason": "按具体错因分配训练有用，但不是新方法。",
+      "limitation": "机构高分、课程效果与只有指定材料才有用的绝对说法未独立核验；不作承诺。",
+      "scope": "已读全部实质正文，从官方材料计时练习到按题型、词汇、拼写和时间分析错因；未播放视频、参加课程或读取评论。页面显示5 Comments但未返回正文。"
+    },
+    {
+      "url": "https://www.bilibili.com/opus/840872356555522066",
+      "type": "public_experience",
+      "verifiedAtUtc": "2026-10-06T07:29:01Z",
+      "publishedAt": null,
+      "applicableYear": 2023,
+      "yearNote": "正文标注编辑于2023-09-14 07:24；编辑日期不自动等同首发。",
+      "finding": "现库已有bili-reading-error-log-pang-2023。此次正文仍支持定位/理解错因分开记录。",
+      "decision": "原条目完整保留，不重复收录或更新其历史核验日。",
+      "recommendationReason": "只复核已收录的复盘格式。",
+      "limitation": "自报成绩与方法因果未独立核验；不采用雅思只考技巧、固定每天篇数、第三方题库真实性或版权已验证等推断。",
+      "scope": "经Exa读取可提取的实质文字正文：背景、工具顺序、精读、错题定位与理解分类、词汇复习。未视觉检查嵌入成绩单/表格图片，未读评论、播放外链视频、验证应用或成绩。"
+    },
+    {
+      "url": "https://www.bilibili.com/opus/1135292137078784003",
+      "type": "commercial_teacher",
+      "verifiedAtUtc": "2026-10-06T07:29:01Z",
+      "publishedAt": "2025-11-15",
+      "applicableYear": 2025,
+      "finding": "教师呈现的课堂问答并非考生独立亲历报告。其把错误诊断与下次练习关联的方法与现库重叠；正文主动引导诊断服务与自有语料产品。",
+      "decision": "不新增推荐或经验条目。",
+      "recommendationReason": "仅可参考追问真实误因的思路；没有足够增量。",
+      "limitation": "不将标题词量/5.5当作已验证起点，不采用所有听读填空必须原词的无条件概括、自然拼写万能方案或快速提分断言。",
+      "scope": "经Exa读取可提取的教学正文和结尾诊断服务推广：教师转述学生错因、追问、拼写练习。未查看讲义/作业图片、评论、视频或服务效果；不转载例题、答案、讲义。"
+    },
+    {
+      "url": "https://www.reddit.com/r/IELTS/comments/1v2yeg8/finally_got_my_desired_score_ielts_academic/",
+      "type": "public_experience",
+      "scope": "Full extracted original post and all currently returned thread blocks before related posts. Images, external videos and essay pages not opened; folded replies not expanded.",
+      "verifiedAtUtc": "2026-10-06T07:28:18Z",
+      "applicableYear": null,
+      "yearNote": "Original page displays '2mo ago'; this is a cached relative label, not an exact publication date. January 2026 is the author's previous-test date, not publication.",
+      "publishedAt": null,
+      "finding": [
+        "OP reports a second attempt after earlier R/W6.5 and L/S7, concentrating on reading/writing during an eight-day final window.",
+        "OP describes studying sample sentence structures, building an understood framework, and trying two British Council mocks. No before/after writing artifacts are supplied."
+      ],
+      "commercialDisclosure": "Strong praise and links for IELTS Advantage; no payment or affiliate relationship established in the read material.",
+      "limitations": [
+        "Eight days as a general preparation promise",
+        "Five essay types as an official exhaustive taxonomy",
+        "Mock raw scores as a universal band conversion"
+      ],
+      "decision": "不新增：既有强起点短期备考和写作反馈案例已覆盖。可参考按短板选材，但缺独立输出、反馈和迁移证据。",
+      "recommendedByDefault": false,
+      "commentsReview": {
+        "visibleBlocks": 25,
+        "readableHumanComments": 22,
+        "originalPosterComments": 10,
+        "otherHumanComments": 12,
+        "automatedComments": 2,
+        "removedPlaceholders": 1,
+        "totalThreadCommentCount": null,
+        "usefulCommentUrl": "https://www.reddit.com/r/IELTS/comments/1v2yeg8/comment/oz2f7bm/",
+        "usefulCommentReadStatus": "Read inside the parent thread; direct permalink fetch returned Cache miss.",
+        "attributionBoundary": "原作者补充、其他考生自述、课程/教师建议及机器人提示分别核读，不互相归并为结果或效果证据。"
+      }
+    },
+    {
+      "url": "https://www.reddit.com/r/IELTS/comments/1qvwogk/disappointed_with_writing/",
+      "type": "public_experience",
+      "scope": "Full extracted original text and visible comments through the final listening clarification; folded replies and score image not inspected.",
+      "verifiedAtUtc": "2026-10-06T07:28:40Z",
+      "applicableYear": null,
+      "yearNote": "Original page displays '5mo ago'; cache age prevents converting this into a reliable calendar date.",
+      "publishedAt": null,
+      "finding": [
+        "OP describes reading for evidence, recording speaking, and a later clarification about previewing listening questions. Some timed practices were paused when focus failed.",
+        "OP reports extensive English media exposure. The image alternative text presents writing6.5 against stronger other skills, but the image itself was not checked.",
+        "A commenter claims a two-band gap triggers checking and a quick writing fix; neither claim is supported by official evidence here. No eventual remark result is visible."
+      ],
+      "commercialDisclosure": "Commercial teaching channels are named; one commenter urges buying assessment. No verified credentials or service effect.",
+      "limitations": [
+        "Automatic review policy inferred from comments",
+        "Strong speaking guarantees quick writing improvement",
+        "Paused practice equated with uninterrupted simulation"
+      ],
+      "decision": "不新增：写作短板、考后自信与结果落差及有辅助/无辅助计时区别已有较清楚案例。",
+      "recommendedByDefault": false,
+      "commentsReview": {
+        "visibleBlocks": 18,
+        "readableHumanComments": 16,
+        "originalPosterComments": 8,
+        "otherHumanComments": 8,
+        "automatedComments": 2,
+        "removedPlaceholders": 0,
+        "totalThreadCommentCount": null,
+        "usefulCommentUrl": "https://www.reddit.com/r/IELTS/comments/1qvwogk/comment/o4s6e5z/",
+        "usefulCommentReadStatus": "Read inside parent thread; direct permalink fetch returned Cache miss.",
+        "attributionBoundary": "原作者补充、其他考生自述、课程/教师建议及机器人提示分别核读，不互相归并为结果或效果证据。"
+      }
+    },
+    {
+      "url": "https://www.reddit.com/r/IELTS/comments/1rx8tf1/i_got_my_scores_today_share_my_experience_after/",
+      "type": "public_experience",
+      "scope": "Full extracted post and entire returned seven-block comment section; no external material, videos or score documents inspected.",
+      "verifiedAtUtc": "2026-10-06T07:29:08Z",
+      "applicableYear": null,
+      "yearNote": "Page displays '7mo ago'; comments include '6mo ago'. Author says Amsterdam test on 5 March without a year in that sentence. Exact publication date remains unresolved.",
+      "publishedAt": null,
+      "finding": [
+        "OP reports an old C1 result, years without regular English output, two part-time jobs and limited time/budget. Final self-reported L9/R7.5/W6.5/S6.5 follows 2.5 months; the initial speaking5–5.5 is not an established official baseline.",
+        "An affordable tutor gave feedback; AI organized recurring corrections and vocabulary. OP transcribed answers and rerecorded revisions.",
+        "An OP follow-up contrasts listening comprehension with insufficient time to process options, suggesting a paused practice experiment."
+      ],
+      "commercialDisclosure": "Tutor unnamed; commercial channels/books are mentioned without a visible booking/referral link. Identity and financial interests unverified.",
+      "limitations": [
+        "Treating old C1 reactivation as beginner improvement",
+        "Inferring only one cause when pausing improves accuracy",
+        "Transferring historical paper-test timing to current mainland computer tests",
+        "Repeating AI-generated corrections without checking"
+      ],
+      "decision": "最有价值的暂存候选：可说明有限预算下复用教师反馈，但与现有录音转写、错因迁移和在职案例重叠。没有低基础正式起点或投入日志，本轮不新增卡片。",
+      "recommendedByDefault": false,
+      "commentsReview": {
+        "visibleBlocks": 7,
+        "readableHumanComments": 6,
+        "originalPosterComments": 3,
+        "otherHumanComments": 3,
+        "automatedComments": 1,
+        "removedPlaceholders": 0,
+        "totalThreadCommentCount": null,
+        "usefulCommentUrl": "https://www.reddit.com/r/IELTS/comments/1rx8tf1/comment/obzotaz/",
+        "usefulCommentReadStatus": "Read inside parent thread; direct permalink fetch returned Cache miss.",
+        "attributionBoundary": "原作者补充、其他考生自述、课程/教师建议及机器人提示分别核读，不互相归并为结果或效果证据。"
+      }
+    },
+    {
+      "url": "https://note.com/unique_owl2327/n/nce5f302aa652",
+      "type": "public_experience",
+      "scope": "Full extracted Japanese article through its conclusion. Score image, linked articles, commercial offerings and videos not inspected.",
+      "verifiedAtUtc": "2026-10-06T07:28:58Z",
+      "applicableYear": 2025,
+      "yearNote": "Original page explicitly displays 2025年6月21日 17:48; timezone and later revision date are not stated. This is an older source newly read, not a 2026 new experience.",
+      "publishedAt": "2025-06-21",
+      "finding": [
+        "Author reports four attempts, first official overall6 to6.5 over about ten months, roughly one year since starting. A guessed5–5.5 starting level and unlogged1000+ hours are estimates.",
+        "The final three-week interval excludes earlier preparation. Author describes budget constraints, evidence-based reading review, and writing error notes, eventually targeting Task1 timing.",
+        "Speaking fluctuates5.5/6.5/5.5/6.5 by self-report. The text mixes useful reflections with memorized AI answers and unsupported examiner, score and duration generalizations."
+      ],
+      "commercialDisclosure": "Book purchase links, multiple teaching/lesson services and platform tipping appear; affiliate status and service relationships unknown.",
+      "limitations": [
+        "One score equated to years abroad from AI",
+        "Guaranteed progress from volume",
+        "Examiner/location blamed for score changes",
+        "Memorized AI answers",
+        "Historic paper-test procedures as current rules"
+      ],
+      "decision": "不新增推荐卡：总跨度与末轮窗口之别有价值，但广泛分数/周期推断和多种不宜照搬的方法，使默认推荐需要过多警告；现有长程案例已覆盖主要教训。",
+      "recommendedByDefault": false,
+      "commentsReview": {
+        "readableHumanComments": 0,
+        "totalThreadCommentCount": null,
+        "status": "No comment text returned. An unlabeled numeral 8 near the footer was not treated as a verified comment count.",
+        "attributionBoundary": "原作者补充、其他考生自述、课程/教师建议及机器人提示分别核读，不互相归并为结果或效果证据。"
+      }
+    }
+  ],
+  "unverifiedChecks": [
+    {
+      "url": "https://ielts.neea.cn/registrationprocess_cn.html",
+      "type": "official",
+      "scope": "Web与普通HTTP均返回412，未读到正文。",
+      "verifiedAtUtc": null,
+      "attemptedAtUtc": "2026-10-06T07:29:52Z",
+      "applicableYear": 2026,
+      "publishedAt": null,
+      "finding": "报名流程细则本轮无法复核。",
+      "limitations": [
+        "不能声称流程未变；未登录、填写资料或尝试越过反自动化限制。"
+      ],
+      "lastKnownSuccessfulRead": null,
+      "decision": "独立复核记录；不覆盖原条目与历史核验日",
+      "retrievalStatus": "http_412"
+    },
+    {
+      "url": "https://ielts.neea.cn/showTestCenters",
+      "type": "official",
+      "scope": "Web失败；Exa与普通HTTP均返回412，未重新读取杭州选择结果。",
+      "verifiedAtUtc": null,
+      "attemptedAtUtc": "2026-10-06T07:29:52Z",
+      "applicableYear": 2026,
+      "publishedAt": null,
+      "finding": "保留杭州4个机考点原记录，最新成功核验仍是2026-10-02。",
+      "limitations": [
+        "本轮不确认名录新增、撤销、地址调整或任何场次与余位。"
+      ],
+      "lastKnownSuccessfulRead": {
+        "date": "2026-10-02",
+        "observedAtUtc": "2026-10-02T02:41:30Z",
+        "scope": "catalog记载选择雅思机考、杭州后读到4个考点名称、代码、地址和考场"
+      },
+      "decision": "独立复核记录；不覆盖原条目与历史核验日",
+      "retrievalStatus": "http_412"
+    },
+    {
+      "url": "https://ielts.neea.cn/allnews?locale=zh_CN",
+      "type": "official",
+      "scope": "Web、Exa与普通HTTP均未读到本轮索引；确认HTTP412。",
+      "verifiedAtUtc": null,
+      "attemptedAtUtc": "2026-10-06T07:29:52Z",
+      "applicableYear": 2026,
+      "publishedAt": null,
+      "finding": "原记录称2026-08-28索引已有第四季度IELTS及UKVI机考公告；本轮不能确认是否还有新公告。",
+      "limitations": [
+        "不能把读取失败写为“没有新公告”。",
+        "原发布日期仅引用2026-10-02成功核验历史，本轮没有重新证实。"
+      ],
+      "lastKnownSuccessfulRead": {
+        "date": "2026-10-02",
+        "observedAtUtc": "2026-10-02T06:53:50Z",
+        "scope": "catalog新闻索引标题、链接、2026-08-28发布日期"
+      },
+      "decision": "独立复核记录；不覆盖原条目与历史核验日",
+      "retrievalStatus": "http_412"
+    },
+    {
+      "url": "https://news.neea.cn/IELTS/zh_CN/5A02050C74319D3CE063C546C80AB544.html",
+      "type": "official",
+      "scope": "Web读取失败；Exa为CRAWL_LIVECRAWL_TIMEOUT，未读到日期。",
+      "verifiedAtUtc": null,
+      "attemptedAtUtc": "2026-10-06T07:28:54Z",
+      "applicableYear": 2026,
+      "publishedAt": null,
+      "finding": "本轮未取得逐日考期。",
+      "limitations": [
+        "历史2026-10-02只读到系统升级重定向，并不属于考期正文成功核验。",
+        "不能推定当前仍在系统升级，也不能转录日期。"
+      ],
+      "lastKnownSuccessfulRead": null,
+      "decision": "独立复核记录；不覆盖原条目与历史核验日",
+      "previousAttempts": [
+        {
+          "date": "2026-10-02",
+          "observedAtUtc": "2026-10-02T06:54:27Z",
+          "result": "maintenance_redirect",
+          "finalUrl": "https://www.neea.edu.cn/html1/folder/19093/4844-1.htm"
+        }
+      ],
+      "retrievalStatus": "timeout"
+    },
+    {
+      "url": "https://news.neea.cn/IELTS/zh_CN/5A02050C74329D3CE063C546C80AB544.html",
+      "type": "official",
+      "scope": "Web读取失败；Exa为CRAWL_LIVECRAWL_TIMEOUT，未读到日期。",
+      "verifiedAtUtc": null,
+      "attemptedAtUtc": "2026-10-06T07:28:54Z",
+      "applicableYear": 2026,
+      "publishedAt": null,
+      "finding": "本轮未取得逐日考期。",
+      "limitations": [
+        "历史2026-10-02只读到系统升级重定向，并不属于考期正文成功核验。",
+        "不能推定当前仍在系统升级，也不能转录日期。"
+      ],
+      "lastKnownSuccessfulRead": null,
+      "decision": "独立复核记录；不覆盖原条目与历史核验日",
+      "previousAttempts": [
+        {
+          "date": "2026-10-02",
+          "observedAtUtc": "2026-10-02T06:54:43Z",
+          "result": "maintenance_redirect",
+          "finalUrl": "https://www.neea.edu.cn/html1/folder/19093/4844-1.htm"
+        }
+      ],
+      "retrievalStatus": "timeout"
+    },
+    {
+      "url": "https://assets.ielts.chinaielts.org/api/assets/ielts-cms/d3bdbfca-4110-4faf-ab58-2b6a135e7200/26%E5%B9%B410-12%E6%9C%88%E8%80%83%E8%AF%95%E6%97%A5%E5%8E%86%E5%AE%98%E7%BD%91%E7%89%88%E6%9C%AC-01.jpg",
+      "type": "official",
+      "scope": "从eTRF正文/HTML确认图片链接；Web点击失败，普通HTTP返回502；未读取图片像素或日期。",
+      "verifiedAtUtc": null,
+      "attemptedAtUtc": "2026-10-06T07:29:52.022802Z",
+      "applicableYear": 2026,
+      "publishedAt": null,
+      "finding": "逐日考期/报名截止等图表内容未核实。",
+      "limitations": [
+        "标题和文件名仅说明Q4主题，不能据此填任何具体日期。",
+        "没有成功读取日期；不是可报名场次或余位证据。"
+      ],
+      "lastKnownSuccessfulRead": null,
+      "decision": "独立复核记录；不覆盖原条目与历史核验日",
+      "previousAttempts": [
+        {
+          "date": "2026-10-02",
+          "result": "既有calendar记录四张日历图片未能读取"
+        },
+        {
+          "date": "2026-10-06",
+          "result": "HTTP Error 502: Bad Gateway"
+        }
+      ],
+      "retrievalStatus": "image_unreadable"
+    },
+    {
+      "url": "https://assets.ielts.chinaielts.org/api/assets/ielts-cms/35065dca-5e4c-4855-b0b4-e798a0a65698/26%E5%B9%B410-12%E6%9C%88%E8%80%83%E8%AF%95%E6%97%A5%E5%8E%86%E5%AE%98%E7%BD%91%E7%89%88%E6%9C%AC-04.jpg",
+      "type": "official",
+      "scope": "从eTRF正文/HTML确认图片链接；Web点击失败，普通HTTP返回502；未读取图片像素或日期。",
+      "verifiedAtUtc": null,
+      "attemptedAtUtc": "2026-10-06T07:29:51.974785Z",
+      "applicableYear": 2026,
+      "publishedAt": null,
+      "finding": "逐日考期/报名截止等图表内容未核实。",
+      "limitations": [
+        "标题和文件名仅说明Q4主题，不能据此填任何具体日期。",
+        "没有成功读取日期；不是可报名场次或余位证据。"
+      ],
+      "lastKnownSuccessfulRead": null,
+      "decision": "独立复核记录；不覆盖原条目与历史核验日",
+      "previousAttempts": [
+        {
+          "date": "2026-10-02",
+          "result": "既有calendar记录四张日历图片未能读取"
+        },
+        {
+          "date": "2026-10-06",
+          "result": "HTTP Error 502: Bad Gateway"
+        }
+      ],
+      "retrievalStatus": "image_unreadable"
+    },
+    {
+      "url": "https://assets.ielts.chinaielts.org/api/assets/ielts-cms/e68c3c63-1086-48f0-98ce-ee11ee04353e/26%E5%B9%B410-12%E6%9C%88%E8%80%83%E8%AF%95%E6%97%A5%E5%8E%86%E5%AE%98%E7%BD%91%E7%89%88%E6%9C%AC-02.jpg",
+      "type": "official",
+      "scope": "从eTRF正文/HTML确认图片链接；Web点击失败，普通HTTP返回502；未读取图片像素或日期。",
+      "verifiedAtUtc": null,
+      "attemptedAtUtc": "2026-10-06T07:29:51.976714Z",
+      "applicableYear": 2026,
+      "publishedAt": null,
+      "finding": "逐日考期/报名截止等图表内容未核实。",
+      "limitations": [
+        "标题和文件名仅说明Q4主题，不能据此填任何具体日期。",
+        "没有成功读取日期；不是可报名场次或余位证据。"
+      ],
+      "lastKnownSuccessfulRead": null,
+      "decision": "独立复核记录；不覆盖原条目与历史核验日",
+      "previousAttempts": [
+        {
+          "date": "2026-10-02",
+          "result": "既有calendar记录四张日历图片未能读取"
+        },
+        {
+          "date": "2026-10-06",
+          "result": "HTTP Error 502: Bad Gateway"
+        }
+      ],
+      "retrievalStatus": "image_unreadable"
+    },
+    {
+      "url": "https://assets.ielts.chinaielts.org/api/assets/ielts-cms/81111edb-8a10-4794-9264-4117f7ba6b38/26%E5%B9%B410-12%E6%9C%88%E8%80%83%E8%AF%95%E6%97%A5%E5%8E%86%E5%AE%98%E7%BD%91%E7%89%88%E6%9C%AC-03.jpg",
+      "type": "official",
+      "scope": "从eTRF正文/HTML确认图片链接；Web点击失败，普通HTTP返回502；未读取图片像素或日期。",
+      "verifiedAtUtc": null,
+      "attemptedAtUtc": "2026-10-06T07:29:51.686673Z",
+      "applicableYear": 2026,
+      "publishedAt": null,
+      "finding": "逐日考期/报名截止等图表内容未核实。",
+      "limitations": [
+        "标题和文件名仅说明Q4主题，不能据此填任何具体日期。",
+        "没有成功读取日期；不是可报名场次或余位证据。"
+      ],
+      "lastKnownSuccessfulRead": null,
+      "decision": "独立复核记录；不覆盖原条目与历史核验日",
+      "previousAttempts": [
+        {
+          "date": "2026-10-02",
+          "result": "既有calendar记录四张日历图片未能读取"
+        },
+        {
+          "date": "2026-10-06",
+          "result": "HTTP Error 502: Bad Gateway"
+        }
+      ],
+      "retrievalStatus": "image_unreadable"
+    },
+    {
+      "url": "https://www.chinaielts.org/press-office",
+      "type": "official",
+      "scope": "Web索引初始返回与Exa仅有局部列表，未遍历筛选和分页。",
+      "verifiedAtUtc": null,
+      "attemptedAtUtc": "2026-10-06T07:28:54Z",
+      "applicableYear": 2026,
+      "publishedAt": null,
+      "finding": "可见内容包括9月考位旧快照，不能用于10月余位。",
+      "limitations": [
+        "有限索引读取不能证明完整新闻清单或无新增。",
+        "未把旧余位数字写入任何当前库存。"
+      ],
+      "lastKnownSuccessfulRead": null,
+      "decision": "独立复核记录；不覆盖原条目与历史核验日",
+      "retrievalStatus": "partial_index"
+    },
+    {
+      "url": "https://www.zhihu.com/tardis/bd/art/633728011",
+      "platform": "知乎",
+      "attemptedAtUtc": "2026-10-06T07:28:39Z",
+      "lastSuccessfulAt": null,
+      "result": "打开后转向安全验证/登录页，未获取正文或评论。停止该路径；搜索摘要不计作核读。",
+      "decision": "不收录，不据摘要验证亲历或课程商业关系。"
+    },
+    {
+      "url": "https://www.xiaohongshu.com/explore/685ec9e0000000002400907f",
+      "platform": "小红书",
+      "attemptedAtUtc": "2026-10-06T07:29:01Z",
+      "lastSuccessfulAt": "2026-10-01",
+      "lastSuccessfulScope": "现库记录曾核读正文/封面及20条评论回复，页示53条。",
+      "result": "web工具返回不可读取；Exa仅返回页面不见了提示，没有原文或评论。不能据此认定用户删除或所有渠道永久不可见。",
+      "decision": "保留现库原内容、核验日期及评论边界；不刷新可读性状态为已核验。"
+    },
+    {
+      "url": "https://www.bilibili.com/opus/755000790659104790",
+      "platform": "B站",
+      "attemptedAtUtc": "2026-10-06T07:28:39Z",
+      "lastSuccessfulAt": "2026-10-01",
+      "lastSuccessfulScope": "现库记录完整图文正文已读，评论未核读。",
+      "result": "web工具未能读取；未重新核读本条，不用另一个B站来源代替它的证据。",
+      "decision": "保留原记录。"
+    },
+    {
+      "url": "https://www.douyin.com/video/7680993854456294611",
+      "platform": "抖音",
+      "attemptedAtUtc": "2026-10-06T07:29:25Z",
+      "lastSuccessfulAt": null,
+      "result": "搜索只返回视频描述摘要；web打开为0行，Exa读取报错。未观看视频、取得字幕或核读评论。",
+      "decision": "不新增；标题中的满分及描述中的方法不能冒充完整视频证据。"
+    },
+    {
+      "url": "https://www.reddit.com/r/IELTS/comments/1rx8tf1.json",
+      "type": "reddit_json_metadata",
+      "attemptedAtUtc": "2026-10-06T07:29:35Z",
+      "lastSuccessfulAt": null,
+      "result": "All returned Cache miss; exact timestamps and complete comment counts unavailable. This does not negate the successful HTML reads."
+    },
+    {
+      "url": "https://www.reddit.com/r/IELTS/comments/1v2yeg8.json",
+      "type": "reddit_json_metadata",
+      "attemptedAtUtc": "2026-10-06T07:29:35Z",
+      "lastSuccessfulAt": null,
+      "result": "All returned Cache miss; exact timestamps and complete comment counts unavailable. This does not negate the successful HTML reads."
+    },
+    {
+      "url": "https://www.reddit.com/r/IELTS/comments/1qvwogk.json",
+      "type": "reddit_json_metadata",
+      "attemptedAtUtc": "2026-10-06T07:29:35Z",
+      "lastSuccessfulAt": null,
+      "result": "All returned Cache miss; exact timestamps and complete comment counts unavailable. This does not negate the successful HTML reads."
+    },
+    {
+      "url": "https://www.reddit.com/r/IELTS/comments/1v2yeg8/comment/oz2f7bm/",
+      "type": "direct_comment_permalink",
+      "attemptedAtUtc": "2026-10-06T07:30:50Z",
+      "lastSuccessfulAt": null,
+      "result": "Read inside the parent thread; direct permalink fetch returned Cache miss."
+    },
+    {
+      "url": "https://www.reddit.com/r/IELTS/comments/1qvwogk/comment/o4s6e5z/",
+      "type": "direct_comment_permalink",
+      "attemptedAtUtc": "2026-10-06T07:30:50Z",
+      "lastSuccessfulAt": null,
+      "result": "Read inside parent thread; direct permalink fetch returned Cache miss."
+    },
+    {
+      "url": "https://www.reddit.com/r/IELTS/comments/1rx8tf1/comment/obzotaz/",
+      "type": "direct_comment_permalink",
+      "attemptedAtUtc": "2026-10-06T07:30:50Z",
+      "lastSuccessfulAt": null,
+      "result": "Read inside parent thread; direct permalink fetch returned Cache miss."
+    }
+  ],
+  "searchOnly": [
+    {
+      "platform": "贴吧",
+      "checkedAtUtc": "2026-10-06T07:30:20Z",
+      "scope": "web多词检索以及两次不同角度Exa查询各3个结果；未找到可用IELTS原始帖。结果多为其他考试、第三方目录或其他论坛。",
+      "lastSuccessfulAt": null,
+      "decision": "保持覆盖缺口，不用其他论坛代替贴吧正文，不宣称已覆盖。"
+    },
+    {
+      "platform": "B站／知乎／小红书／抖音",
+      "checkedAtUtc": "2026-10-06T07:30:20Z",
+      "scope": "额外检索只作发现。B站大量结果是视频简介或课程推广，知乎摘要包含课程/短期提分营销，小红书未取得新原始帖，抖音摘要不等于视频正文。",
+      "decision": "不凑平台数、不收录盗版资料或保分承诺；只将上方成功读取的具体页面计入正文复核。"
+    },
+    {
+      "platform": "Reddit／海外博客",
+      "scope": "One broad experience search plus bounded title/ID metadata searches. Search snippets were only discovery aids; the four assessed sources were opened and read.",
+      "notCountedAsReads": [
+        "https://www.reddit.com/r/IELTS/comments/1wt7fdv/im_disappointed_with_the_writing_score_tbh/",
+        "https://note.com/min_uk2025/n/n596e170eaa29",
+        "https://ameadelia.blogspot.com/2022/01/"
+      ]
+    }
+  ],
+  "boundaries": [
+    "仅在现有policies数组追加1条10月1日生效的官方成绩单通知；原3政策、所有资源/经验、考点、日历、meta、source历史及核验日期保持原样。",
+    "schemaVersion仍1，前端、测试、fixture、收藏、计划、练习和预览不改；先前Cambridge五步候选未合并。",
+    "杭州考点最后成功NEEA核验保留2026-10-02。calendar.dates、centerSessions、各考点sessions仍空；seatsAvailable仍null，不能由名录或旧快照推断可报名。",
+    "不登录、预约、付费，不使用用户电脑，不修改权限；只收集公开信息与原创短摘要，不转载教材/试题/成绩图或私人用户成绩计划。",
+    "原文、作者补充、不同评论者和编辑判断分开；本轮经验资源新增0，不推盗版、保分、万能套路、AI估分或无依据短期提分。",
+    "基线21个非浏览器测试脚本、validate与全JS语法检查均通过；政策追加候选触发2处旧政策数量断言和5处历史整库哈希断言。保留候选但不得发布，不修改fixture刷绿。",
+    "真实浏览器渲染未验收；本轮没有重试已记录的Chromium权限阻断。"
+  ]
+}
