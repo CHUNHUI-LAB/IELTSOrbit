@@ -100,6 +100,7 @@ label>span{font-size:16px}.library-layout{display:grid;grid-template-columns:160
 #panel-library .library-heading h1,#panel-library .library-heading h2{line-height:1.35}
 #panel-library .library-heading p{margin-top:16px;max-width:960px}
 #panel-library .skill-navigation{gap:4px;margin-bottom:0}
+#panel-library .skill-button:focus-visible{outline-offset:-3px}
 @media(max-width:600px){#panel-library .library-heading{margin-bottom:24px}}
 
 .resource-main>.reference-label{display:inline-block;padding:4px 8px;margin:12px 0 0;border-radius:4px;font-size:14px}

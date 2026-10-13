@@ -14,6 +14,47 @@ import desktop_screenshots as s
 
 
 class DesktopEvidenceContracts(unittest.TestCase):
+    def subject_outline_fixture(self):
+        # Exact focus/next-sibling geometry from a2088b1f's 1920px screenshot.
+        # That screenshot visibly lost its lower outline under reading's hover fill.
+        focus={'rect':[373.5,511.484375,134,51],'outlineWidth':3,'outlineOffset':-3}
+        subjects={'activeSkill':'listening','siblings':[
+            {'skill':skill,'rect':[373.5,566.484375+55*index,134,51],
+             'visible':True,'hovered':index==0}
+            for index,skill in enumerate(['reading','writing','speaking','all'])]}
+        return focus,subjects
+
+    def test_subject_outline_rejects_actual_old_offset_and_accepts_inset(self):
+        focus,subjects=self.subject_outline_fixture()
+        s.check_subject_outline(focus,subjects)
+        with self.assertRaisesRegex(RuntimeError,'overlaps sibling reading'):
+            s.check_subject_outline(dict(focus,outlineOffset=4),subjects)
+        # The guard cannot depend on pointer location or be defeated by moving it.
+        subjects['siblings'][0]['hovered']=False
+        with self.assertRaisesRegex(RuntimeError,'overlaps sibling reading'):
+            s.check_subject_outline(dict(focus,outlineOffset=4),subjects)
+
+    def test_subject_outline_checks_every_direction_and_complete_measurements(self):
+        focus,subjects=self.subject_outline_fixture()
+        x,y,w,h=focus['rect']
+        for rect in [[x-54,y,50,h],[x+w+4,y,50,h],[x,y-54,w,50],[x,y+h+4,w,50]]:
+            subjects['siblings'][0]['rect']=rect
+            with self.subTest(rect=rect),self.assertRaisesRegex(RuntimeError,'overlaps sibling reading'):
+                s.check_subject_outline(dict(focus,outlineOffset=4),subjects)
+            s.check_subject_outline(focus,subjects)
+        subjects['siblings'][0]['rect']=[x,y+h+7,w,50]
+        s.check_subject_outline(dict(focus,outlineOffset=4),subjects)  # exact edge touch
+        with self.assertRaisesRegex(RuntimeError,'Incomplete'):
+            s.check_subject_outline(focus,dict(subjects,siblings=subjects['siblings'][:-1]))
+
+    def test_subject_inset_is_scoped_without_moving_pointer_or_changing_layout(self):
+        css=(ROOT/'assets/orbit-ui.css').read_text()
+        rules=re.findall(r'#panel-library\s+\.skill-button:focus-visible\s*\{([^}]+)\}',css)
+        self.assertTrue(rules,'the subject-specific inset outline rule must exist')
+        self.assertEqual(rules[-1].strip(),'outline-offset:-3px')
+        self.assertIn("hovered:n.matches(':hover')",s.SUBJECT_OUTLINE)
+        self.assertIn("proof['subjectOutline'] = subjects",(ROOT/'scripts/desktop_screenshots.py').read_text())
+
     def test_ci_only_before_any_subprocess_or_output(self):
         with patch.dict(d.os.environ,{'GITHUB_ACTIONS':'false'}), patch.object(d.subprocess,'Popen') as launch:
             with patch.object(sys,'argv',['desktop_screenshots.py']):

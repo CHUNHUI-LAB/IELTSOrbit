@@ -7,6 +7,35 @@ STATE = """const a=document.activeElement;return {hash:location.hash,skill:docum
  selected:[...document.querySelectorAll('#skill-navigation [aria-pressed="true"]')].map(n=>n.dataset.skill),
  count:document.querySelectorAll('.resource-card').length,storage:localStorage.getItem('ieltsorbit.local.v1')};"""
 
+SUBJECT_OUTLINE = """const a=document.activeElement;
+if(!a.matches('#panel-library .skill-button'))return null;
+return {activeSkill:a.dataset.skill,siblings:[...a.parentElement.querySelectorAll('.skill-button')]
+ .filter(n=>n!==a).map(n=>{const r=n.getBoundingClientRect(),s=getComputedStyle(n);return {
+ skill:n.dataset.skill,rect:[r.x,r.y,r.width,r.height],hovered:n.matches(':hover'),
+ visible:r.width>0&&r.height>0&&s.display!=='none'&&s.visibility==='visible'&&Number(s.opacity)!==0};})};"""
+
+
+def check_subject_outline(focus, subjects):
+    """Reject geometric overlap even if a sibling is not currently hovered.
+
+    The outer outline edge is offset + width from the button border. An inset
+    outline therefore needs no sibling space; edge-touching is not overlap.
+    This guards these non-overlapping sibling controls, not arbitrary page paint.
+    """
+    require(subjects['activeSkill'] in SKILLS, 'Unknown focused subject')
+    require({item['skill'] for item in subjects['siblings']} == set(SKILLS)-{subjects['activeSkill']}
+            and len(subjects['siblings']) == len(SKILLS)-1, 'Incomplete subject sibling evidence')
+    x,y,w,h = focus['rect']
+    edge = focus['outlineOffset']+focus['outlineWidth']
+    left,top,right,bottom = x-edge,y-edge,x+w+edge,y+h+edge
+    require(right > left and bottom > top, 'Invalid outline bounds')
+    for sibling in subjects['siblings']:
+        if not sibling['visible']:
+            continue
+        sx,sy,sw,sh = sibling['rect']
+        overlap = left < sx+sw and right > sx and top < sy+sh and bottom > sy
+        require(not overlap, 'Subject focus outline overlaps sibling '+sibling['skill'])
+
 
 def check_subject(state, skill, storage, focus=True):
     require(state['hash'] == ('#library' if skill == 'all' else '#library/'+skill), 'Subject route mismatch')
@@ -25,6 +54,10 @@ def scenario(driver, base, viewport, report, capture, server):
         driver.settle()
         proof = driver.js(FOCUS)
         check_focus(proof)
+        subjects = driver.js(SUBJECT_OUTLINE)
+        if subjects is not None:
+            check_subject_outline(proof,subjects)
+            proof['subjectOutline'] = subjects
         return proof
 
     navigate('initial','#start')
@@ -101,11 +134,10 @@ def scenario(driver, base, viewport, report, capture, server):
                 check_subject(after,subject,storage,target in SKILLS)
                 if expected_id:
                     require(after['activeId'] == expected_id, 'Catalog delivery stole focus from '+target)
-            if target in SKILLS or target != 'tab-library':
-                assert_focus()
+            focus = assert_focus() if target != 'tab-library' else None
             capture(prefix+'-03-delayed-'+target,viewport)
             report['checks'].append({'viewport':list(viewport),'delayedCatalogTarget':target,
-                                     'pending':pending,'after':after,'realBytesReleased':True})
+                                     'pending':pending,'after':after,'focus':focus,'realBytesReleased':True})
         finally:
             gate.released.set()
             server.catalog_gate = None
