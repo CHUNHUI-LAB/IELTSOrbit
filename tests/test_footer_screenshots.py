@@ -1,5 +1,7 @@
 """Pure contract tests: importing the capture module never launches a browser."""
 import importlib.util
+import io
+from unittest.mock import patch
 from pathlib import Path
 import unittest
 
@@ -55,13 +57,46 @@ class FooterCaptureContracts(unittest.TestCase):
         for url in m.RELATED:
             project = url.rstrip('/').rsplit('/',1)[-1]
             good = {'url':url,'documentURI':url,'readyState':'complete','errorPage':False,
-                    'title':project,'brand':project,'bodyLength':1000,'openerNull':True}
+                    'title':('GradCompass · 找导师与项目' if project == 'GradCompass' else project),
+                    'brand':project,'bodyLength':1000,'openerNull':True}
             m.check_destination(good,url)
+            if project == 'GradCompass':
+                m.check_destination(dict(good,title='找导师 · GradCompass'),url)
+            for wrong_title in [project+' unavailable', 'Fake '+project, 'GradCompass', '申请项目 · GradCompass']:
+                if wrong_title != good['title']:
+                    with self.subTest(title=wrong_title), self.assertRaises(RuntimeError):
+                        m.check_destination(dict(good,title=wrong_title),url)
             for key,value in [('documentURI','chrome-error://chromewebdata/'),('errorPage',True),
                               ('bodyLength',0),('readyState','loading'),('title','Site unavailable'),
                               ('brand',''),('openerNull',False),('url','about:blank')]:
                 with self.subTest(key=key,value=value), self.assertRaises(RuntimeError):
                     m.check_destination(dict(good,**{key:value}),url)
+
+    def test_http_error_preserves_protocol_diagnostic(self):
+        driver = m.Driver(1234)
+        body = b'{"value":{"error":"element not interactable","message":"specific driver evidence"}}'
+        error = m.urllib.error.HTTPError('http://127.0.0.1:1234/session/s/element/e/click',400,
+                                        'Bad Request',{},io.BytesIO(body))
+        with patch.object(m.urllib.request,'urlopen',side_effect=error):
+            with self.assertRaisesRegex(RuntimeError,'specific driver evidence'):
+                driver.request('POST','/session/s/element/e/click',{})
+        self.assertEqual(driver.diagnostics[0]['body'],body.decode())
+        self.assertEqual(driver.diagnostics[0]['status'],400)
+
+    def test_native_click_scrolls_settles_and_checks_before_click(self):
+        driver = m.Driver(1234)
+        events = []
+        good = {'rect':[20,20,100,44],'viewport':[1440,900],
+                'visible':True,'hit':True,'disabled':False}
+        driver.selector = lambda selector:{m.ELEMENT:'element'}
+        driver.js = lambda script,*args:events.append('proof' if script == m.CLICK_PROOF else 'scroll') or good
+        driver.settle = lambda:events.append('settle')
+        driver.call = lambda method,path,data:events.append('native-click')
+        driver.click('#tab-exams')
+        self.assertEqual(events,['scroll','settle','proof','native-click'])
+        for key,value in [('rect',[0,-80,100,44]),('hit',False),('visible',False),('disabled',True)]:
+            with self.subTest(key=key), self.assertRaises(RuntimeError):
+                m.check_click_target(dict(good,**{key:value}))
 
     def test_artifact_only_workflow(self):
         workflow = (ROOT/'.github/workflows/footer-screenshots.yml').read_text()

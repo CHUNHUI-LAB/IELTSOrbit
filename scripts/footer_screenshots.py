@@ -16,6 +16,7 @@ import socket
 import subprocess
 import threading
 import time
+import urllib.error
 import urllib.request
 
 VIEWPORTS = [(1440, 900), (1920, 1080)]
@@ -83,7 +84,9 @@ def check_destination(data, url):
     project = url.rstrip('/').rsplit('/',1)[-1]
     require(data['url'] == url and data['documentURI'] == url, 'Wrong destination/error document')
     require(data['readyState'] == 'complete' and not data['errorPage'], 'Destination not ready or browser error')
-    require(data['title'].startswith(project) and data['brand'] == project and data['bodyLength'] >= 100,
+    titles = {'RoboPaperAtlas': {'RoboPaperAtlas'},
+              'GradCompass': {'GradCompass · 找导师与项目', '找导师 · GradCompass'}}
+    require(data['title'] in titles[project] and data['brand'] == project and data['bodyLength'] >= 100,
             'Destination lacks expected project identity/content')
     require(data['openerNull'], 'External tab has opener')
 
@@ -108,6 +111,24 @@ openerNull:window.opener===null};
 """
 
 
+def check_click_target(data):
+    x,y,w,h = data['rect']
+    width,height = data['viewport']
+    require(data['visible'] and data['hit'] and not data['disabled'], 'Native click target hidden or obscured')
+    require(w > 0 and h > 0 and x >= 0 and y >= 0 and x+w <= width+1 and y+h <= height+1,
+            'Native click target outside viewport after normal scrolling')
+
+
+CLICK_PROOF = """
+const a=arguments[0],r=a.getBoundingClientRect(),s=getComputedStyle(a);
+const hit=document.elementFromPoint(r.x+r.width/2,r.y+r.height/2);
+return {rect:[r.x,r.y,r.width,r.height],viewport:[innerWidth,innerHeight],
+visible:s.display!=='none'&&s.visibility==='visible'&&Number(s.opacity)===1,
+disabled:!!a.disabled,hit:hit===a||a.contains(hit),hitTag:hit?.tagName,hitId:hit?.id,
+scroll:[scrollX,scrollY],url:location.href};
+"""
+
+
 GEOMETRY = """
 return {viewport:[innerWidth,innerHeight],documentWidth:document.documentElement.scrollWidth,
 links:[...document.querySelectorAll('.site-footer a')].map(a=>{
@@ -123,13 +144,22 @@ class Driver:
     def __init__(self, port):
         self.url = f'http://127.0.0.1:{port}'
         self.session = None
+        self.diagnostics = []
 
     def request(self, method, path, data=None):
         request = urllib.request.Request(self.url+path, method=method,
             data=None if data is None else json.dumps(data).encode(),
             headers={'Content-Type': 'application/json'})
-        with urllib.request.urlopen(request, timeout=65) as response:
-            value = json.load(response)['value']
+        try:
+            with urllib.request.urlopen(request, timeout=65) as response:
+                value = json.load(response)['value']
+        except urllib.error.HTTPError as error:
+            # Local WebDriver response, not an external page body. Preserve its
+            # protocol error and message so HTTP status alone cannot hide cause.
+            body = error.read(65536).decode('utf-8', errors='replace')
+            diagnostic = {'method':method,'path':path,'status':error.code,'body':body}
+            self.diagnostics.append(diagnostic)
+            raise RuntimeError('WebDriver HTTP '+str(error.code)+': '+body) from error
         if isinstance(value, dict) and value.get('error'):
             raise RuntimeError(str(value))
         return value
@@ -145,6 +175,14 @@ class Driver:
 
     def click(self, selector):
         element = self.selector(selector)
+        # Footer return changes document height and can leave native smooth
+        # scrolling active. Scroll normally, settle, then retain WebDriver's
+        # actual pointer click (never a JavaScript click or a hidden-element bypass).
+        self.js("arguments[0].scrollIntoView({block:'center',inline:'nearest'});", element)
+        self.settle()
+        proof = self.js(CLICK_PROOF, element)
+        self.diagnostics.append({'action':'click','selector':selector,'proof':proof})
+        check_click_target(proof)
         self.call('POST', '/element/'+element[ELEMENT]+'/click', {})
 
     def key(self, value):
@@ -301,8 +339,15 @@ def main():
     except Exception as error:
         report['status'] = 'failed'
         report['error'] = type(error).__name__+': '+str(error)
+        if driver and driver.session:
+            try:
+                capture('failure-at-current-state')
+            except Exception as screenshot_error:
+                report['failureScreenshotError'] = str(screenshot_error)
         raise
     finally:
+        if driver:
+            report['webdriverDiagnostics'] = driver.diagnostics
         save()
         if driver and driver.session:
             try:
