@@ -26,6 +26,54 @@ const server=http.createServer((req,res)=>{const pathname=new URL(req.url,'http:
   await returns.locator('#resource-cambridge .reader-back').click();assert.equal(await returns.locator('#search').inputValue(),'Cambridge');
   assert.equal(await returns.locator('#panel-library').getAttribute('data-view'),'overview');
   await returns.close();
+  // Native desktop keyboard activation and tab order for rebuilt subject buttons.
+  // This remains optional rendered QA; subject-focus.test.js is a DOM model only.
+  const subjectFocus=await browser.newPage({viewport:{width:1440,height:1000}});
+  subjectFocus.on('pageerror',e=>errors.push(e.message));
+  await subjectFocus.goto('http://127.0.0.1:'+server.address().port+'/#library/listening');
+  await subjectFocus.locator('#resource-cambridge').waitFor();
+  const subjectSaved=await subjectFocus.evaluate(()=>localStorage.getItem('ieltsorbit.local.v1'));
+  const subjectOrder=['listening','reading','writing','speaking','all'];
+  for(const skill of subjectOrder){for(const key of ['Enter','Space']){
+   const selector='#skill-navigation [data-skill="'+skill+'"]';
+   await subjectFocus.locator(selector).focus();await subjectFocus.locator(selector).press(key);
+   await subjectFocus.waitForURL('**/'+(skill==='all'?'#library':'#library/'+skill));
+   assert.equal(await subjectFocus.locator(selector).evaluate(n=>n===document.activeElement),true,skill+' retains focus after '+key);
+   assert.equal(await subjectFocus.locator(selector).getAttribute('aria-pressed'),'true');
+   assert.equal(await subjectFocus.locator(selector).isVisible(),true);
+   if(skill!=='all'){
+    await subjectFocus.keyboard.press('Tab');
+    const next=subjectOrder[subjectOrder.indexOf(skill)+1];
+    assert.equal(await subjectFocus.locator('#skill-navigation [data-skill="'+next+'"]').evaluate(n=>n===document.activeElement),true,'Tab continues from '+skill);
+   }else{
+    await subjectFocus.keyboard.press('Shift+Tab');
+    assert.equal(await subjectFocus.locator('#skill-navigation [data-skill="speaking"]').evaluate(n=>n===document.activeElement),true,'Shift+Tab continues from all subjects');
+   }
+   assert.equal(await subjectFocus.evaluate(()=>localStorage.getItem('ieltsorbit.local.v1')),subjectSaved);
+  }}
+  await subjectFocus.close();
+  // Loading data after activation must retain focus, unless the user moved it.
+  for(const moveToSearch of [false,true]){
+   const delayed=await browser.newPage({viewport:{width:1440,height:1000}});
+   delayed.on('pageerror',e=>errors.push(e.message));
+   let releaseCatalog;const catalogReady=new Promise(resolve=>{releaseCatalog=resolve;});
+   await delayed.route('**/data/catalog.json',async route=>{await catalogReady;await route.continue();});
+   await delayed.goto('http://127.0.0.1:'+server.address().port+'/#library/listening',{waitUntil:'domcontentloaded'});
+   const reading=delayed.locator('#skill-navigation [data-skill="reading"]');
+   await reading.focus();await reading.press('Enter');
+   assert.equal(await reading.evaluate(n=>n===document.activeElement),true);
+   if(moveToSearch)await delayed.locator('#search').focus();
+   releaseCatalog();await delayed.locator('#resource-official-samples').waitFor();
+   const expected=moveToSearch?delayed.locator('#search'):reading;
+   assert.equal(await expected.evaluate(n=>n===document.activeElement),true,'delayed catalog preserves the current focus owner');
+   if(moveToSearch){
+    await delayed.evaluate(()=>{location.hash='#library/writing';});
+    await delayed.waitForURL('**/#library/writing');
+    assert.equal(await expected.evaluate(n=>n===document.activeElement),true,'ordinary hash does not steal search focus');
+   }
+   assert.equal(await delayed.evaluate(()=>localStorage.getItem('ieltsorbit.local.v1')),null,'focus restoration never writes saved state');
+   await delayed.close();
+  }
   assert.equal(await page.locator('#panel-start').isVisible(),true);await page.locator('#home-tab-writing').click();await page.locator('#home-panel-writing .secondary-button').click();assert.equal(await page.locator('#skill-filter').inputValue(),'writing');assert.equal(await page.locator('#site-intro').isVisible(),false);assert.equal(await page.locator('#advanced-filters').getAttribute('open'),null);assert.match(await page.locator('#learning-guide').innerText(),/初稿/);
   await page.locator('.method-detail > summary').click();assert.equal(await page.locator('.method-detail .detail-body').isVisible(),true);
   await page.locator('#skill-navigation [data-skill=all]').click();assert.equal(await page.locator('.resource-card').count(),22);assert.equal(await page.locator('#recommendation-filter').isVisible(),true);assert.equal(await page.locator('#advanced-filters').getAttribute('open'),null);assert.equal(await page.locator('.learning-overview-grid article').count(),4);await page.selectOption('#recommendation-filter','reference');assert.equal(await page.locator('.resource-card').count(),counts.reference);

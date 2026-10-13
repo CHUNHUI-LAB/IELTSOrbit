@@ -44,7 +44,10 @@ function resourceCard(resource){
 }
 function renderGuide(){
  const skill=$('skill-filter').value,guide=core.learningGuides[skill];
+ // Preserve only focus currently inside these controls, including a delayed catalog render.
+ const focusedSkill=Array.from($('skill-navigation').querySelectorAll('[data-skill]')).find(button=>button===document.activeElement)?.dataset.skill;
  $('skill-navigation').replaceChildren(...Object.entries(core.learningGuides).map(([id,g])=>{const b=create('button','skill-button',g.title);b.type='button';b.dataset.skill=id;b.setAttribute('aria-pressed',String(id===skill));return b;}),(()=>{const b=create('button','skill-button','全部科目');b.type='button';b.dataset.skill='all';b.setAttribute('aria-pressed',String(skill==='all'));return b;})());
+ if(focusedSkill)$('skill-navigation').querySelector('[data-skill="'+focusedSkill+'"]')?.focus({preventScroll:true});
  if(!guide){
   const overview=create('section','guide-summary');overview.append(create('p','eyebrow','四科学习总览'),create('h3','','先选一个问题，再选一份资料'));
   const grid=create('div','learning-overview-grid');Object.entries(core.learningGuides).forEach(([id,g])=>{const item=create('article');item.append(create('h4','',g.title),create('p','',g.focus),internalLink('看'+g.title+'步骤','library/'+id));grid.append(item);});overview.append(grid,create('p','micro-copy','下方汇总当前资料范围内的所有科目；想看参考案例，请切换“资料范围”。'));$('learning-guide').replaceChildren(overview);$('resource-heading').textContent='各科资料与摘要';return;
