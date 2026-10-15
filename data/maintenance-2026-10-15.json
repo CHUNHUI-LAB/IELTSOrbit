@@ -1,0 +1,172 @@
+{
+  "checkedAt": "2026-10-15",
+  "observedAtUtc": "2026-10-15T07:12:20Z",
+  "scope": "限定复核公开考试公告、政策与杭州地点来源。不是全库、全平台或实时考位检查。",
+  "baseCommit": "3869580ba85755c2b0cea5bf890077e583f045fc",
+  "decision": "仅新增本公开维护记录；catalog、原核读日期、测试、前端、schema、场次与余位均不改动。",
+  "announcement": {
+    "url": "https://www.chinaielts.org/press-office/announcement",
+    "readScope": "三段说明实质正文均已读；两份初始说明署2026-10-13，补充说明未显示单独日期。",
+    "publishedAt": "2026-10-13",
+    "supplementPublishedAt": null,
+    "summary": "全科取消涉及10月10、11日；单科重考另涉及10月10、12、13日。原文计划10月14日恢复，不能据此证明实际恢复或杭州余位。全科受影响考生专场安排在10月19、20日，补充说明列报名开始10月14日15时及10月13日16时的已报名/未报名分界；未用券可用于12月底前考试。异地报销按官方邮件流程，需在10月31日前留信息，随后另行核票。具体个人资格以官方说明和通知为准。",
+    "verificationLimit": "未登录、未读个人邮件、未查询个人资格、未申请退款/报销。全国安排不填入杭州地点场次数组。"
+  },
+  "sources": [
+    {
+      "url": "https://www.chinaielts.org/press-office",
+      "readScope": "首屏媒体目录标题、日期与摘要。",
+      "finding": "最上方公告仍标10月13日；目录仍使用未来恢复措辞。未找到新的已恢复运营确认，不代表全网无新公告。"
+    },
+    {
+      "url": "https://www.chinaielts.org/about-ielts/ielts",
+      "readScope": "费用表与FAQ正文。",
+      "finding": "IELTS/UKVI1990元，Life Skills1250元，OSR1400元，转退考380元。普通手续费不覆盖此次特定取消的补救安排。",
+      "publishedAt": null
+    },
+    {
+      "url": "https://www.chinaielts.org/press-office/IELTS-Chinese-Mainland-Exam-Registration-Fee-Update-2026",
+      "publishedAt": "2025-11-21",
+      "dateEvidence": "媒体目录",
+      "effectiveFrom": "2026-01-01",
+      "readScope": "费用公告正文，不读日历图片。",
+      "finding": "既有1990元及380元规则仍有依据。"
+    },
+    {
+      "url": "https://www.chinaielts.org/book-ielts/one-skill-retake",
+      "publishedAt": null,
+      "readScope": "资格、费用及13考点列表正文。",
+      "finding": "大陆BC全科机考并收到成绩单后，自原考试日起60天内一次；同一证件，须核对接收机构。列表八城市含宁波、不含杭州；不据此断言实时可报名或杭州不可能开考。"
+    },
+    {
+      "url": "https://www.chinaielts.org/press-office/paper-trf",
+      "publishedAt": null,
+      "effectiveFrom": "2026-10-01",
+      "readScope": "公告与FAQ正文。",
+      "finding": "全科与OSR停纸质，Life Skills例外；OSR首段和FAQ下载时点措辞不同，维持catalog保守表述。"
+    },
+    {
+      "url": "https://www.chinaielts.org/press-office/IELTS-Chinese-Mainland-Exam-Registration-2026-7-9",
+      "publishedAt": "2026-07-09",
+      "dateEvidence": "媒体目录",
+      "readScope": "模式变更正文，不读日历图片。",
+      "finding": "大陆IELTS9月1日、UKVI7月1日起停止纸笔；不采用旧3–5天出分文案覆盖较新1–5天说明。"
+    },
+    {
+      "url": "https://www.chinaielts.org/why-choose-ielts/humanized-services",
+      "publishedAt": null,
+      "readScope": "服务说明正文相关考后段。",
+      "finding": "9月1日起成绩1–5天、电子成绩单规则支持既有政策；营销性考位充足不能成为杭州余位证据。"
+    },
+    {
+      "url": "https://www.chinaielts.org/prepare/understand-ielts-score/bands",
+      "publishedAt": null,
+      "readScope": "计分说明正文。",
+      "finding": "四科平均取最近半分；听读原始分门槛为平均值，可随版本变化。未发现需修改的计分规则。"
+    },
+    {
+      "url": "https://www.zjzs.net/col/col282/index.html",
+      "publishedAt": null,
+      "readScope": "地点目录与入场提醒全文。",
+      "finding": "仍列浙江省考试院、浙大、杭电、浙江科技四处杭州地点；纸笔标签过时。杭电2号大街1号与校方1158号不同，保留准考证核对，不覆盖既有地址。"
+    },
+    {
+      "url": "https://forstu.hdu.edu.cn/2023/0908/c12757a250381/page.htm",
+      "publishedAt": "2023-09-08",
+      "bodySignedAt": "2024-07-20",
+      "readScope": "中英入场说明正文；地图未看。",
+      "finding": "2号大街1158号，文泽路东门，第11教学楼5层；历史通知非当前场次证明。证件特殊例外未推广成全考点规则。"
+    },
+    {
+      "url": "https://cjxy.zust.edu.cn/info/1013/2528.htm",
+      "publishedAt": "2023-04-24",
+      "bodySignedAt": "2024-01-15",
+      "readScope": "中英入场说明正文。",
+      "finding": "留和路359号12幢2层；显示日期与落款日期分别保留，非2026新通知。"
+    }
+  ],
+  "blockedSources": [
+    {
+      "url": "https://ielts.neea.cn/showTestCenters",
+      "status": "retrieval_error"
+    },
+    {
+      "url": "https://ielts.neea.cn/allnews?locale=zh_CN",
+      "status": "retrieval_error"
+    },
+    {
+      "url": "https://ielts.neea.cn/entrytest",
+      "status": "retrieval_error"
+    },
+    {
+      "url": "https://ielts.neea.cn/entrytest?language=CN",
+      "status": "retrieval_error"
+    }
+  ],
+  "boundaries": [
+    "杭州4地点保留原始核验日期；calendar.dates、centerSessions、各点sessions仍为空，seatsAvailable仍null。",
+    "公告有效日期、页面发布时间、核读时间不混用；不以搜索标题当正文或以日期已到推断恢复。",
+    "未登录、报名、支付、扩大权限或操作用户电脑。未运行浏览器渲染；静态检查不能替代渲染验收。",
+    "新增政策或资源会触发现有严格历史哈希门禁；本次不修改测试、fixture、已审SHA或catalog绕过门禁。",
+    "本记录仅描述限定范围公开来源复核；不改变政策与资源目录、前端、场次或余位状态。"
+  ],
+  "validation": {
+    "sourceFilesMatchedFreshGitTree": 64,
+    "nonBrowserJsScripts": 25,
+    "nonBrowserJsResult": "passed",
+    "htmlPathsCatalog": "passed",
+    "allJsSyntax": "passed",
+    "pythonUnitTests": 15,
+    "pythonResult": "passed",
+    "scope": "最终维护记录通过28项检查阶段：25个非浏览器JS测试脚本、HTML与catalog校验、全JS语法及15项Python单元测试。现有测试验证应用与历史数据不变，不逐项验证本记录的外部事实。"
+  },
+  "resourceReview": {
+    "observedWindowUtc": "2026-10-15T07:12:00Z/2026-10-15T07:14:00Z",
+    "decision": "无新增资料。以下为限定核读，不表示全库或平台完整覆盖。",
+    "reads": [
+      {
+        "url": "https://ielts.org/news-and-insights/how-to-avoid-distractors-in-the-ielts-reading-test",
+        "publishedAt": "2023-02-01",
+        "scope": "方法正文；练习图片未看。",
+        "decision": "已作为bili-reading-error-log-pang-2023提醒中的来源，也与既有答案证据复盘重叠。"
+      },
+      {
+        "url": "https://takeielts.britishcouncil.org/prepare/ielts-free-practice-mock-tests/academic/listening?language=en",
+        "scope": "页面实质正文；未运行音频、PDF、Inspera。",
+        "decision": "答案/文字稿、无计时熟悉测试及功能差别已被bc-mocks准确覆盖。"
+      },
+      {
+        "url": "https://www.cambridgeenglish.org/exams-and-tests/ielts/preparation/",
+        "scope": "备考目录实质正文；未读书籍内页或购买产品。",
+        "decision": "IELTS21 A/GT及官方指南仍在列表，既有条目足够。"
+      },
+      {
+        "url": "https://ieltsliz.com/ielts-reading-tips-how-can-i-improve-my-score/",
+        "scope": "方法正文及前16组顶层评论/回复，未读全部249条评论。",
+        "decision": "语言基础与定位/题型/时间问题区分已有覆盖。正文旧版剑雅信息与2024回复不同，不以2026页眉判定方法新近。商业教师站点，不作效果证据。"
+      },
+      {
+        "url": "https://www.reddit.com/r/IELTS/comments/1x2css9/my_ielts_test_experience_oct_10/",
+        "publishedAt": "2026-10-10",
+        "scope": "主帖及10月12日更新，17条可见人工评论/回复；隐藏More replies未展开。",
+        "decision": "当前成绩仍待出，不独立核验历史分数；练习平台难度与AI反馈属自述。口语时长说法经评论质疑后作者软化，不推广为考试规则。不转载回忆题。"
+      },
+      {
+        "url": "https://zhuanlan.zhihu.com/p/2050886614889526820",
+        "editedAt": "2026-07-13",
+        "scope": "完整可提取正文；未读评论。",
+        "decision": "带AI生成标识、知学堂引流和缺乏依据的固定计划/日期难度说法，不新增。"
+      }
+    ],
+    "unreadOrBlocked": [
+      "https://ielts.idp.com/prepare/article-improve-ielts-band-score-tips-for-retaking-test",
+      "https://ielts.idp.com/prepare/all-test-types/reading",
+      "https://www.cambridge.org/elt/blog/2024/08/01/ielts-reading-and-listening-tips-overcoming-common-myths/",
+      "https://www.bilibili.com/video/BV1AibX6hEk3/",
+      "https://www.bilibili.com/opus/755000790659104790",
+      "https://www.xiaohongshu.com/explore/685ec9e0000000002400907f",
+      "https://www.douyin.com/video/7680048098388163145"
+    ],
+    "limitations": "以上访问失败不计正文覆盖；贴吧未取得可接纳原帖正文。未观看视频、核验成绩图片或体验课程。搜索摘录不计完整原文。"
+  }
+}
