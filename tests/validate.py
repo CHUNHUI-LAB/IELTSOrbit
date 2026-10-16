@@ -5,9 +5,11 @@ import hashlib
 import json,re
 ROOT=Path(__file__).resolve().parents[1]
 class Check(HTMLParser):
- def __init__(self):super().__init__();self.ids=[];self.refs=[];self.assets=[];self.labels=0
+ def __init__(self):super().__init__();self.ids=[];self.refs=[];self.assets=[];self.labels=0;self.in_footer=False;self.footer_links=[]
  def handle_starttag(self,tag,attrs):
   a=dict(attrs)
+  if tag=='footer':self.in_footer=True
+  if self.in_footer and tag=='a':self.footer_links.append(a)
   if 'id' in a:self.ids.append(a['id'])
   if a.get('aria-controls'):self.refs.append(a['aria-controls'])
   if a.get('aria-labelledby'):self.refs+=a['aria-labelledby'].split()
@@ -15,8 +17,19 @@ class Check(HTMLParser):
   if tag in ('script','link'):
    v=a.get('src',a.get('href',''))
    if v:self.assets.append(v)
+ def handle_endtag(self,tag):
+  if tag=='footer':self.in_footer=False
 p=Check();p.feed((ROOT/'index.html').read_text())
 assert len(p.ids)==len(set(p.ids)), 'duplicate ids'
+footer_urls=[a['href'] for a in p.footer_links]
+assert footer_urls.count('#library')==1
+for url in ['https://github.com/CHUNHUI-LAB/IELTSOrbit','https://github.com/CHUNHUI-LAB/GradCompass','https://chunhui-lab.github.io/RoboPaperAtlas/','https://chunhui-lab.github.io/GradCompass/']:
+ assert footer_urls.count(url)==1, ('missing or duplicate footer link',url)
+ attrs=next(a for a in p.footer_links if a['href']==url)
+ assert attrs.get('target')=='_blank'
+ assert set(attrs.get('rel','').split())=={'noopener','noreferrer'}
+assert len(p.footer_links)==5
+
 assert all(x in p.ids for x in p.refs), 'broken aria references'
 def local_asset_path(reference):
  try:
