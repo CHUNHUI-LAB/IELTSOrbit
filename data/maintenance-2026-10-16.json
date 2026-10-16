@@ -1,0 +1,167 @@
+{
+  "checkedAt": "2026-10-16",
+  "observedAtUtc": "2026-10-16T06:38:17Z",
+  "baseCommit": "29b366bbe9b4160f5305824b700248c39d6716ce",
+  "scope": "限定公开信息复核；不是全库或实时考位检查。",
+  "decision": "仅追加维护审计：补全NEEA全国Q4原始排期可读证据，catalog和历史核读日期保持不变。截至本轮公开来源核读结束时，未写入远端；后续发布状态不由本记录判断。",
+  "materialDifference": {
+    "url": "https://news.neea.cn/IELTS/zh_CN/5A02050C74319D3CE063C546C80AB544.html",
+    "readScope": "完整可提取正文：标题、表头、45行全国标准雅思机考日期、报名截止、准考证打印、参考成绩发布日及脚注；无独立发布日期。",
+    "publishedAt": null,
+    "priorState": "2026-10-02详情页跳系统升级；10月15未取得新考期证据。",
+    "currentState": "全国标准雅思Q4静态表正文可读；日期行从2026-10-09至2026-12-30，类别A+G、上午及下午。",
+    "cautions": [
+      "不是杭州地点对应场次，不是实时可报名或余位。",
+      "原始表仍列10月10、11日，官方较新公告已取消这两日全科考试；不能原样宣传为有效场次。",
+      "表内成绩发布日期为考后第1天，仅作参考；脚注明确通常1–5天。",
+      "未据此更新calendar.dates、centerSessions或任一地点sessions；seatsAvailable仍null。",
+      "UKVI Q4详情仍访问失败，不推断与标准雅思完全相同。"
+    ]
+  },
+  "sources": [
+    {
+      "url": "https://www.chinaielts.org/press-office/announcement",
+      "readScope": "三个说明实质正文完整核读；前两篇署2026-10-13，补充说明无独立日期。",
+      "finding": "与10月15记录未发现实质差异；计划恢复措辞不能证明实际恢复。"
+    },
+    {
+      "url": "https://www.chinaielts.org/press-office",
+      "readScope": "媒体目录标题/日期/摘要",
+      "finding": "顶部仍为10月13取消补救公告，不代表全网无新公告。"
+    },
+    {
+      "url": "https://www.chinaielts.org/about-ielts/ielts",
+      "readScope": "费用表、FAQ至纸质成绩单寄送段",
+      "finding": "1990/1250/1400及380费用未变；费用页纸质寄送泛化措辞不覆盖较新10月1日电子成绩单政策。"
+    },
+    {
+      "url": "https://www.chinaielts.org/prepare/understand-ielts-score/bands",
+      "readScope": "计分实质正文",
+      "finding": "平均到最近半分及原始分门槛版本差异支持既有数据。"
+    },
+    {
+      "url": "https://www.chinaielts.org/book-ielts/one-skill-retake",
+      "readScope": "介绍、报名条件及地点列表导语至八城市/13考点；本轮未逐行重读13点。",
+      "finding": "60天一次、同一证件及接收机构确认未变；地点不能当作余位。"
+    },
+    {
+      "url": "https://www.chinaielts.org/press-office/paper-trf",
+      "readScope": "公告及六条FAQ全文",
+      "finding": "10月1停纸质、Life Skills例外；OSR时点措辞差异仍保留。"
+    },
+    {
+      "url": "https://www.chinaielts.org/press-office/IELTS-Chinese-Mainland-Exam-Registration-2026-7-9",
+      "readScope": "模式与Q3公告正文；未读日历图片",
+      "finding": "IELTS9月、UKVI7月停止大陆纸笔未变。"
+    },
+    {
+      "url": "https://www.zjzs.net/col/col282/index.html",
+      "readScope": "40行全部文本",
+      "finding": "4杭州地点仍列；纸笔标签过时；杭电地址差异仍存在，不覆盖原地点。"
+    },
+    {
+      "url": "https://forstu.hdu.edu.cn/2023/0908/c12757a250381/page.htm",
+      "readScope": "中英入场说明；未看地图",
+      "publishedAt": "2023-09-08",
+      "bodySignedAt": "2024-07-20",
+      "finding": "1158号、文泽路东门、11楼宇5层；历史说明非2026新场次。"
+    },
+    {
+      "url": "https://cjxy.zust.edu.cn/info/1013/2528.htm",
+      "readScope": "中文全文及英文至其他要求段",
+      "publishedAt": "2023-04-24",
+      "bodySignedAt": "2024-01-15",
+      "finding": "留和路359号12幢2层未变。"
+    },
+    {
+      "url": "https://www.cambridgeenglish.org/exams-and-tests/ielts/preparation/",
+      "readScope": "备考目录全部实质正文；未读书籍内页/样题",
+      "finding": "IELTS21 A/GT和官方指南已有覆盖。"
+    },
+    {
+      "url": "https://ieltsliz.com/ielts-reading-tips-how-can-i-improve-my-score/",
+      "readScope": "方法正文及前18组顶层评论与可见回复；不等于全部249评论",
+      "finding": "与既有语言/题型/定位/错因复盘重合；2026页眉不代表内容新近；商业教师站点。"
+    }
+  ],
+  "blockedSources": [
+    "https://ielts.neea.cn/showTestCenters",
+    "https://ielts.neea.cn/allnews?locale=zh_CN",
+    "https://ielts.neea.cn/entrytest",
+    "https://news.neea.cn/IELTS/zh_CN/5A02050C74329D3CE063C546C80AB544.html"
+  ],
+  "resourceReview": {
+    "decision": "无新增资源。B站访问补全仍是旧catalog既有条目；其他方法重合或证据不足。",
+    "reads": [
+      {
+        "url": "https://www.bilibili.com/opus/755000790659104790",
+        "publishedAt": "2023-01-25",
+        "scope": "Exa完整三篇复盘正文；无评论/图片核验",
+        "finding": "既有bili-reading-error-log-2023覆盖，含估分非正式成绩及概率推断/字母不一致限制。"
+      },
+      {
+        "url": "https://www.reddit.com/r/IELTS/comments/1x2css9/my_ielts_test_experience_oct_10/",
+        "scope": "3天前缓存：主帖、10月12更新、17条可见评论",
+        "finding": "不能确认10月16成绩状态，不将缓存等待成绩当实时。"
+      },
+      {
+        "url": "https://www.reddit.com/r/IELTS/comments/1x5pmqu/i_just_took_the_ielts/",
+        "scope": "主帖及2评论，其中1机器人；缓存相对时间不可靠",
+        "finding": "无成绩验证，主观难易感不作为官方规则；不转载回忆题。"
+      },
+      {
+        "url": "https://blog.ieltspractice.com/ielts-listening-how-important-is-spelling-2/",
+        "scope": "完整正文及13评论",
+        "finding": "页标2026-08-31、评论2020–2024；不能视今日新文；拼写练习与既有复盘重合，ClarityEnglish推广Road to IELTS。"
+      },
+      {
+        "url": "https://blog.ieltspractice.com/ielts-reading-matching-headings-to-paragraphs/",
+        "scope": "完整正文及1评论",
+        "finding": "页标2026-09-07、评论2023-02-09；段意概括与限定词核对已覆盖；不采纳绝对化顺序与来源主张。"
+      },
+      {
+        "url": "https://zhuanlan.zhihu.com/p/2050886614889526820",
+        "scope": "可提取正文；1条评论内容未返回",
+        "editedAt": "2026-07-13",
+        "finding": "AI标识与知学堂引流；固定训练阈值等缺佐证，不录。"
+      }
+    ],
+    "unreadOrBlocked": [
+      {
+        "url": "https://www.bilibili.com/video/BV1AibX6hEk3/",
+        "status": "412；未读视频/字幕/评论"
+      },
+      {
+        "url": "https://www.xiaohongshu.com/explore/685ec9e0000000002400907f",
+        "status": "不可达或页面不见了，不推断永久删除"
+      },
+      {
+        "url": "https://www.douyin.com/video/7680048098388163145",
+        "status": "正文0行/Exa失败，搜索索引标题和约10条评论片段不计全文或视频"
+      },
+      {
+        "url": "https://tieba.baidu.com/f?kw=%E9%9B%85%E6%80%9D",
+        "status": "403/Exa失败，列表摘要不算独立原帖正文"
+      }
+    ]
+  },
+  "boundaries": [
+    "截至本轮公开来源核读结束时，无登录、报名、支付、权限改变、用户电脑操作或远端写入；此处不描述后续发布状态。",
+    "未修改旧资料、schema、前端、测试fixture或已审SHA。",
+    "本次核读时间不覆盖既有条目日期；测试结果只验证代码/数据完整性，不证明外部事实。",
+    "未运行真实浏览器渲染。"
+  ],
+  "validation": {
+    "sourceFilesMatchedFreshGitTree": 65,
+    "nonBrowserJsScripts": 25,
+    "nonBrowserJsResult": "passed",
+    "htmlPathsCatalog": "passed",
+    "allJsSyntax": "passed",
+    "pythonUnitTests": 15,
+    "pythonResult": "passed",
+    "node": "24.19.0",
+    "python": "3.12.14",
+    "scope": "25个非浏览器JS脚本、HTML/路径/catalog、全部JS语法、15项Python单测通过。未执行真实浏览器渲染。现有检查不验证本维护记录的外部事实。"
+  },
+  "observationTimeScope": "本轮公开来源最后一次读取完成时刻；各页面发布日期及缓存日期另行说明，不表示所有页面在此时刷新。"
+}
