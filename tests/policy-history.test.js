@@ -2,10 +2,16 @@
 const assert=require('node:assert/strict'),fs=require('node:fs');
 const {paperTrfStage:stage,sha256,catalogBytes,beforePaperTrfPolicyCatalog:prior,
   verifyPaperTrfPolicyStage:verify,replayPaperTrfPolicyAppend:replay}=require('./policy-history.js');
-const bytes=fs.readFileSync(require.resolve('../data/catalog.json'),'utf8');
+// Verify the new release before crossing its exact inverse. The original policy
+// stage below still runs unchanged against its own byte-exact published release.
+const {verifyListeningSupplementStage}=require('./listening-supplement-history.js');
+const releaseBytes=fs.readFileSync(require.resolve('../data/catalog.json'),'utf8');
+const release=JSON.parse(releaseBytes);
+assert.equal(releaseBytes,catalogBytes(release),'actual release bytes retain canonical serialization');
+const bytes=catalogBytes(verifyListeningSupplementStage(release));
 const current=JSON.parse(bytes),baseline=verify(current),policy=current.policies.at(-1);
 
-assert.equal(sha256(bytes),stage.afterCatalogSha256,'actual file bytes, not only parsed JSON, are pinned');
+assert.equal(sha256(bytes),stage.afterCatalogSha256,'exact reconstructed policy-stage release bytes remain pinned; current file is verified before projection');
 assert.equal(bytes,catalogBytes(current),'current serialization preserves the original catalog formatting');
 assert.equal(sha256(catalogBytes(baseline)),stage.beforeCatalogSha256,'published f7e973b catalog is reconstructed byte-for-byte');
 assert.equal(catalogBytes(replay(baseline,policy)),bytes,'forward replay restores every current byte');

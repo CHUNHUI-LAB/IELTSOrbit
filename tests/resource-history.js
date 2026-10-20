@@ -1,5 +1,6 @@
 'use strict';
 const {beforePaperTrfPolicyCatalog}=require('./policy-history.js');
+const {beforeListeningSupplementResources,beforeListeningSupplementCatalog}=require('./listening-supplement-history.js');
 // 2026-10-04: this five-field Liz correction is frozen in teaching-supplement.test.js.
 // Project only those fields back for historical hashes; unrelated fields remain observable.
 const beforeSkillAlignmentLizFields = {
@@ -18,7 +19,7 @@ const beforeSkillAlignmentLizFields = {
   ],
   "curatorInterpretation": "具体练习补充核读：2026-10-03。Office Etiquette 正文注明2017年，为 Liz 教师自编的公开免费小练习；站点同时销售 Advanced IELTS 等产品。已读正文、题目、答案解释和文字稿；未播放音频。只核读部分2017年评论，不声称读完页面标示的158条评论，评论不作为提分效果证据。这里仅归纳反馈步骤并链接原页，不转载题目、答案或文字稿；短练习不是完整模考，不保证分数或限时迁移效果。原目录条目的核验日保留。"
 };
-function beforeSkillAlignmentResources(resources){return resources.map(resource=>resource.id==='liz'?{...resource,...beforeSkillAlignmentLizFields}:resource);}
+function beforeSkillAlignmentResources(resources){return beforeListeningSupplementResources(resources).map(resource=>resource.id==='liz'?{...resource,...beforeSkillAlignmentLizFields}:resource);}
 function beforeSkillAlignmentCatalog(catalog){const prior={...catalog,resources:beforeSkillAlignmentResources(catalog.resources)};delete prior.resourceSkillAlignmentReview;return prior;}
 // This one dated maintenance adds exactly these two fields to three legacy cards.
 // Remove ONLY those additions when verifying earlier immutable-resource digests.
@@ -53,7 +54,7 @@ module.exports.beforeVerifiedExperienceCatalog=beforeVerifiedExperienceCatalog;
 
 // Project only this two-record append; independent output-review test pins the full 49-record baseline.
 const outputReviewIds=Object.freeze(["dcard-speaking-record-transcript-feedback", "douban-listening-hesitation-review-2022"]);
-function beforeOutputReviewCatalog(catalog){catalog=beforePaperTrfPolicyCatalog(catalog);return {...catalog,resources:catalog.resources.filter(r=>!outputReviewIds.includes(r.id))};}
+function beforeOutputReviewCatalog(catalog){catalog=beforePaperTrfPolicyCatalog(beforeListeningSupplementCatalog(catalog));return {...catalog,resources:catalog.resources.filter(r=>!outputReviewIds.includes(r.id))};}
 function beforeOutputReviewTopics(topics){return Object.fromEntries(Object.entries(topics).map(([k,ids])=>[k,ids.filter(id=>!outputReviewIds.includes(id))]));}
 const outputThemeSuffix={"2": " 豆瓣个案另记录做对但犹豫的题；旧材料重练的熟悉效应未排除。", "7": " Dcard个案把课前录音交老师反馈，考前请朋友提问再计时录音；本站建议保留原音核对转录，不能凭识别错误诊断发音。"};
 function beforeOutputReviewThemes(themes){return themes.map((t,i)=>{const suffix=outputThemeSuffix[i];return {...t,sourceIds:t.sourceIds.filter(id=>!outputReviewIds.includes(id)),synthesis:suffix&&t.synthesis.endsWith(suffix)?t.synthesis.slice(0,-suffix.length):t.synthesis};});}
