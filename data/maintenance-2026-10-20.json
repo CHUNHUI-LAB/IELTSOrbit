@@ -1,0 +1,59 @@
+{
+  "checkedAt": "2026-10-20",
+  "baseCommit": "65cc6694d1faaa3a5fca5c92e82d7328c3d7ffea",
+  "scope": "仅核读 British Council 官方 Part 3 匹配题教案和其目录，补充既有 bc-mocks 条目；不是全库重核或当前考试政策复核。",
+  "decision": "在既有 schema 和资源 ID 下，追加一条使用方法、两条相关原文链接及带日期的编辑说明。无新增资源、机构或经验计数；不改旧核读日。",
+  "updatedResourceIds": [
+    "bc-mocks"
+  ],
+  "newResourceIds": [],
+  "historyStage": {
+    "id": "bc-part3-matching-2026-10-20",
+    "baseCommit": "65cc6694d1faaa3a5fca5c92e82d7328c3d7ffea",
+    "beforeCatalogSha256": "49d94f5e024fc393b204b10218223ea916f1118c6013437a467f859a283231eb",
+    "afterCatalogSha256": "c3f44894183ee8d6071031ef8742c7d594cea69b05915406ceae75cea7ea2ac4",
+    "beforeResourceSha256": "d3508d61d31acba7ff4fff180792859b11bd35cfb19b1ac5822942b259db3f52",
+    "afterResourceSha256": "99725a29ea0155113e06c178c0eb845882e19b65d61670c006b1c36da2f1a8b4",
+    "fixtureSha256": "0908cd9d739e9745679396f07bc41dfa5bf642887631dc3e39396b350cb420c1",
+    "reviewedAt": "2026-10-20"
+  },
+  "sources": [
+    {
+      "url": "https://takeielts.britishcouncil.org/sites/default/files/2026-06/listening_part_3_matching-classifying_questions_.pdf",
+      "type": "official",
+      "retrievalStatus": "body_read",
+      "publishedAt": null,
+      "updatedAt": null,
+      "pageCount": 11,
+      "readScope": "全部 11 页可提取正文，包括教师步骤、工作表、五道 Part 3 匹配题、答案及完整文字稿。",
+      "findings": [
+        "标注 B1+，练习确定、不确定和否定表达，并跟踪指定人物的最终选择。",
+        "Worksheet 2 先呈现后续同一录音的关键摘句，属于带支架练习，不能包装为陌生题诊断、完整模考或估分工具。"
+      ],
+      "limitations": [
+        "未播放录音，未运行课堂活动，不能声称核验听觉难度或实际练习效果。",
+        "B1+ 仅是教案标注，不换算雅思分数；课堂时长不是个人提分周期。",
+        "未见明确发布日期或更新日期；不从 URL 中的 2026-06 推断。",
+        "PDF 中纸笔誊写说明不作为当前中国大陆考试规则。"
+      ]
+    },
+    {
+      "url": "https://takeielts.britishcouncil.org/teach-ielts/teaching-resources/lesson-plans-listening",
+      "type": "official",
+      "retrievalStatus": "body_read",
+      "publishedAt": null,
+      "updatedAt": null,
+      "readScope": "官方听力教案目录，包含匹配/分类题下载与录音入口。",
+      "limitations": [
+        "目录中的录音入口可见，但录音抓取未成功，未播放；链接存在不等于播放可用性已经核验。"
+      ]
+    }
+  ],
+  "preserved": [
+    "全部 51 个资源 ID、顺序、provider、分类、推荐身份与原 checkedAt；34 篇经验、22 项默认推荐资源及 6 篇推荐经验。",
+    "bc-mocks 的全部旧字段及方法、Weak forms 链接和历史说明前缀。",
+    "四条政策及精确原文、生效日期、来源；原三条政策快照和旧历史 SHA。",
+    "界面、计划、练习、schema、考点、考期、余位与此前维护审计。"
+  ],
+  "publicationBoundary": "此记录是来源范围与候选变更证据，不证明已发布、已部署或已通过真实浏览器验收；这些结果须单独核对精确提交。"
+}
