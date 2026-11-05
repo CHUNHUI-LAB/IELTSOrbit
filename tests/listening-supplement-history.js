@@ -1,5 +1,6 @@
 'use strict';
 const assert=require('node:assert/strict'),crypto=require('node:crypto'),fs=require('node:fs');
+const {beforePronunciationSupplementResources}=require('./pronunciation-supplement-history.js');
 
 // A single reviewed append to three existing fields, not a general resource filter.
 // The predecessor was read independently from this exact published commit.
@@ -24,6 +25,7 @@ const fixture=JSON.parse(fixtureBytes);
 function reviewedSupplement(){return structuredClone(fixture);}
 
 function beforeListeningSupplementResources(resources){
+  resources=beforePronunciationSupplementResources(resources);
   return resources.map(resource=>{
     if(resource.id!==listeningSupplementStage.resourceId)return resource;
     const methods=resource.actionableMethods,links=resource.relatedSources,note=resource.curatorInterpretation;

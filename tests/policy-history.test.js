@@ -5,7 +5,10 @@ const {paperTrfStage:stage,sha256,catalogBytes,beforePaperTrfPolicyCatalog:prior
 // Verify the new release before crossing its exact inverse. The original policy
 // stage below still runs unchanged against its own byte-exact published release.
 const {verifyListeningSupplementStage}=require('./listening-supplement-history.js');
-const releaseBytes=fs.readFileSync(require.resolve('../data/catalog.json'),'utf8');
+const {verifyPronunciationSupplementStage}=require('./pronunciation-supplement-history.js');
+const latestBytes=fs.readFileSync(require.resolve('../data/catalog.json'),'utf8'),latest=JSON.parse(latestBytes);
+assert.equal(latestBytes,catalogBytes(latest),'latest file is canonical before the new verified inverse');
+const releaseBytes=catalogBytes(verifyPronunciationSupplementStage(latest));
 const release=JSON.parse(releaseBytes);
 assert.equal(releaseBytes,catalogBytes(release),'actual release bytes retain canonical serialization');
 const bytes=catalogBytes(verifyListeningSupplementStage(release));
