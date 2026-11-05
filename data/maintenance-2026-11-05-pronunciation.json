@@ -1,0 +1,45 @@
+{
+  "checkedAt": "2026-11-05",
+  "baseCommit": "f1218e94c5964afdfa3e9938dd020ed2d0061d70",
+  "scope": "仅追加 British Council 发音训练来源与本站使用建议；不是全库、考试政策或全部原来源重新核读。",
+  "decision": "隔离内容候选：既有 bc-speaking-record-review 追加一条方法、一个相关来源及独立核读说明；不新增资源或经验，不覆盖原日期。",
+  "updatedResourceIds": [
+    "bc-speaking-record-review"
+  ],
+  "newResourceIds": [],
+  "sources": [
+    {
+      "url": "https://takeielts.britishcouncil.org/blog/how-to-improve-english-pronunciation-ielts-speaking",
+      "type": "official",
+      "retrievalStatus": "body_read",
+      "author": "Emma Walker",
+      "publishedAt": null,
+      "updatedAt": "2024-01-02",
+      "dateEvidence": "正文显示 Last Updated: 2nd January 2024；Web 与 Exa 的正文提取一致。Exa 元数据 Published 为 2024-06-05，保留冲突，不认定发布日期。",
+      "readScope": "完整实质文字正文：六项发音练习方法、结尾自学资源及 IELTS Ready 提示；未核读外链。",
+      "findings": [
+        "逐句跟读并录音，比较音素、节奏、语速、重音与语调，记录具体问题。",
+        "原文区分暂停式跟读与同步跟读；前者便于分析发音细节。"
+      ],
+      "limitations": [
+        "未播放或核验外链音视频，未运行练习或体验课程、产品。",
+        "跟读后用自己的内容回答问题是本站建议，不是文章验证的训练效果。",
+        "一段练习的时长不是考试限时或提分周期；不要求特定国家口音，不保证分数。",
+        "网页包含 IELTS Ready 注册和考试报名入口；本轮未注册、购买或提交录音。",
+        "Web 标注抓取于昨日，Exa 未给源站状态或缓存年龄；本次可读正文不等于实时源站可用性保证。"
+      ]
+    }
+  ],
+  "preserved": [
+    "全部 51 个资源 ID、顺序与原字段；既有条目的三条方法作为精确前缀保留。",
+    "34 篇经验、22 项默认推荐资源及 6 篇推荐经验。",
+    "原 checkedAt、provenance、推荐身份与主链接不变。",
+    "全部政策、考点、考期、余位、学习计划及前端不变。"
+  ],
+  "validation": {
+    "status": "not_run",
+    "detail": "本候选未执行测试、构建、浏览器或此前被拒验证。独立静态复核单独记录。"
+  },
+  "integrationBoundary": "内容候选尚未接入 tests 的严格历史阶段；不得改写旧 SHA 或删除既有校验来令测试通过。独立复核和后续获准验证完成前，不称可合入。",
+  "publicationBoundary": "无远端写入、提交或发布；本记录不证明已部署或真实浏览器验收。"
+}
