@@ -8,7 +8,7 @@ const {verifyListeningSupplementStage}=require('./listening-supplement-history.j
 const releaseBytes=fs.readFileSync(require.resolve('../data/catalog.json'),'utf8');
 const release=JSON.parse(releaseBytes);
 assert.equal(releaseBytes,catalogBytes(release),'actual release bytes retain canonical serialization');
-const bytes=catalogBytes(verifyListeningSupplementStage(release));
+const bytes=catalogBytes(verifyListeningSupplementStage(require('./listening-word-limit-history.js').undo(release)));
 const current=JSON.parse(bytes),baseline=verify(current),policy=current.policies.at(-1);
 
 assert.equal(sha256(bytes),stage.afterCatalogSha256,'exact reconstructed policy-stage release bytes remain pinned; current file is verified before projection');
