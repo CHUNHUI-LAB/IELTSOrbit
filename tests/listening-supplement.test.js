@@ -3,7 +3,9 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('nod
 const {sha256,catalogBytes,paperTrfStage,verifyPaperTrfPolicyStage}=require('./policy-history.js');
 const {listeningSupplementStage:stage,reviewedSupplement,beforeListeningSupplementCatalog:prior,
   verifyListeningSupplementStage:verify,replayListeningSupplement:replay}=require('./listening-supplement-history.js');
-const bytes=fs.readFileSync(require.resolve('../data/catalog.json'),'utf8'),current=JSON.parse(bytes);
+const releaseBytes=fs.readFileSync(require.resolve('../data/catalog.json'),'utf8');
+assert.equal(releaseBytes,catalogBytes(JSON.parse(releaseBytes)));
+const bytes=catalogBytes(require('./writing-history.js').undo(JSON.parse(releaseBytes))),current=JSON.parse(bytes);
 const baseline=verify(current),append=reviewedSupplement();
 const find=catalog=>catalog.resources.find(resource=>resource.id==='bc-mocks');
 const bc=find(current),old=find(baseline);

@@ -118,9 +118,20 @@
         "本站建议：先读对应任务的评分讲解。Academic Task 1 检查概述、主要特征与信息准确性；Task 2 检查题目覆盖、立场和论据。",
         "拿一篇自己的旧作文对照四项评分维度，逐项标出已做到和缺少的内容，暂不把自检换算成分数。",
         "分两轮检查：先看段落推进和句间关系，再查用词搭配、拼写、语法及标点。",
-        "选一类反复出现的问题改写，复核修改后是否更清楚。自检不能替代正式评分，也不保证达到某个分数。"
+        "选一类反复出现的问题改写，复核修改后是否更清楚。自检不能替代正式评分，也不保证达到某个分数。",
+        "评分标准补充｜Academic Task 1 只归纳给定图表事实，不补写数据之外的猜测原因；GT Task 1 另查信件目的、三个要求与一致语气。Task 2 检查观点是否展开并得到相关支持。不要把高级词、连接词或复杂句的数量当作达标依据；自检不能自动换算分数。"
       ],
-      "curatorInterpretation": "使用建议补充核读：2026-10-03。已读页面正文及七段网页文字稿，含 Academic、General Training、词汇及语法标点部分；未打开两份评分 PDF，未播放嵌入视频。以上操作顺序是本站编辑建议，不是官方指定学习流程。页面未标明发布日期或更新日期；原条目核验日保留，不能将本次文字稿核读当作全部材料重新核验。"
+      "curatorInterpretation": "使用建议补充核读：2026-10-03。已读页面正文及七段网页文字稿，含 Academic、General Training、词汇及语法标点部分；未打开两份评分 PDF，未播放嵌入视频。以上操作顺序是本站编辑建议，不是官方指定学习流程。页面未标明发布日期或更新日期；原条目核验日保留，不能将本次文字稿核读当作全部材料重新核验。 PDF 补充核读：2026-11-15。已读 IELTS Writing Key Assessment Criteria 全4页及 Writing Band Descriptors 全9页可提取正文；后者封面标注 Updated May 2023，前者未见明确版本日期。本次补齐PDF阅读范围，不把核读日当作政策更新日；未播放视频、评分作文或验证提分效果。旧核读说明保留为历史记录。",
+      "relatedSources": [
+        {
+          "title": "IELTS Writing Key Assessment Criteria（4页）",
+          "url": "https://ielts.org/cdn/ielts-guides/ielts-writing-key-assessment-criteria.pdf"
+        },
+        {
+          "title": "IELTS Writing Band Descriptors（9页，2023年5月版）",
+          "url": "https://ielts.org/cdn/ielts-guides/ielts-writing-band-descriptors.pdf"
+        }
+      ]
     },
     {
       "id": "all-rubrics",
