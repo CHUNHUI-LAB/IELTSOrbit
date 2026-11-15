@@ -1,0 +1,10 @@
+'use strict';
+const fs=require('node:fs'),assert=require('node:assert/strict'),crypto=require('node:crypto');
+const hash=x=>crypto.createHash('sha256').update(x).digest('hex'),bytes=x=>JSON.stringify(x,null,2)+'\n';
+const raw=fs.readFileSync(require.resolve('./fixtures/writing-pdf.json'),'utf8');assert.equal(hash(raw),'03f8789a43e9264d5ea5c6d88ea220428601345577ca58fffe11236e05ef3154');const fixture=JSON.parse(raw);
+const stage=Object.freeze({before:'c3f44894183ee8d6071031ef8742c7d594cea69b05915406ceae75cea7ea2ac4',after:'8b5cc0d155eaf8b3df63ed482456b1dbc8f6d91baa6988fe9bf35303d1034226'});
+function cross(c,from,to,oldR,newR){assert.equal(hash(bytes(c)),from);const out=structuredClone(c),matches=out.resources.filter(r=>r.id==='writing-rubric');assert.equal(matches.length,1);assert.deepEqual(matches[0],oldR);out.resources[out.resources.findIndex(r=>r.id==='writing-rubric')]=structuredClone(newR);assert.equal(hash(bytes(out)),to);return out;}
+const undo=c=>cross(c,stage.after,stage.before,fixture.afterResource,fixture.beforeResource),replay=c=>cross(c,stage.before,stage.after,fixture.beforeResource,fixture.afterResource);
+function beforeWritingResources(resources){return resources.map(r=>{if(r.id!=='writing-rubric')return r;const method=fixture.afterResource.actionableMethods.at(-1),suffix=fixture.afterResource.curatorInterpretation.slice(fixture.beforeResource.curatorInterpretation.length),links=fixture.afterResource.relatedSources;const present=r.actionableMethods?.includes(method)||r.curatorInterpretation?.includes(suffix)||r.relatedSources?.some(x=>links.some(y=>x.url===y.url));if(!present)return r;assert.equal(r.actionableMethods?.at(-1),method);assert.ok(r.curatorInterpretation?.endsWith(suffix));assert.deepEqual(r.relatedSources,links);const out={...r,actionableMethods:r.actionableMethods.slice(0,-1),curatorInterpretation:r.curatorInterpretation.slice(0,-suffix.length)};delete out.relatedSources;return out;});}
+const beforeWritingCatalog=c=>({...c,resources:beforeWritingResources(c.resources)});
+module.exports={stage,undo,replay,beforeWritingResources,beforeWritingCatalog};
